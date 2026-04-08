@@ -1,0 +1,23 @@
+{
+  "title": "Video Generates",
+  "crumbs": {
+    "admin": "Admin",
+    "videos": "Video Generates"
+  },
+  "actions": {
+    "set_as_showcase": "Set as Showcase",
+    "showcased": "Showcased"
+  },
+  "form": {
+    "video": "Video",
+    "prompt": "Prompt",
+    "model": "Model",
+    "status": "Status",
+    "createdAt": "Created At",
+    "creditsUsed": "Credits",
+    "userId": "User",
+    "actions": "Actions"
+  },
+  "delete": "Delete",
+  "delete_confirm": "Are you sure you want to delete this video?"
+}

@@ -1,0 +1,40 @@
+{
+  "title": "Video Showcases",
+  "description": "Manage your video showcases here.",
+  "add": "Add",
+  "edit": "Edit",
+  "delete": "Delete",
+  "delete_confirm": "Are you sure you want to delete this record?",
+  "deleting": "Deleting...",
+  "delete_success": "Successfully deleted showcase",
+  "delete_error": "Failed to delete showcase",
+  "crumbs": {
+    "admin": "Admin",
+    "video-showcases": "Video Showcases"
+  },
+  "form": {
+    "title": "Title",
+    "description": "Description",
+    "prompt": "Prompt",
+    "image": "Video Cover",
+    "tags": "Tags",
+    "video": "Video",
+    "videoUrl": "Video URL",
+    "createdAt": "Created At",
+    "image_tip": "Video cover/thumbnail",
+    "tags_placeholder": "e.g. cinematic, animation",
+    "tags_tip": "Use comma to separate multiple tags"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "update": "Update"
+  },
+  "messages": {
+    "success_add": "Video showcase added",
+    "success_update": "Video showcase updated",
+    "error_add": "Failed to add video showcase",
+    "error_update": "Failed to update video showcase",
+    "not_found": "Video showcase not found",
+    "validation_error": "Title, prompt, image and videoUrl are required"
+  }
+}

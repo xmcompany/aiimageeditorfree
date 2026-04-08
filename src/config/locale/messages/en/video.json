@@ -1,0 +1,194 @@
+{
+  "hero_input": {
+    "placeholder": "Describe the video you want to generate, the more detailed the better...",
+    "generate_button": "Generate",
+    "generating_button": "Generating...",
+    "credits_text": "1 Credits",
+    "credits_unit": "Credits",
+    "quick_prompts": [
+      "A majestic eagle soaring over mountain peaks at sunrise",
+      "Futuristic city with flying cars and neon lights",
+      "Ocean waves crashing against rocky cliffs in slow motion"
+    ],
+    "magic_title": "Pick a Model & Unleash the Magic",
+    "models": {
+      "hailuo": "Hailuo",
+      "kling": "Kling",
+      "wan": "Wan",
+      "pixverse": "Pixverse",
+      "luma": "Luma",
+      "veo_3_1_fast": "Veo 3.1 Fast"
+    },
+    "pricing_descriptions": {
+      "hailuo_768p": "768p: 1.5 credits/second (6s=9, 10s=15)",
+      "hailuo_1080p": "1080p: 2.67 credits/second (6s only=16)",
+      "hailuo_standard": "Standard pricing: 1.5 credits/second",
+      "kling": "Kling: 1.8 credits/second (5s=9, 10s=17)",
+      "wan": "Wan: Fixed 15 credits per generation (~5s video)",
+      "pixverse_1080p": "Pixverse 1080p: 5.4 credits/second (5s=27, normal only)",
+      "pixverse_720p_smooth": "Pixverse 720p: 5.4 credits/second (smooth=2x cost)",
+      "pixverse_720p_normal": "Pixverse 720p: 2.8 credits/second (5s=14, 8s=27)",
+      "pixverse_low_smooth": "Pixverse 360p/540p: 4 credits/second (smooth=2x cost)",
+      "pixverse_low_normal": "Pixverse 360p/540p: 2 credits/second (5s=10, 8s=20)",
+      "luma": "Luma: 2 credits/second (5s=10, 9s=18)",
+      "veo": "Veo 3.1 Fast: 5 credits/second (5s=25, 10s=50)"
+    }
+  },
+  "upload_image": {
+    "title": "Start Image (Optional)",
+    "description": "Upload an image to use as the starting frame for your video. Supported formats: JPG, PNG",
+    "click_select": "Click to select",
+    "click_upload": "Click to upload",
+    "drag_drop": "or drag and drop image here",
+    "drag_drop_multiple": "or drag and drop images here",
+    "max_reached": "Maximum {max} images allowed.",
+    "invalid_format": "Please select only JPG or PNG image files",
+    "invalid_format_single": "Please select a JPG or PNG image file"
+  },
+  "model_params": {
+    "title": "Parameters",
+    "enable": "Enable {title}",
+    "disable": "Disable {title}",
+    "add_tag": "Add {title}",
+    "enter": "Enter {title}",
+    "default": "Default",
+    "set": "{title} Set",
+    "no": "No {title}",
+    "schema": {
+      "prompt": { "title": "Prompt", "description": "Text prompt for generation" },
+      "duration": { "title": "Duration", "description": "Duration of the video in seconds" },
+      "resolution": { "title": "Resolution", "description": "Resolution of the video" },
+      "aspect_ratio": { "title": "Aspect Ratio", "description": "Aspect ratio of the video" },
+      "prompt_optimizer": { "title": "Prompt Optimizer", "description": "Use prompt optimizer to enhance your results" },
+      "first_frame_image": { "title": "First Frame Image", "description": "Image to use as the first frame" },
+      "start_image": { "title": "Start Image", "description": "Starting image for the video" },
+      "negative_prompt": { "title": "Negative Prompt", "description": "Things you do not want to see in the video" },
+      "reference_images": { "title": "Reference Images", "description": "Images to guide the generation" },
+      "cfg_scale": { "title": "CFG Scale", "description": "Guidance scale for generation" },
+      "seed": { "title": "Seed", "description": "Random seed for reproducible results" },
+      "fast_mode": { "title": "Fast Mode", "description": "Accelerate generation at the cost of some quality" },
+      "sample_guide_scale": { "title": "Sample Guide Scale", "description": "Guidance scale for sampling" },
+      "sample_steps": { "title": "Sample Steps", "description": "Number of inference steps" },
+      "sample_shift": { "title": "Sample Shift", "description": "Flow shift for generation" },
+      "lora_weights": { "title": "LoRA Weights", "description": "Custom LoRA weights URL" },
+      "lora_scale": { "title": "LoRA Scale", "description": "Strength of LoRA weights" },
+      "quality": { "title": "Quality", "description": "Output video quality" },
+      "motion_mode": { "title": "Motion Mode", "description": "Amount of motion in the video" },
+      "style": { "title": "Style", "description": "Artistic style of the video" },
+      "effect": { "title": "Effect", "description": "Special effects to apply" },
+      "sound_effect_switch": { "title": "Sound Effect", "description": "Enable sound effects" },
+      "sound_effect_content": { "title": "Sound Effect Content", "description": "Description of the sound effects" },
+      "last_frame_image": { "title": "Last Frame Image", "description": "Final frame of the video" },
+      "end_image": { "title": "End Image", "description": "Ending image for the video" },
+      "loop": { "title": "Loop", "description": "Create a seamless loop" },
+      "concepts": { "title": "Concepts", "description": "Camera concepts and movements" }
+    }
+  },
+  "credits": {
+    "balance": "Credits Balance",
+    "required": "This Generation",
+    "remaining": "After Generation",
+    "available": "Available Credits",
+    "insufficient": "Insufficient Credits",
+    "need_more": "You need {count} more credits to generate this video.",
+    "loading": "Loading credits...",
+    "failed_to_load": "Failed to load credits",
+    "retry": "Retry",
+    "refresh": "Refresh credits",
+    "pricing": "Pricing"
+  },
+  "text_to_video": {
+    "title": "Text to Video Generator",
+    "description": "Transform your ideas into stunning videos with AI-powered generation",
+    "form": {
+      "prompt_label": "Prompt",
+      "prompt_placeholder": "Describe the video you want to generate, the more detailed the better...",
+      "duration_label": "Duration",
+      "resolution_label": "Resolution",
+      "batch_size_label": "Batch Size",
+      "parameters_label": "Parameters",
+      "generate_button": "Generate Video",
+      "generating_button": "Generating...",
+      "credits_cost": "1 Credit"
+    },
+    "preview": {
+      "demo_video": "Demo Video",
+      "generated_video": "Generated Video",
+      "generating_message": "Generating your video...",
+      "generating_subtitle": "This may take a few moments",
+      "failed_message": "Generation failed",
+      "failed_subtitle": "Please try again with a different prompt",
+      "empty_message": "Your generated video will appear here",
+      "download": "Download",
+      "share": "Share"
+    }
+  },
+  "gallery": {
+    "title": "My Videos",
+    "more": "More",
+    "show_less": "Show Less",
+    "empty_title": "No videos yet",
+    "empty_subtitle": "Generate your first video to see it here",
+    "total_count": "{count} videos generated",
+    "status": {
+      "generating": "generating",
+      "completed": "completed",
+      "failed": "failed"
+    },
+    "actions": {
+      "download": "Download",
+      "share": "Share",
+      "delete": "Delete"
+    }
+  },
+  "generator": {
+    "badge": "AI Video Creation",
+    "title": "Pick a Model & Unleash the Magic",
+    "subtitle": "Transform your ideas into cinematic videos in seconds",
+    "form": {
+      "prompt_label": "Prompt",
+      "parameters_label": "Parameters",
+      "start_image_label": "Start Image (Optional)",
+      "loading": "Loading...",
+      "checking_account": "Checking Account..."
+    },
+    "preview": {
+      "title": "Generated Video",
+      "demo_video": "Demo Video",
+      "loading": "Loading...",
+      "download": "Download",
+      "open_direct": "Open Direct",
+      "failed_title": "Generation failed",
+      "failed_subtitle": "Please try again with a different prompt",
+      "generating_title": "Generating your video...",
+      "generating_subtitle": "This may take a few moments",
+      "empty_title": "Ready to create?",
+      "empty_subtitle": "Enter a prompt on the left to start generating your AI video.",
+      "placeholder": "Your video will appear here",
+      "no_videos_generated": "No Demo Videos Available",
+      "demo_slides": [
+        {
+          "prompt": "A dog speed climbs up a climbing wall at the olympics",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.mp4"
+        },
+        {
+          "prompt": "The sun rises slowly between tall buildings. Ground-level follow shot of bicycle tires",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.mp4"
+        },
+        {
+          "prompt": "Pirate ship sailing into a storm with lightning and high waves",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.mp4"
+        },
+        {
+          "prompt": "A snow leopard walking through a snowy forest, cinematic 8k",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.mp4"
+        }
+      ]
+    },
+    "sign_in_to_generate": "Sign in to generate"
+  }
+}

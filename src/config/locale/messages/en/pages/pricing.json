@@ -1,0 +1,277 @@
+{
+  "metadata": {
+    "title": "Nanobanana Joyflix Pricing",
+    "description": "Choose the perfect plan for your AI image and video creation needs."
+  },
+  "messages": {
+    "current_plan": "Current Plan",
+    "processing": "Processing",
+    "checkout": {
+      "product_id_required": "Product ID is required",
+      "pricing_item_not_found": "Pricing item not found",
+      "invalid_pricing_item": "Invalid pricing item",
+      "no_auth": "No auth, please sign in",
+      "no_payment_provider": "No payment provider configured",
+      "payment_provider_not_supported": "Payment provider {provider} is not supported for this currency",
+      "invalid_checkout_price": "Invalid checkout price",
+      "checkout_failed": "Checkout failed: {message}"
+    }
+  },
+  "page": {
+    "title": "Unleash Your Creativity",
+    "sections": {
+      "pricing": {
+        "id": "pricing",
+        "sr_only_title": "Nanobanana Joyflix Pricing Plans",
+        "title": "Unleash Your Creativity",
+        "description": "Choose the perfect plan for your AI image and video creation needs. All plans include access to our advanced generating technology.",
+        "groups": [
+          {
+            "name": "monthly",
+            "title": "Monthly",
+            "is_featured": true
+          },
+          {
+            "name": "yearly",
+            "title": "Yearly",
+            "label": "Save up to 30%"
+          },
+          {
+            "name": "one-time",
+            "title": "Pay as you go"
+          }
+        ],
+        "items": [
+          {
+            "title": "Lite",
+            "description": "For beginners exploring AI generation and casual content makers",
+            "features_title": "Includes",
+            "features": [
+              "500 Credits /mo (≈ 50 videos / 125 images)",
+              "Nanobanana Joyflix AI Video Models",
+              "Nanobanana Joyflix Image Models",
+              "Image & Text-to-Video/Image",
+              "Fast Generation Mode",
+              "No Watermarks",
+              "Full Commercial Use"
+            ],
+            "interval": "month",
+            "amount": 1400,
+            "currency": "USD",
+            "price": "$14",
+            "unit": "/ month",
+            "is_featured": false,
+            "tip": "$14 USD billed monthly",
+            "button": {
+              "title": "Subscribe Now",
+              "url": "/#pricing",
+              "icon": "RiFlashlightFill"
+            },
+            "product_id": "lite_monthly",
+            "product_name": "Lite Plan (Monthly)",
+            "credits": 500,
+            "valid_days": 30,
+            "group": "monthly",
+            "plan_name": "Lite"
+          },
+          {
+            "title": "Pro",
+            "description": "For creators needing higher quality output and increased production capacity",
+            "label": "Popular",
+            "features_title": "Includes",
+            "features": [
+              "1500 Credits /mo (≈ 150 videos / 375 images)",
+              "All Lite Features Included",
+              "Cross-Video Character Consistency",
+              "Priority Generation Mode",
+              "Private Creation",
+              "Early Access to New Features",
+              "Priority Email Support"
+            ],
+            "interval": "month",
+            "amount": 3500,
+            "currency": "USD",
+            "price": "$35",
+            "unit": "/ month",
+            "is_featured": true,
+            "tip": "$35 USD billed monthly",
+            "button": {
+              "title": "Subscribe Now",
+              "url": "/#pricing",
+              "icon": "RiFlashlightFill"
+            },
+            "product_id": "pro_monthly",
+            "product_name": "Pro Plan (Monthly)",
+            "credits": 1500,
+            "valid_days": 30,
+            "group": "monthly",
+            "plan_name": "Pro"
+          },
+          {
+            "title": "Premium",
+            "description": "For high-volume professional users requiring maximum efficiency and value",
+            "features_title": "Includes",
+            "features": [
+              "7000 Credits /mo (≈ 700 videos / 1750 images)",
+              "All Pro Features Included",
+              "Highest Quality Generation",
+              "Max Parallel Generations",
+              "Dedicated Account Manager",
+              "Custom Model Fine-tuning",
+              "24/7 VIP Priority Support"
+            ],
+            "interval": "month",
+            "amount": 15900,
+            "currency": "USD",
+            "price": "$159",
+            "unit": "/ month",
+            "is_featured": false,
+            "tip": "$159 USD billed monthly",
+            "button": {
+              "title": "Subscribe Now",
+              "url": "/#pricing",
+              "icon": "RiFlashlightFill"
+            },
+            "product_id": "premium_monthly",
+            "product_name": "Premium Plan (Monthly)",
+            "credits": 7000,
+            "valid_days": 30,
+            "group": "monthly",
+            "plan_name": "Premium"
+          },
+          {
+            "title": "Lite",
+            "description": "For beginners exploring AI generation and casual content makers",
+            "features_title": "Includes",
+            "features": [
+              "500 Credits /mo (≈ 50 videos / 125 images)",
+              "Nanobanana Joyflix AI Video Models",
+              "Nanobanana Joyflix Image Models",
+              "Image & Text-to-Video/Image",
+              "Fast Generation Mode",
+              "No Watermarks",
+              "Full Commercial Use"
+            ],
+            "interval": "year",
+            "amount": 12000,
+            "currency": "USD",
+            "price": "$120",
+            "original_price": "$168",
+            "unit": "/ year",
+            "is_featured": false,
+            "tip": "$120 USD billed yearly",
+            "button": {
+              "title": "Subscribe Now",
+              "url": "/#pricing",
+              "icon": "RiFlashlightFill"
+            },
+            "product_id": "lite_yearly",
+            "product_name": "Lite Plan (Yearly)",
+            "credits": 6000,
+            "valid_days": 365,
+            "group": "yearly",
+            "plan_name": "Lite"
+          },
+          {
+            "title": "Pro",
+            "description": "For creators needing higher quality output and increased production capacity",
+            "label": "Best Value",
+            "features_title": "Includes",
+            "features": [
+              "1500 Credits /mo (≈ 150 videos / 375 images)",
+              "All Lite Features Included",
+              "Cross-Video Character Consistency",
+              "Priority Generation Mode",
+              "Private Creation",
+              "Early Access to New Features",
+              "Priority Email Support"
+            ],
+            "interval": "year",
+            "amount": 30000,
+            "currency": "USD",
+            "price": "$300",
+            "original_price": "$420",
+            "unit": "/ year",
+            "is_featured": true,
+            "tip": "$300 USD billed yearly",
+            "button": {
+              "title": "Subscribe Now",
+              "url": "/#pricing",
+              "icon": "RiFlashlightFill"
+            },
+            "product_id": "pro_yearly",
+            "product_name": "Pro Plan (Yearly)",
+            "credits": 18000,
+            "valid_days": 365,
+            "group": "yearly",
+            "plan_name": "Pro"
+          },
+          {
+            "title": "Premium",
+            "description": "For high-volume professional users requiring maximum efficiency and value",
+            "features_title": "Includes",
+            "features": [
+              "7000 Credits /mo (≈ 700 videos / 1750 images)",
+              "All Pro Features Included",
+              "Highest Quality Generation",
+              "Max Parallel Generations",
+              "Dedicated Account Manager",
+              "Custom Model Fine-tuning",
+              "24/7 VIP Priority Support"
+            ],
+            "interval": "year",
+            "amount": 142800,
+            "currency": "USD",
+            "price": "$1428",
+            "original_price": "$1908",
+            "unit": "/ year",
+            "is_featured": false,
+            "tip": "$1,428 USD billed yearly",
+            "button": {
+              "title": "Subscribe Now",
+              "url": "/#pricing",
+              "icon": "RiFlashlightFill"
+            },
+            "product_id": "premium_yearly",
+            "product_name": "Premium Plan (Yearly)",
+            "credits": 84000,
+            "valid_days": 365,
+            "group": "yearly",
+            "plan_name": "Premium"
+          },
+          {
+            "title": "Credits Pack",
+            "description": "Start any time as you need without subscription.",
+            "features_title": "Includes",
+            "features": [
+              "1000 credits, No Expiration",
+              "One-time payment",
+              "Nanobanana Joyflix AI Video Models",
+              "Nanobanana Joyflix Image Models",
+              "Full commercial rights",
+              "Buy more packs as needed"
+            ],
+            "interval": "one-time",
+            "amount": 4900,
+            "currency": "USD",
+            "price": "$49",
+            "original_price": "$59",
+            "unit": "/ 1000 credits",
+            "is_featured": false,
+            "tip": "One-time payment",
+            "button": {
+              "title": "Buy Now",
+              "url": "/#pricing",
+              "icon": "RiBankCardLine"
+            },
+            "product_id": "credits_pack_large",
+            "product_name": "Large Credits Pack",
+            "credits": 1000,
+            "valid_days": 3650,
+            "group": "one-time"
+          }
+        ]
+      }
+    }
+  }
+}

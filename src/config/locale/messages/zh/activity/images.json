@@ -1,0 +1,7 @@
+{
+  "title": "我的图片",
+  "empty_title": "暂无图片",
+  "empty_subtitle": "生成您的第一张图片后将在此处显示",
+  "total": "共 {count} 张图片",
+  "load_more": "加载更多"
+}

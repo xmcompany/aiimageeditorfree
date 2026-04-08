@@ -1,0 +1,21 @@
+{
+  "title": "图像生成",
+  "crumbs": {
+    "admin": "管理后台",
+    "images": "图像生成"
+  },
+  "actions": {
+    "set_as_showcase": "设为优秀案例",
+    "showcased": "已收录"
+  },
+  "form": {
+    "image": "图像",
+    "prompt": "提示词",
+    "model": "模型",
+    "status": "状态",
+    "createdAt": "创建时间",
+    "credits": "消耗积分",
+    "userId": "用户",
+    "actions": "操作"
+  }
+}

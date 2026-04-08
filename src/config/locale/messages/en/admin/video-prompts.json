@@ -1,0 +1,63 @@
+{
+  "fields": {
+    "title": "Video Title",
+    "description": "Video Description",
+    "image": "Video / Image",
+    "image_tip": "Upload video for the prompt (or cover image)",
+    "prompt_title": "Title",
+    "prompt_description": "Prompt",
+    "status": "Status",
+    "created_at": "Created At",
+    "updated_at": "Updated At"
+  },
+  "list": {
+    "title": "Video Prompts",
+    "crumbs": {
+      "admin": "Admin",
+      "video-prompts": "Video Prompts"
+    },
+    "buttons": {
+      "add": "Add Video Prompt",
+      "edit": "Edit",
+      "view": "View",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you want to delete this prompt?",
+      "deleting": "Deleting...",
+      "delete_success": "Successfully deleted prompt",
+      "delete_error": "Failed to delete prompt"
+    }
+  },
+  "add": {
+    "title": "Add Video Prompt",
+    "crumbs": {
+      "admin": "Admin",
+      "prompts": "Video Prompts",
+      "add": "Add New"
+    },
+    "buttons": {
+      "submit": "Create"
+    },
+    "messages": {
+      "success": "Video prompt created successfully",
+      "error": "Failed to create video prompt",
+      "validation_error": "Title, prompt and image are required"
+    }
+  },
+  "edit": {
+    "title": "Edit Video Prompt",
+    "crumbs": {
+      "admin": "Admin",
+      "prompts": "Video Prompts",
+      "edit": "Edit"
+    },
+    "buttons": {
+      "submit": "Update"
+    },
+    "messages": {
+      "not_found": "Video prompt not found",
+      "success": "Video prompt updated successfully",
+      "error": "Failed to update video prompt",
+      "validation_error": "Title, prompt and image are required"
+    }
+  }
+}

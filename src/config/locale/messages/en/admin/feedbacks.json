@@ -1,0 +1,15 @@
+{
+  "list": {
+    "title": "Feedbacks",
+    "crumbs": {
+      "admin": "Admin",
+      "feedbacks": "Feedbacks"
+    }
+  },
+  "fields": {
+    "user": "User",
+    "content": "Content",
+    "rating": "Rating",
+    "created_at": "Created At"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "title": "图像案例",
+  "description": "在这里管理您的图像案例。",
+  "add": "添加",
+  "edit": "编辑",
+  "delete": "删除",
+  "delete_confirm": "确定要删除这条记录吗？",
+  "deleting": "删除中...",
+  "delete_success": "成功删除案例",
+  "delete_error": "删除案例失败",
+  "crumbs": {
+    "admin": "管理后台",
+    "showcases": "图像案例"
+  },
+  "form": {
+    "title": "标题",
+    "description": "描述",
+    "prompt": "提示词",
+    "image": "预览图",
+    "tags": "标签",
+    "createdAt": "创建时间",
+    "image_tip": "上传展示图",
+    "tags_placeholder": "例如：发型",
+    "tags_tip": "使用逗号分隔多个标签"
+  },
+  "buttons": {
+    "submit": "提交",
+    "update": "更新"
+  },
+  "messages": {
+    "success_add": "图像案例已添加",
+    "success_update": "图像案例已更新",
+    "error_add": "添加图像案例失败",
+    "error_update": "更新图像案例失败",
+    "not_found": "未找到图像案例",
+    "validation_error": "标题、提示词和图片必填"
+  }
+}

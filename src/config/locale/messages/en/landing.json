@@ -1,0 +1,471 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "Nanobanana Joyflix",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Nanobanana Joyflix"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Create",
+          "icon": "Sparkles",
+          "children": [
+            {
+              "title": "AI Image",
+              "url": "/ai-image-generator",
+              "icon": "Image",
+              "description": "Text to image, image editing"
+            },
+            {
+              "title": "AI Video",
+              "url": "/ai-video-generator",
+              "icon": "Clapperboard",
+              "description": "Text to video, image to video"
+            },
+            {
+              "title": "AI Hairstyle",
+              "url": "/hairstyles",
+              "icon": "Wind",
+              "description": "Smart hairstyle design"
+            }
+          ]
+        },
+        {
+          "title": "Prompt Library",
+          "icon": "Wand",
+          "children": [
+            {
+              "title": "AI Image Prompts",
+              "url": "/prompts?type=image",
+              "icon": "Image",
+              "description": "Inspiring text to image prompts"
+            },
+            {
+              "title": "AI Video Prompts",
+              "url": "/prompts?type=video",
+              "icon": "Clapperboard",
+              "description": "Creative text to video prompts"
+            }
+          ]
+        },
+        {
+          "title": "Showcases",
+          "icon": "Image",
+          "children": [
+            {
+              "title": "AI Image Showcases",
+              "url": "/showcases?type=image",
+              "icon": "Image",
+              "description": "Excellent AI image generations"
+            },
+            {
+              "title": "AI Video Showcases",
+              "url": "/showcases?type=video",
+              "icon": "Clapperboard",
+              "description": "Stunning AI video generations"
+            }
+          ]
+        },
+        {
+          "title": "Pricing",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "Billing",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "Activity",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "id": "hero",
+    "title": "Nanobanana Joyflix AI Image & Video Creation",
+    "description": "Fast AI Image Editing and Cinematic AI Video Generation. Transform ideas into stunning films and breathe life into static photos.",
+    "buttons": [
+      {
+        "title": "Start Image Creation",
+        "icon": "Sparkles",
+        "url": "/ai-image-generator",
+        "target": "_self",
+        "variant": "default",
+        "size": "lg"
+      },
+      {
+        "title": "Start Video Creation",
+        "icon": "Video",
+        "url": "/ai-video-generator",
+        "target": "_self",
+        "variant": "outline",
+        "size": "lg"
+      }
+    ],
+    "show_avatars": false,
+    "avatars_tip": "1,500,000+ creators' choice",
+    "show_award": false,
+    "show_hero_input": false,
+    "show_bg_spline": false,
+    "highlight_text": "Nanobanana Joyflix",
+    "background_image": {
+      "src": "/imgs/bg/girl.jpeg",
+      "alt": "hero"
+    }
+  },
+  "showcases-flow": {
+    "id": "showcases",
+    "title": "Experience the Creative Power of Nanobanana Joyflix",
+    "description": "Unlock infinite possibilities with AI Text to Image and Cinematic Video generation.",
+    "items": []
+  },
+  "logos": {
+    "id": "logos",
+    "title": "World Class AI Models",
+    "description": "Integrating Nanobanana Joyflix flagship models to break the boundaries of creativity.",
+    "hidden": true
+  },
+  "showcase": {
+    "id": "showcase",
+    "title": "Experience the Creative Power of Nanobanana Joyflix",
+    "description": "Whether transforming text ideas into cinematic films or breathing life into static photography, Nanobanana Joyflix brings you professional-grade visual impact.",
+    "textToVideo": {
+      "title": "AI Text to Video",
+      "description": "Construct a vivid dynamic world with simple prompts.",
+      "buttons": [
+        {
+          "title": "Try Text to Video",
+          "url": "/ai-video-generator",
+          "target": "_self"
+        }
+      ],
+      "items": [
+        {
+          "prompt": "A dog speed climbs up a climbing wall at the olympics",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.mp4",
+          "url": "/ai-video-generator"
+        },
+        {
+          "prompt": "The sun rises slowly between tall buildings. Ground-level follow shot of bicycle tires",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.mp4",
+          "url": "/ai-video-generator"
+        },
+        {
+          "prompt": "Pirate ship sailing into a storm with lightning and high waves",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.mp4",
+          "url": "/ai-video-generator"
+        },
+        {
+          "prompt": "A snow leopard walking through a snowy forest, cinematic 8k",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.mp4",
+          "url": "/ai-video-generator"
+        }
+      ]
+    },
+    "imageToVideo": {
+      "title": "AI Image to Video",
+      "description": "Inject cinematic motion into your static photography. Upload an image and see AI perform a vivid video story.",
+      "items": [
+        {
+          "prompt": "Smoothly rotate this sneaker, keeping the background static",
+          "originalImage": {
+            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/macpaint.png"
+          },
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/macpaint.mp4"
+        },
+        {
+          "prompt": "Sunset over Venetian ruins with a weathered gondolier rowing through quiet waters",
+          "originalImage": {
+            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.jpg"
+          },
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.mp4"
+        },
+        {
+          "prompt": "Instantly capture the transformation process of the picture",
+          "originalImage": {
+            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/woman-city-doodle.jpg"
+          },
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/woman-city-doodle.mp4"
+        }
+      ],
+      "buttons": [
+        {
+          "title": "Try Image to Video",
+          "url": "/ai-video-generator",
+          "target": "_self"
+        }
+      ]
+    }
+  },
+  "introduce": {
+    "id": "introduce",
+    "title": "Redefining Visual Creation",
+    "description": "Nanobanana Joyflix is not just a tool, it's your creative partner. We integrate world-leading image and video generation technologies to make professional-grade creation as simple as a conversation.",
+    "items": [
+      {
+        "title": "Cinematic Quality",
+        "description": "Whether it's 8K ultra-clear images or smooth 60fps video, it shows amazing detail and dynamism.",
+        "image": {
+          "src": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.jpg",
+          "alt": "Cinematic Quality"
+        }
+      },
+      {
+        "title": "Ultimate Control",
+        "description": "With precise natural language instructions or reference images, you have deep pixel-level control over composition, color, and motion.",
+        "image": {
+          "src": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.jpg",
+          "alt": "Ultimate Control"
+        }
+      }
+    ]
+  },
+  "benefits": {
+    "id": "benefits",
+    "title": "Why Choose Nanobanana Joyflix?",
+    "items": [
+      {
+        "title": "Versatile Visual Workflow",
+        "description": "Complete the entire creative process from text-to-image to final video output in one platform.",
+        "icon": "Layers"
+      },
+      {
+        "title": "Character & Style Consistency",
+        "description": "The unique identity-aware DNA ensures your virtual characters remain highly consistent across images and videos.",
+        "icon": "RiUserStarLine"
+      },
+      {
+        "title": "Commercial Security",
+        "description": "All generated content can be used for commercial purposes, with support for exporting watermark-free high-definition masters.",
+        "icon": "RiShieldCheckLine"
+      }
+    ]
+  },
+  "usage": {
+    "id": "usage",
+    "title": "Three Simple Steps to Magic",
+    "items": [
+      {
+        "title": "01. Describe Your Vision",
+        "description": "Enter your creative description in the input box, or upload a reference photo as a base image."
+      },
+      {
+        "title": "02. Select the Generation Model",
+        "description": "Choose from image or video series models based on your needs."
+      },
+      {
+        "title": "03. Harvest Your Work",
+        "description": "Click generate, and the AI will present you with a stunning visual masterpiece in seconds, with support for subsequent conversational refinement."
+      }
+    ]
+  },
+  "stats": {
+    "id": "stats",
+    "title": "People Love Nanobanana Joyflix AI",
+    "description": "for its exceptional quality and ease of use.",
+    "label": "Stats",
+    "icon": "ChartBar",
+    "items": [
+      {
+        "title": "Creators",
+        "label": "500K+",
+        "description": "Trusted by creators worldwide"
+      },
+      {
+        "title": "Videos Generated",
+        "label": "1M+",
+        "description": "High-quality videos created"
+      },
+      {
+        "title": "Seconds to Create",
+        "label": "60",
+        "description": "Average generation time"
+      }
+    ]
+  },
+  "testimonials": {
+    "id": "testimonials",
+    "title": "Trusted by Over 500,000 Creators",
+    "description": "See what content creators, marketers, and storytellers say about Nanobanana Joyflix.",
+    "label": "Testimonials",
+    "items": [
+      {
+        "title": "Alex G.",
+        "label": "Social Media Manager",
+        "description": "The Nanobanana Joyflix video generator has completely changed my workflow. What used to take a full day of editing now takes about five minutes. The quality is consistently impressive.",
+        "image": {
+          "src": "/imgs/users/1.png"
+        }
+      },
+      {
+        "title": "Jenna R.",
+        "label": "Small Business Owner",
+        "description": "I was looking for an AI video generator that wasn't limited or clunky. Nanobanana Joyflix exceeded all my expectations. It's powerful, fast, and incredibly user-friendly.",
+        "image": {
+          "src": "/imgs/users/2.png"
+        }
+      },
+      {
+        "title": "Carlos S.",
+        "label": "Photographer",
+        "description": "I'm blown away by the image to video AI feature. It added such a professional and dynamic feel to my photography portfolio. My clients are absolutely wowed.",
+        "image": {
+          "src": "/imgs/users/3.png"
+        }
+      },
+      {
+        "title": "Maria K.",
+        "label": "Film Student",
+        "description": "The text to video AI is pure magic. I can brainstorm an idea, type it in, and have a visual concept ready for my team almost instantly. A total game-changer for creative direction.",
+        "image": {
+          "src": "/imgs/users/4.png"
+        }
+      }
+    ]
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "hidden": true,
+    "title": "Never Miss a Creative Spark",
+    "description": "Subscribe to our dynamic updates and get the latest model launch notifications and creative tips first."
+  },
+  "features": {
+    "id": "features",
+    "title": "Core Features",
+    "description": "Integrated flagship AI image editing and cinematic video generation.",
+    "items": [
+      {
+        "title": "Natural Language Editing",
+        "description": "Edit any photo with conversational prompts using Nanobanana Joyflix.",
+        "icon": "RiMagicLine"
+      },
+      {
+        "title": "Cinematic Video",
+        "description": "Transform text or images into professional short films instantly.",
+        "icon": "RiVideoAddLine"
+      },
+      {
+        "title": "Character Consistency",
+        "description": "Maintain faces, outfits, and poses across images and videos.",
+        "icon": "RiUserStarLine"
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "label": "FAQ",
+    "title": "Frequently Asked Questions",
+    "description": "Have more questions? Contact us via Discord or Email.",
+    "items": [
+      {
+        "title": "How do I generate the best AI videos from text?",
+        "description": "To get the best results, be as specific as possible in your prompts. Include details about the subject, setting, art style (e.g., 'cinematic', 'anime'), and mood. The more descriptive you are, the better the AI can match your vision."
+      },
+      {
+        "title": "What makes you a good AI video generator?",
+        "description": "Our AI video generator stands out due to its focus on visual quality and user control. Unlike other tools, we offer advanced style customization and generate high-definition videos, ensuring professional results every time."
+      },
+      {
+        "title": "Can I use an image to generate a video for free?",
+        "description": "Simply sign up for an account, navigate to the Image to Video AI tool, upload your image, and choose an animation style. You can generate and download videos within certain length limits."
+      },
+      {
+        "title": "Does the Image to Video feature work with any photo?",
+        "description": "For best results, use clear, high-resolution images. Our AI performs best when subjects are well-defined. It supports various formats including JPG, PNG, and HEIC."
+      }
+    ]
+  },
+  "cta": {
+    "id": "cta",
+    "title": "Experience Nanobanana Joyflix Now",
+    "description": "Join millions of creators today and start your AI visual journey.",
+    "buttons": [
+      {
+        "title": "Get Started",
+        "url": "/ai-image-generator",
+        "target": "_self",
+        "icon": "Wand"
+      }
+    ],
+    "className": "bg-muted"
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "Nanobanana Joyflix",
+      "description": "Nanobanana Joyflix is a flagship AI visual creation platform.",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Nanobanana Joyflix"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Product",
+          "children": [
+            {
+              "title": "Image Create",
+              "url": "/ai-image-generator",
+              "target": "_self"
+            },
+            {
+              "title": "Video Create",
+              "url": "/ai-video-generator",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "Email",
+          "icon": "Mail",
+          "url": "mailto:support@nanobanana-joyflix.ai",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Privacy Policy",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Terms of Service",
+          "url": "/terms-of-service"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true
+  }
+}

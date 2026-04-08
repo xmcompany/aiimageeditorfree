@@ -1,0 +1,23 @@
+{
+  "title": "视频生成",
+  "crumbs": {
+    "admin": "管理后台",
+    "videos": "视频生成"
+  },
+  "actions": {
+    "set_as_showcase": "设为优秀案例",
+    "showcased": "已收录"
+  },
+  "form": {
+    "video": "视频",
+    "prompt": "提示词",
+    "model": "模型",
+    "status": "状态",
+    "createdAt": "创建时间",
+    "creditsUsed": "消耗积分",
+    "userId": "用户",
+    "actions": "操作"
+  },
+  "delete": "删除",
+  "delete_confirm": "确定要删除这个视频吗？"
+}

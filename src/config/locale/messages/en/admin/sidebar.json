@@ -1,0 +1,195 @@
+{
+  "header": {
+    "brand": {
+      "title": "Nanobanana Joyflix",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Nanobanana Joyflix"
+      },
+      "url": "/admin"
+    },
+    "show_trigger": false
+  },
+  "main_navs": [
+    {
+      "title": "System",
+      "items": [
+        {
+          "title": "Dashboard",
+          "url": "/admin/dashboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "title": "Users & Permissions",
+          "icon": "User",
+          "children": [
+            {
+              "title": "Users",
+              "url": "/admin/users",
+              "icon": "User"
+            },
+            {
+              "title": "Roles",
+              "url": "/admin/roles",
+              "icon": "Users"
+            },
+            {
+              "title": "Permissions",
+              "url": "/admin/permissions",
+              "icon": "ShieldCheck"
+            }
+          ]
+        },
+        {
+          "title": "Pages & Content",
+          "icon": "FileText",
+          "children": [
+            {
+              "title": "Categories",
+              "icon": "Folder",
+              "url": "/admin/categories"
+            },
+            {
+              "title": "Posts",
+              "icon": "FileText",
+              "url": "/admin/posts"
+            },
+            {
+              "title": "Feedbacks",
+              "icon": "MessageSquare",
+              "url": "/admin/feedbacks"
+            }
+          ]
+        },
+        {
+          "title": "Payments & Credits",
+          "icon": "DollarSign",
+          "children": [
+            {
+              "title": "Payments",
+              "url": "/admin/payments",
+              "icon": "DollarSign"
+            },
+            {
+              "title": "Subscriptions",
+              "url": "/admin/subscriptions",
+              "icon": "CreditCard"
+            },
+            {
+              "title": "Credits",
+              "url": "/admin/credits",
+              "icon": "Coins"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "AI Creation",
+      "items": [
+        {
+          "title": "AI Image",
+          "icon": "Image",
+          "children": [
+             {
+              "title": "Image Prompts",
+              "icon": "Wand",
+              "url": "/admin/image-prompts"
+            },
+            {
+              "title": "Image Showcases",
+              "icon": "Award",
+              "url": "/admin/image-showcases"
+            },
+            {
+              "title": "Image Generates",
+              "icon": "Database",
+              "url": "/admin/image-generates"
+            }
+          ]
+        },
+        {
+          "title": "AI Video",
+          "icon": "Video",
+          "children": [
+             {
+              "title": "Video Prompts",
+              "icon": "Wand",
+              "url": "/admin/video-prompts"
+            },
+            {
+              "title": "Video Showcases",
+              "icon": "Award",
+              "url": "/admin/video-showcases"
+            },
+            {
+              "title": "Video Generates",
+              "icon": "Database",
+              "url": "/admin/video-generates"
+            }
+          ]
+        },
+        {
+          "title": "AI Tasks",
+          "url": "/admin/ai-tasks",
+          "icon": "Brain"
+        },
+        {
+          "title": "AI Chats",
+          "url": "/admin/chats",
+          "icon": "MessageCircle"
+        }
+      ]
+    }
+  ],
+  "bottom_nav": {
+    "items": [
+      {
+        "title": "Settings",
+        "url": "/admin/settings/general",
+        "icon": "Settings"
+      },
+      {
+        "title": "API Keys",
+        "url": "/admin/apikeys",
+        "icon": "Key"
+      }
+    ]
+  },
+  "user": {
+    "nav": {
+      "items": [
+        {
+          "title": "Profile",
+          "url": "/settings/profile",
+          "icon": "User",
+          "target": "_blank"
+        }
+      ]
+    },
+    "show_email": false,
+    "show_signout": true,
+    "signout_callback": "/"
+  },
+  "footer": {
+    "nav": {
+      "items": [
+        {
+          "title": "Home",
+          "url": "/",
+          "icon": "Home",
+          "target": "_blank"
+        },
+        {
+          "title": "GitHub",
+          "url": "https://github.com/nanobanana-joyflix",
+          "icon": "Github",
+          "target": "_blank"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": false
+  },
+  "variant": "sidebar"
+}

@@ -1,0 +1,63 @@
+{
+  "fields": {
+    "title": "标题",
+    "description": "描述",
+    "image": "图片",
+    "image_tip": "上传展示图",
+    "prompt_title": "标题",
+    "prompt_description": "提示词",
+    "status": "状态",
+    "created_at": "创建时间",
+    "updated_at": "更新时间"
+  },
+  "list": {
+    "title": "图像提示词",
+    "crumbs": {
+      "admin": "管理后台",
+      "prompts": "图像提示词"
+    },
+    "buttons": {
+      "add": "添加图像提示词",
+      "edit": "编辑",
+      "view": "查看",
+      "delete": "删除",
+      "delete_confirm": "确定要删除这条提示词吗？",
+      "deleting": "删除中...",
+      "delete_success": "成功删除提示词",
+      "delete_error": "删除提示词失败"
+    }
+  },
+  "add": {
+    "title": "添加图像提示词",
+    "crumbs": {
+      "admin": "管理后台",
+      "prompts": "图像提示词",
+      "add": "添加"
+    },
+    "buttons": {
+      "submit": "添加"
+    },
+    "messages": {
+      "success": "图像提示词创建成功",
+      "error": "图像提示词创建失败",
+      "validation_error": "标题、提示词和图片必填"
+    }
+  },
+  "edit": {
+    "title": "编辑图像提示词",
+    "crumbs": {
+      "admin": "管理后台",
+      "prompts": "图像提示词",
+      "edit": "编辑"
+    },
+    "buttons": {
+      "submit": "更新"
+    },
+    "messages": {
+      "not_found": "未找到图像提示词",
+      "success": "图像提示词更新成功",
+      "error": "图像提示词更新失败",
+      "validation_error": "标题、提示词和图片必填"
+    }
+  }
+}

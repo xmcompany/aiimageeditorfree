@@ -1,0 +1,21 @@
+{
+  "title": "Image Generates",
+  "crumbs": {
+    "admin": "Admin",
+    "images": "Image Generates"
+  },
+  "actions": {
+    "set_as_showcase": "Set as Showcase",
+    "showcased": "Showcased"
+  },
+  "form": {
+    "image": "Image",
+    "prompt": "Prompt",
+    "model": "Model",
+    "status": "Status",
+    "createdAt": "Created At",
+    "credits": "Credits",
+    "userId": "User",
+    "actions": "Actions"
+  }
+}

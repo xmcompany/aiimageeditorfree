@@ -1,0 +1,41 @@
+{
+  "title": "Activity",
+  "nav": {
+    "items": [
+      {
+        "title": "AI Tasks",
+        "url": "/activity/ai-tasks",
+        "icon": "RiTaskLine"
+      },
+      {
+        "title": "AI Chats",
+        "url": "/activity/chats",
+        "icon": "RiChat2Line"
+      },
+      {
+        "title": "My Images",
+        "url": "/activity/images",
+        "icon": "RiImageLine"
+      },
+      {
+        "title": "My Videos",
+        "url": "/activity/videos",
+        "icon": "RiVideoLine"
+      }
+    ]
+  },
+  "top_nav": {
+    "items": [
+      {
+        "title": "Activity",
+        "url": "/activity",
+        "icon": "Activity"
+      },
+      {
+        "title": "Settings",
+        "url": "/settings",
+        "icon": "Settings"
+      }
+    ]
+  }
+}

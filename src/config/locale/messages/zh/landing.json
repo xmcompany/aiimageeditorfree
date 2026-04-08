@@ -1,0 +1,511 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "Nanobanana Joyflix",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Nanobanana Joyflix"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "创作",
+          "icon": "Sparkles",
+          "children": [
+            {
+              "title": "AI 图像创作",
+              "url": "/ai-image-generator",
+              "icon": "Image",
+              "description": "文生图、图生图、图像编辑"
+            },
+            {
+              "title": "AI 视频创作",
+              "url": "/ai-video-generator",
+              "icon": "Clapperboard",
+              "description": "文生视频、图生视频"
+            },
+            {
+              "title": "AI 发型设计",
+              "url": "/hairstyles",
+              "icon": "Wind",
+              "description": "智能发型试戴与设计"
+            }
+          ]
+        },
+        {
+          "title": "提示词库",
+          "icon": "Wand",
+          "children": [
+            {
+              "title": "AI 图像提示词",
+              "url": "/prompts?type=image",
+              "icon": "Image",
+              "description": "激发灵感的文生图提示词"
+            },
+            {
+              "title": "AI 视频提示词",
+              "url": "/prompts?type=video",
+              "icon": "Clapperboard",
+              "description": "创意无限的文生视频提示词"
+            }
+          ]
+        },
+        {
+          "title": "案例展示",
+          "icon": "Image",
+          "children": [
+            {
+              "title": "AI 图像展示",
+              "url": "/showcases?type=image",
+              "icon": "Image",
+              "description": "优秀的 AI 图像生成作品"
+            },
+            {
+              "title": "AI 视频展示",
+              "url": "/showcases?type=video",
+              "icon": "Clapperboard",
+              "description": "惊艳的 AI 视频生成作品"
+            }
+          ]
+        },
+        {
+          "title": "价格",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "账单",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "活动",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "id": "hero",
+    "title": "Nanobanana Joyflix AI 图像与视频创作",
+    "description": "极速文生图与电影级 AI 视频生成。将创意灵感化为惊艳大片，赋予静态照片灵动的生命力。",
+    "buttons": [
+      {
+        "title": "开始图像创作",
+        "icon": "Sparkles",
+        "url": "/ai-image-generator",
+        "target": "_self",
+        "variant": "default",
+        "size": "lg"
+      },
+      {
+        "title": "开始视频创作",
+        "icon": "Video",
+        "url": "/ai-video-generator",
+        "target": "_self",
+        "variant": "outline",
+        "size": "lg"
+      }
+    ],
+    "show_avatars": false,
+    "avatars_tip": "1,500,000+ 创作者的共同选择",
+    "show_award": false,
+    "show_hero_input": false,
+    "show_bg_spline": false,
+    "highlight_text": "Nanobanana Joyflix",
+    "background_image": {
+      "src": "/imgs/bg/girl.jpeg",
+      "alt": "hero"
+    }
+  },
+  "showcases-flow": {
+    "id": "showcases",
+    "title": "体验 Nanobanana Joyflix 的创意力量",
+    "description": "通过 AI 文字生成图像与电影级视频生成，解锁无限的创作可能。",
+    "items": []
+  },
+  "logos": {
+    "id": "logos",
+    "title": "全球顶尖 AI 生成模型",
+    "description": "接入 Nanobanana Joyflix 领先模型，打破创意边界",
+    "hidden": true
+  },
+  "showcase": {
+    "id": "showcase",
+    "title": "见证 Nanobanana Joyflix 的创作力量",
+    "description": "无论是将文字构思化为电影长片，还是赋予静态摄影灵动的生命，Nanobanana Joyflix 都能为您带来专业级的视觉震撼。",
+    "textToVideo": {
+      "title": "AI 文生视频 (Text to Video)",
+      "description": "用简单的提示词，构建出一个栩栩如生的动态世界。",
+      "buttons": [
+        {
+          "title": "立即体验文生视频",
+          "url": "/ai-video-generator",
+          "target": "_self"
+        }
+      ],
+      "items": [
+        {
+          "prompt": "一只狗狗在奥运会上挑战攀岩墙，极具动感与趣味",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.mp4",
+          "url": "/ai-video-generator"
+        },
+        {
+          "prompt": "朝阳在摩天大楼间冉冉升起，地面追踪拍摄自行车骑行的特写镜头",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.mp4",
+          "url": "/ai-video-generator"
+        },
+        {
+          "prompt": "古老的隐秘海盗船冲破惊涛骇浪，伴随电闪雷鸣的史诗感画面",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.mp4",
+          "url": "/ai-video-generator"
+        },
+        {
+          "prompt": "一只优雅的雪豹穿过静谧的皑皑雪林，电影级 8K 超清画质",
+          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.jpg",
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.mp4",
+          "url": "/ai-video-generator"
+        }
+      ]
+    },
+    "imageToVideo": {
+      "title": "AI 图生视频 (Image to Video)",
+      "description": "为您的静态摄影注入电影般的动态效果。上传一张图片，看 AI 如何将其演绎为生动的视频故事。",
+      "items": [
+        {
+          "prompt": "平滑旋转这只运动鞋，保持背景环境完全静止",
+          "originalImage": {
+            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/macpaint.png"
+          },
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/macpaint.mp4"
+        },
+        {
+          "prompt": "夕阳余晖洒在威尼斯的废墟上，饱经风霜的船夫划着贡多拉穿过静谧的水面",
+          "originalImage": {
+            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.jpg"
+          },
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.mp4"
+        },
+        {
+          "prompt": "瞬间捕捉画面的变化过程",
+          "originalImage": {
+            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/woman-city-doodle.jpg"
+          },
+          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/woman-city-doodle.mp4"
+        }
+      ],
+      "buttons": [
+        {
+          "title": "立即体验图生视频",
+          "url": "/ai-video-generator",
+          "target": "_self"
+        }
+      ]
+    }
+  },
+  "introduce": {
+    "id": "introduce",
+    "title": "重新定义视觉创作边界",
+    "description": "Nanobanana Joyflix 不仅仅是一个工具，它是您的创意合伙人。我们集成了全球领先的图像与视频生成技术，让复杂的专业级创作变得如对话般简单。",
+    "items": [
+      {
+        "title": "电影级质感",
+        "description": "无论是 8K 超清图像还是丝滑的 60fps 视频，都能展现令人惊叹的细节与动态感。",
+        "image": {
+          "src": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.jpg",
+          "alt": "电影级质感"
+        }
+      },
+      {
+        "title": "极致操控力",
+        "description": "通过精确的自然语言指令或参考图，您可以对画面的构图、色彩、动作进行像素级的深度控制。",
+        "image": {
+          "src": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.jpg",
+          "alt": "极致操控力"
+        }
+      }
+    ]
+  },
+  "benefits": {
+    "id": "benefits",
+    "title": "为什么选择 Nanobanana Joyflix？",
+    "items": [
+      {
+        "title": "全能型视觉工作流",
+        "description": "从文生图、图文编辑到最终的视频化输出，在一个平台内完成全流程创作。",
+        "icon": "Layers"
+      },
+      {
+        "title": "角色与风格一致性",
+        "description": "独有的身份感知基因，确保您的虚拟角色在图像与视频之间保持面部与特征的高度一致。",
+        "icon": "RiUserStarLine"
+      },
+      {
+        "title": "商业安全保障",
+        "description": "所有生成内容均可用于商业用途，并支持导出无水印高清母片。",
+        "icon": "RiShieldCheckLine"
+      }
+    ]
+  },
+  "usage": {
+    "id": "usage",
+    "title": "简单三步，见证奇迹",
+    "items": [
+      {
+        "title": "01. 描述您的构想",
+        "description": "在输入框中输入您的创意描述，或上传一张作为底图的参考照片。"
+      },
+      {
+        "title": "02. 选择生成模型",
+        "description": "根据需求选择图像或视频系列模型。"
+      },
+      {
+        "title": "03. 即刻收获作品",
+        "description": "点击生成，AI 将在数秒内为您呈现惊艳的视觉杰作，支持后续对话式细修。"
+      }
+    ]
+  },
+  "stats": {
+    "id": "stats",
+    "title": "深受创作者喜爱的 Nanobanana Joyflix AI",
+    "description": "凭借卓越的画质与极简的操作，赢得广泛好评。",
+    "label": "数据统计",
+    "icon": "ChartBar",
+    "items": [
+      {
+        "title": "创作者",
+        "label": "500K+",
+        "description": "全球创作者的共同选择"
+      },
+      {
+        "title": "生成的视频",
+        "label": "1M+",
+        "description": "高品质 AI 视频产出"
+      },
+      {
+        "title": "创作用时",
+        "label": "60s",
+        "description": "平均生成时间"
+      }
+    ]
+  },
+  "testimonials": {
+    "id": "testimonials",
+    "title": "超过 500,000 名创作者的选择",
+    "description": "听听内容创作者、营销专家和讲故事的人对 Nanobanana Joyflix 的评价。",
+    "label": "用户评价",
+    "items": [
+      {
+        "title": "Alex G.",
+        "label": "社交媒体经理",
+        "description": "Nanobanana Joyflix 的视频生成功能彻底改变了我的工作流。以前需要一整天剪辑的内容，现在只需五分钟。质量始终令人惊叹。",
+        "image": {
+          "src": "/imgs/users/1.png"
+        }
+      },
+      {
+        "title": "Jenna R.",
+        "label": "小企业主",
+        "description": "我一直在寻找一款不设限、不卡顿的 AI 视频生成器。Nanobanana Joyflix 超出了我所有的预期。强大、快速且极其易用。",
+        "image": {
+          "src": "/imgs/users/2.png"
+        }
+      },
+      {
+        "title": "Carlos S.",
+        "label": "摄影师",
+        "description": "我被图生视频功能震撼了。它为我的摄影作品集增添了专业且动感的细节。我的客户对此感到非常惊喜。",
+        "image": {
+          "src": "/imgs/users/3.png"
+        }
+      },
+      {
+        "title": "Maria K.",
+        "label": "电影学生",
+        "description": "文生视频简直是魔法。我可以构思一个点子，输入进去，几乎瞬间就能向团队展示视觉概念。这在创意指导上是一个革命性的提升。",
+        "image": {
+          "src": "/imgs/users/4.png"
+        }
+      }
+    ]
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "hidden": true,
+    "title": "不再错过任何创意火花",
+    "description": "订阅我们的动态，第一时间获取新模型上线通知与创作技巧指导。"
+  },
+  "features": {
+    "id": "features",
+    "title": "Nanobanana Joyflix 核心功能",
+    "description": "集成旗舰级 AI 图像编辑与电影级视频生成能力，为您提供一站式视觉创作体验。",
+    "items": [
+      {
+        "title": "自然语言图像编辑",
+        "description": "用对话式提示词编辑任何照片。Nanobanana Joyflix 解读复杂指令，实现精准转换。",
+        "icon": "RiMagicLine"
+      },
+      {
+        "title": "电影级视频生成",
+        "description": "运用最先进的文生视频与图生视频技术，瞬间将文本或静态图像转换为专业级短片。",
+        "icon": "RiVideoAddLine"
+      },
+      {
+        "title": "角色一致性",
+        "description": "在每次修改中保持面部、服装和姿势的一致性。不论是图像还是视频，都能提供一致的表现。",
+        "icon": "RiUserStarLine"
+      },
+      {
+        "title": "多模态混合",
+        "description": "混合多张参考图片的元素，创建新场景、匹配风格或保持帧间连续性。",
+        "icon": "Layers"
+      },
+      {
+        "title": "宽高比控制",
+        "description": "从 1:1、16:9 或 4:5 等预设中选择，为不同社交平台生成像素完美的素材。",
+        "icon": "RiAspectRatioLine"
+      },
+      {
+        "title": "即时变体与优化",
+        "description": "几秒钟内请求新变体，快速迭代光照、色彩和构图创意，无需从头开始。",
+        "icon": "RiFlashlightLine"
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "label": "常见问题",
+    "title": "常见问题解答",
+    "description": "还有其他问题？通过 Discord 或邮件联系我们。",
+    "items": [
+      {
+        "title": "如何通过文字生成效果最好的 AI 视频？",
+        "description": "为了获得最佳输出效果，请在提示词中尽可能具体。包括有关主体、场景、艺术风格（如“电影感”、“动漫”）和氛围的细节。描述越详细，AI 就越能匹配您的愿景。"
+      },
+      {
+        "title": "是什么让你们成为优秀的 AI 视频生成器？",
+        "description": "我们的 AI 视频生成器因其对视觉质量和用户控制的关注而脱颖而出。与其他工具不同，我们提供先进的风格定制，并生成高清视频，确保每次都能获得专业结果。"
+      },
+      {
+        "title": "我可以使用图片免费生成视频吗？",
+        "description": "只需注册账号，导航至图生视频 AI 工具，上传您的图片，然后选择动画风格。您可以生成并下载一定长度内的视频。"
+      },
+      {
+        "title": "图生视频功能适用于任何照片吗？",
+        "description": "为了获得最佳效果，请使用清晰、高分辨率的图像。当主体定义明确时，我们的 AI 表现最佳。它支持 JPG、PNG 和 HEIC 等多种格式。"
+      }
+    ]
+  },
+  "cta": {
+    "id": "cta",
+    "title": "立即体验 Nanobanana Joyflix",
+    "description": "加入百万创作者行列，今天就开始您的 AI 图像与视频创作之旅。",
+    "buttons": [
+      {
+        "title": "立即免费体验",
+        "url": "/ai-image-generator",
+        "target": "_self",
+        "icon": "Wand"
+      }
+    ],
+    "className": "bg-muted"
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "Nanobanana Joyflix",
+      "description": "Nanobanana Joyflix 是旗舰级 AI 视觉创作平台，集成先进的图像编辑与视频生成模型，提供一流的数字内容生产体验。",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Nanobanana Joyflix"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "产品",
+          "children": [
+            {
+              "title": "图像创作",
+              "url": "/ai-image-generator",
+              "target": "_self"
+            },
+            {
+              "title": "视频创作",
+              "url": "/ai-video-generator",
+              "target": "_self"
+            },
+            {
+              "title": "价格",
+              "url": "/pricing",
+              "target": "_self"
+            },
+            {
+              "title": "案例展示",
+              "url": "/showcases",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "案例推荐",
+          "children": [
+            {
+              "title": "3D 数字人",
+              "url": "/ai-image-generator?prompt=3d-digital-human",
+              "target": "_self"
+            },
+            {
+              "title": "电影级视频",
+              "url": "/ai-video-generator?prompt=cinematic",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "邮箱",
+          "icon": "Mail",
+          "url": "mailto:support@nanobanana-joyflix.ai",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "隐私政策",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "服务条款",
+          "url": "/terms-of-service"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true
+  }
+}

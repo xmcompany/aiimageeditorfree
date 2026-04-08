@@ -1,0 +1,36 @@
+{
+  "title": "Dashboard",
+  "cards": {
+    "total_users": {
+        "title": "Total Users",
+        "description": "Total users registered in the system"
+    },
+    "paid_orders": {
+        "title": "Paid Orders",
+        "description": "User Paid Orders in total"
+    },
+    "system_posts": {
+        "title": "System Posts",
+        "description": "Posts in total"
+    },
+    "user_feedbacks": {
+        "title": "User Feedbacks",
+        "description": "Feedbacks in total"
+    }
+  },
+  "charts": {
+    "overview": {
+        "title": "Users and Orders Overview",
+        "description": "Daily users and orders data",
+        "fields": {
+            "users": "Users",
+            "orders": "Orders"
+        },
+        "time_range": {
+            "90d": "Last 3 months",
+            "30d": "Last 30 days",
+            "7d": "Last 7 days"
+        }
+    }
+  }
+}

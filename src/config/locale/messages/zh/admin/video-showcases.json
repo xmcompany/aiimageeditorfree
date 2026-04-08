@@ -1,0 +1,40 @@
+{
+  "title": "视频案例",
+  "description": "在这里管理您的视频案例展示。",
+  "add": "添加",
+  "edit": "编辑",
+  "delete": "删除",
+  "delete_confirm": "确定要删除这条记录吗？",
+  "deleting": "删除中...",
+  "delete_success": "成功删除案例",
+  "delete_error": "删除案例失败",
+  "crumbs": {
+    "admin": "管理后台",
+    "video-showcases": "视频案例"
+  },
+  "form": {
+    "title": "标题",
+    "description": "描述",
+    "prompt": "提示词",
+    "image": "预览图",
+    "video": "视频",
+    "videoUrl": "视频链接",
+    "tags": "标签",
+    "createdAt": "创建时间",
+    "image_tip": "视频封面/缩略图",
+    "tags_placeholder": "例如：电影感、动画",
+    "tags_tip": "使用逗号分隔多个标签"
+  },
+  "buttons": {
+    "submit": "提交",
+    "update": "更新"
+  },
+  "messages": {
+    "success_add": "视频展示已添加",
+    "success_update": "视频展示已更新",
+    "error_add": "添加视频展示失败",
+    "error_update": "更新视频展示失败",
+    "not_found": "未找到视频展示",
+    "validation_error": "标题、提示词、图片和视频链接必填"
+  }
+}
