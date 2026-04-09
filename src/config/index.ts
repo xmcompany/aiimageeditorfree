@@ -54,14 +54,14 @@ export const envConfigs: ConfigMap = {
     process.env.NEXT_PUBLIC_LOCALE_DETECT_ENABLED ?? 'false',
   mock_video_url: 
     process.env.MOCK_VIDEO_URL ??
-    'https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.mp4',
+    'https://cdn.aivideogeneratorfree.org/uploads/dog-olympics.mp4',
   mock_image_url:
     process.env.MOCK_IMAGE_URL ??
-    'https://img-template-nano-banana.16781678.xyz/uploads/2025-12-07/1765110083462-9xgwxl.jpg',
+    'https://cdn.aivideogeneratorfree.org/uploads/1765110083462-9xgwxl.jpg',
   default_image_prompt:
     process.env.NEXT_PUBLIC_DEFAULT_IMAGE_PROMPT ??
     'Canon camera, 85mm fixed lens, creating a gradual change of f/1.8, f/2.8, f/10, f/14 aperture effects, a gentle and beautiful lady as the model, background is the city blue hour after sunset',
   default_image_preview:
     process.env.NEXT_PUBLIC_DEFAULT_IMAGE_PREVIEW ??
-    'https://img-template-nano-banana.16781678.xyz/uploads/2025-12-07/1.jpeg',
+    'https://cdn.aivideogeneratorfree.org/uploads/1.jpeg',
 };

@@ -162,26 +162,26 @@
       "items": [
         {
           "prompt": "一只狗狗在奥运会上挑战攀岩墙，极具动感与趣味",
-          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.jpg",
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.mp4",
+          "poster": "https://cdn.aivideogeneratorfree.org/uploads/dog-olympics.mp4",
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/dog-olympics.mp4",
           "url": "/ai-video-generator"
         },
         {
           "prompt": "朝阳在摩天大楼间冉冉升起，地面追踪拍摄自行车骑行的特写镜头",
-          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.jpg",
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.mp4",
+          "poster": "https://cdn.aivideogeneratorfree.org/uploads/sun-rises-bicycle.mp4",
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/sun-rises-bicycle.mp4",
           "url": "/ai-video-generator"
         },
         {
           "prompt": "古老的隐秘海盗船冲破惊涛骇浪，伴随电闪雷鸣的史诗感画面",
-          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.jpg",
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.mp4",
+          "poster": "https://cdn.aivideogeneratorfree.org/uploads/pirate-ship.mp4",
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/pirate-ship.mp4",
           "url": "/ai-video-generator"
         },
         {
           "prompt": "一只优雅的雪豹穿过静谧的皑皑雪林，电影级 8K 超清画质",
-          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.jpg",
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.mp4",
+          "poster": "https://cdn.aivideogeneratorfree.org/uploads/snow-leopard.mp4",
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/snow-leopard.mp4",
           "url": "/ai-video-generator"
         }
       ]
@@ -193,23 +193,23 @@
         {
           "prompt": "平滑旋转这只运动鞋，保持背景环境完全静止",
           "originalImage": {
-            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/macpaint.png"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/macpaint.png"
           },
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/macpaint.mp4"
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/macpaint.mp4"
         },
         {
           "prompt": "夕阳余晖洒在威尼斯的废墟上，饱经风霜的船夫划着贡多拉穿过静谧的水面",
           "originalImage": {
-            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.jpg"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/gondola.jpg"
           },
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.mp4"
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/gondola.mp4"
         },
         {
           "prompt": "瞬间捕捉画面的变化过程",
           "originalImage": {
-            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/woman-city-doodle.jpg"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/woman-city-doodle.jpg"
           },
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/woman-city-doodle.mp4"
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/woman-city-doodle.mp4"
         }
       ],
       "buttons": [
@@ -230,7 +230,7 @@
         "title": "电影级质感",
         "description": "无论是 8K 超清图像还是丝滑的 60fps 视频，都能展现令人惊叹的细节与动态感。",
         "image": {
-          "src": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.jpg",
+          "src": "https://cdn.aivideogeneratorfree.org/uploads/pirate-ship.mp4",
           "alt": "电影级质感"
         }
       },
@@ -238,7 +238,7 @@
         "title": "极致操控力",
         "description": "通过精确的自然语言指令或参考图，您可以对画面的构图、色彩、动作进行像素级的深度控制。",
         "image": {
-          "src": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.jpg",
+          "src": "https://cdn.aivideogeneratorfree.org/uploads/gondola.jpg",
           "alt": "极致操控力"
         }
       }

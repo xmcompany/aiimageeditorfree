@@ -1,0 +1,56 @@
+# Nanobanana Joyflix — Free AI Video Generator
+
+> Nanobanana Joyflix is a free AI video generator that turns text prompts and images into cinematic videos online. New users receive free credits upon sign-up — no credit card required.
+
+## What is Nanobanana Joyflix?
+
+Nanobanana Joyflix is a web-based AI video and image creation platform. It provides free AI video generation from text descriptions (text-to-video) and from uploaded photos (image-to-video). Users can also generate and edit AI images. The platform is free to start — new users receive bonus credits automatically when they register.
+
+## Core Features
+
+- Free AI video generator: create cinematic videos from text prompts
+- Image to video AI: animate any photo with realistic motion
+- AI image generator: generate and edit images with natural language
+- AI hairstyle generator: design and preview hairstyles with AI
+- Character consistency: maintain faces and styles across AI video scenes
+- HD watermark-free export available on all plans including free tier
+
+## Free Plan
+
+New users receive free credits upon registration. These credits can be used immediately across all AI video and image generation features. No credit card is required to sign up or use the free credits.
+
+## Supported AI Models
+
+Nanobanana Joyflix integrates world-class AI video and image generation models including support for text-to-video, image-to-video, and advanced image editing workflows.
+
+## Use Cases
+
+- Social media content creators generating AI videos for free
+- Small business owners creating product videos with AI
+- Photographers animating their photos into AI videos
+- Film students and directors prototyping visual concepts
+- Marketers producing AI-generated video ads
+
+## Key Pages
+
+- Homepage / Free AI Video Generator: /
+- AI Video Generator: /ai-video-generator
+- AI Image Generator: /ai-image-generator
+- AI Hairstyle Generator: /hairstyles
+- Pricing: /pricing
+- AI Video Showcases: /showcases?type=video
+- AI Image Showcases: /showcases?type=image
+- Prompt Library: /prompts
+
+## About
+
+Nanobanana Joyflix is trusted by 500,000+ creators worldwide. The platform generates over 1 million AI videos and images. Average AI video generation time is under 60 seconds.
+
+## Contact
+
+- Email: support@nanobanana-joyflix.ai
+
+## Legal
+
+- Privacy Policy: /privacy-policy
+- Terms of Service: /terms-of-service

@@ -325,8 +325,8 @@
         "buttons": [
           {
             "title": "获取 Nanobanana Joyflix",
-            "url": "https://shipany.ai",
-            "target": "_blank",
+            "url": "#",
+            "target": "",
             "icon": "Zap"
           },
           {

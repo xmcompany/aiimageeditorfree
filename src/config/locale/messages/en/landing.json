@@ -2,10 +2,10 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "Nanobanana Joyflix",
+      "title": "ai video generator free",
       "logo": {
         "src": "/logo.png",
-        "alt": "Nanobanana Joyflix"
+        "alt": "ai video generator free"
       },
       "url": "/"
     },
@@ -16,13 +16,13 @@
           "icon": "Sparkles",
           "children": [
             {
-              "title": "AI Image",
+              "title": "AI Image Generator",
               "url": "/ai-image-generator",
               "icon": "Image",
               "description": "Text to image, image editing"
             },
             {
-              "title": "AI Video",
+              "title": "Ai Video Generator",
               "url": "/ai-video-generator",
               "icon": "Clapperboard",
               "description": "Text to video, image to video"
@@ -102,21 +102,22 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Nanobanana Joyflix AI Image & Video Creation",
-    "description": "Fast AI Image Editing and Cinematic AI Video Generation. Transform ideas into stunning films and breathe life into static photos.",
+    "title": "Create Stunning AI Videos Free",
+    "description": "Turn text or images into cinematic AI videos in seconds. Sign up free and get bonus credits to start creating — no credit card required.",
+    "tip": "🎁 New users get free credits instantly upon sign-up. Start generating AI videos for free now.",
     "buttons": [
       {
-        "title": "Start Image Creation",
-        "icon": "Sparkles",
-        "url": "/ai-image-generator",
+        "title": "Generate AI Video Free",
+        "icon": "Video",
+        "url": "/ai-video-generator",
         "target": "_self",
         "variant": "default",
         "size": "lg"
       },
       {
-        "title": "Start Video Creation",
-        "icon": "Video",
-        "url": "/ai-video-generator",
+        "title": "Create AI Image Free",
+        "icon": "Sparkles",
+        "url": "/ai-image-generator",
         "target": "_self",
         "variant": "outline",
         "size": "lg"
@@ -127,17 +128,16 @@
     "show_award": false,
     "show_hero_input": false,
     "show_bg_spline": false,
-    "highlight_text": "Nanobanana Joyflix",
+    "highlight_text": "AI Videos Free",
     "background_image": {
       "src": "/imgs/bg/girl.jpeg",
-      "alt": "hero"
+      "alt": "AI video generator free online"
     }
   },
   "showcases-flow": {
     "id": "showcases",
-    "title": "Experience the Creative Power of Nanobanana Joyflix",
-    "description": "Unlock infinite possibilities with AI Text to Image and Cinematic Video generation.",
-    "items": []
+    "title": "AI Video Generator Free — Real Results from Real Creators",
+    "description": "Browse AI-generated videos and images created by our community using the free AI video generator. Every video below was made with text prompts — no editing skills needed."
   },
   "logos": {
     "id": "logos",
@@ -147,14 +147,14 @@
   },
   "showcase": {
     "id": "showcase",
-    "title": "Experience the Creative Power of Nanobanana Joyflix",
-    "description": "Whether transforming text ideas into cinematic films or breathing life into static photography, Nanobanana Joyflix brings you professional-grade visual impact.",
+    "title": "How Our Free AI Video Generator Works",
+    "description": "From a simple text prompt to a cinematic AI video — see what Nanobanana Joyflix can do for free.",
     "textToVideo": {
-      "title": "AI Text to Video",
-      "description": "Construct a vivid dynamic world with simple prompts.",
+      "title": "Text to AI Video — Free Generation",
+      "description": "Type any idea and our free AI video generator turns it into a cinematic video in seconds.",
       "buttons": [
         {
-          "title": "Try Text to Video",
+          "title": "Try Free AI Video Generator",
           "url": "/ai-video-generator",
           "target": "_self"
         }
@@ -162,59 +162,59 @@
       "items": [
         {
           "prompt": "A dog speed climbs up a climbing wall at the olympics",
-          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.jpg",
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/dog-olympics.mp4",
+          "poster": "https://cdn.aivideogeneratorfree.org/uploads/dog-olympics.mp4",
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/dog-olympics.mp4",
           "url": "/ai-video-generator"
         },
         {
           "prompt": "The sun rises slowly between tall buildings. Ground-level follow shot of bicycle tires",
-          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.jpg",
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/sun-rises-bicycle.mp4",
+          "poster": "https://cdn.aivideogeneratorfree.org/uploads/sun-rises-bicycle.mp4",
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/sun-rises-bicycle.mp4",
           "url": "/ai-video-generator"
         },
         {
           "prompt": "Pirate ship sailing into a storm with lightning and high waves",
-          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.jpg",
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.mp4",
+          "poster": "https://cdn.aivideogeneratorfree.org/uploads/pirate-ship.mp4",
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/pirate-ship.mp4",
           "url": "/ai-video-generator"
         },
         {
           "prompt": "A snow leopard walking through a snowy forest, cinematic 8k",
-          "poster": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.jpg",
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/snow-leopard.mp4",
+          "poster": "https://cdn.aivideogeneratorfree.org/uploads/snow-leopard.mp4",
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/snow-leopard.mp4",
           "url": "/ai-video-generator"
         }
       ]
     },
     "imageToVideo": {
-      "title": "AI Image to Video",
-      "description": "Inject cinematic motion into your static photography. Upload an image and see AI perform a vivid video story.",
+      "title": "Image to AI Video — Free Conversion",
+      "description": "Upload any photo and our free AI video generator brings it to life with cinematic motion. No editing skills required.",
       "items": [
         {
           "prompt": "Smoothly rotate this sneaker, keeping the background static",
           "originalImage": {
-            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/macpaint.png"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/macpaint.png"
           },
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/macpaint.mp4"
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/macpaint.mp4"
         },
         {
           "prompt": "Sunset over Venetian ruins with a weathered gondolier rowing through quiet waters",
           "originalImage": {
-            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.jpg"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/gondola.jpg"
           },
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.mp4"
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/gondola.mp4"
         },
         {
           "prompt": "Instantly capture the transformation process of the picture",
           "originalImage": {
-            "src": "https://img-template-ai-video.16781678.xyz/uploads/video/woman-city-doodle.jpg"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/woman-city-doodle.jpg"
           },
-          "videoSrc": "https://img-template-ai-video.16781678.xyz/uploads/video/woman-city-doodle.mp4"
+          "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/woman-city-doodle.mp4"
         }
       ],
       "buttons": [
         {
-          "title": "Try Image to Video",
+          "title": "Try Image to Video Free",
           "url": "/ai-video-generator",
           "target": "_self"
         }
@@ -223,100 +223,100 @@
   },
   "introduce": {
     "id": "introduce",
-    "title": "Redefining Visual Creation",
-    "description": "Nanobanana Joyflix is not just a tool, it's your creative partner. We integrate world-leading image and video generation technologies to make professional-grade creation as simple as a conversation.",
+    "title": "Why Nanobanana Joyflix Is the Best Free AI Video Generator",
+    "description": "Nanobanana Joyflix combines world-leading AI video generation and image editing in one free platform. Professional-grade AI video creation is now as simple as typing a sentence.",
     "items": [
       {
-        "title": "Cinematic Quality",
-        "description": "Whether it's 8K ultra-clear images or smooth 60fps video, it shows amazing detail and dynamism.",
+        "title": "Cinematic AI Video Quality — Free",
+        "description": "Generate 8K-quality AI videos and smooth 60fps footage for free. Our AI video generator delivers stunning detail and motion that rivals professional production.",
         "image": {
-          "src": "https://img-template-ai-video.16781678.xyz/uploads/video/pirate-ship.jpg",
-          "alt": "Cinematic Quality"
+          "src": "https://cdn.aivideogeneratorfree.org/uploads/pirate-ship.mp4",
+          "alt": "Free AI video generator cinematic quality output"
         }
       },
       {
-        "title": "Ultimate Control",
-        "description": "With precise natural language instructions or reference images, you have deep pixel-level control over composition, color, and motion.",
+        "title": "Precise AI Video Control",
+        "description": "Use natural language prompts or reference images to control composition, color, and motion in your AI-generated videos. Full creative control, completely free to start.",
         "image": {
-          "src": "https://img-template-ai-video.16781678.xyz/uploads/video/gondola.jpg",
-          "alt": "Ultimate Control"
+          "src": "https://cdn.aivideogeneratorfree.org/uploads/gondola.jpg",
+          "alt": "AI video generator precise control"
         }
       }
     ]
   },
   "benefits": {
     "id": "benefits",
-    "title": "Why Choose Nanobanana Joyflix?",
+    "title": "Benefits of Using Our Free AI Video Generator",
     "items": [
       {
-        "title": "Versatile Visual Workflow",
-        "description": "Complete the entire creative process from text-to-image to final video output in one platform.",
+        "title": "All-in-One AI Video & Image Platform",
+        "description": "Go from text prompt to final AI video output in one free platform. No need to switch between tools — generate, edit, and export all in one place.",
         "icon": "Layers"
       },
       {
-        "title": "Character & Style Consistency",
-        "description": "The unique identity-aware DNA ensures your virtual characters remain highly consistent across images and videos.",
+        "title": "Consistent AI Character & Style",
+        "description": "Our AI video generator maintains character identity across scenes. Faces, outfits, and styles stay consistent throughout your free AI video projects.",
         "icon": "RiUserStarLine"
       },
       {
-        "title": "Commercial Security",
-        "description": "All generated content can be used for commercial purposes, with support for exporting watermark-free high-definition masters.",
+        "title": "Commercial-Ready AI Video Output",
+        "description": "All AI-generated videos are cleared for commercial use. Export watermark-free HD masters — even on the free plan with your sign-up credits.",
         "icon": "RiShieldCheckLine"
       }
     ]
   },
   "usage": {
     "id": "usage",
-    "title": "Three Simple Steps to Magic",
+    "title": "Generate AI Videos Free in 3 Simple Steps",
     "items": [
       {
-        "title": "01. Describe Your Vision",
-        "description": "Enter your creative description in the input box, or upload a reference photo as a base image."
+        "title": "01. Describe Your AI Video Idea",
+        "description": "Type your creative prompt into the free AI video generator, or upload a reference photo as a starting image."
       },
       {
-        "title": "02. Select the Generation Model",
-        "description": "Choose from image or video series models based on your needs."
+        "title": "02. Choose Your AI Video Model",
+        "description": "Select from our range of free AI video generation models — text-to-video, image-to-video, and more."
       },
       {
-        "title": "03. Harvest Your Work",
-        "description": "Click generate, and the AI will present you with a stunning visual masterpiece in seconds, with support for subsequent conversational refinement."
+        "title": "03. Download Your Free AI Video",
+        "description": "Click generate and receive your AI video in seconds. Download in HD for free using your sign-up credits."
       }
     ]
   },
   "stats": {
     "id": "stats",
-    "title": "People Love Nanobanana Joyflix AI",
-    "description": "for its exceptional quality and ease of use.",
+    "title": "Creators Love Our Free AI Video Generator",
+    "description": "Trusted by hundreds of thousands of creators for fast, high-quality AI video generation.",
     "label": "Stats",
     "icon": "ChartBar",
     "items": [
       {
         "title": "Creators",
         "label": "500K+",
-        "description": "Trusted by creators worldwide"
+        "description": "Creators using our free AI video generator"
       },
       {
-        "title": "Videos Generated",
+        "title": "AI Videos Generated",
         "label": "1M+",
-        "description": "High-quality videos created"
+        "description": "High-quality AI videos created for free"
       },
       {
-        "title": "Seconds to Create",
+        "title": "Seconds to Generate",
         "label": "60",
-        "description": "Average generation time"
+        "description": "Average AI video generation time"
       }
     ]
   },
   "testimonials": {
     "id": "testimonials",
-    "title": "Trusted by Over 500,000 Creators",
-    "description": "See what content creators, marketers, and storytellers say about Nanobanana Joyflix.",
+    "title": "What Creators Say About Our Free AI Video Generator",
+    "description": "See how content creators, marketers, and filmmakers use Nanobanana Joyflix to generate AI videos for free.",
     "label": "Testimonials",
     "items": [
       {
         "title": "Alex G.",
         "label": "Social Media Manager",
-        "description": "The Nanobanana Joyflix video generator has completely changed my workflow. What used to take a full day of editing now takes about five minutes. The quality is consistently impressive.",
+        "description": "This free AI video generator completely changed my workflow. What used to take a full day of editing now takes five minutes. The quality is consistently impressive — and I started for free.",
         "image": {
           "src": "/imgs/users/1.png"
         }
@@ -324,7 +324,7 @@
       {
         "title": "Jenna R.",
         "label": "Small Business Owner",
-        "description": "I was looking for an AI video generator that wasn't limited or clunky. Nanobanana Joyflix exceeded all my expectations. It's powerful, fast, and incredibly user-friendly.",
+        "description": "I needed a free AI video generator that wasn't limited or clunky. Nanobanana Joyflix exceeded all my expectations. The free credits on sign-up let me test everything before committing.",
         "image": {
           "src": "/imgs/users/2.png"
         }
@@ -332,7 +332,7 @@
       {
         "title": "Carlos S.",
         "label": "Photographer",
-        "description": "I'm blown away by the image to video AI feature. It added such a professional and dynamic feel to my photography portfolio. My clients are absolutely wowed.",
+        "description": "The image-to-video AI feature is incredible. It added a professional, dynamic feel to my photography portfolio. My clients are wowed — and I generated the first batch completely free.",
         "image": {
           "src": "/imgs/users/3.png"
         }
@@ -340,7 +340,7 @@
       {
         "title": "Maria K.",
         "label": "Film Student",
-        "description": "The text to video AI is pure magic. I can brainstorm an idea, type it in, and have a visual concept ready for my team almost instantly. A total game-changer for creative direction.",
+        "description": "The text-to-video AI is pure magic. I type an idea and have a visual concept ready almost instantly. The free AI video generator gave me enough credits to build my entire demo reel.",
         "image": {
           "src": "/imgs/users/4.png"
         }
@@ -355,22 +355,22 @@
   },
   "features": {
     "id": "features",
-    "title": "Core Features",
-    "description": "Integrated flagship AI image editing and cinematic video generation.",
+    "title": "Free AI Video Generator Core Features",
+    "description": "Everything you need to create professional AI videos and images — free to start with sign-up credits.",
     "items": [
       {
-        "title": "Natural Language Editing",
-        "description": "Edit any photo with conversational prompts using Nanobanana Joyflix.",
-        "icon": "RiMagicLine"
-      },
-      {
-        "title": "Cinematic Video",
-        "description": "Transform text or images into professional short films instantly.",
+        "title": "Free Text-to-Video AI Generation",
+        "description": "Turn any text prompt into a cinematic AI video for free. Just describe your scene and let the AI video generator do the rest.",
         "icon": "RiVideoAddLine"
       },
       {
-        "title": "Character Consistency",
-        "description": "Maintain faces, outfits, and poses across images and videos.",
+        "title": "Free Image-to-Video AI Conversion",
+        "description": "Upload any photo and our free AI video generator animates it with realistic motion and cinematic effects.",
+        "icon": "RiMagicLine"
+      },
+      {
+        "title": "AI Character Consistency Across Videos",
+        "description": "Maintain consistent faces, outfits, and styles across all your free AI video generations.",
         "icon": "RiUserStarLine"
       }
     ]
@@ -378,37 +378,45 @@
   "faq": {
     "id": "faq",
     "label": "FAQ",
-    "title": "Frequently Asked Questions",
-    "description": "Have more questions? Contact us via Discord or Email.",
+    "title": "Free AI Video Generator — Frequently Asked Questions",
+    "description": "Have more questions about our free AI video generator? Contact us via Discord or Email.",
     "items": [
       {
+        "title": "Is this AI video generator really free?",
+        "description": "Yes. When you sign up, you receive free credits that you can use immediately to generate AI videos. No credit card is required to start. Your free credits let you explore text-to-video, image-to-video, and AI image generation."
+      },
+      {
+        "title": "How many free credits do I get when I sign up?",
+        "description": "New users receive free credits automatically upon registration. The exact amount is shown on the sign-up page. These free credits can be used across all AI video and image generation features."
+      },
+      {
         "title": "How do I generate the best AI videos from text?",
-        "description": "To get the best results, be as specific as possible in your prompts. Include details about the subject, setting, art style (e.g., 'cinematic', 'anime'), and mood. The more descriptive you are, the better the AI can match your vision."
+        "description": "For the best results with our free AI video generator, be specific in your prompts. Include details about the subject, setting, art style (e.g., 'cinematic', 'anime'), camera angle, and mood. The more descriptive your prompt, the better the AI video output."
       },
       {
-        "title": "What makes you a good AI video generator?",
-        "description": "Our AI video generator stands out due to its focus on visual quality and user control. Unlike other tools, we offer advanced style customization and generate high-definition videos, ensuring professional results every time."
+        "title": "Can I use an image to generate a free AI video?",
+        "description": "Yes. Sign up for a free account, go to the Image to Video tool, upload your photo, and choose an animation style. Your free sign-up credits cover image-to-video AI generation with no watermark."
       },
       {
-        "title": "Can I use an image to generate a video for free?",
-        "description": "Simply sign up for an account, navigate to the Image to Video AI tool, upload your image, and choose an animation style. You can generate and download videos within certain length limits."
+        "title": "What makes Nanobanana Joyflix the best free AI video generator?",
+        "description": "Our free AI video generator stands out for cinematic quality, precise prompt control, and character consistency. Unlike other tools, we offer advanced style customization and HD output — all accessible with your free sign-up credits."
       },
       {
-        "title": "Does the Image to Video feature work with any photo?",
-        "description": "For best results, use clear, high-resolution images. Our AI performs best when subjects are well-defined. It supports various formats including JPG, PNG, and HEIC."
+        "title": "Does the Image to Video AI feature work with any photo?",
+        "description": "For best results, use clear, high-resolution images. Our free AI video generator performs best when subjects are well-defined. Supported formats include JPG, PNG, and HEIC."
       }
     ]
   },
   "cta": {
     "id": "cta",
-    "title": "Experience Nanobanana Joyflix Now",
-    "description": "Join millions of creators today and start your AI visual journey.",
+    "title": "Start Generating AI Videos for Free Today",
+    "description": "Join 500,000+ creators. Sign up now and get free credits to generate your first AI video instantly — no credit card needed.",
     "buttons": [
       {
-        "title": "Get Started",
-        "url": "/ai-image-generator",
+        "title": "Get Free AI Video Credits",
+        "url": "/ai-video-generator",
         "target": "_self",
-        "icon": "Wand"
+        "icon": "Video"
       }
     ],
     "className": "bg-muted"
@@ -417,10 +425,10 @@
     "id": "footer",
     "brand": {
       "title": "Nanobanana Joyflix",
-      "description": "Nanobanana Joyflix is a flagship AI visual creation platform.",
+      "description": "Nanobanana Joyflix — the free AI video generator trusted by 500K+ creators worldwide.",
       "logo": {
         "src": "/logo.png",
-        "alt": "Nanobanana Joyflix"
+        "alt": "Nanobanana Joyflix free AI video generator"
       },
       "url": "/"
     },
@@ -430,13 +438,13 @@
           "title": "Product",
           "children": [
             {
-              "title": "Image Create",
-              "url": "/ai-image-generator",
+              "title": "Free AI Video Generator",
+              "url": "/ai-video-generator",
               "target": "_self"
             },
             {
-              "title": "Video Create",
-              "url": "/ai-video-generator",
+              "title": "AI Image Generator",
+              "url": "/ai-image-generator",
               "target": "_self"
             }
           ]
