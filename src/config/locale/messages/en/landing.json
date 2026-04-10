@@ -2,10 +2,10 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "ai video generator free",
+      "title": "AI Video Generator Free",
       "logo": {
         "src": "/logo.png",
-        "alt": "ai video generator free"
+        "alt": "AI Video Generator Free"
       },
       "url": "/"
     },
@@ -16,16 +16,16 @@
           "icon": "Sparkles",
           "children": [
             {
+              "title": "AI Video Generator",
+              "url": "/ai-video-generator",
+              "icon": "Clapperboard",
+              "description": "Text to video, image to video"
+            },
+            {
               "title": "AI Image Generator",
               "url": "/ai-image-generator",
               "icon": "Image",
               "description": "Text to image, image editing"
-            },
-            {
-              "title": "Ai Video Generator",
-              "url": "/ai-video-generator",
-              "icon": "Clapperboard",
-              "description": "Text to video, image to video"
             },
             {
               "title": "AI Hairstyle",
@@ -40,16 +40,16 @@
           "icon": "Wand",
           "children": [
             {
-              "title": "AI Image Prompts",
-              "url": "/prompts?type=image",
-              "icon": "Image",
-              "description": "Inspiring text to image prompts"
+              "title": "AI Video Prompts",
+              "url": "/prompts/video",
+              "icon": "Clapperboard",
+              "description": "AI video prompts for text to video"
             },
             {
-              "title": "AI Video Prompts",
-              "url": "/prompts?type=video",
-              "icon": "Clapperboard",
-              "description": "Creative text to video prompts"
+              "title": "AI Image Prompts",
+              "url": "/prompts/image",
+              "icon": "Image",
+              "description": "AI image prompts for text to image"
             }
           ]
         },
@@ -58,16 +58,82 @@
           "icon": "Image",
           "children": [
             {
-              "title": "AI Image Showcases",
-              "url": "/showcases?type=image",
-              "icon": "Image",
-              "description": "Excellent AI image generations"
-            },
-            {
               "title": "AI Video Showcases",
-              "url": "/showcases?type=video",
+              "url": "/showcases/video",
               "icon": "Clapperboard",
               "description": "Stunning AI video generations"
+            },
+            {
+              "title": "AI Image Showcases",
+              "url": "/showcases/image",
+              "icon": "Image",
+              "description": "Excellent AI image generations"
+            }
+          ]
+        },
+        {
+          "title": "AI Models",
+          "icon": "Cpu",
+          "children": [
+            {
+              "title": "Seedance 2.0",
+              "url": "/models/seedance",
+              "icon": "Clapperboard",
+              "description": "ByteDance Seedance 2.0 video model"
+            },
+            {
+              "title": "Wan 2.7",
+              "url": "/models/wan",
+              "icon": "Video",
+              "description": "Alibaba Wan 2.7 video generation"
+            },
+            {
+              "title": "Kling 3.0",
+              "url": "/models/kling",
+              "icon": "Film",
+              "description": "Kuaishou Kling cinematic video"
+            },
+            {
+              "title": "Sora 2 Pro",
+              "url": "/models/sora",
+              "icon": "Sparkles",
+              "description": "OpenAI Sora 2 Pro video model"
+            },
+            {
+              "title": "Veo 3.1",
+              "url": "/models/veo",
+              "icon": "Clapperboard",
+              "description": "Google Veo 3.1 video model"
+            },
+            {
+              "title": "Hailuo 2.3",
+              "url": "/models/hailuo",
+              "icon": "Zap",
+              "description": "MiniMax Hailuo video generation"
+            },
+            {
+              "title": "Grok Imagine",
+              "url": "/models/grok-imagine",
+              "icon": "Brain",
+              "description": "xAI Grok video generation"
+            },
+            {
+              "title": "Runway Gen-4",
+              "url": "/models/runway",
+              "icon": "Scissors",
+              "description": "Runway professional AI video"
+            },
+            {
+              "title": "HappyHorse 1.0",
+              "url": "/models/happyhorse",
+              "icon": "Award",
+              "description": "#1 Ranked open-source AI video model"
+            },
+            {
+              "title": "Compare All Models",
+              "url": "/compare",
+              "icon": "BarChart3",
+              "description": "Side-by-side AI video model comparison"
             }
           ]
         },
@@ -102,8 +168,8 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Create Stunning AI Videos Free",
-    "description": "Turn text or images into cinematic AI videos in seconds. Sign up free and get bonus credits to start creating — no credit card required.",
+    "title": "AI Video Generator Free — Create Stunning AI Videos Online",
+    "description": "Turn text or images into cinematic AI videos in seconds with our free AI video generator. Sign up free and get bonus credits to start creating — no credit card required.",
     "tip": "🎁 New users get free credits instantly upon sign-up. Start generating AI videos for free now.",
     "buttons": [
       {
@@ -115,9 +181,9 @@
         "size": "lg"
       },
       {
-        "title": "Create AI Image Free",
-        "icon": "Sparkles",
-        "url": "/ai-image-generator",
+        "title": "View AI Video Showcases",
+        "icon": "Play",
+        "url": "/showcases/video",
         "target": "_self",
         "variant": "outline",
         "size": "lg"
@@ -128,7 +194,7 @@
     "show_award": false,
     "show_hero_input": false,
     "show_bg_spline": false,
-    "highlight_text": "AI Videos Free",
+    "highlight_text": "AI Video Generator Free",
     "background_image": {
       "src": "/imgs/bg/girl.jpeg",
       "alt": "AI video generator free online"
@@ -136,19 +202,19 @@
   },
   "showcases-flow": {
     "id": "showcases",
-    "title": "AI Video Generator Free — Real Results from Real Creators",
-    "description": "Browse AI-generated videos and images created by our community using the free AI video generator. Every video below was made with text prompts — no editing skills needed."
+    "title": "AI Video Generator Free — Real AI Video Results from Real Creators",
+    "description": "Browse AI-generated videos created by our community using the free AI video generator. Every video below was made with text prompts — no editing skills needed."
   },
   "logos": {
     "id": "logos",
-    "title": "World Class AI Models",
-    "description": "Integrating Nanobanana Joyflix flagship models to break the boundaries of creativity.",
+    "title": "World-Class AI Video Generation Models",
+    "description": "Powered by Seedance 2.0, Wan 2.7, Kling 3.0, HappyHorse 1.0 and more — the best AI video generator models in one free platform.",
     "hidden": true
   },
   "showcase": {
     "id": "showcase",
     "title": "How Our Free AI Video Generator Works",
-    "description": "From a simple text prompt to a cinematic AI video — see what Nanobanana Joyflix can do for free.",
+    "description": "From a simple text prompt to a cinematic AI video — see what our free AI video generator can do.",
     "textToVideo": {
       "title": "Text to AI Video — Free Generation",
       "description": "Type any idea and our free AI video generator turns it into a cinematic video in seconds.",
@@ -223,8 +289,8 @@
   },
   "introduce": {
     "id": "introduce",
-    "title": "Why Nanobanana Joyflix Is the Best Free AI Video Generator",
-    "description": "Nanobanana Joyflix combines world-leading AI video generation and image editing in one free platform. Professional-grade AI video creation is now as simple as typing a sentence.",
+    "title": "Why Choose Our Free AI Video Generator",
+    "description": "Our AI video generator combines world-leading video generation models in one free platform. Professional-grade AI video creation is now as simple as typing a sentence.",
     "items": [
       {
         "title": "Cinematic AI Video Quality — Free",
@@ -244,12 +310,17 @@
       }
     ]
   },
+  "video-models": {
+    "id": "video-models",
+    "title": "Compare AI Video Generator Models",
+    "description": "Explore the best AI video generation models available in our free AI video generator. Compare features, resolution, and capabilities to find the right model for your AI video project."
+  },
   "benefits": {
     "id": "benefits",
     "title": "Benefits of Using Our Free AI Video Generator",
     "items": [
       {
-        "title": "All-in-One AI Video & Image Platform",
+        "title": "All-in-One AI Video Generator Platform",
         "description": "Go from text prompt to final AI video output in one free platform. No need to switch between tools — generate, edit, and export all in one place.",
         "icon": "Layers"
       },
@@ -310,7 +381,7 @@
   "testimonials": {
     "id": "testimonials",
     "title": "What Creators Say About Our Free AI Video Generator",
-    "description": "See how content creators, marketers, and filmmakers use Nanobanana Joyflix to generate AI videos for free.",
+    "description": "See how content creators, marketers, and filmmakers use our free AI video generator to create stunning AI videos.",
     "label": "Testimonials",
     "items": [
       {
@@ -324,7 +395,7 @@
       {
         "title": "Jenna R.",
         "label": "Small Business Owner",
-        "description": "I needed a free AI video generator that wasn't limited or clunky. Nanobanana Joyflix exceeded all my expectations. The free credits on sign-up let me test everything before committing.",
+        "description": "I needed a free AI video generator that wasn't limited or clunky. This exceeded all my expectations. The free credits on sign-up let me test everything before committing.",
         "image": {
           "src": "/imgs/users/2.png"
         }
@@ -356,7 +427,7 @@
   "features": {
     "id": "features",
     "title": "Free AI Video Generator Core Features",
-    "description": "Everything you need to create professional AI videos and images — free to start with sign-up credits.",
+    "description": "Everything you need to create professional AI videos — free to start with sign-up credits.",
     "items": [
       {
         "title": "Free Text-to-Video AI Generation",
@@ -383,11 +454,11 @@
     "items": [
       {
         "title": "Is this AI video generator really free?",
-        "description": "Yes. When you sign up, you receive free credits that you can use immediately to generate AI videos. No credit card is required to start. Your free credits let you explore text-to-video, image-to-video, and AI image generation."
+        "description": "Yes. When you sign up, you receive free credits that you can use immediately to generate AI videos. No credit card is required to start. Your free credits let you explore text-to-video and image-to-video AI video generation."
       },
       {
         "title": "How many free credits do I get when I sign up?",
-        "description": "New users receive free credits automatically upon registration. The exact amount is shown on the sign-up page. These free credits can be used across all AI video and image generation features."
+        "description": "New users receive free credits automatically upon registration. The exact amount is shown on the sign-up page. These free credits can be used across all AI video generation features."
       },
       {
         "title": "How do I generate the best AI videos from text?",
@@ -398,12 +469,20 @@
         "description": "Yes. Sign up for a free account, go to the Image to Video tool, upload your photo, and choose an animation style. Your free sign-up credits cover image-to-video AI generation with no watermark."
       },
       {
-        "title": "What makes Nanobanana Joyflix the best free AI video generator?",
+        "title": "What makes this the best free AI video generator?",
         "description": "Our free AI video generator stands out for cinematic quality, precise prompt control, and character consistency. Unlike other tools, we offer advanced style customization and HD output — all accessible with your free sign-up credits."
       },
       {
         "title": "Does the Image to Video AI feature work with any photo?",
         "description": "For best results, use clear, high-resolution images. Our free AI video generator performs best when subjects are well-defined. Supported formats include JPG, PNG, and HEIC."
+      },
+      {
+        "title": "What AI video models does this free AI video generator support?",
+        "description": "Our free AI video generator supports multiple leading AI video models including Seedance 2.0, Wan 2.7 Video, Kling 3.0, and HappyHorse 1.0. Each model offers unique strengths for text-to-video and image-to-video generation."
+      },
+      {
+        "title": "Can I use the AI video generator for commercial projects?",
+        "description": "Yes. All AI-generated videos from our free AI video generator are cleared for commercial use. Export watermark-free HD masters — even on the free plan with your sign-up credits."
       }
     ]
   },
@@ -424,11 +503,11 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "Nanobanana Joyflix",
-      "description": "Nanobanana Joyflix — the free AI video generator trusted by 500K+ creators worldwide.",
+      "title": "AI Video Generator Free",
+      "description": "AI Video Generator Free — the free AI video generator trusted by 500K+ creators worldwide.",
       "logo": {
         "src": "/logo.png",
-        "alt": "Nanobanana Joyflix free AI video generator"
+        "alt": "AI Video Generator Free"
       },
       "url": "/"
     },
@@ -445,6 +524,61 @@
             {
               "title": "AI Image Generator",
               "url": "/ai-image-generator",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "AI Video Models",
+          "children": [
+            {
+              "title": "Seedance 2.0",
+              "url": "/models/seedance",
+              "target": "_self"
+            },
+            {
+              "title": "Wan 2.7",
+              "url": "/models/wan",
+              "target": "_self"
+            },
+            {
+              "title": "Kling 3.0",
+              "url": "/models/kling",
+              "target": "_self"
+            },
+            {
+              "title": "Sora 2 Pro",
+              "url": "/models/sora",
+              "target": "_self"
+            },
+            {
+              "title": "Veo 3.1",
+              "url": "/models/veo",
+              "target": "_self"
+            },
+            {
+              "title": "Hailuo 2.3",
+              "url": "/models/hailuo",
+              "target": "_self"
+            },
+            {
+              "title": "Grok Imagine",
+              "url": "/models/grok-imagine",
+              "target": "_self"
+            },
+            {
+              "title": "Runway Gen-4",
+              "url": "/models/runway",
+              "target": "_self"
+            },
+            {
+              "title": "HappyHorse 1.0",
+              "url": "/models/happyhorse",
+              "target": "_self"
+            },
+            {
+              "title": "Compare All Models",
+              "url": "/compare",
               "target": "_self"
             }
           ]
@@ -474,6 +608,7 @@
       ]
     },
     "show_theme": true,
-    "show_locale": true
+    "show_locale": true,
+    "show_built_with": false
   }
 }

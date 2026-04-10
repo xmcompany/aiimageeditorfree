@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "title": "Seedance AI Video Generator — Free Online (2.0, 1.5 Pro, 1.0) | AI Video Generator Free",
+    "description": "Try Seedance AI video generator free online. ByteDance Seedance 2.0, 1.5 Pro, and 1.0 models with text-to-video, image-to-video, lip sync, native audio, and cinematic 720p output."
+  },
+  "page": {
+    "title": "Seedance 2.0 AI Video Generator",
+    "description": "ByteDance Seedance is a family of advanced AI video generation models supporting text-to-video, image-to-video, lip sync, multi-shot storytelling, and native audio.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Seedance 2.0 AI Video Generator — Free Online",
+        "description": "ByteDance Seedance 2.0 — generate cinematic AI videos from text or images with native audio, lip sync, and multi-shot storytelling. Try free online.",
+        "highlight_text": "Seedance 2.0",
+        "tip": "<strong>Powered by Seedance 2.0</strong> — Free credits available on sign-up.",
+        "buttons": [
+          {
+            "title": "Generate AI Video with Seedance",
+            "icon": "Video",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "variant": "default",
+            "size": "lg"
+          },
+          {
+            "title": "Compare AI Video Models",
+            "icon": "ArrowLeft",
+            "url": "/#video-models",
+            "target": "_self",
+            "variant": "outline",
+            "size": "lg"
+          }
+        ],
+        "show_avatars": false,
+        "show_award": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": {
+          "src": "/imgs/bg/girl.jpeg",
+          "alt": "Seedance AI video generator"
+        }
+      },
+      "videos": {
+        "id": "model-videos",
+        "title": "Seedance 2.0 AI Video Examples",
+        "description": "Watch real AI-generated videos created with Seedance 2.0. Hover to preview, click to play with sound.",
+        "videos": [
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775200730595_9fXLmiHd.mp4",
+            "prompt": "A golden retriever dashing through shallow surf at the beach, back angle camera low near waterline, splashes frozen in time, blur trails in waves and paws, afternoon sun glinting off wet fur, overcast"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775188128418_vnfwuDsj.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775188464994_6ZaW8Ki0.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775188761712_tHGAgzLy.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775194361294_SXn6akG9.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770617365351_pWUvusx9.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770618718325_qVrPkEZ4.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770618273175_M6cW36mJ.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770618931964_28zeDQBH.mp4"
+          }
+        ]
+      },
+      "versions": {
+        "id": "features",
+        "title": "Seedance Model Versions Compared",
+        "description": "Compare all Seedance AI video model versions — from the latest Seedance 2.0 with multimodal control to the budget-friendly Seedance 1.0.",
+        "items": [
+          {
+            "title": "Seedance 2.0 — Latest",
+            "description": "ByteDance's flagship AI video model. Supports multimodal input (text, image, video, audio), multi-shot storytelling, native audio with lip sync, reference-driven generation, and 4–15s flexible duration. Ideal for cinematic and professional AI video production.",
+            "icon": "Sparkles"
+          },
+          {
+            "title": "Seedance 1.5 Pro",
+            "description": "Enhanced text-to-video and image-to-video generation with improved motion consistency and visual quality. A great balance of speed and output quality for professional workflows.",
+            "icon": "Zap"
+          },
+          {
+            "title": "Seedance 1.0 (Pro & Lite)",
+            "description": "The original Seedance model with Pro and Lite variants. Supports text-to-video and image-to-video with fast processing and reliable output quality at an affordable price point.",
+            "icon": "Rocket"
+          }
+        ]
+      },
+      "comparison": {
+        "id": "model-comparison",
+        "title": "Seedance 2.0 Version Comparison",
+        "description": "Compare all Seedance 2.0 model versions side by side — features, resolution, pricing, and capabilities.",
+        "columns": [
+          {
+            "key": "v20",
+            "label": "Seedance 2.0"
+          },
+          {
+            "key": "v15",
+            "label": "Seedance 1.5 Pro"
+          },
+          {
+            "key": "v10",
+            "label": "Seedance 1.0 Pro"
+          },
+          {
+            "key": "v10fast",
+            "label": "Seedance 1.0 Pro Fast"
+          }
+        ],
+        "rows": [
+          {
+            "label": "Text to Video",
+            "values": {
+              "v20": "✓",
+              "v15": "✓",
+              "v10": "✓",
+              "v10fast": "✓"
+            }
+          },
+          {
+            "label": "Image to Video",
+            "values": {
+              "v20": "✓",
+              "v15": "✓",
+              "v10": "✓",
+              "v10fast": "✓"
+            }
+          },
+          {
+            "label": "Reference Video Input",
+            "values": {
+              "v20": "✓",
+              "v15": "-",
+              "v10": "-",
+              "v10fast": "-"
+            }
+          },
+          {
+            "label": "Native Audio & Lip Sync",
+            "values": {
+              "v20": "✓",
+              "v15": "✓",
+              "v10": "-",
+              "v10fast": "-"
+            }
+          },
+          {
+            "label": "Multi-Shot Storytelling",
+            "values": {
+              "v20": "✓",
+              "v15": "-",
+              "v10": "-",
+              "v10fast": "-"
+            }
+          },
+          {
+            "label": "Max Resolution",
+            "values": {
+              "v20": "720p",
+              "v15": "720p",
+              "v10": "1080p",
+              "v10fast": "1080p"
+            }
+          },
+          {
+            "label": "Duration",
+            "values": {
+              "v20": "4-15s",
+              "v15": "5-10s",
+              "v10": "5-10s",
+              "v10fast": "5-10s"
+            }
+          },
+          {
+            "label": "Pricing (480p)",
+            "values": {
+              "v20": "11.5 credits/s ($0.058/s)",
+              "v15": "-",
+              "v10": "-",
+              "v10fast": "-"
+            }
+          },
+          {
+            "label": "Pricing (720p)",
+            "values": {
+              "v20": "25 credits/s ($0.125/s)",
+              "v15": "-",
+              "v10": "-",
+              "v10fast": "-"
+            }
+          },
+          {
+            "label": "Fixed Lens Control",
+            "values": {
+              "v20": "✓",
+              "v15": "✓",
+              "v10": "-",
+              "v10fast": "-"
+            }
+          }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Seedance AI Video Generation Capabilities",
+        "description": "Seedance models support a comprehensive range of AI video generation features for creative professionals and developers.",
+        "items": [
+          {
+            "title": "Text to Video Generation",
+            "description": "Generate high-quality AI videos from text prompts. Seedance understands complex descriptions and produces cinematic output with natural motion.",
+            "icon": "Type"
+          },
+          {
+            "title": "Image to Video Animation",
+            "description": "Animate static images into dynamic AI videos. Upload any photo and Seedance brings it to life with realistic motion and camera movement.",
+            "icon": "Image"
+          },
+          {
+            "title": "Lip Sync & Native Audio",
+            "description": "Seedance 2.0 supports native lip sync generation with tight audio-visual synchronization. Generate realistic dialogue and music-synced videos.",
+            "icon": "Mic"
+          },
+          {
+            "title": "Multi-Shot Storytelling",
+            "description": "Create cohesive narrative AI videos with multiple shots while maintaining character and scene consistency across complex sequences.",
+            "icon": "Film"
+          },
+          {
+            "title": "Reference-Driven Generation",
+            "description": "Use reference images and videos to control visual style, character appearance, and motion in your Seedance AI video output.",
+            "icon": "Layers"
+          },
+          {
+            "title": "Flexible Duration Control",
+            "description": "Seedance 2.0 supports 4–15 second flexible duration, enabling both quick social media clips and longer narrative sequences.",
+            "icon": "Clock"
+          }
+        ]
+      },
+      "use-cases": {
+        "id": "features",
+        "title": "What You Can Create with Seedance AI Video Generator",
+        "description": "From social media content to brand marketing and film pre-visualization, Seedance powers diverse AI video creation workflows.",
+        "items": [
+          {
+            "title": "Social Media AI Video Content",
+            "description": "Create eye-catching short videos for TikTok, Reels, and YouTube Shorts using Seedance AI video generator."
+          },
+          {
+            "title": "Brand Marketing AI Videos",
+            "description": "Produce professional product demos, campaign videos, and ad creatives with Seedance."
+          },
+          {
+            "title": "Film Pre-Visualization",
+            "description": "Turn storyboards and sketches into cinematic previews with Seedance AI video model."
+          },
+          {
+            "title": "Music Video Generation",
+            "description": "Generate beat-matched music videos and rhythm-driven content from audio tracks with Seedance 2.0."
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Seedance AI Video Generator FAQ",
+        "description": "Frequently asked questions about Seedance AI video generation models.",
+        "items": [
+          {
+            "question": "What is Seedance by ByteDance?",
+            "answer": "Seedance is ByteDance Dreamina's AI video generation model family. It supports text-to-video, image-to-video, lip sync, multi-shot storytelling, and native audio generation for professional AI video creation."
+          },
+          {
+            "question": "What is the difference between Seedance 2.0 and Seedance 1.5 Pro?",
+            "answer": "Seedance 2.0 introduces multimodal input (text, image, video, audio), multi-shot storytelling, native audio with lip sync, and flexible 4–15s duration. Seedance 1.5 Pro focuses on enhanced text/image-to-video with improved motion consistency."
+          },
+          {
+            "question": "What video resolution does Seedance support?",
+            "answer": "Seedance models support 720p video output with 6 aspect ratio options: 16:9, 9:16, 4:3, 3:4, 1:1, and 21:9."
+          },
+          {
+            "question": "Can I use Seedance for free?",
+            "answer": "Yes! You can try Seedance AI video generator free online with sign-up credits. No credit card required to start generating AI videos."
+          },
+          {
+            "question": "Does Seedance support audio generation?",
+            "answer": "Seedance 2.0 supports native audio generation with lip sync and beat matching. You can upload reference audio to guide the video's audio output."
+          },
+          {
+            "question": "What is the maximum video length with Seedance?",
+            "answer": "Seedance 2.0 supports flexible duration from 4 to 15 seconds. Seedance 1.5 Pro and 1.0 typically generate 5–10 second videos."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Start Generating AI Videos with Seedance Free",
+        "description": "Sign up now and get free credits to generate your first Seedance AI video — no credit card required.",
+        "buttons": [
+          {
+            "title": "Try Seedance Free",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "icon": "Video"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

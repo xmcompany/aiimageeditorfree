@@ -43,7 +43,7 @@ export default async function LandingPage({
     excludeTags: 'hairstyles',
     sortOrder: 'desc',
     limit: 20,
-    type: 'image',
+    type: 'video',
   });
 
   const initialShowcases = rawShowcases
@@ -58,6 +58,7 @@ export default async function LandingPage({
     'showcases-flow',
     'logos',
     'showcase',
+    'video-models',
     'introduce',
     'benefits',
     'usage',
@@ -86,7 +87,7 @@ export default async function LandingPage({
               sortOrder="desc"
               hideCreateButton={true}
               initialItems={initialShowcases}
-              type="image"
+              type="video"
             />
           ),
         };

@@ -23,6 +23,28 @@ New users receive free credits upon registration. These credits can be used imme
 
 Nanobanana Joyflix integrates world-class AI video and image generation models including support for text-to-video, image-to-video, and advanced image editing workflows.
 
+### AI Video Models
+
+| Model | Provider | Text-to-Video | Image-to-Video | Max Resolution | Max Duration | Audio | Lip Sync |
+|-------|----------|:---:|:---:|:---:|:---:|:---:|:---:|
+| Seedance 2.0 | ByteDance | Yes | Yes | 720p | 15s | Yes | Yes |
+| Wan 2.7 | Alibaba | Yes | Yes | 1080p | 15s | Yes | No |
+| Kling 3.0 | Kuaishou | Yes | Yes | 1080p | 15s | Yes | No |
+| Sora 2 Pro | OpenAI | Yes | Yes | 1080p | 25s | Yes | No |
+| Veo 3.1 | Google | Yes | Yes | 1080p | 8s | Yes | No |
+| Hailuo 2.3 | MiniMax | Yes | Yes | 1080p | 10s | Yes | No |
+| Grok Imagine | xAI | Yes | Yes | 1080p | 10s | No | No |
+| Runway Gen-4 | Runway | Yes | Yes | 1080p | 10s | No | No |
+| HappyHorse 1.0 | Open Source | Yes | Yes | 1080p | 15s | Yes | Yes |
+
+### Model Pricing (Credits)
+
+- Seedance 2.0: 480p 11.5 credits/s ($0.058/s), 720p 25 credits/s ($0.125/s)
+- Kling 3.0: 5s 160 credits ($0.80), 10s 320 credits ($1.60)
+- Sora 2 Pro: 10s 30 credits ($0.15), 15s 35 credits ($0.175)
+- Hailuo 2.3: 9.5 credits/s ($0.048/s) for 1080p
+- HappyHorse 1.0: Open-source, free to use
+
 ## Use Cases
 
 - Social media content creators generating AI videos for free
@@ -41,6 +63,19 @@ Nanobanana Joyflix integrates world-class AI video and image generation models i
 - AI Video Showcases: /showcases?type=video
 - AI Image Showcases: /showcases?type=image
 - Prompt Library: /prompts
+
+### AI Model Pages
+
+- AI Video Model Comparison: /compare
+- Seedance 2.0 (ByteDance): /models/seedance
+- Wan 2.7 (Alibaba): /models/wan
+- Kling 3.0 (Kuaishou): /models/kling
+- Sora 2 Pro (OpenAI): /models/sora
+- Veo 3.1 (Google): /models/veo
+- Hailuo 2.3 (MiniMax): /models/hailuo
+- Grok Imagine (xAI): /models/grok-imagine
+- Runway Gen-4 (Runway): /models/runway
+- HappyHorse 1.0 (Open Source): /models/happyhorse
 
 ## About
 

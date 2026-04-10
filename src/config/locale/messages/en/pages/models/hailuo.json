@@ -1,0 +1,197 @@
+{
+  "metadata": {
+    "title": "Hailuo AI Video Generator — Free Online (2.3, 02) | AI Video Generator Free",
+    "description": "Try Hailuo AI video generator free online. MiniMax Hailuo 2.3 and 02 models with text-to-video, image-to-video, and high-quality AI video output."
+  },
+  "page": {
+    "title": "Hailuo 2.3 AI Video Generator",
+    "description": "MiniMax Hailuo is a family of AI video generation models known for high-quality output, stylized visuals, and efficient processing.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Hailuo 2.3 AI Video Generator — Free Online",
+        "description": "MiniMax Hailuo 2.3 — generate high-quality AI videos from text or images with stylized visuals and efficient processing. Try free online.",
+        "highlight_text": "Hailuo 2.3",
+        "tip": "<strong>Powered by Hailuo 2.3</strong> — Free credits available on sign-up.",
+        "buttons": [
+          {
+            "title": "Generate AI Video with Hailuo",
+            "icon": "Video",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "Compare AI Video Models",
+            "icon": "ArrowLeft",
+            "url": "/#video-models",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": {
+          "src": "/imgs/bg/girl.jpeg",
+          "alt": "Hailuo AI video generator"
+        }
+      },
+      "videos": {
+        "id": "model-videos",
+        "title": "Hailuo 2.3 AI Video Examples",
+        "description": "Watch real AI-generated videos created with Hailuo 2.3. Hover to preview, click to play with sound.",
+        "videos": [
+          {
+            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/17617366231364e44v2sv.mp4"
+          },
+          {
+            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/17617367954436exivpkv.mp4"
+          },
+          {
+            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1758519311173v59mdgzx.mp4"
+          },
+          {
+            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/175852306669747hp4y2b.mp4"
+          },
+          {
+            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1758521119476yelkzps1.mp4"
+          },
+          {
+            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/175852441202970pyirpe.mp4"
+          }
+        ]
+      },
+      "versions": {
+        "id": "features",
+        "title": "Hailuo Model Versions Compared",
+        "description": "Compare Hailuo AI video model versions — from the latest Hailuo 2.3 with enhanced capabilities to the efficient Hailuo 02.",
+        "items": [
+          {
+            "title": "Hailuo 2.3 — Latest",
+            "description": "MiniMax's latest AI video model with enhanced text-to-video and image-to-video generation, improved motion quality, and more cinematic output.",
+            "icon": "Sparkles"
+          },
+          {
+            "title": "Hailuo 02",
+            "description": "Efficient AI video generation model with reliable output quality and fast processing speed for everyday video creation workflows.",
+            "icon": "Zap"
+          }
+        ]
+      },
+      "comparison": {
+        "id": "model-comparison",
+        "title": "Hailuo 2.3 Version Comparison",
+        "description": "Compare all Hailuo 2.3 model versions side by side — features, resolution, pricing, and capabilities.",
+        "columns": [
+          {
+            "key": "h23",
+            "label": "Hailuo 2.3"
+          },
+          {
+            "key": "h02",
+            "label": "Hailuo 02"
+          }
+        ],
+        "rows": [
+          {
+            "label": "Text to Video",
+            "values": {
+              "h23": "✓",
+              "h02": "✓"
+            }
+          },
+          {
+            "label": "Image to Video",
+            "values": {
+              "h23": "✓",
+              "h02": "✓"
+            }
+          },
+          {
+            "label": "Max Resolution",
+            "values": {
+              "h23": "1080p",
+              "h02": "1080p"
+            }
+          },
+          {
+            "label": "Duration",
+            "values": {
+              "h23": "5-10s",
+              "h02": "6s"
+            }
+          },
+          {
+            "label": "Pricing (per second)",
+            "values": {
+              "h23": "-",
+              "h02": "9.5 credits ($0.048/s)"
+            }
+          }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Hailuo AI Video Generation Capabilities",
+        "description": "Hailuo models support comprehensive AI video generation features.",
+        "items": [
+          {
+            "title": "Text to Video Generation",
+            "description": "Generate high-quality AI videos from text prompts with Hailuo's advanced language understanding and creative visual interpretation.",
+            "icon": "Type"
+          },
+          {
+            "title": "Image to Video Animation",
+            "description": "Animate static images into dynamic AI videos with natural motion and consistent visual quality.",
+            "icon": "Image"
+          },
+          {
+            "title": "Stylized Visual Output",
+            "description": "Hailuo excels at generating stylized AI video content including animations, CGI-style visuals, and artistic interpretations.",
+            "icon": "Palette"
+          },
+          {
+            "title": "Efficient Processing",
+            "description": "Hailuo models are optimized for fast video generation, enabling rapid iteration and scalable content production.",
+            "icon": "Rocket"
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Hailuo AI Video Generator FAQ",
+        "description": "Frequently asked questions about Hailuo AI video generation.",
+        "items": [
+          {
+            "question": "What is Hailuo by MiniMax?",
+            "answer": "Hailuo is MiniMax's AI video generation model family, known for high-quality stylized output and efficient processing for creative video production."
+          },
+          {
+            "question": "Can I use Hailuo for free?",
+            "answer": "Yes! You can try Hailuo AI video generator free online with sign-up credits. No credit card required."
+          },
+          {
+            "question": "What is the difference between Hailuo 2.3 and Hailuo 02?",
+            "answer": "Hailuo 2.3 is the latest model with enhanced generation quality and cinematic output. Hailuo 02 is optimized for efficient processing and reliable everyday video creation."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Start Generating AI Videos with Hailuo Free",
+        "description": "Sign up now and get free credits to generate your first Hailuo AI video.",
+        "buttons": [
+          {
+            "title": "Try Hailuo Free",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "icon": "Video"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

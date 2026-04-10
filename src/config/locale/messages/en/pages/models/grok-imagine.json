@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "title": "Grok Imagine AI Video Generator — Free Online | AI Video Generator Free",
+    "description": "Try Grok Imagine AI video generator free online. xAI's AI video generation model with text-to-video and image-to-video capabilities."
+  },
+  "page": {
+    "title": "Grok Imagine AI Video Generator",
+    "description": "xAI Grok Imagine is an AI video generation model supporting text-to-video and image-to-video creation with Grok's advanced understanding capabilities.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Grok Imagine AI Video Generator — Free Online",
+        "description": "xAI Grok Imagine — generate AI videos from text or images with advanced language understanding and creative visual output. Try free online.",
+        "highlight_text": "Grok Imagine",
+        "tip": "<strong>Powered by Grok Imagine</strong> — Free credits available on sign-up.",
+        "buttons": [
+          {
+            "title": "Generate AI Video with Grok",
+            "icon": "Video",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "Compare AI Video Models",
+            "icon": "ArrowLeft",
+            "url": "/#video-models",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": {
+          "src": "/imgs/bg/girl.jpeg",
+          "alt": "Grok Imagine AI video generator"
+        }
+      },
+      "videos": {
+        "id": "model-videos",
+        "title": "Grok Imagine AI Video Examples",
+        "description": "Watch real AI-generated videos created with Grok Imagine. Hover to preview, click to play with sound.",
+        "videos": [
+          {
+            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1762247832657qdblcxkp.mp4",
+            "prompt": "Cinematic portrait of a woman sitting by a vinyl record player, retro living room background, soft ambient lighting, warm earthy tones, nostalgic 1970s wardrobe, reflective mood, gentle film grain tex"
+          },
+          {
+            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1762248271431um2rtrv9.mp4",
+            "prompt": "prompt:string*aspect_ratio:string (2:3 | 3:2 | 1:1 | 9:16 | 16:9)enable_pro:boolean"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775029498799_9HJRSiTP.mp4"
+          }
+        ]
+      },
+      "comparison": {
+        "id": "model-comparison",
+        "title": "Grok Imagine Version Comparison",
+        "description": "Compare all Grok Imagine model versions side by side — features, resolution, pricing, and capabilities.",
+        "columns": [
+          {
+            "key": "grok",
+            "label": "Grok Imagine"
+          }
+        ],
+        "rows": [
+          {
+            "label": "Text to Video",
+            "values": {
+              "grok": "✓"
+            }
+          },
+          {
+            "label": "Image to Video",
+            "values": {
+              "grok": "✓"
+            }
+          },
+          {
+            "label": "Pro Mode",
+            "values": {
+              "grok": "✓"
+            }
+          },
+          {
+            "label": "Aspect Ratios",
+            "values": {
+              "grok": "2:3, 3:2, 1:1, 9:16, 16:9"
+            }
+          }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Grok Imagine AI Video Generation Capabilities",
+        "description": "Grok Imagine combines xAI's advanced language understanding with creative video generation.",
+        "items": [
+          {
+            "title": "Text to Video Generation",
+            "description": "Generate AI videos from text prompts leveraging Grok's advanced language understanding for nuanced prompt interpretation.",
+            "icon": "Type"
+          },
+          {
+            "title": "Image to Video Animation",
+            "description": "Transform static images into dynamic AI videos with natural motion and creative visual transitions.",
+            "icon": "Image"
+          },
+          {
+            "title": "Advanced Prompt Understanding",
+            "description": "Grok Imagine excels at understanding complex, nuanced prompts thanks to xAI's advanced language model foundation.",
+            "icon": "Brain"
+          },
+          {
+            "title": "Creative Visual Output",
+            "description": "Produce visually creative and diverse AI video output with strong artistic interpretation and unique visual styles.",
+            "icon": "Palette"
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Grok Imagine AI Video Generator FAQ",
+        "description": "Frequently asked questions about Grok Imagine AI video generation.",
+        "items": [
+          {
+            "question": "What is Grok Imagine?",
+            "answer": "Grok Imagine is xAI's AI video generation model that combines advanced language understanding with creative visual generation capabilities."
+          },
+          {
+            "question": "Can I use Grok Imagine for free?",
+            "answer": "Yes! You can try Grok Imagine AI video generator free online with sign-up credits. No credit card required."
+          },
+          {
+            "question": "What makes Grok Imagine different?",
+            "answer": "Grok Imagine leverages xAI's advanced language model for superior prompt understanding, enabling more nuanced and creative video generation from complex descriptions."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Start Generating AI Videos with Grok Imagine Free",
+        "description": "Sign up now and get free credits to generate your first Grok Imagine AI video.",
+        "buttons": [
+          {
+            "title": "Try Grok Imagine Free",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "icon": "Video"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

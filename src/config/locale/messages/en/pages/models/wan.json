@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "title": "Wan AI Video Generator — Free Online (2.7, 2.6, 2.5, 2.2) | AI Video Generator Free",
+    "description": "Try Wan AI video generator free online. Alibaba Wan 2.7, 2.6, 2.5, 2.2 models with text-to-video, image-to-video, reference-to-video, video editing, and 720p-1080p output."
+  },
+  "page": {
+    "title": "Wan 2.7 AI Video Generator",
+    "description": "Alibaba Wan is a family of AI video generation models supporting text-to-video, image-to-video, reference-to-video, video editing, and speech-to-video with up to 1080p output.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Wan 2.7 AI Video Generator — Free Online",
+        "description": "Alibaba Wan 2.7 — generate AI videos from text, images, references, or audio with up to 1080p output. Full-modality video generation in one unified API.",
+        "highlight_text": "Wan 2.7",
+        "tip": "<strong>Powered by Wan 2.7</strong> — Free credits available on sign-up.",
+        "buttons": [
+          {
+            "title": "Generate AI Video with Wan",
+            "icon": "Video",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "Compare AI Video Models",
+            "icon": "ArrowLeft",
+            "url": "/#video-models",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": {
+          "src": "/imgs/bg/girl.jpeg",
+          "alt": "Wan AI video generator"
+        }
+      },
+      "videos": {
+        "id": "model-videos",
+        "title": "Wan 2.7 AI Video Examples",
+        "description": "Watch real AI-generated videos created with Wan 2.7. Hover to preview, click to play with sound.",
+        "videos": [
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775568062605_MPXfAL3r.mp4",
+            "prompt": "A flower blooming and wilting over two weeks, one photo per day. Same vase, same window, same angle. Light changes with weather. Audio: Quiet domestic.The positive prompt for the generation"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775568830969_fuvjlzzL.mp4",
+            "prompt": "The video drinks milk tea while doing some improvised dance moves to the music.Text prompts for video generation. Supports both Chinese and English, with a minimum of 2 characters and a maximum of 5,0"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775569895536_8pa5999R.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775571133705_Syux4gRV.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775569612262_xKywje5P.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775570281446_LQwTWxMW.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775634648377_W2ZI7lRB.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775635790645_B8wpaPoe.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1775637684106_OLZ14Nne.mp4"
+          }
+        ]
+      },
+      "versions": {
+        "id": "features",
+        "title": "Wan Model Versions Compared",
+        "description": "Compare all Wan AI video model versions — from the latest Wan 2.7 with full four-mode suite to the fast Wan 2.2 Turbo.",
+        "items": [
+          {
+            "title": "Wan 2.7 Video — Latest",
+            "description": "Alibaba's flagship AI video suite with four generation modes: Text-to-Video (T2V), Image-to-Video (I2V), Reference-to-Video (R2V), and Video Edit. Supports full-modality input and 720P–1080P output.",
+            "icon": "Sparkles"
+          },
+          {
+            "title": "Wan 2.6",
+            "description": "Enhanced video generation with improved text-to-video and image-to-video capabilities, better motion consistency, and faster processing speeds.",
+            "icon": "Zap"
+          },
+          {
+            "title": "Wan 2.5",
+            "description": "Reliable AI video generation with cinematic output quality. Supports text-to-video and image-to-video with flexible duration and aspect ratio options.",
+            "icon": "Video"
+          },
+          {
+            "title": "Wan 2.2 (Animate & Turbo)",
+            "description": "Fast AI video generation with Text-to-Video (T2V), Image-to-Video (I2V), and Speech-to-Video (S2V) modes. A14B Turbo variant for ultra-fast cinematic output.",
+            "icon": "Rocket"
+          }
+        ]
+      },
+      "comparison": {
+        "id": "model-comparison",
+        "title": "Wan 2.7 Version Comparison",
+        "description": "Compare all Wan 2.7 model versions side by side — features, resolution, pricing, and capabilities.",
+        "columns": [
+          {
+            "key": "v27",
+            "label": "Wan 2.7"
+          },
+          {
+            "key": "v26",
+            "label": "Wan 2.6"
+          },
+          {
+            "key": "v25",
+            "label": "Wan 2.5"
+          },
+          {
+            "key": "v22a",
+            "label": "Wan 2.2 A14B"
+          },
+          {
+            "key": "v22an",
+            "label": "Wan 2.2 Animate"
+          }
+        ],
+        "rows": [
+          {
+            "label": "Text to Video",
+            "values": {
+              "v27": "✓",
+              "v26": "✓",
+              "v25": "✓",
+              "v22a": "✓",
+              "v22an": "-"
+            }
+          },
+          {
+            "label": "Image to Video",
+            "values": {
+              "v27": "✓",
+              "v26": "✓",
+              "v25": "✓",
+              "v22a": "✓",
+              "v22an": "✓"
+            }
+          },
+          {
+            "label": "Reference to Video",
+            "values": {
+              "v27": "✓",
+              "v26": "✓",
+              "v25": "-",
+              "v22a": "-",
+              "v22an": "-"
+            }
+          },
+          {
+            "label": "Video Edit",
+            "values": {
+              "v27": "✓",
+              "v26": "-",
+              "v25": "-",
+              "v22a": "-",
+              "v22an": "-"
+            }
+          },
+          {
+            "label": "Native Audio",
+            "values": {
+              "v27": "-",
+              "v26": "✓",
+              "v25": "✓",
+              "v22a": "-",
+              "v22an": "-"
+            }
+          },
+          {
+            "label": "Speech to Video",
+            "values": {
+              "v27": "-",
+              "v26": "-",
+              "v25": "-",
+              "v22a": "✓",
+              "v22an": "-"
+            }
+          },
+          {
+            "label": "Max Resolution",
+            "values": {
+              "v27": "1080p",
+              "v26": "1080p",
+              "v25": "1080p",
+              "v22a": "720p",
+              "v22an": "720p"
+            }
+          },
+          {
+            "label": "Duration",
+            "values": {
+              "v27": "5-10s",
+              "v26": "5-15s",
+              "v25": "5-10s",
+              "v22a": "5-10s",
+              "v22an": "5-10s"
+            }
+          }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Wan AI Video Generation Capabilities",
+        "description": "Wan models support comprehensive AI video generation features for creative professionals and developers.",
+        "items": [
+          {
+            "title": "Text to Video Generation",
+            "description": "Generate high-quality AI videos from text prompts with Wan T2V. Supports complex scene descriptions with cinematic camera movements.",
+            "icon": "Type"
+          },
+          {
+            "title": "Image to Video Animation",
+            "description": "Animate static images into dynamic AI videos with first and last frame control for precise motion consistency.",
+            "icon": "Image"
+          },
+          {
+            "title": "Reference to Video",
+            "description": "Use multi-reference images and videos with voice clone and motion replication for character-consistent AI video output.",
+            "icon": "Layers"
+          },
+          {
+            "title": "Natural Language Video Editing",
+            "description": "Edit existing videos using natural language instructions with Wan 2.7 Video Edit API for fast iterative changes.",
+            "icon": "Pencil"
+          },
+          {
+            "title": "Speech to Video",
+            "description": "Wan 2.2 S2V mode generates videos directly from speech input, creating audio-synced visual content automatically.",
+            "icon": "Mic"
+          },
+          {
+            "title": "9-Grid Image Input",
+            "description": "Compose complex scenes using up to 9 reference images for detailed control over AI video composition.",
+            "icon": "Grid3x3"
+          }
+        ]
+      },
+      "use-cases": {
+        "id": "features",
+        "title": "What You Can Create with Wan AI Video Generator",
+        "description": "From marketing videos to film pre-production, Wan powers diverse AI video creation workflows.",
+        "items": [
+          {
+            "title": "Marketing & Product Videos",
+            "description": "Generate professional marketing and product demo videos with Wan T2V API for e-commerce and brand campaigns."
+          },
+          {
+            "title": "Social Media Content",
+            "description": "Scale social media video production using Wan AI video generator for TikTok, Reels, and Shorts."
+          },
+          {
+            "title": "Film Pre-Production & Storyboarding",
+            "description": "Turn scripts and storyboards into visual previews with Wan AI video model for pre-production workflows."
+          },
+          {
+            "title": "Video Restoration & Style Transfer",
+            "description": "Restore and restyle existing footage using Wan 2.7 Video Edit API for creative transformations."
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Wan AI Video Generator FAQ",
+        "description": "Frequently asked questions about Wan AI video generation models.",
+        "items": [
+          {
+            "question": "What is Wan Video API?",
+            "answer": "Wan Video API is Alibaba Tongyi Lab's AI video generation suite, supporting text-to-video, image-to-video, reference-to-video, and video editing through a unified API."
+          },
+          {
+            "question": "What is the difference between Wan 2.7 and Wan 2.6?",
+            "answer": "Wan 2.7 introduces four generation modes (T2V, I2V, R2V, Video Edit), 9-grid image input, subject and voice reference, and instruction-based editing. Wan 2.6 focuses on enhanced T2V and I2V generation."
+          },
+          {
+            "question": "What video resolution does Wan support?",
+            "answer": "Wan models support 720p and 1080p output with flexible aspect ratios including 16:9, 9:16, 1:1, 4:3, and 3:4."
+          },
+          {
+            "question": "Can I use Wan for free?",
+            "answer": "Yes! You can try Wan AI video generator free online with sign-up credits. No credit card required."
+          },
+          {
+            "question": "What is Wan 2.2 Speech-to-Video?",
+            "answer": "Wan 2.2 S2V mode generates videos directly from speech or audio input, automatically creating visual content synchronized with the audio."
+          },
+          {
+            "question": "Does Wan support video editing?",
+            "answer": "Yes, Wan 2.7 Video Edit API supports natural language video editing — describe the changes you want and the model edits the video accordingly."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Start Generating AI Videos with Wan Free",
+        "description": "Sign up now and get free credits to generate your first Wan AI video — no credit card required.",
+        "buttons": [
+          {
+            "title": "Try Wan Free",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "icon": "Video"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

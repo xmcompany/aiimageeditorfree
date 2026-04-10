@@ -1,0 +1,308 @@
+{
+  "metadata": {
+    "title": "Kling AI Video Generator — Free Online (3.0, 2.6, 2.5, 2.1) | AI Video Generator Free",
+    "description": "Try Kling AI video generator free online. Kuaishou Kling 3.0, 2.6, 2.5, 2.1 models with text-to-video, image-to-video, native audio, multi-shot storytelling, and up to 1080p output."
+  },
+  "page": {
+    "title": "Kling 3.0 AI Video Generator",
+    "description": "Kuaishou Kling is a family of AI video generation models with cinematic quality, native audio, multi-shot storytelling, and motion control capabilities.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Kling 3.0 AI Video Generator — Free Online",
+        "description": "Kuaishou Kling 3.0 — generate cinematic AI videos with native audio, multi-shot storytelling, and flexible 3–15s duration. Try free online.",
+        "highlight_text": "Kling 3.0",
+        "tip": "<strong>Powered by Kling 3.0</strong> — Free credits available on sign-up.",
+        "buttons": [
+          {
+            "title": "Generate AI Video with Kling",
+            "icon": "Video",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "Compare AI Video Models",
+            "icon": "ArrowLeft",
+            "url": "/#video-models",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": {
+          "src": "/imgs/bg/girl.jpeg",
+          "alt": "Kling AI video generator"
+        }
+      },
+      "videos": {
+        "id": "model-videos",
+        "title": "Kling 3.0 AI Video Examples",
+        "description": "Watch real AI-generated videos created with Kling 3.0. Hover to preview, click to play with sound.",
+        "videos": [
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770648690994_jIU8D0i9.mp4",
+            "prompt": "738 / 2500 charactersduration*@Elements"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770357544824_3WLW1bWv.mp4",
+            "prompt": "738 / 2500 charactersduration*@Elements"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770358033649_BmLF2Rch.mp4",
+            "prompt": "738 / 2500 charactersduration*@Elements"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770357363265_DEmFFM0I.mp4",
+            "prompt": "738 / 2500 charactersduration*@Elements"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770357280475_uugszd4Z.mp4",
+            "prompt": "738 / 2500 charactersduration*@Elements"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770356947744_bzWO6D7A.mp4",
+            "prompt": "prompt:string*image_urls:array*sound:boolean*duration:string (5 | 10)*"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770358078590_28xlbFD7.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770357191330_gUwYRzpV.mp4"
+          },
+          {
+            "src": "https://static.aiquickdraw.com/tools/example/1770357964822_psSJQTwP.mp4"
+          }
+        ]
+      },
+      "versions": {
+        "id": "features",
+        "title": "Kling Model Versions Compared",
+        "description": "Compare all Kling AI video model versions — from the latest Kling 3.0 with native audio to the budget-friendly Kling 2.1.",
+        "items": [
+          {
+            "title": "Kling 3.0 — Latest",
+            "description": "Kuaishou's flagship AI video model with text-to-video, image-to-video, native audio across 5 languages, multi-shot storytelling, and up to 15-second duration with cinematic control.",
+            "icon": "Sparkles"
+          },
+          {
+            "title": "Kling 2.6 & Motion Control",
+            "description": "Enhanced video generation with improved motion dynamics and Motion Control variant for transferring movement from reference videos to character images.",
+            "icon": "Move"
+          },
+          {
+            "title": "Kling 2.5 Turbo",
+            "description": "Fast AI video generation with Turbo mode for rapid iteration. Supports text-to-video and image-to-video with reliable output quality.",
+            "icon": "Zap"
+          },
+          {
+            "title": "Kling 2.1 (Standard, Pro, Master)",
+            "description": "Affordable AI video generation with three tiers — Standard for basic use, Pro for enhanced quality, and Master for professional output at 1080p.",
+            "icon": "Crown"
+          }
+        ]
+      },
+      "comparison": {
+        "id": "model-comparison",
+        "title": "Kling 3.0 Version Comparison",
+        "description": "Compare all Kling 3.0 model versions side by side — features, resolution, pricing, and capabilities.",
+        "columns": [
+          {
+            "key": "v30",
+            "label": "Kling 3.0"
+          },
+          {
+            "key": "v26",
+            "label": "Kling 2.6"
+          },
+          {
+            "key": "v25",
+            "label": "Kling 2.5 Turbo"
+          },
+          {
+            "key": "v21",
+            "label": "Kling 2.1"
+          }
+        ],
+        "rows": [
+          {
+            "label": "Text to Video",
+            "values": {
+              "v30": "✓",
+              "v26": "✓",
+              "v25": "✓",
+              "v21": "✓"
+            }
+          },
+          {
+            "label": "Image to Video",
+            "values": {
+              "v30": "✓",
+              "v26": "✓",
+              "v25": "✓",
+              "v21": "✓"
+            }
+          },
+          {
+            "label": "Native Audio",
+            "values": {
+              "v30": "✓",
+              "v26": "✓",
+              "v25": "-",
+              "v21": "-"
+            }
+          },
+          {
+            "label": "Multi-Element Control",
+            "values": {
+              "v30": "✓",
+              "v26": "-",
+              "v25": "-",
+              "v21": "-"
+            }
+          },
+          {
+            "label": "Max Resolution",
+            "values": {
+              "v30": "1080p",
+              "v26": "1080p",
+              "v25": "1080p",
+              "v21": "1080p"
+            }
+          },
+          {
+            "label": "Duration",
+            "values": {
+              "v30": "5-15s",
+              "v26": "5-10s",
+              "v25": "5-10s",
+              "v21": "5-10s"
+            }
+          },
+          {
+            "label": "Pricing (5s video)",
+            "values": {
+              "v30": "-",
+              "v26": "-",
+              "v25": "-",
+              "v21": "160 credits ($0.80)"
+            }
+          },
+          {
+            "label": "Pricing (10s video)",
+            "values": {
+              "v30": "-",
+              "v26": "-",
+              "v25": "-",
+              "v21": "320 credits ($1.60)"
+            }
+          }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Kling AI Video Generation Capabilities",
+        "description": "Kling models support comprehensive AI video features for professional content creation.",
+        "items": [
+          {
+            "title": "Native Audio Generation",
+            "description": "Kling 3.0 generates native audio in Chinese, English, Japanese, Korean, and Spanish with dialect and accent simulation support.",
+            "icon": "Mic"
+          },
+          {
+            "title": "Multi-Shot Cinematic Storytelling",
+            "description": "Create complex multi-shot sequences with dynamic camera movements, shot transitions, and structured narrative control.",
+            "icon": "Film"
+          },
+          {
+            "title": "Motion Control & Transfer",
+            "description": "Transfer motion from reference videos to new character images while preserving facial identity and realistic movement dynamics.",
+            "icon": "Move"
+          },
+          {
+            "title": "Character & Scene Consistency",
+            "description": "Maintain strong visual consistency for characters, objects, and scenes across frames, camera movements, and multi-shot sequences.",
+            "icon": "Users"
+          },
+          {
+            "title": "Photorealistic Output",
+            "description": "Generate photorealistic AI videos with lifelike characters, accurate text rendering in imagery, and professional-grade visual quality.",
+            "icon": "Camera"
+          },
+          {
+            "title": "Extended Duration Up to 15s",
+            "description": "Kling 3.0 supports flexible video duration from 3 to 15 seconds, enabling longer narrative sequences with smooth transitions.",
+            "icon": "Clock"
+          }
+        ]
+      },
+      "use-cases": {
+        "id": "features",
+        "title": "What You Can Create with Kling AI Video Generator",
+        "description": "From cinematic storytelling to product advertising, Kling powers diverse AI video creation workflows.",
+        "items": [
+          {
+            "title": "Cinematic Storytelling",
+            "description": "Create film-quality narrative videos with Kling 3.0 multi-shot text-to-video, dynamic camera control, and native dialogue."
+          },
+          {
+            "title": "Product Ads & E-commerce",
+            "description": "Generate professional product demonstration videos with accurate text rendering for branding and e-commerce campaigns."
+          },
+          {
+            "title": "Multilingual Social Content",
+            "description": "Produce social media videos with native dialogue in 5 languages and regional accents using Kling 3.0 AI video generator."
+          },
+          {
+            "title": "Game & Animation Visualization",
+            "description": "Visualize game concepts and animation sequences with Kling's photorealistic AI video output and motion control."
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Kling AI Video Generator FAQ",
+        "description": "Frequently asked questions about Kling AI video generation models.",
+        "items": [
+          {
+            "question": "What is Kling AI?",
+            "answer": "Kling AI is Kuaishou's AI video generation platform, serving over 60 million creators worldwide. Kling models support text-to-video, image-to-video, motion control, and native audio generation."
+          },
+          {
+            "question": "What is new in Kling 3.0?",
+            "answer": "Kling 3.0 introduces native audio generation across 5 languages, multi-shot storytelling, extended 15-second duration, photorealistic output, and accurate text rendering in video."
+          },
+          {
+            "question": "What is Kling Motion Control?",
+            "answer": "Kling Motion Control transfers movement from reference videos to character images while preserving facial identity, expressions, and realistic motion dynamics."
+          },
+          {
+            "question": "Can I use Kling for free?",
+            "answer": "Yes! You can try Kling AI video generator free online with sign-up credits. No credit card required."
+          },
+          {
+            "question": "What languages does Kling 3.0 audio support?",
+            "answer": "Kling 3.0 supports native audio generation in Chinese, English, Japanese, Korean, and Spanish, including dialects like Cantonese, Sichuanese, and accents like American, British, and Indian English."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Start Generating AI Videos with Kling Free",
+        "description": "Sign up now and get free credits to generate your first Kling AI video — no credit card required.",
+        "buttons": [
+          {
+            "title": "Try Kling Free",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "icon": "Video"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

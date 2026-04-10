@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import Script from 'next/script';
 
 import { getThemePage } from '@/core/theme';
 import { envConfigs } from '@/config';
@@ -133,7 +134,92 @@ export default async function DynamicPage({
     // return dynamic page
     if (t.has('page')) {
       const Page = await getThemePage('dynamic-page');
-      return <Page locale={locale} page={t.raw('page')} />;
+      const pageData = t.raw('page');
+      const appUrl = envConfigs.app_url || 'https://nanobanana-joyflix.ai';
+
+      let structuredData: Record<string, any> | null = null;
+
+      const isModelPage = dynamicPageSlug.startsWith('models.');
+      const isComparePage = dynamicPageSlug === 'compare';
+
+      if (isModelPage) {
+        const modelSlug = dynamicPageSlug.replace('models.', '');
+        const modelPageUrl = `${appUrl}/models/${modelSlug}`;
+        const pageTitle = pageData.sections?.hero?.title || pageData.title || '';
+        const pageDesc = pageData.sections?.hero?.description || pageData.description || '';
+        const metaData = t.raw('metadata') || {};
+        const graphItems: any[] = [
+          {
+            '@type': 'SoftwareApplication',
+            name: pageTitle,
+            description: metaData.description || pageDesc,
+            url: modelPageUrl,
+            applicationCategory: 'MultimediaApplication',
+            operatingSystem: 'Web',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'USD',
+            },
+          },
+        ];
+
+        const faqItems = pageData.sections?.faq?.items;
+        if (Array.isArray(faqItems) && faqItems.length > 0) {
+          graphItems.push({
+            '@type': 'FAQPage',
+            mainEntity: faqItems.map((item: any) => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: item.answer,
+              },
+            })),
+          });
+        }
+
+        structuredData = {
+          '@context': 'https://schema.org',
+          '@graph': graphItems,
+        };
+      } else if (isComparePage) {
+        const comparePageUrl = `${appUrl}/compare`;
+        const pageTitle = pageData.sections?.hero?.title || pageData.title || '';
+        const pageDesc = pageData.sections?.hero?.description || pageData.description || '';
+        const modelSlugs = ['seedance', 'wan', 'kling', 'sora', 'veo', 'hailuo', 'grok-imagine', 'runway', 'happyhorse'];
+
+        structuredData = {
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'ItemList',
+              name: pageTitle,
+              description: pageDesc,
+              url: comparePageUrl,
+              numberOfItems: modelSlugs.length,
+              itemListElement: modelSlugs.map((slug, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                url: `${appUrl}/models/${slug}`,
+              })),
+            },
+          ],
+        };
+      }
+
+      return (
+        <>
+          {structuredData && (
+            <Script
+              id={`structured-data-${dynamicPageSlug}`}
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+            />
+          )}
+          <Page locale={locale} page={pageData} />
+        </>
+      );
     }
   } catch (error) {
     // Translation not found, continue to 404

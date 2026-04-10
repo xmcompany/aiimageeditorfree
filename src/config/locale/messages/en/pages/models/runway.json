@@ -1,0 +1,155 @@
+{
+  "metadata": {
+    "title": "Runway AI Video Generator — Free Online (Gen-4, Aleph) | AI Video Generator Free",
+    "description": "Try Runway AI video generator free online. Runway Gen-4 Turbo and Aleph models for professional AI video generation with cinematic quality."
+  },
+  "page": {
+    "title": "Runway AI Video Generator",
+    "description": "Runway is a leading AI video generation platform with Gen-4 Turbo and Aleph models, known for cinematic quality and professional creative tools.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Runway AI Video Generator — Free Online",
+        "description": "Runway Gen-4 Turbo & Aleph — generate professional AI videos with cinematic quality and advanced creative control. Try free online.",
+        "highlight_text": "Runway",
+        "tip": "<strong>Powered by Runway Gen-4</strong> — Free credits available on sign-up.",
+        "buttons": [
+          {
+            "title": "Generate AI Video with Runway",
+            "icon": "Video",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "Compare AI Video Models",
+            "icon": "ArrowLeft",
+            "url": "/#video-models",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": {
+          "src": "/imgs/bg/girl.jpeg",
+          "alt": "Runway AI video generator"
+        }
+      },
+      "comparison": {
+        "id": "model-comparison",
+        "title": "Runway Gen-4 Version Comparison",
+        "description": "Compare all Runway Gen-4 model versions side by side — features, resolution, pricing, and capabilities.",
+        "columns": [
+          {
+            "key": "gen4",
+            "label": "Runway Gen-4 Turbo"
+          },
+          {
+            "key": "aleph",
+            "label": "Runway Aleph"
+          }
+        ],
+        "rows": [
+          {
+            "label": "Text to Video",
+            "values": {
+              "gen4": "✓",
+              "aleph": "✓"
+            }
+          },
+          {
+            "label": "Image to Video",
+            "values": {
+              "gen4": "✓",
+              "aleph": "✓"
+            }
+          },
+          {
+            "label": "Max Resolution",
+            "values": {
+              "gen4": "1080p",
+              "aleph": "720p"
+            }
+          },
+          {
+            "label": "Duration",
+            "values": {
+              "gen4": "5-10s",
+              "aleph": "5s"
+            }
+          },
+          {
+            "label": "Aspect Ratios",
+            "values": {
+              "gen4": "16:9, 9:16, 1:1, 4:3, 3:4",
+              "aleph": "-"
+            }
+          }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Runway AI Video Generation Capabilities",
+        "description": "Runway models deliver professional-grade AI video generation with advanced creative tools.",
+        "items": [
+          {
+            "title": "Gen-4 Turbo Generation",
+            "description": "Runway's latest Gen-4 Turbo model delivers high-quality AI video generation with improved speed and cinematic output quality.",
+            "icon": "Sparkles"
+          },
+          {
+            "title": "Aleph Advanced Model",
+            "description": "Runway Aleph provides advanced AI video generation capabilities with enhanced creative control and professional visual quality.",
+            "icon": "Brain"
+          },
+          {
+            "title": "Cinematic Quality Output",
+            "description": "Runway is known for producing cinema-grade AI videos with natural motion, realistic lighting, and professional visual effects.",
+            "icon": "Clapperboard"
+          },
+          {
+            "title": "Professional Creative Tools",
+            "description": "Access Runway's suite of professional video editing and creative tools for post-generation refinement and enhancement.",
+            "icon": "Scissors"
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Runway AI Video Generator FAQ",
+        "description": "Frequently asked questions about Runway AI video generation.",
+        "items": [
+          {
+            "question": "What is Runway AI?",
+            "answer": "Runway is a leading AI video generation platform offering Gen-4 Turbo and Aleph models for professional AI video creation with cinematic quality."
+          },
+          {
+            "question": "Can I use Runway for free?",
+            "answer": "Yes! You can try Runway AI video generator free online with sign-up credits. No credit card required."
+          },
+          {
+            "question": "What is the difference between Gen-4 Turbo and Aleph?",
+            "answer": "Gen-4 Turbo is optimized for fast, high-quality video generation. Aleph provides advanced creative control with enhanced visual quality for professional workflows."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Start Generating AI Videos with Runway Free",
+        "description": "Sign up now and get free credits to generate your first Runway AI video.",
+        "buttons": [
+          {
+            "title": "Try Runway Free",
+            "url": "/ai-video-generator",
+            "target": "_self",
+            "icon": "Video"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}
