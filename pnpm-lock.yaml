@@ -192,9 +192,6 @@ importers:
       emblor:
         specifier: ^1.4.8
         version: 1.4.8(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      framer-motion:
-        specifier: ^12.23.12
-        version: 12.23.12(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       fumadocs-core:
         specifier: 15.7.12
         version: 15.7.12(@types/react@19.2.2)(next@15.5.7(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)

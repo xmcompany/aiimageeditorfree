@@ -7,7 +7,7 @@ import { TableCard } from '@/shared/blocks/table';
 import { getVideos, getVideosCount } from '@/shared/models/video';
 import { Crumb } from '@/shared/types/blocks/common';
 import { type Table } from '@/shared/types/blocks/table';
-import { ShowInGalleryToggle } from '@/shared/blocks/table/actions/show-in-gallery-toggle';
+import { SetAsShowcase } from '@/shared/blocks/table/actions/set-as-showcase';
 
 export default async function AdminVideosPage({
   params,
@@ -19,7 +19,6 @@ export default async function AdminVideosPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // Use AITASKS_READ for now to ensure user can access it immediately
   await requirePermission({
     code: PERMISSIONS.AITASKS_READ,
     redirectUrl: '/admin/no-permission',
@@ -52,8 +51,8 @@ export default async function AdminVideosPage({
           poster: 'firstFrameImageUrl'
         },
       },
-      { 
-        name: 'prompt', 
+      {
+        name: 'prompt',
         title: t('form.prompt'),
         type: 'copy',
         callback: (item: any) => {
@@ -64,22 +63,22 @@ export default async function AdminVideosPage({
       { name: 'model', title: t('form.model') },
       { name: 'status', title: t('form.status'), type: 'label' },
       { name: 'creditsUsed', title: t('form.creditsUsed') },
-      { 
-        name: 'user', 
-        title: t('form.userId'), 
+      {
+        name: 'user',
+        title: t('form.userId'),
         type: 'user',
       },
       { name: 'createdAt', title: t('form.createdAt'), type: 'time' },
       {
-        name: 'showInGallery',
-        title: t('form.show_in_gallery'),
+        name: 'actions',
+        title: t('form.actions'),
         callback: (item: any) => (
-          <ShowInGalleryToggle
+          <SetAsShowcase
             id={item.id}
             type="video"
-            showInGallery={item.showInGallery === 1}
-            labelOff={t('actions.show_in_gallery')}
-            labelOn={t('actions.hide_from_gallery')}
+            label={t('actions.set_as_showcase')}
+            showcasedLabel={t('actions.showcased')}
+            isShowcased={item.isInShowcase}
           />
         )
       }
