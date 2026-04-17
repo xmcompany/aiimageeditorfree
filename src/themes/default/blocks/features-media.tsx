@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import { LazyImage, SmartIcon } from '@/shared/blocks/common';
 import { cn } from '@/shared/lib/utils';

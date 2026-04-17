@@ -1,21 +1,21 @@
 {
   "metadata": {
-    "title": "Veo AI Video Generator — Free Online (Veo 3.1) | AI Video Generator Free",
-    "description": "Try Veo AI video generator free online. Google Veo 3.1 with text-to-video, image-to-video, cinematic quality, and advanced AI video generation capabilities."
+    "title": "Veo 3.1 AI Video Generator | AI Video Generator Free",
+    "description": "Try Google Veo 3.1 AI video generator free online. Cinematic quality, text-to-video, image-to-video, and native audio. No credit card required."
   },
   "page": {
-    "title": "Veo 3.1 AI Video Generator",
-    "description": "Google Veo is a state-of-the-art AI video generation model with cinematic quality, advanced composition, and professional-grade output.",
+    "title": "Veo 3.1 AI Video Generator — Google Veo 3.1",
+    "description": "Google Veo 3.1 is a state-of-the-art AI video generation model by Google DeepMind with cinematic quality, advanced composition, and professional-grade output.",
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "Veo 3.1 AI Video Generator — Free Online",
-        "description": "Google Veo 3.1 — generate cinematic AI videos with Google DeepMind's latest video model. Advanced composition, photorealistic output. Try free online.",
+        "title": "Veo 3.1 AI Video Generator — Google Veo 3.1 Free Online",
+        "description": "Google Veo 3.1 by DeepMind — generate cinematic AI videos with photorealistic quality, advanced scene composition, and native audio. Try Veo 3.1 free online, no credit card required.",
         "highlight_text": "Veo 3.1",
-        "tip": "<strong>Powered by Veo 3.1</strong> — Free credits available on sign-up.",
+        "tip": "<strong>Powered by Google Veo 3.1</strong> — Free credits available on sign-up.",
         "buttons": [
           {
-            "title": "Generate AI Video with Veo",
+            "title": "Generate AI Video with Veo 3.1",
             "icon": "Video",
             "url": "/ai-video-generator",
             "target": "_self",
@@ -23,8 +23,8 @@
           },
           {
             "title": "Compare AI Video Models",
-            "icon": "ArrowLeft",
-            "url": "/#video-models",
+            "icon": "BarChart3",
+            "url": "/compare",
             "target": "_self",
             "variant": "outline"
           }
@@ -35,88 +35,40 @@
         "show_bg": false,
         "background_image": {
           "src": "/imgs/bg/girl.jpeg",
-          "alt": "Veo AI video generator"
+          "alt": "Google Veo 3.1 AI video generator"
         }
       },
       "videos": {
         "id": "model-videos",
-        "title": "Veo 3.1 AI Video Examples",
-        "description": "Watch real AI-generated videos created with Veo 3.1. Hover to preview, click to play with sound.",
+        "title": "Google Veo 3.1 AI Video Examples",
+        "description": "Watch real AI-generated videos created with Google Veo 3.1. Hover to preview, click to play with sound.",
         "videos": [
-          {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1760692238600spjz047p.mp4"
-          },
-          {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/17605812980114hqpocse.mp4"
-          },
-          {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1760594688399gs6pv0t1.mp4"
-          }
+          { "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/veo/1776133088983_90m4hf.mp4" },
+          { "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/veo/1776133111614_97ugy3.mp4" },
+          { "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/veo/1776133122942_p397us.mp4" }
         ]
       },
       "comparison": {
         "id": "model-comparison",
-        "title": "Veo 3.1 Version Comparison",
-        "description": "Compare all Veo 3.1 model versions side by side — features, resolution, pricing, and capabilities.",
+        "title": "Google Veo 3.1 Version Comparison",
+        "description": "Compare Veo 3.1 and Veo 3.1 Fast side by side — features, resolution, and capabilities.",
         "columns": [
-          {
-            "key": "v31",
-            "label": "Veo 3.1"
-          },
-          {
-            "key": "v31f",
-            "label": "Veo 3.1 Fast"
-          }
+          { "key": "v31", "label": "Veo 3.1" },
+          { "key": "v31f", "label": "Veo 3.1 Fast" }
         ],
         "rows": [
-          {
-            "label": "Text to Video",
-            "values": {
-              "v31": "✓",
-              "v31f": "✓"
-            }
-          },
-          {
-            "label": "Image to Video",
-            "values": {
-              "v31": "✓",
-              "v31f": "✓"
-            }
-          },
-          {
-            "label": "Reference to Video",
-            "values": {
-              "v31": "✓",
-              "v31f": "-"
-            }
-          },
-          {
-            "label": "Native Audio",
-            "values": {
-              "v31": "✓",
-              "v31f": "✓"
-            }
-          },
-          {
-            "label": "Max Resolution",
-            "values": {
-              "v31": "1080p",
-              "v31f": "1080p"
-            }
-          },
-          {
-            "label": "Aspect Ratios",
-            "values": {
-              "v31": "16:9, 9:16, Auto",
-              "v31f": "16:9, 9:16, Auto"
-            }
-          }
+          { "label": "Text to Video", "values": { "v31": "✓", "v31f": "✓" } },
+          { "label": "Image to Video", "values": { "v31": "✓", "v31f": "✓" } },
+          { "label": "Reference to Video", "values": { "v31": "-", "v31f": "✓" } },
+          { "label": "Native Audio", "values": { "v31": "✓", "v31f": "✓" } },
+          { "label": "Max Resolution", "values": { "v31": "4K", "v31f": "1080p" } },
+          { "label": "Aspect Ratios", "values": { "v31": "16:9, 9:16, Auto", "v31f": "16:9, 9:16, Auto" } }
         ]
       },
       "capabilities": {
         "id": "features",
-        "title": "Veo AI Video Generation Capabilities",
-        "description": "Google Veo 3.1 delivers state-of-the-art AI video generation with advanced features.",
+        "title": "Google Veo 3.1 AI Video Generation Capabilities",
+        "description": "Google Veo 3.1 delivers state-of-the-art AI video generation with advanced features built on DeepMind research.",
         "items": [
           {
             "title": "Cinematic Quality Output",
@@ -125,57 +77,69 @@
           },
           {
             "title": "Advanced Scene Composition",
-            "description": "Generate videos with complex multi-element compositions, realistic physics, and coherent spatial relationships.",
+            "description": "Google Veo 3.1 generates videos with complex multi-element compositions, realistic physics, and coherent spatial relationships.",
             "icon": "Layers"
           },
           {
             "title": "Text to Video Generation",
-            "description": "Create AI videos from detailed text prompts with Veo's advanced language understanding and precise visual translation.",
+            "description": "Create AI videos from detailed text prompts with Veo 3.1's advanced language understanding and precise visual translation.",
             "icon": "Type"
           },
           {
             "title": "Image to Video Animation",
-            "description": "Transform reference images into dynamic AI videos while maintaining visual consistency and adding natural motion.",
+            "description": "Transform reference images into dynamic AI videos with Veo 3.1 while maintaining visual consistency and adding natural motion.",
             "icon": "Image"
           },
           {
-            "title": "High Resolution Output",
-            "description": "Veo supports high-resolution AI video output suitable for professional production and commercial use.",
-            "icon": "Monitor"
+            "title": "Native Audio Generation",
+            "description": "Veo 3.1 supports native audio generation, producing videos with synchronized sound that matches the visual content.",
+            "icon": "Volume2"
           },
           {
             "title": "Google DeepMind Technology",
-            "description": "Built on Google DeepMind's cutting-edge research in generative AI, delivering state-of-the-art video quality and coherence.",
+            "description": "Built on Google DeepMind's cutting-edge generative AI research, Veo 3.1 delivers state-of-the-art video quality and coherence.",
             "icon": "Brain"
           }
         ]
       },
       "faq": {
         "id": "faq",
-        "title": "Veo AI Video Generator FAQ",
-        "description": "Frequently asked questions about Veo AI video generation.",
+        "title": "Google Veo 3.1 FAQ — Veo AI Video Generator",
+        "description": "Frequently asked questions about Google Veo 3.1 AI video generation.",
         "items": [
           {
-            "question": "What is Google Veo?",
-            "answer": "Veo is Google DeepMind's AI video generation model, known for cinematic quality output, advanced scene composition, and professional-grade visual rendering."
+            "question": "What is Veo 3.1?",
+            "answer": "Veo 3.1 is Google DeepMind's latest AI video generation model. It generates cinematic-quality videos from text prompts or reference images, with native audio support, advanced scene composition, and up to 1080p resolution. Veo 3.1 is available in two variants: standard and Fast."
           },
           {
-            "question": "Can I use Veo for free?",
-            "answer": "Yes! You can try Veo AI video generator free online with sign-up credits. No credit card required."
+            "question": "What is Google Veo 3.1 and how is it different from Veo 3.0?",
+            "answer": "Google Veo 3.1 is an updated version of Veo 3.0 with improved visual quality, better prompt adherence, and enhanced native audio generation. Veo 3.1 Fast offers faster generation at the same resolution for quicker iteration."
           },
           {
-            "question": "What makes Veo different from other AI video models?",
-            "answer": "Veo leverages Google DeepMind's cutting-edge generative AI research, delivering superior photorealistic quality, complex scene composition, and cinema-grade output."
+            "question": "Can I use Google Veo 3.1 for free?",
+            "answer": "Yes — you can try Google Veo 3.1 AI video generator free online with sign-up credits on AI Video Generator Free. No credit card required to start."
+          },
+          {
+            "question": "What resolution does Veo 3.1 support?",
+            "answer": "Google Veo 3.1 supports up to 1080p video output with aspect ratio options including 16:9, 9:16, and Auto."
+          },
+          {
+            "question": "Does Veo 3.1 support audio?",
+            "answer": "Yes. Veo 3.1 includes native audio generation, producing videos with synchronized sound effects and ambient audio that match the visual content."
+          },
+          {
+            "question": "How does Google Veo 3.1 compare to other AI video models?",
+            "answer": "Google Veo 3.1 stands out for its cinematic photorealistic quality and advanced scene composition, powered by Google DeepMind's research. It competes directly with Kling 3.0 and Seedance 2.0 in the top tier of AI video generation."
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "Start Generating AI Videos with Veo Free",
-        "description": "Sign up now and get free credits to generate your first Veo AI video.",
+        "title": "Try Google Veo 3.1 AI Video Generator Free",
+        "description": "Sign up now and get free credits to generate your first Veo 3.1 AI video — no credit card required.",
         "buttons": [
           {
-            "title": "Try Veo Free",
+            "title": "Try Veo 3.1 Free",
             "url": "/ai-video-generator",
             "target": "_self",
             "icon": "Video"

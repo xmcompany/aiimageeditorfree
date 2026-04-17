@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { TestimonialsColumn } from './testimonial-column'
 import { SmartIcon } from '@/shared/blocks/common/smart-icon'
 import { Section as SectionType } from '@/shared/types/blocks/landing'

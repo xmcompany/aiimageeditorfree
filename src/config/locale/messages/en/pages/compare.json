@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "AI Video Model Comparison 2025 — Seedance vs Wan vs Kling vs Sora vs Veo vs Hailuo vs HappyHorse | AI Video Generator Free",
-    "description": "Compare top AI video generation models side by side: Seedance 2.0, Wan 2.7, Kling 3.0, Sora 2 Pro, Veo 3.1, Hailuo 2.3, Grok Imagine, Runway Gen-4, and HappyHorse 1.0. Features, pricing, resolution, and duration."
+    "title": "Compare AI Video Models 2026 | AI Video Generator Free",
+    "description": "Compare top AI video generation models side by side: Veo 3.1, Seedance 2.0, Wan 2.7, Hailuo 2.3, Hailuo 02, and HappyHorse 1.0. Features, pricing, resolution, and duration."
   },
   "page": {
     "title": "AI Video Model Comparison",
@@ -10,7 +10,7 @@
       "hero": {
         "id": "hero",
         "title": "AI Video Model Comparison — Find the Best Model for Your Needs",
-        "description": "Compare Seedance, Wan, Kling, Sora, Veo, Hailuo, Grok Imagine, Runway, and HappyHorse side by side. See features, pricing, resolution, and capabilities at a glance.",
+        "description": "Compare Veo, Seedance, Wan, Hailuo, and HappyHorse side by side. See features, pricing, resolution, and capabilities at a glance.",
         "highlight_text": "AI Video Model Comparison",
         "tip": "<strong>All models powered by their respective AI providers</strong> — Free credits available on sign-up.",
         "buttons": [
@@ -33,168 +33,126 @@
         "title": "All AI Video Models at a Glance",
         "description": "A comprehensive comparison of every AI video generation model available on our platform. Click any model name to see its dedicated page with examples and detailed version comparison.",
         "columns": [
-          {"key": "seedance", "label": "Seedance 2.0"},
+          {"key": "veo_lite", "label": "Veo 3.1 Lite"},
+          {"key": "veo_fast", "label": "Veo 3.1 Fast"},
+          {"key": "veo_quality", "label": "Veo 3.1 Quality"},
+          {"key": "seedance", "label": "Seedance 2.0 Fast"},
+          {"key": "seedance_std", "label": "Seedance 2.0 Std"},
           {"key": "wan", "label": "Wan 2.7"},
-          {"key": "kling", "label": "Kling 3.0"},
-          {"key": "sora", "label": "Sora 2 Pro"},
-          {"key": "veo", "label": "Veo 3.1"},
           {"key": "hailuo", "label": "Hailuo 2.3"},
-          {"key": "grok", "label": "Grok Imagine"},
-          {"key": "runway", "label": "Runway Gen-4"},
+          {"key": "hailuo_02", "label": "Hailuo 02"},
           {"key": "happyhorse", "label": "HappyHorse 1.0"}
         ],
         "rows": [
           {
             "label": "Provider",
             "values": {
+              "veo_lite": "Google",
+              "veo_fast": "Google",
+              "veo_quality": "Google",
               "seedance": "ByteDance",
+              "seedance_std": "ByteDance",
               "wan": "Alibaba",
-              "kling": "Kuaishou",
-              "sora": "OpenAI",
-              "veo": "Google",
               "hailuo": "MiniMax",
-              "grok": "xAI",
-              "runway": "Runway",
+              "hailuo_02": "MiniMax",
               "happyhorse": "Open Source"
             }
           },
           {
             "label": "Text to Video",
             "values": {
+              "veo_lite": "✓",
+              "veo_fast": "✓",
+              "veo_quality": "✓",
               "seedance": "✓",
+              "seedance_std": "✓",
               "wan": "✓",
-              "kling": "✓",
-              "sora": "✓",
-              "veo": "✓",
-              "hailuo": "✓",
-              "grok": "✓",
-              "runway": "✓",
+              "hailuo": "-",
+              "hailuo_02": "✓",
               "happyhorse": "✓"
             }
           },
           {
             "label": "Image to Video",
             "values": {
+              "veo_lite": "✓",
+              "veo_fast": "✓",
+              "veo_quality": "✓",
               "seedance": "✓",
+              "seedance_std": "✓",
               "wan": "✓",
-              "kling": "✓",
-              "sora": "✓",
-              "veo": "✓",
               "hailuo": "✓",
-              "grok": "✓",
-              "runway": "✓",
+              "hailuo_02": "✓",
               "happyhorse": "✓"
-            }
-          },
-          {
-            "label": "Reference to Video",
-            "values": {
-              "seedance": "✓",
-              "wan": "✓",
-              "kling": "-",
-              "sora": "-",
-              "veo": "✓",
-              "hailuo": "-",
-              "grok": "-",
-              "runway": "-",
-              "happyhorse": "-"
             }
           },
           {
             "label": "Native Audio",
             "values": {
+              "veo_lite": "✓",
+              "veo_fast": "✓",
+              "veo_quality": "✓",
               "seedance": "✓",
-              "wan": "✓",
-              "kling": "✓",
-              "sora": "✓",
-              "veo": "✓",
+              "seedance_std": "✓",
+              "wan": "-",
               "hailuo": "-",
-              "grok": "-",
-              "runway": "-",
+              "hailuo_02": "-",
               "happyhorse": "✓"
             }
           },
           {
             "label": "Lip Sync",
             "values": {
+              "veo_lite": "-",
+              "veo_fast": "-",
+              "veo_quality": "-",
               "seedance": "✓",
+              "seedance_std": "✓",
               "wan": "-",
-              "kling": "-",
-              "sora": "-",
-              "veo": "-",
               "hailuo": "-",
-              "grok": "-",
-              "runway": "-",
+              "hailuo_02": "-",
               "happyhorse": "-"
-            }
-          },
-          {
-            "label": "Multi-Shot",
-            "values": {
-              "seedance": "✓",
-              "wan": "-",
-              "kling": "✓",
-              "sora": "✓",
-              "veo": "-",
-              "hailuo": "-",
-              "grok": "-",
-              "runway": "-",
-              "happyhorse": "✓"
             }
           },
           {
             "label": "Max Resolution",
             "values": {
+              "veo_lite": "4K",
+              "veo_fast": "4K",
+              "veo_quality": "4K",
               "seedance": "720p",
+              "seedance_std": "720p",
               "wan": "1080p",
-              "kling": "1080p",
-              "sora": "1080p",
-              "veo": "1080p",
               "hailuo": "1080p",
-              "grok": "1080p",
-              "runway": "1080p",
+              "hailuo_02": "1080p",
               "happyhorse": "1080p"
             }
           },
           {
-            "label": "Max Duration",
+            "label": "Duration",
             "values": {
-              "seedance": "15s",
-              "wan": "15s",
-              "kling": "15s",
-              "sora": "25s",
-              "veo": "10s",
-              "hailuo": "10s",
-              "grok": "10s",
-              "runway": "10s",
-              "happyhorse": "15s"
-            }
-          },
-          {
-            "label": "Open Source",
-            "values": {
-              "seedance": "-",
-              "wan": "✓",
-              "kling": "-",
-              "sora": "-",
-              "veo": "-",
-              "hailuo": "-",
-              "grok": "-",
-              "runway": "-",
-              "happyhorse": "✓"
+              "veo_lite": "8s",
+              "veo_fast": "8s",
+              "veo_quality": "8s",
+              "seedance": "5-15s",
+              "seedance_std": "5-15s",
+              "wan": "5-10s",
+              "hailuo": "6-10s",
+              "hailuo_02": "6-10s",
+              "happyhorse": "5-15s"
             }
           },
           {
             "label": "Best For",
             "values": {
-              "seedance": "Cinematic Video",
+              "veo_lite": "Budget / Default",
+              "veo_fast": "Fast Quality",
+              "veo_quality": "Photorealism",
+              "seedance": "Cinematic Fast",
+              "seedance_std": "Cinematic Quality",
               "wan": "Multi-Modal",
-              "kling": "Audio Video",
-              "sora": "Storytelling",
-              "veo": "Photorealism",
-              "hailuo": "Budget Friendly",
-              "grok": "Creative",
-              "runway": "Professional",
+              "hailuo": "I2V Focused",
+              "hailuo_02": "Budget T2V/I2V",
               "happyhorse": "Open Source"
             }
           }
@@ -203,83 +161,81 @@
       "pricing": {
         "id": "model-comparison",
         "title": "AI Video Model Pricing Comparison",
-        "description": "Compare pricing across all AI video models. Credits are consumed per second of generated video.",
+        "description": "Compare pricing across all AI video models. Credits are consumed based on model, resolution, and duration.",
         "columns": [
-          {"key": "seedance", "label": "Seedance 2.0"},
+          {"key": "veo_lite", "label": "Veo 3.1 Lite"},
+          {"key": "veo_fast", "label": "Veo 3.1 Fast"},
+          {"key": "veo_quality", "label": "Veo 3.1 Quality"},
+          {"key": "seedance", "label": "Seedance 2.0 Fast"},
+          {"key": "seedance_std", "label": "Seedance 2.0 Std"},
           {"key": "wan", "label": "Wan 2.7"},
-          {"key": "kling", "label": "Kling 2.1"},
-          {"key": "sora", "label": "Sora 2"},
-          {"key": "hailuo", "label": "Hailuo 02"}
+          {"key": "hailuo", "label": "Hailuo 2.3"},
+          {"key": "hailuo_02", "label": "Hailuo 02"}
         ],
         "rows": [
           {
-            "label": "480p (per second)",
+            "label": "Pricing Model",
             "values": {
-              "seedance": "11.5 credits ($0.058)",
-              "wan": "-",
-              "kling": "-",
-              "sora": "-",
-              "hailuo": "-"
+              "veo_lite": "Per generation",
+              "veo_fast": "Per generation",
+              "veo_quality": "Per generation",
+              "seedance": "Per second",
+              "seedance_std": "Per second",
+              "wan": "Per second",
+              "hailuo": "Per video",
+              "hailuo_02": "Per video"
             }
           },
           {
-            "label": "720p (per second)",
+            "label": "720p",
             "values": {
-              "seedance": "25 credits ($0.125)",
-              "wan": "-",
-              "kling": "-",
-              "sora": "-",
-              "hailuo": "-"
+              "veo_lite": "8 credits",
+              "veo_fast": "16 credits",
+              "veo_quality": "120 credits",
+              "seedance": "26 credits/s",
+              "seedance_std": "33 credits/s",
+              "wan": "13 credits/s",
+              "hailuo": "20 credits (6s, 768p)",
+              "hailuo_02": "24 credits (6s, 768p)"
             }
           },
           {
-            "label": "1080p (per second)",
+            "label": "1080p",
             "values": {
+              "veo_lite": "12 credits",
+              "veo_fast": "20 credits",
+              "veo_quality": "124 credits",
               "seedance": "-",
-              "wan": "-",
-              "kling": "32 credits ($0.16)",
-              "sora": "-",
-              "hailuo": "9.5 credits ($0.048)"
+              "seedance_std": "-",
+              "wan": "19 credits/s",
+              "hailuo": "56 credits (6s)",
+              "hailuo_02": "46 credits (6s)"
             }
           },
           {
-            "label": "5s video (720p)",
+            "label": "4K",
             "values": {
-              "seedance": "~125 credits ($0.63)",
-              "wan": "-",
-              "kling": "-",
-              "sora": "-",
-              "hailuo": "-"
-            }
-          },
-          {
-            "label": "5s video (1080p)",
-            "values": {
+              "veo_lite": "40 credits",
+              "veo_fast": "48 credits",
+              "veo_quality": "152 credits",
               "seedance": "-",
+              "seedance_std": "-",
               "wan": "-",
-              "kling": "160 credits ($0.80)",
-              "sora": "-",
-              "hailuo": "~57 credits ($0.29)"
+              "hailuo": "-",
+              "hailuo_02": "-"
             }
           },
           {
-            "label": "10s video",
+            "label": "5s @ 720p/768p",
             "values": {
-              "seedance": "~250 credits ($1.25)",
-              "wan": "-",
-              "kling": "320 credits ($1.60)",
-              "sora": "30 credits ($0.15)",
-              "hailuo": "-"
-            }
-          },
-          {
-            "label": "15s video",
-            "values": {
-              "seedance": "~375 credits ($1.88)",
-              "wan": "-",
-              "kling": "-",
-              "sora": "35 credits ($0.175)",
-              "hailuo": "-"
+              "veo_lite": "8 credits (8s fixed)",
+              "veo_fast": "16 credits (8s fixed)",
+              "veo_quality": "120 credits (8s fixed)",
+              "seedance": "130 credits",
+              "seedance_std": "165 credits",
+              "wan": "65 credits",
+              "hailuo": "20 credits (6s, I2V)",
+              "hailuo_02": "24 credits (6s, T2V)"
             }
           }
         ]
@@ -291,23 +247,27 @@
         "items": [
           {
             "question": "Which AI video model is the best?",
-            "answer": "It depends on your needs. Seedance 2.0 excels at cinematic video with audio and lip sync. Wan 2.7 offers the most versatile multi-modal input. Kling 3.0 is great for native audio video. Sora 2 Pro supports the longest duration (25s) with storyboard. HappyHorse 1.0 is the best open-source option, ranked #1 on Artificial Analysis."
+            "answer": "It depends on your needs. Veo 3.1 Quality produces the most photorealistic results up to 4K. Seedance 2.0 excels at cinematic video with audio and lip sync. Wan 2.7 offers versatile T2V and I2V modes. HappyHorse 1.0 is the best open-source option, ranked #1 on Artificial Analysis."
           },
           {
             "question": "Which AI video model is the cheapest?",
-            "answer": "Sora 2 offers the best value at 30 credits ($0.15) for a 10-second video. Hailuo 02 is also very affordable at 9.5 credits ($0.048) per second for 1080p. HappyHorse 1.0 is open-source and free to use."
+            "answer": "Veo 3.1 Lite at just 8 credits per generation is the cheapest option. Hailuo 02 T2V Standard costs 24 credits for a 6-second 768p video. Seedance 2.0 Fast 480p costs 12 credits/second. HappyHorse 1.0 is open-source and free to use."
           },
           {
             "question": "Which AI video model has the highest resolution?",
-            "answer": "Most models support up to 1080p output. Seedance 2.0 currently supports up to 720p but offers advanced features like lip sync and multi-shot. Wan 2.7, Kling 3.0, Sora 2 Pro, Veo 3.1, and Hailuo 2.3 all support 1080p."
+            "answer": "Veo 3.1 (all tiers) supports up to 4K output. Wan 2.7, Hailuo 2.3 Pro, and Hailuo 02 Pro support up to 1080p. Seedance 2.0 supports up to 720p."
           },
           {
             "question": "Can I try these AI video models for free?",
             "answer": "Yes! All models on our platform offer free sign-up credits. You can test every model before committing to a paid plan."
           },
           {
-            "question": "Which model supports the longest video duration?",
-            "answer": "Sora 2 Pro Storyboard supports up to 25 seconds of multi-scene video. Seedance 2.0, Wan 2.6, Kling 3.0, and HappyHorse 1.0 support up to 15 seconds."
+            "question": "What's the difference between Veo 3.1 Lite, Fast, and Quality?",
+            "answer": "Veo 3.1 Lite is the cheapest at 8 credits per 720p generation — great for quick tests. Veo 3.1 Fast at 16 credits offers faster processing with good quality. Veo 3.1 Quality at 120 credits provides the highest visual fidelity and photorealism. All support up to 4K resolution."
+          },
+          {
+            "question": "What's the difference between Hailuo 2.3 and Hailuo 02?",
+            "answer": "Hailuo 2.3 is image-to-video only (requires an image input). Hailuo 02 supports both text-to-video and image-to-video with more resolution options including 512p, 768p, and 1080p."
           }
         ]
       },

@@ -5,8 +5,7 @@ import { getMetadata } from '@/shared/lib/seo';
 import { DynamicPage, Section } from '@/shared/types/blocks/landing';
 import { HairstylesContent } from './hairstyles-content';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 3600; // Revalidate every hour
 
 export const generateMetadata = getMetadata({
   metadataKey: 'pages.hairstyles.metadata',

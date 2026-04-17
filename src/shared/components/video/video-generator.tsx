@@ -19,6 +19,7 @@ interface VideoGeneratorProps {
   isNewGeneration?: boolean;
   className?: string;
   prompt?: string;
+  defaultModel?: string;
 }
 
 export default function VideoGenerator({
@@ -26,15 +27,36 @@ export default function VideoGenerator({
   isNewGeneration = false,
   className,
   prompt,
+  defaultModel,
 }: VideoGeneratorProps) {
   const [currentVideo, setCurrentVideo] = useState<GeneratedVideo | null>(
     initialVideo || null
   );
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationProgress, setGenerationProgress] = useState('');
-  const [formPrompt, setFormPrompt] = useState(prompt || '');
+  const [formPrompt, setFormPrompt] = useState('');
   const hasAutoTriggered = useRef(false);
   const t = useTranslations('video.generator');
+
+  useEffect(() => {
+    if (prompt) {
+      const isSlug = !prompt.includes(' ') && prompt.length < 100;
+      if (isSlug) {
+        fetch(`/api/prompts/by-title?title=${encodeURIComponent(prompt)}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success && data.data?.promptDescription) {
+              setFormPrompt(data.data.promptDescription);
+            } else {
+              setFormPrompt(prompt);
+            }
+          })
+          .catch(() => setFormPrompt(prompt));
+      } else {
+        setFormPrompt(prompt);
+      }
+    }
+  }, [prompt]);
 
   const { removeParam } = useUrlParams();
 
@@ -198,11 +220,10 @@ export default function VideoGenerator({
                       parameters: currentVideo.parameters,
                       startImageUrl: currentVideo.startImageUrl,
                     }
-                  : formPrompt
-                  ? {
-                      prompt: formPrompt,
+                  : {
+                      prompt: formPrompt || undefined,
+                      model: defaultModel || undefined,
                     }
-                  : undefined
               }
             />
 

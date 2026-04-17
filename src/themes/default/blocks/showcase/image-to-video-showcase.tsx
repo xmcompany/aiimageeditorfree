@@ -216,7 +216,7 @@ export function ImageToVideoShowcase({
       </div>
 
       {showCTA && section.imageToVideo?.buttons && (
-        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
           {section.imageToVideo.buttons.map((item: any, idx: number) => (
             <Button key={idx} variant={item.variant || 'default'} size="lg" className="rounded-full" asChild>
               <Link
@@ -240,7 +240,7 @@ export function ImageToVideoShowcase({
 }
 
 import { Skeleton } from '@/shared/components/ui/skeleton'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import * as React from 'react'
 
 const VideoWithSkeleton = React.forwardRef<HTMLVideoElement, { src: string; poster?: string }>(({ src, poster }, ref) => {
@@ -297,6 +297,8 @@ const VideoWithSkeleton = React.forwardRef<HTMLVideoElement, { src: string; post
         <img
           src={poster}
           alt=""
+          aria-hidden="true"
+          role="presentation"
           className="hidden"
           onLoad={() => setIsLoading(false)}
           onError={() => setIsLoading(false)}

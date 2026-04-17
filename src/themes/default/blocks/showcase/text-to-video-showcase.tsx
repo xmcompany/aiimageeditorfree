@@ -2,7 +2,7 @@
 
 import { ArrowRight, Check, History, Info, Play, Sparkles, Video } from 'lucide-react';
 import { useState, useRef, useId, useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import {
   Tooltip,
   TooltipContent,
@@ -179,6 +179,8 @@ const VideoSlide = ({
             <img
               src={poster}
               alt=""
+              aria-hidden="true"
+              role="presentation"
               className="hidden"
               onLoad={() => setIsLoading(false)}
               onError={() => setIsLoading(false)}
@@ -360,9 +362,9 @@ export function TextToVideoShowcase({
 
       {/* CTA Button - Now outside the w-[50vmin] container */}
       {showCTA && section.textToVideo?.buttons && (
-        <div className="mt-8 flex flex-col justify-center gap-4 px-4 sm:flex-row sm:px-0">
+        <div className="mt-8 flex flex-wrap justify-center gap-4 px-4 sm:px-0">
           {section.textToVideo.buttons.map((item: any, idx: number) => (
-            <Button key={idx} variant={item.variant || 'default'} size="lg" className="rounded-full w-full sm:w-auto" asChild>
+            <Button key={idx} variant={item.variant || 'default'} size="lg" className="rounded-full" asChild>
               <Link
                 href={item.url || ''}
                 target={item.target}

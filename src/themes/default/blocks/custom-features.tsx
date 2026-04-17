@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import { cn } from '@/shared/lib/utils';
 import { Section } from '@/shared/types/blocks/landing';
@@ -33,9 +33,15 @@ export function CustomFeatures({
         {section.sr_only_title && (
           <h1 className="sr-only">{section.sr_only_title}</h1>
         )}
+        {section.h1_title ? (
+          <h1 className="mx-auto mb-6 max-w-full text-4xl font-serif font-extrabold tracking-tight text-pretty md:max-w-5xl lg:text-6xl">
+            {section.h1_title}
+          </h1>
+        ) : (
         <h2 className="mx-auto mb-6 max-w-full text-4xl font-serif font-extrabold tracking-tight text-pretty md:max-w-5xl lg:text-6xl">
           {section.title}
         </h2>
+        )}
         <p className="text-muted-foreground text-md mx-auto mb-4 max-w-2xl lg:text-xl opacity-90 leading-relaxed">
           {section.description}
         </p>

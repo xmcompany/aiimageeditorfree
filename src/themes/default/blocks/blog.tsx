@@ -41,9 +41,9 @@ export function Blog({
         {blog.sr_only_title && (
           <h1 className="sr-only">{blog.sr_only_title}</h1>
         )}
-        <h2 className="mb-6 text-4xl font-serif font-extrabold tracking-tight text-pretty lg:text-6xl">
+        <h1 className="mb-6 text-4xl font-serif font-extrabold tracking-tight text-pretty lg:text-6xl">
           {blog.title}
-        </h2>
+        </h1>
         <p className="text-muted-foreground mx-auto mb-4 max-w-2xl lg:text-xl opacity-90 leading-relaxed">
           {blog.description}
         </p>
@@ -67,7 +67,7 @@ export function Blog({
                 <div className="bg-muted h-full overflow-hidden rounded-xl border transition-all duration-300 hover:shadow-lg">
                   <div className="aspect-video overflow-hidden">
                     <img
-                      src={item.image || '/imgs/blog/1.jpeg'}
+                      src={item.image || '/imgs/showcases/1.jpeg'}
                       alt={item.title}
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />

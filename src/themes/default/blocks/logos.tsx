@@ -7,20 +7,12 @@ import { Section } from '@/shared/types/blocks/landing';
 
 const DEFAULT_LOGOS = [
   {
-    title: 'Kling',
-    src: '/imgs/logos/kling.svg',
-  },
-  {
     title: 'Luma',
     src: '/imgs/logos/luma.svg',
   },
   {
     title: 'Wan',
     src: '/imgs/logos/wan.svg',
-  },
-  {
-    title: 'Runway',
-    src: '/imgs/logos/runway.svg',
   },
   {
     title: 'Pika',

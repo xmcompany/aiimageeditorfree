@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Nanobanana Joyflix 提示词库",
+    "title": "AI Video Generator Free 提示词库",
     "description": "激发灵感的 AI 图像与视频生成提示词"
   },
   "image_metadata": {
@@ -9,7 +9,7 @@
   },
   "video_metadata": {
     "title": "AI 视频提示词",
-    "description": "由 Nanobanana Joyflix 驱动的创意 AI 视频提示词案例"
+    "description": "由 AI Video Generator Free 驱动的创意 AI 视频提示词案例"
   },
   "ui": {
     "create_similar": "创建相似",
@@ -20,8 +20,8 @@
   "showcases-flow": {
     "id": "showcases",
     "sr_only_title": "案例展示",
-    "title": "Nanobanana Joyflix 提示词",
-    "description": "由 Nanobanana Joyflix 提供支持的代表性编辑和生成案例",
+    "title": "AI Video Generator Free 提示词",
+    "description": "由 AI Video Generator Free 提供支持的代表性编辑和生成案例",
     "items": [
       {
         "title": "垂直鱼眼自拍",
@@ -112,7 +112,7 @@
     "sections": {
       "showcases": {
         "id": "showcases",
-        "title": "用 Nanobanana Joyflix 构建的 AI SaaS 创业项目",
+        "title": "用 AI Video Generator Free 构建的 AI SaaS 创业项目",
         "description": "简单、快速、高效。",
         "groups": [
           {

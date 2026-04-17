@@ -155,6 +155,14 @@ export class KieProvider implements AIProvider {
 
     if (params.options) {
       const options = params.options;
+      // v1 schema (nano-banana, nano-banana-edit): image_urls + image_size
+      if (options.image_urls && Array.isArray(options.image_urls)) {
+        payload.input.image_urls = options.image_urls;
+      }
+      if (options.image_size) {
+        payload.input.image_size = options.image_size;
+      }
+      // v2 schema (nano-banana-2, nano-banana-pro): image_input + aspect_ratio + resolution
       if (options.image_input && Array.isArray(options.image_input)) {
         payload.input.image_input = options.image_input;
       }
@@ -201,51 +209,40 @@ export class KieProvider implements AIProvider {
   }: {
     params: AIGenerateParams;
   }): Promise<AITaskResult> {
+    if (!params.model) {
+      throw new Error('model is required');
+    }
+
+    // Route Veo models to dedicated Veo API
+    if (params.model.startsWith('veo3')) {
+      return this.generateVeo({ params });
+    }
+
     const apiUrl = `${this.baseUrl}/jobs/createTask`;
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.configs.apiKey}`,
     };
 
-    if (!params.model) {
-      throw new Error('model is required');
+    // build request params - pass all options directly as input
+    let input: any = {};
+
+    if (params.prompt) {
+      input.prompt = params.prompt;
     }
 
-    // build request params
+    // Merge all options into input
+    if (params.options) {
+      Object.assign(input, params.options);
+    }
+
     let payload: any = {
       model: params.model,
       callBackUrl: params.callbackUrl,
-      input: {
-        aspect_ratio: 'landscape',
-        n_frames: '10',
-        size: 'standard',
-      },
+      input,
     };
 
-    if (params.prompt) {
-      payload.input.prompt = params.prompt;
-    }
-
-    if (params.options) {
-      const options = params.options;
-      // text-to-video: use prompt
-      // image-to-video: use image_input
-      // video-to-video: use video_input
-      if (options.image_input && Array.isArray(options.image_input)) {
-        payload.input.image_urls = options.image_input;
-      }
-      if (options.aspect_ratio) {
-        payload.input.aspect_ratio = options.aspect_ratio;
-      }
-      if (options.duration) {
-        payload.input.n_frames = options.duration;
-      }
-      if (!payload.input.n_frames) {
-        payload.input.n_frames = '10';
-      }
-    }
-
-    console.log('kie input', apiUrl, payload);
+    console.log('kie video input', apiUrl, payload);
 
     const resp = await fetch(apiUrl, {
       method: 'POST',
@@ -270,6 +267,66 @@ export class KieProvider implements AIProvider {
       taskStatus: AITaskStatus.PENDING,
       taskId: data.taskId,
       taskInfo: {},
+      taskResult: data,
+    };
+  }
+
+  /**
+   * Generate video using Veo 3.1 API (separate endpoint)
+   * @docs https://docs.kie.ai/veo3-api/quickstart
+   */
+  async generateVeo({
+    params,
+  }: {
+    params: AIGenerateParams;
+  }): Promise<AITaskResult> {
+    const apiUrl = `${this.baseUrl}/veo/generate`;
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.configs.apiKey}`,
+    };
+
+    // Veo API params: prompt, model (veo3 | veo3_fast), aspect_ratio, imageUrls, callBackUrl
+    let payload: any = {
+      prompt: params.prompt,
+      model: params.model, // 'veo3' or 'veo3_fast'
+      callBackUrl: params.callbackUrl,
+    };
+
+    if (params.options?.aspect_ratio) {
+      payload.aspect_ratio = params.options.aspect_ratio;
+    }
+
+    if (params.options?.imageUrls) {
+      payload.imageUrls = params.options.imageUrls;
+    }
+
+    console.log('kie veo input', apiUrl, payload);
+
+    const resp = await fetch(apiUrl, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload),
+    });
+    if (!resp.ok) {
+      const errorText = await resp.text();
+      throw new Error(`veo generate failed with status ${resp.status}: ${errorText}`);
+    }
+
+    const { code, msg, data } = await resp.json();
+
+    if (code !== 200) {
+      throw new Error(`veo generate failed: ${msg}`);
+    }
+
+    if (!data || !data.taskId) {
+      throw new Error(`veo generate failed: no taskId`);
+    }
+
+    return {
+      taskStatus: AITaskStatus.PENDING,
+      taskId: data.taskId,
+      taskInfo: { isVeo: true },
       taskResult: data,
     };
   }
@@ -390,11 +447,18 @@ export class KieProvider implements AIProvider {
   }
 
   async queryVideo({ taskId }: { taskId: string }): Promise<AITaskResult> {
-    const apiUrl = `${this.baseUrl}/jobs/recordInfo?taskId=${taskId}`;
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.configs.apiKey}`,
     };
+
+    // Try Veo API first if taskId looks like a Veo task
+    // Veo tasks use /api/v1/veo/record-info
+    if (taskId.startsWith('veo-')) {
+      return this.queryVeo({ taskId });
+    }
+
+    const apiUrl = `${this.baseUrl}/jobs/recordInfo?taskId=${taskId}`;
 
     const resp = await fetch(apiUrl, {
       method: 'GET',
@@ -474,6 +538,99 @@ export class KieProvider implements AIProvider {
         errorCode: data.failCode,
         errorMessage: data.failMsg,
         createTime: new Date(data.createTime),
+      },
+      taskResult: data,
+    };
+  }
+
+  /**
+   * Query Veo 3.1 task status
+   * @docs https://docs.kie.ai/veo3-api/quickstart
+   */
+  async queryVeo({ taskId }: { taskId: string }): Promise<AITaskResult> {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.configs.apiKey}`,
+    };
+
+    // Query task status
+    const statusUrl = `${this.baseUrl}/veo/record-info?taskId=${taskId}`;
+    const resp = await fetch(statusUrl, {
+      method: 'GET',
+      headers,
+    });
+    if (!resp.ok) {
+      throw new Error(`veo query failed with status: ${resp.status}`);
+    }
+
+    const { code, msg, data } = await resp.json();
+
+    if (code !== 200) {
+      throw new Error(`veo query failed: ${msg}`);
+    }
+
+    // Veo successFlag: 0=generating, 1=success, 2/3=failed
+    let taskStatus: AITaskStatus;
+    const successFlag = data?.successFlag;
+
+    if (successFlag === 1) {
+      taskStatus = AITaskStatus.SUCCESS;
+    } else if (successFlag === 2 || successFlag === 3) {
+      taskStatus = AITaskStatus.FAILED;
+    } else {
+      taskStatus = AITaskStatus.PROCESSING;
+    }
+
+    let videos: AIVideo[] | undefined = undefined;
+
+    // Get video URL on success
+    if (taskStatus === AITaskStatus.SUCCESS && data?.videoUrl) {
+      let videoUrl = data.videoUrl;
+
+      // Try to get 1080p version
+      try {
+        const hdUrl = `${this.baseUrl}/veo/get-1080p-video?taskId=${taskId}`;
+        const hdResp = await fetch(hdUrl, { headers });
+        if (hdResp.ok) {
+          const hdData = await hdResp.json();
+          if (hdData.code === 200 && hdData.data?.videoUrl) {
+            videoUrl = hdData.data.videoUrl;
+          }
+        }
+      } catch {
+        // Fall back to standard quality
+      }
+
+      videos = [{
+        id: '',
+        createTime: new Date(),
+        videoUrl,
+      }];
+
+      // Use custom storage
+      if (this.configs.customStorage && videos[0].videoUrl) {
+        const filesToSave: AIFile[] = [{
+          url: videos[0].videoUrl,
+          contentType: 'video/mp4',
+          key: `kie/veo/${getUuid()}.mp4`,
+          index: 0,
+          type: 'video',
+        }];
+        const uploadedFiles = await saveFiles(filesToSave);
+        if (uploadedFiles && uploadedFiles[0]?.url) {
+          videos[0].videoUrl = uploadedFiles[0].url;
+        }
+      }
+    }
+
+    return {
+      taskId,
+      taskStatus,
+      taskInfo: {
+        videos,
+        isVeo: true,
+        successFlag,
+        createTime: new Date(),
       },
       taskResult: data,
     };

@@ -11,6 +11,13 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: [
         '/*?*q=',
+        '/sign-in',
+        '/sign-up',
+        '/verify-email',
+        '/no-permission',
+        '/auth-callback',
+        '/auth-popup',
+        '/chat',
         '/privacy-policy',
         '/terms-of-service',
         '/settings/*',

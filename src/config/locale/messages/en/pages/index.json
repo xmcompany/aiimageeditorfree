@@ -17,10 +17,10 @@
         "id": "hero",
         "title": "Ship AI Startups in hours, not days",
         "highlight_text": "in hours",
-        "description": "Nanobanana Joyflix is a NextJS boilerplate for building AI SaaS startups.<br/>Ship Fast with a variety of templates and components.",
+        "description": "AI Video Generator Free is a NextJS boilerplate for building AI SaaS startups.<br/>Ship Fast with a variety of templates and components.",
         "announcement": {
           "badge": "New",
-          "title": "🎉 Nanobanana Joyflix template is released",
+          "title": "🎉 AI Video Generator Free template is released",
           "url": "/pricing"
         },
         "tip": "🎁 Special offer for the first 1000 users",
@@ -41,7 +41,7 @@
           }
         ],
         "show_avatars": true,
-        "avatars_tip": "999+ users are using Nanobanana Joyflix",
+        "avatars_tip": "999+ users are using AI Video Generator Free",
         "show_award": false,
         "background_image": {
           "src": "/imgs/bg/tree.jpg",
@@ -50,7 +50,7 @@
       },
       "logos": {
         "id": "logos",
-        "title": "Nanobanana Joyflix is built on the shoulders of giants",
+        "title": "AI Video Generator Free is built on the shoulders of giants",
         "items": [
           {
             "title": "Next.js",
@@ -92,9 +92,9 @@
       "introduce": {
         "block": "features-list",
         "id": "introduce",
-        "title": "What is Nanobanana Joyflix",
+        "title": "What is AI Video Generator Free",
         "label": "Introduce",
-        "description": "Nanobanana Joyflix is a NextJS boilerplate for building AI SaaS startups, including templates, components, and documentation.",
+        "description": "AI Video Generator Free is a NextJS boilerplate for building AI SaaS startups, including templates, components, and documentation.",
         "items": [
           {
             "title": "Ready-to-use Templates",
@@ -122,7 +122,7 @@
       "benefits": {
         "block": "features-accordion",
         "id": "benefits",
-        "title": "Why Choose Nanobanana Joyflix",
+        "title": "Why Choose AI Video Generator Free",
         "label": "Benefits",
         "description": "Get everything you need to launch your AI startup - from ready-to-use templates to technical support.",
         "items": [
@@ -146,18 +146,18 @@
       "usage": {
         "block": "features-step",
         "id": "usage",
-        "title": "How to Launch with Nanobanana Joyflix",
+        "title": "How to Launch with AI Video Generator Free",
         "description": "Get your AI SaaS startup running in three simple steps:",
         "image_position": "left",
         "text_align": "center",
         "items": [
           {
-            "title": "Get Nanobanana Joyflix",
-            "description": "Buy Nanobanana Joyflix with a one-time payment. Check your email for the code and documentation."
+            "title": "Get AI Video Generator Free",
+            "description": "Buy AI Video Generator Free with a one-time payment. Check your email for the code and documentation."
           },
           {
             "title": "Start Your Project",
-            "description": "Read the documentation and clone the code of Nanobanana Joyflix. Start building your AI SaaS startup."
+            "description": "Read the documentation and clone the code of AI Video Generator Free. Start building your AI SaaS startup."
           },
           {
             "title": "Customize Your Project",
@@ -172,7 +172,7 @@
       },
       "features": {
         "id": "features",
-        "title": "Key Features of Nanobanana Joyflix",
+        "title": "Key Features of AI Video Generator Free",
         "description": "Everything you need to launch your AI SaaS startup quickly and efficiently.",
         "items": [
           {
@@ -209,7 +209,7 @@
       },
       "stats": {
         "id": "stats",
-        "title": "People Love Nanobanana Joyflix",
+        "title": "People Love AI Video Generator Free",
         "description": "for it's easy to use and fast to ship.",
         "items": [
           {
@@ -229,13 +229,13 @@
       },
       "testimonials": {
         "id": "testimonials",
-        "title": "What Users Say About Nanobanana Joyflix",
-        "description": "Hear from developers and founders who launched their AI startups with Nanobanana Joyflix.",
+        "title": "What Users Say About AI Video Generator Free",
+        "description": "Hear from developers and founders who launched their AI startups with AI Video Generator Free.",
         "items": [
           {
             "name": "David Chen",
             "role": "Founder of AIWallpaper.shop",
-            "quote": "Nanobanana Joyflix saved us months of development time. We launched our AI wallpaper business in just 2 days and got our first paying customer within a week!",
+            "quote": "AI Video Generator Free saved us months of development time. We launched our AI wallpaper business in just 2 days and got our first paying customer within a week!",
             "image": {
               "src": "/imgs/avatars/1.png",
               "alt": "david"
@@ -253,7 +253,7 @@
           {
             "name": "Marcus Thompson",
             "role": "Solo Developer",
-            "quote": "As a solo developer, Nanobanana Joyflix gave me everything I needed - auth, payments, AI integration, and beautiful UI. Launched my SaaS in a weekend!",
+            "quote": "As a solo developer, AI Video Generator Free gave me everything I needed - auth, payments, AI integration, and beautiful UI. Launched my SaaS in a weekend!",
             "image": {
               "src": "/imgs/avatars/3.png",
               "alt": "marcus"
@@ -271,7 +271,7 @@
           {
             "name": "James Wilson",
             "role": "Tech Lead at GPTs.works",
-            "quote": "Nanobanana Joyflix's infrastructure is rock-solid. We scaled from 0 to 10k users without touching the backend. Best investment for our AI startup.",
+            "quote": "AI Video Generator Free's infrastructure is rock-solid. We scaled from 0 to 10k users without touching the backend. Best investment for our AI startup.",
             "image": {
               "src": "/imgs/avatars/5.png",
               "alt": "james"
@@ -280,7 +280,7 @@
           {
             "name": "Anna Zhang",
             "role": "Startup Founder",
-            "quote": "From idea to launch in 3 days! Nanobanana Joyflix's templates and deployment tools made it possible to test our AI business concept incredibly fast.",
+            "quote": "From idea to launch in 3 days! AI Video Generator Free's templates and deployment tools made it possible to test our AI business concept incredibly fast.",
             "image": {
               "src": "/imgs/avatars/6.png",
               "alt": "anna"
@@ -290,42 +290,42 @@
       },
       "faq": {
         "id": "faq",
-        "title": "Frequently Asked Questions About Nanobanana Joyflix",
+        "title": "Frequently Asked Questions About AI Video Generator Free",
         "description": "Have another question? Contact us on Discord or by email.",
         "items": [
           {
-            "question": "What exactly is Nanobanana Joyflix and how does it work?",
-            "answer": "Nanobanana Joyflix is a comprehensive NextJS boilerplate designed specifically for building AI SaaS startups. It provides ready-to-use templates, infrastructure setup, and deployment tools that help you launch your AI business in hours instead of days."
+            "question": "What exactly is AI Video Generator Free and how does it work?",
+            "answer": "AI Video Generator Free is a comprehensive NextJS boilerplate designed specifically for building AI SaaS startups. It provides ready-to-use templates, infrastructure setup, and deployment tools that help you launch your AI business in hours instead of days."
           },
           {
-            "question": "Do I need advanced technical skills to use Nanobanana Joyflix?",
-            "answer": "While basic programming knowledge is helpful, Nanobanana Joyflix is designed to be developer-friendly. Our templates and documentation make it easy to get started, even if you're not an expert in AI or cloud infrastructure."
+            "question": "Do I need advanced technical skills to use AI Video Generator Free?",
+            "answer": "While basic programming knowledge is helpful, AI Video Generator Free is designed to be developer-friendly. Our templates and documentation make it easy to get started, even if you're not an expert in AI or cloud infrastructure."
           },
           {
-            "question": "What types of AI SaaS can I build with Nanobanana Joyflix?",
-            "answer": "Nanobanana Joyflix supports a wide range of AI applications, from content generation to data analysis tools. Our templates cover popular use cases like AI chatbots, content generators, image processing apps, and more."
+            "question": "What types of AI SaaS can I build with AI Video Generator Free?",
+            "answer": "AI Video Generator Free supports a wide range of AI applications, from content generation to data analysis tools. Our templates cover popular use cases like AI chatbots, content generators, image processing apps, and more."
           },
           {
-            "question": "How long does it typically take to launch with Nanobanana Joyflix?",
-            "answer": "With Nanobanana Joyflix, you can have a working prototype in hours and a production-ready application in hours. Our one-click deployment and pre-configured infrastructure significantly reduce the traditional months-long development cycle."
+            "question": "How long does it typically take to launch with AI Video Generator Free?",
+            "answer": "With AI Video Generator Free, you can have a working prototype in hours and a production-ready application in hours. Our one-click deployment and pre-configured infrastructure significantly reduce the traditional months-long development cycle."
           },
           {
-            "question": "What's included in the Nanobanana Joyflix infrastructure?",
-            "answer": "Nanobanana Joyflix provides a complete infrastructure stack including authentication, database setup, API integration, payment processing, and scalable cloud deployment. Everything is pre-configured following industry best practices."
+            "question": "What's included in the AI Video Generator Free infrastructure?",
+            "answer": "AI Video Generator Free provides a complete infrastructure stack including authentication, database setup, API integration, payment processing, and scalable cloud deployment. Everything is pre-configured following industry best practices."
           },
           {
             "question": "Can I customize the templates to match my brand?",
-            "answer": "Absolutely! All Nanobanana Joyflix templates are fully customizable. You can modify the design, features, and functionality to match your brand identity and specific business requirements while maintaining the robust underlying infrastructure."
+            "answer": "Absolutely! All AI Video Generator Free templates are fully customizable. You can modify the design, features, and functionality to match your brand identity and specific business requirements while maintaining the robust underlying infrastructure."
           }
         ]
       },
       "cta": {
         "id": "cta",
         "title": "Ship your first AI SaaS Startup",
-        "description": "Start from here, ship with Nanobanana Joyflix.",
+        "description": "Start from here, ship with AI Video Generator Free.",
         "buttons": [
           {
-            "title": "Get Nanobanana Joyflix",
+            "title": "Get AI Video Generator Free",
             "url": "#",
             "target": "",
             "icon": "Zap"
@@ -343,7 +343,7 @@
       "subscribe": {
         "id": "subscribe",
         "title": "Subscribe to our newsletter",
-        "description": "Get the latest news and updates from Nanobanana Joyflix.",
+        "description": "Get the latest news and updates from AI Video Generator Free.",
         "submit": {
           "input": {
             "placeholder": "Enter your email"

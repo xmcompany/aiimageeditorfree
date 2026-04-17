@@ -105,7 +105,6 @@ export function getMetadata(
         title,
         description,
         images: [imageUrl.toString()],
-        site: envConfigs.app_url,
       },
 
       robots: {

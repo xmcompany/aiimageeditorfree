@@ -5,6 +5,8 @@ import { ImageGenerator } from '@/shared/blocks/generator';
 import { getMetadata } from '@/shared/lib/seo';
 import { DynamicPage } from '@/shared/types/blocks/landing';
 
+export const revalidate = 3600; // Revalidate every hour
+
 export const generateMetadata = getMetadata({
   metadataKey: 'pages.image-generator.metadata',
   canonicalUrl: '/ai-image-generator',
@@ -32,6 +34,7 @@ export default async function CreatePage({
     sections: {
       "features": {
         "block": "custom-features",
+        h1_title: t.raw('page.title'),
         title: t.raw('page.title'),
         description: t.raw('page.description'),
       },

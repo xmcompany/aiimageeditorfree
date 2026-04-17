@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import { ShowcasesFlowDynamic } from '@/themes/default/blocks/showcases-flow-dynamic';
 import { SmartIcon } from '@/shared/blocks/common/smart-icon';
@@ -47,9 +47,9 @@ export function HairstylesContent({
         {sectionData.sr_only_title && (
           <h1 className="sr-only">{sectionData.sr_only_title}</h1>
         )}
-        <h2 className="mx-auto mb-6 max-w-full text-4xl font-serif font-extrabold tracking-tight text-pretty md:max-w-5xl lg:text-6xl">
+        <h1 className="mx-auto mb-6 max-w-full text-4xl font-serif font-extrabold tracking-tight text-pretty md:max-w-5xl lg:text-6xl">
           {sectionData.title}
-        </h2>
+        </h1>
         <p className="text-muted-foreground text-md mx-auto mb-4 max-w-2xl lg:text-xl opacity-90 leading-relaxed">
           {sectionData.description}
         </p>

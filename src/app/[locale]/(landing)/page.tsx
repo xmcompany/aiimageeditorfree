@@ -4,13 +4,14 @@ import Script from 'next/script';
 import { getThemePage } from '@/core/theme';
 import { DynamicPage, Section } from '@/shared/types/blocks/landing';
 import { ShowcasesFlowDynamic } from '@/themes/default/blocks/showcases-flow-dynamic';
+import { BlogPreview } from '@/themes/default/blocks/blog-preview';
 import { getLatestShowcases } from '@/shared/models/showcase';
+import { getPostsAndCategories } from '@/shared/models/post';
 import { getMetadata } from '@/shared/lib/seo';
 import { getConfigs } from '@/shared/models/config';
 import { envConfigs } from '@/config';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 3600; // Revalidate every hour
 
 export const generateMetadata = getMetadata({
   metadataKey: 'common.metadata',
@@ -53,6 +54,15 @@ export default async function LandingPage({
       createdAt: item.createdAt.toISOString(),
     }));
 
+  // Fetch latest blog posts for homepage preview
+  let latestPosts: any[] = [];
+  try {
+    const { posts } = await getPostsAndCategories({ locale, page: 1, limit: 3 });
+    latestPosts = posts.slice(0, 3);
+  } catch (e) {
+    // silently ignore
+  }
+
   const showSections = [
     'hero',
     'showcases-flow',
@@ -63,9 +73,9 @@ export default async function LandingPage({
     'benefits',
     'usage',
     'features',
-    'stats',
-    'testimonials',
     'subscribe',
+    'credits-ways',
+    'blog-preview',
     'faq',
     'cta',
   ];
@@ -91,11 +101,29 @@ export default async function LandingPage({
             />
           ),
         };
+      } else if (section === 'blog-preview') {
+        const sectionData = t.raw(section) as Section;
+        if (latestPosts.length > 0) {
+          acc[section] = {
+            ...sectionData,
+            component: (
+              <BlogPreview
+                key="blog-preview"
+                section={sectionData}
+                posts={latestPosts}
+              />
+            ),
+          };
+        }
       } else {
         const sectionData = t.raw(section) as Section;
         // Inject dynamic initial credits amount into hero tip
         if (section === 'hero' && sectionData && initialCreditsAmount > 0) {
-          (sectionData as any).tip = `🎁 New users get ${initialCreditsAmount} free credits instantly upon sign-up. Start generating AI videos for free now.`;
+          (sectionData as any).tip = `🎁 New users get ${initialCreditsAmount} free credits instantly upon sign-up. <a href="/blog/how-to-create-ai-videos-for-free" class="underline hover:opacity-80">How to Create AI Videos for Free →</a>`;
+        }
+        // Inject dynamic credits amount into credits-ways section
+        if (section === 'credits-ways' && sectionData) {
+          (sectionData as any).initialCreditsAmount = initialCreditsAmount;
         }
         // Skip sections that are explicitly hidden, null, or undefined
         if (
@@ -111,8 +139,8 @@ export default async function LandingPage({
   };
 
   // Structured data (application/ld+json)
-  const appUrl = envConfigs.app_url || 'https://nanobanana-joyflix.ai';
-  const appName = envConfigs.app_name || 'Nanobanana Joyflix';
+  const appUrl = envConfigs.app_url || 'https://aivideogeneratorfree.ai';
+  const appName = envConfigs.app_name || 'AI Video Generator Free';
   const freeOfferDescription = initialCreditsAmount > 0
     ? `Sign up free and get ${initialCreditsAmount} bonus credits to generate AI videos instantly. No credit card required.`
     : 'Sign up free and get bonus credits to generate AI videos instantly. No credit card required.';

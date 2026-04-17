@@ -1,4 +1,4 @@
-import { eq, desc, asc, ne, isNull, or, and, like, notLike, ilike, notIlike } from 'drizzle-orm';
+import { eq, desc, asc, ne, isNull, or, and, like, notLike, ilike, notIlike, count } from 'drizzle-orm';
 
 import { db } from '@/core/db';
 import { showcase } from '@/config/db/schema';
@@ -122,7 +122,8 @@ export async function getUserShowcases(userId: string): Promise<Showcase[]> {
       .select()
       .from(showcase)
       .where(eq(showcase.userId, userId))
-      .orderBy(desc(showcase.createdAt));
+      .orderBy(desc(showcase.createdAt))
+      .limit(50);
     return result;
   } catch (error) {
     console.error('Failed to get user showcases:', error);
@@ -183,8 +184,8 @@ export async function getShowcasesCount({
     }
     const where = conditions.length > 0 ? and(...conditions) : undefined;
 
-    const result = await db().select({ count: showcase.id }).from(showcase).where(where);
-    return result.length;
+    const [result] = await db().select({ count: count() }).from(showcase).where(where);
+    return result?.count || 0;
   } catch (error) {
     console.error('Failed to get showcases count:', error);
     return 0;

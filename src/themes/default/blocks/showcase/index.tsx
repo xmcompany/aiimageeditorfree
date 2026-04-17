@@ -40,8 +40,8 @@ export function Showcase({ section }: { section: any }) {
       <div className="container">
         {/* Showcase Header */}
         <ShowcaseHeader
-          title={section.title || "What is Nanobanana Joyflix"}
-          description={section.description || "Nanobanana Joyflix is the ultimate AI visual creation platform that transforms text prompts and images into stunning, professional-quality videos and images. <br />Perfect for content creators, marketers, and storytellers."}
+          title={section.title || "What is AI Video Generator Free"}
+          description={section.description || "AI Video Generator Free is the ultimate AI visual creation platform that transforms text prompts and images into stunning, professional-quality videos and images. <br />Perfect for content creators, marketers, and storytellers."}
         />
 
         <Divider />

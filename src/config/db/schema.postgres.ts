@@ -576,6 +576,7 @@ export const prompt = table(
       .notNull(),
     sort: integer('sort').default(0).notNull(),
     type: text('type').notNull().default('image'),
+    model: text('model'), // AI model id, e.g. seedance, kling, veo
   },
   (table) => [
     index('idx_prompt_status').on(table.status),
@@ -655,3 +656,46 @@ export const video = table(
   ]
 );
 
+
+// Daily check-in records
+export const checkin = table(
+  'checkin',
+  {
+    id: text('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    checkinDate: text('checkin_date').notNull(), // YYYY-MM-DD
+    streak: integer('streak').notNull().default(1), // consecutive days
+    creditsGranted: integer('credits_granted').notNull().default(0),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    index('idx_checkin_user_date').on(table.userId, table.checkinDate),
+  ]
+);
+
+// Referral records
+export const referral = table(
+  'referral',
+  {
+    id: text('id').primaryKey(),
+    referrerId: text('referrer_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }), // who referred
+    refereeId: text('referee_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }), // who was referred
+    orderNo: text('order_no'), // the paid order that triggered reward
+    rewardCredits: integer('reward_credits').default(0), // credits to grant
+    status: text('status').notNull().default('pending'), // pending / rewarded / expired
+    rewardedAt: timestamp('rewarded_at'), // when credits were granted
+    expiresAt: timestamp('expires_at'), // 30 days after payment
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    index('idx_referral_referrer').on(table.referrerId),
+    index('idx_referral_referee').on(table.refereeId),
+    index('idx_referral_status').on(table.status),
+  ]
+);

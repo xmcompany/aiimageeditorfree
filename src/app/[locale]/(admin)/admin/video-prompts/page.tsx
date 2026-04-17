@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { PERMISSIONS, requirePermission } from '@/core/rbac';
 import { Header, Main, MainHeader } from '@/shared/blocks/dashboard';
 import { TableCard } from '@/shared/blocks/table';
+import { BulkDeleteTable } from '@/shared/blocks/table/bulk-delete-table';
 import { PromptActions } from '@/shared/blocks/table/actions/prompt-actions';
 import { getPrompts, getPromptsCount, type Prompt } from '@/shared/models/prompt';
 import { Button, Crumb } from '@/shared/types/blocks/common';
@@ -131,7 +132,18 @@ export default async function VideoPromptsPage({
       <Header crumbs={crumbs} />
       <Main>
         <MainHeader title={t('list.title')} actions={actions} />
-        <TableCard table={table} />
+        <BulkDeleteTable
+          items={data}
+          deleteApiUrl="/api/admin/prompts/bulk-delete"
+          confirmText="Delete selected video prompts?"
+          columns={[
+            { key: 'title', label: 'Title' },
+            { key: 'promptTitle', label: 'Prompt', truncate: true },
+          ]}
+        />
+        <div className="mt-6">
+          <TableCard table={table} />
+        </div>
       </Main>
     </>
   );

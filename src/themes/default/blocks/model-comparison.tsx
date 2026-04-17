@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Check, X, Minus } from 'lucide-react';
 
 import { cn } from '@/shared/lib/utils';

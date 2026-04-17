@@ -1,15 +1,15 @@
 {
   "metadata": {
-    "title": "AI 图像生成器 | Nanobanana Joyflix",
-    "description": "使用 Nanobanana Joyflix 旗舰模型生成和编辑惊艳的 AI 图像。"
+    "title": "AI 图像生成器 | AI Video Generator Free",
+    "description": "使用 AI Video Generator Free 旗舰模型生成和编辑惊艳的 AI 图像。"
   },
   "page": {
     "title": "AI 图像生成器",
-    "description": "使用 Nanobanana Joyflix 模型，通过文字或图片生成惊艳的 AI 图像。"
+    "description": "使用 AI Video Generator Free 模型，通过文字或图片生成惊艳的 AI 图像。"
   },
   "generator": {
     "title": "提示词",
-    "description": "使用 Nanobanana Joyflix 模型生成和编辑图像。",
+    "description": "使用 AI Video Generator Free 模型生成和编辑图像。",
     "tabs": {
       "text-to-image": "文生图",
       "image-to-image": "图生图"

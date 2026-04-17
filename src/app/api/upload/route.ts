@@ -1,8 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { headers } from 'next/headers';
+import { getAuth } from '@/core/auth';
 import { getStorageService } from '@/shared/services/storage';
 
 export async function POST(request: NextRequest) {
   try {
+    const auth = await getAuth();
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const formData = await request.formData();
     const file = formData.get('file') as File;
 
@@ -11,6 +19,11 @@ export async function POST(request: NextRequest) {
         { error: 'No file provided' },
         { status: 400 }
       );
+    }
+
+    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+    if (file.size > MAX_FILE_SIZE) {
+      return NextResponse.json({ error: 'File too large' }, { status: 400 });
     }
 
     const storageService = await getStorageService();
@@ -46,7 +59,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Upload error:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Upload failed' },
+      { error: 'Upload failed' },
       { status: 500 }
     );
   }

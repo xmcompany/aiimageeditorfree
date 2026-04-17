@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { respData, respErr } from '@/shared/lib/resp';
+import { findChatById } from '@/shared/models/chat';
 import {
   getChatMessages,
   getChatMessagesCount,
@@ -26,6 +27,11 @@ export async function POST(req: Request) {
 
     const user = await getUserInfo();
     if (!user) {
+      return respErr(t('messages.no_auth'));
+    }
+
+    const chatInfo = await findChatById(chatId);
+    if (!chatInfo || chatInfo.userId !== user.id) {
       return respErr(t('messages.no_auth'));
     }
 

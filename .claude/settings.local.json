@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "mcp__zai-mcp-server__extract_text_from_screenshot",
+      "Bash(npx tsc:*)",
+      "mcp__zai-mcp-server__analyze_image",
+      "Bash(curl -s -L \"https://kie.ai/pricing\" -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\")",
+      "Bash(grep -i -E \"credit|price|cost|usd|\\\\$|point\")",
+      "Bash(curl -s -L \"https://docs.kie.ai/market/getting-started\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(grep -i -E \"credit|price|cost|point|\\\\$|usd|seedance|wan|veo|hailuo|pixverse|luma|runway|grok\")",
+      "Bash(curl -s \"https://kie.ai/_next/static/chunks/pages/pricing-59ec18e00165fc24.js\" -H \"User-Agent: Mozilla/5.0\")",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"https://kie.ai/_next/static/chunks/pages/pricing-59ec18e00165fc24.js\")",
+      "Bash(curl -s \"https://kie.ai/_next/static/chunks/\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://kie.ai/_next/static/bTlx2wxhsbdlBv7XvRCJd/_buildManifest.js\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://kie.ai/_next/static/bTlx2wxhsbdlBv7XvRCJd/_buildManifest.js\")",
+      "Bash(curl -s \"https://kie.ai/_next/static/chunks/7547-a44585ec00f65d99.js\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://kie.ai/_next/static/chunks/74254-*.js\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://kie.ai/llms.txt\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(grep -oE '.{0,200}getModelPricingList.{0,200}')",
+      "Bash(grep -oE '.{0,100}getModelPricing.{0,200}' /tmp/app_bundle.js)",
+      "Bash(python3 -m json.tool)",
+      "Bash(grep -oE '.{0,50}url:\"/client.{0,50}' /tmp/app_bundle.js)",
+      "Bash(curl -s -X POST https://api.kie.ai/client/v1/model-pricing/page -H 'User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\)' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Origin: https://kie.ai' -H 'Referer: https://kie.ai/pricing' -d '{\"pageNum\":1,\"pageSize\":200,\"interfaceType\":\"Video\"}')"
+    ]
+  }
+}

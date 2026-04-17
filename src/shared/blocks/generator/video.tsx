@@ -78,12 +78,6 @@ const MODEL_OPTIONS = [
     provider: 'replicate',
     scenes: ['text-to-video', 'image-to-video'],
   },
-  {
-    value: 'openai/sora-2',
-    label: 'Sora 2',
-    provider: 'replicate',
-    scenes: ['text-to-video', 'image-to-video'],
-  },
   // Fal models
   {
     value: 'fal-ai/veo3',
@@ -102,19 +96,6 @@ const MODEL_OPTIONS = [
     label: 'Kling Video O1',
     provider: 'fal',
     scenes: ['video-to-video'],
-  },
-  // Kie models
-  {
-    value: 'sora-2-pro-image-to-video',
-    label: 'Sora 2 Pro',
-    provider: 'kie',
-    scenes: ['image-to-video'],
-  },
-  {
-    value: 'sora-2-pro-text-to-video',
-    label: 'Sora 2 Pro',
-    provider: 'kie',
-    scenes: ['text-to-video'],
   },
 ];
 

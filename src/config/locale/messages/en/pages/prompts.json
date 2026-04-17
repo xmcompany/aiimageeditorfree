@@ -1,15 +1,15 @@
 {
   "metadata": {
-    "title": "Nanobanana Joyflix Prompts Library",
+    "title": "AI Prompts Library | AI Video Generator Free",
     "description": "Inspiring AI generation prompts for images and videos"
   },
   "image_metadata": {
-    "title": "AI Image Prompts",
-    "description": "Inspiring text-to-image prompts powered by Nanobanana Joyflix"
+    "title": "AI Image Prompts | AI Video Generator Free",
+    "description": "Inspiring text-to-image prompts powered by AI Video Generator Free"
   },
   "video_metadata": {
-    "title": "AI Video Prompts",
-    "description": "Creative text-to-video prompts powered by Nanobanana Joyflix"
+    "title": "AI Video Prompts | AI Video Generator Free",
+    "description": "Creative text-to-video prompts powered by AI Video Generator Free"
   },
   "ui": {
     "create_similar": "Create Similar",
@@ -20,8 +20,8 @@
   "showcases-flow": {
     "id": "showcases",
     "sr_only_title": "Showcases",
-    "title": "Nanobanana Joyflix Prompts",
-    "description": "Representative editing and generation cases powered by Nanobanana Joyflix",
+    "title": "AI Video Generator Free Prompts",
+    "description": "Representative editing and generation cases powered by AI Video Generator Free",
     "items": [
       {
         "title": "Vertical fisheye selfie",
@@ -112,7 +112,7 @@
     "sections": {
       "showcases": {
         "id": "showcases",
-        "title": "AI SaaS Startups built with Nanobanana Joyflix",
+        "title": "AI SaaS Startups built with AI Video Generator Free",
         "description": "Easy to use and fast to ship.",
         "groups": [
           {

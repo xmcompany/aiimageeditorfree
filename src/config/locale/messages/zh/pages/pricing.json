@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Nanobanana Joyflix 价格",
-    "description": "选择最适合您的 AI 图像和视频创作需求的方案。"
+    "title": "AI Video Generator Free 价格",
+    "description": "选择最适合您的 AI 图像和视频创作方案。注册即获免费积分，支持月付、年付订阅及一次性积分包，随时开始创作高质量 AI 视频和图像。"
   },
   "messages": {
     "current_plan": "当前方案",
@@ -22,7 +22,7 @@
     "sections": {
       "pricing": {
         "id": "pricing",
-        "sr_only_title": "Nanobanana Joyflix 价格方案",
+        "sr_only_title": "AI Video Generator Free 价格方案",
         "title": "释放您的无限创意",
         "description": "选择最适合您的 AI 图像和视频创作需求的方案。所有方案均包含访问我们先进生成技术的权限。",
         "groups": [
@@ -48,8 +48,8 @@
             "features_title": "包含内容",
             "features": [
               "500 积分 /月 (≈ 50 个视频 / 125 张图片)",
-              "Nanobanana Joyflix AI 视频模型",
-              "Nanobanana Joyflix 图像模型",
+              "AI Video Generator Free AI 视频模型",
+              "AI Video Generator Free 图像模型",
               "支持文生图/图生图/视频生成",
               "快速生成模式",
               "无水印生成",
@@ -145,8 +145,8 @@
             "features_title": "包含内容",
             "features": [
               "500 积分 /月 (≈ 50 个视频 / 125 张图片)",
-              "Nanobanana Joyflix AI 视频模型",
-              "Nanobanana Joyflix 图像模型",
+              "AI Video Generator Free AI 视频模型",
+              "AI Video Generator Free 图像模型",
               "支持文生图/图生图/视频生成",
               "快速生成模式",
               "无水印生成",
@@ -246,8 +246,8 @@
             "features": [
               "1000 积分，永久有效",
               "一次性支付",
-              "Nanobanana Joyflix AI 视频模型",
-              "Nanobanana Joyflix 图像模型",
+              "AI Video Generator Free AI 视频模型",
+              "AI Video Generator Free 图像模型",
               "支持商业用途",
               "按需多次购买"
             ],

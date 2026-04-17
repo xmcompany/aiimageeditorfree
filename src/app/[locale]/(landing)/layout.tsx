@@ -1,8 +1,9 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
 
 import { getThemeLayout } from '@/core/theme';
 import { LocaleDetector, TopBanner } from '@/shared/blocks/common';
+import { ReferralTracker } from '@/shared/components/referral-tracker';
 import {
   Footer as FooterType,
   Header as HeaderType,
@@ -26,6 +27,9 @@ export default async function LandingLayout({
   return (
     <Layout header={header} footer={footer}>
       <LocaleDetector />
+      <Suspense fallback={null}>
+        <ReferralTracker />
+      </Suspense>
       {header.topbanner && header.topbanner.text && (
         <TopBanner
           id="topbanner"

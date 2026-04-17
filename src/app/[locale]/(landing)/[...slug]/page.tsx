@@ -5,6 +5,7 @@ import Script from 'next/script';
 import { getThemePage } from '@/core/theme';
 import { envConfigs } from '@/config';
 import { getLocalPage } from '@/shared/models/post';
+import { getLatestShowcases } from '@/shared/models/showcase';
 
 // dynamic page metadata
 export async function generateMetadata({
@@ -53,8 +54,11 @@ export async function generateMetadata({
   // src/config/locale/messages/{locale}/pages/**/*.json
 
   // dynamic page slug
-  const dynamicPageSlug =
-    typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
+  const MODEL_SLUGS_META = ['seedance','wan','veo','hailuo','happyhorse','kling','runway'];
+  const rawMetaSlug = typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
+  const dynamicPageSlug = MODEL_SLUGS_META.includes(rawMetaSlug)
+    ? `models.${rawMetaSlug}`
+    : rawMetaSlug;
 
   const messageKey = `pages.${dynamicPageSlug}`;
 
@@ -123,8 +127,12 @@ export default async function DynamicPage({
   // src/config/locale/messages/{locale}/pages/**/*.json
 
   // dynamic page slug
-  const dynamicPageSlug =
-    typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
+  const MODEL_SLUGS = ['seedance','wan','veo','hailuo','happyhorse','kling','runway'];
+  const rawDynamicSlug = typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
+  // Support /seedance → pages.models.seedance (model pages without /models/ prefix)
+  const dynamicPageSlug = MODEL_SLUGS.includes(rawDynamicSlug)
+    ? `models.${rawDynamicSlug}`
+    : rawDynamicSlug;
 
   const messageKey = `pages.${dynamicPageSlug}`;
 
@@ -135,7 +143,7 @@ export default async function DynamicPage({
     if (t.has('page')) {
       const Page = await getThemePage('dynamic-page');
       const pageData = t.raw('page');
-      const appUrl = envConfigs.app_url || 'https://nanobanana-joyflix.ai';
+      const appUrl = envConfigs.app_url || 'https://aivideogeneratorfree.ai';
 
       let structuredData: Record<string, any> | null = null;
 
@@ -144,6 +152,35 @@ export default async function DynamicPage({
 
       if (isModelPage) {
         const modelSlug = dynamicPageSlug.replace('models.', '');
+
+        // 从数据库按 tag 查询该模型的视频，注入到 videos section
+        if (pageData.sections?.videos) {
+          try {
+            const dbShowcases = await getLatestShowcases({
+              tags: modelSlug,
+              type: 'video',
+              limit: 12,
+              sortOrder: 'desc',
+            });
+
+            if (dbShowcases.length > 0) {
+              // 数据库有数据，覆盖静态 json 里的视频列表
+              pageData.sections.videos.videos = dbShowcases
+                .filter(s => s.videoUrl || s.image)
+                .map(s => ({
+                  src: s.videoUrl || s.image,
+                  poster: s.videoUrl ? s.image : undefined,
+                  prompt: s.prompt || undefined,
+                  label: s.title || undefined,
+                }));
+            }
+            // 注入模型 tag，供 model-videos 组件构建生成链接
+            pageData.sections.videos.tag = modelSlug;
+          } catch {
+            // 查询失败时保留静态兜底
+          }
+        }
+
         const modelPageUrl = `${appUrl}/models/${modelSlug}`;
         const pageTitle = pageData.sections?.hero?.title || pageData.title || '';
         const pageDesc = pageData.sections?.hero?.description || pageData.description || '';
@@ -187,7 +224,7 @@ export default async function DynamicPage({
         const comparePageUrl = `${appUrl}/compare`;
         const pageTitle = pageData.sections?.hero?.title || pageData.title || '';
         const pageDesc = pageData.sections?.hero?.description || pageData.description || '';
-        const modelSlugs = ['seedance', 'wan', 'kling', 'sora', 'veo', 'hailuo', 'grok-imagine', 'runway', 'happyhorse'];
+        const modelSlugs = ['seedance', 'wan', 'veo', 'hailuo', 'happyhorse'];
 
         structuredData = {
           '@context': 'https://schema.org',

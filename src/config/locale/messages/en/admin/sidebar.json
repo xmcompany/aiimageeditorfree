@@ -1,10 +1,10 @@
 {
   "header": {
     "brand": {
-      "title": "Nanobanana Joyflix",
+      "title": "AI Video Generator Free",
       "logo": {
-        "src": "/logo.png",
-        "alt": "Nanobanana Joyflix"
+        "src": "/logo.svg",
+        "alt": "AI Video Generator Free"
       },
       "url": "/admin"
     },
@@ -182,7 +182,7 @@
         },
         {
           "title": "GitHub",
-          "url": "https://github.com/nanobanana-joyflix",
+          "url": "https://github.com/aivideogeneratorfree",
           "icon": "Github",
           "target": "_blank"
         }

@@ -3,8 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getMetadata } from '@/shared/lib/seo';
 import { ShowcasesFlowDynamic } from '@/themes/default/blocks/showcases-flow-dynamic';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 600; // Revalidate every 10 minutes
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -22,7 +21,7 @@ export async function generateMetadata({ searchParams }: PageProps) {
 
   return getMetadata({
     metadataKey,
-    canonicalUrl: `/prompts${type ? `?type=${type}` : ''}`,
+    canonicalUrl: '/prompts',
   });
 }
 

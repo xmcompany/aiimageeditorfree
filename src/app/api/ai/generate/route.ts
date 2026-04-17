@@ -54,11 +54,20 @@ export async function POST(request: Request) {
     let costCredits = 4;
 
     if (mediaType === AIMediaType.IMAGE) {
-      // generate image
-      if (scene === 'image-to-image') {
-        costCredits = 6;
-      } else if (scene === 'text-to-image') {
-        costCredits = 4;
+      // Image pricing: site credits = API kie credits → ~4.67x markup
+      const isPro = model === 'nano-banana-pro';
+      const isV2 = model === 'nano-banana-2';
+      const isEdit = model === 'google/nano-banana-edit';
+      const isNanoV1 = model === 'google/nano-banana';
+
+      if (isEdit) {
+        costCredits = 3; // 3 kie API cost, ~4.67x markup
+      } else if (isPro) {
+        costCredits = 8; // 8 kie API cost (1/2K), ~4.67x markup
+      } else if (isV2) {
+        costCredits = 5; // 5 kie API cost (1K), ~4.67x markup
+      } else if (isNanoV1) {
+        costCredits = 3; // 3 kie API cost, ~4.67x markup
       } else {
         return respErr(t('messages.invalid_params'));
       }

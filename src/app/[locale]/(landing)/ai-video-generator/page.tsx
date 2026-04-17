@@ -10,6 +10,8 @@ import VideoGenerator from '@/shared/components/video/video-generator';
 import { getMetadata } from '@/shared/lib/seo';
 import { DynamicPage } from '@/shared/types/blocks/landing';
 
+export const revalidate = 3600; // Revalidate every hour
+
 export const generateMetadata = getMetadata({
   metadataKey: 'ai.video.metadata',
   canonicalUrl: '/ai-video-generator',
@@ -21,6 +23,7 @@ interface PageProps {
     id?: string;
     type?: string;
     prompt?: string;
+    model?: string;
   }>;
 }
 
@@ -33,7 +36,7 @@ export default async function TextToVideoPage({ params, searchParams }: PageProp
     headers: await headers(),
   });
 
-  const { id, type, prompt } = await searchParams;
+  const { id, type, prompt, model } = await searchParams;
   let initialVideo: GeneratedVideo | null = null;
   const isNewGeneration = type === 'new';
 
@@ -65,6 +68,7 @@ export default async function TextToVideoPage({ params, searchParams }: PageProp
     sections: {
       features: {
         block: 'custom-features',
+        h1_title: t.raw('page.title'),
         title: t.raw('page.title'),
         description: t.raw('page.description'),
       },
@@ -74,6 +78,7 @@ export default async function TextToVideoPage({ params, searchParams }: PageProp
             initialVideo={initialVideo}
             isNewGeneration={isNewGeneration}
             prompt={prompt}
+            defaultModel={model}
           />
         ),
       },

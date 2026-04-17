@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Kling AI Video Generator — Free Online (3.0, 2.6, 2.5, 2.1) | AI Video Generator Free",
-    "description": "Try Kling AI video generator free online. Kuaishou Kling 3.0, 2.6, 2.5, 2.1 models with text-to-video, image-to-video, native audio, multi-shot storytelling, and up to 1080p output."
+    "title": "Kling AI Video Generator | AI Video Generator Free",
+    "description": "Try Kling AI video generator free online. Kuaishou Kling 3.0, 2.6, 2.5 models with text-to-video, image-to-video, and native audio."
   },
   "page": {
     "title": "Kling 3.0 AI Video Generator",
@@ -44,37 +44,31 @@
         "description": "Watch real AI-generated videos created with Kling 3.0. Hover to preview, click to play with sound.",
         "videos": [
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1770648690994_jIU8D0i9.mp4",
-            "prompt": "738 / 2500 charactersduration*@Elements"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/kling/1776132641865_z6vki3.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1770357544824_3WLW1bWv.mp4",
-            "prompt": "738 / 2500 charactersduration*@Elements"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/kling/1776132653136_vvpwhc.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1770358033649_BmLF2Rch.mp4",
-            "prompt": "738 / 2500 charactersduration*@Elements"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/kling/1776132700496_qpmgyn.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1770357363265_DEmFFM0I.mp4",
-            "prompt": "738 / 2500 charactersduration*@Elements"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/kling/1776132712649_s7wti7.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1770357280475_uugszd4Z.mp4",
-            "prompt": "738 / 2500 charactersduration*@Elements"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/kling/1776132726868_gokrhe.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1770356947744_bzWO6D7A.mp4",
-            "prompt": "prompt:string*image_urls:array*sound:boolean*duration:string (5 | 10)*"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/kling/1776132738107_x8avbz.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1770358078590_28xlbFD7.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/kling/1776132747082_0k25ub.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1770357191330_gUwYRzpV.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/kling/1776132757143_y7cxxo.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1770357964822_psSJQTwP.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/kling/1776132767194_eetqp8.mp4"
           }
         ]
       },
@@ -188,7 +182,7 @@
               "v30": "-",
               "v26": "-",
               "v25": "-",
-              "v21": "160 credits ($0.80)"
+              "v21": "160 credits"
             }
           },
           {
@@ -197,7 +191,7 @@
               "v30": "-",
               "v26": "-",
               "v25": "-",
-              "v21": "320 credits ($1.60)"
+              "v21": "320 credits"
             }
           }
         ]

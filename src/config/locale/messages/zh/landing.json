@@ -2,10 +2,10 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "Nanobanana Joyflix",
+      "title": "AI Video Generator Free",
       "logo": {
-        "src": "/logo.png",
-        "alt": "Nanobanana Joyflix"
+        "src": "/logo.svg",
+        "alt": "AI Video Generator Free"
       },
       "url": "/"
     },
@@ -102,7 +102,7 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Nanobanana Joyflix AI 图像与视频创作",
+    "title": "AI Video Generator Free AI 图像与视频创作",
     "description": "极速文生图与电影级 AI 视频生成。将创意灵感化为惊艳大片，赋予静态照片灵动的生命力。",
     "buttons": [
       {
@@ -127,7 +127,7 @@
     "show_award": false,
     "show_hero_input": false,
     "show_bg_spline": false,
-    "highlight_text": "Nanobanana Joyflix",
+    "highlight_text": "AI Video Generator Free",
     "background_image": {
       "src": "/imgs/bg/girl.jpeg",
       "alt": "hero"
@@ -135,20 +135,20 @@
   },
   "showcases-flow": {
     "id": "showcases",
-    "title": "体验 Nanobanana Joyflix 的创意力量",
+    "title": "体验 AI Video Generator Free 的创意力量",
     "description": "通过 AI 文字生成图像与电影级视频生成，解锁无限的创作可能。",
     "items": []
   },
   "logos": {
     "id": "logos",
     "title": "全球顶尖 AI 生成模型",
-    "description": "接入 Nanobanana Joyflix 领先模型，打破创意边界",
+    "description": "接入 AI Video Generator Free 领先模型，打破创意边界",
     "hidden": true
   },
   "showcase": {
     "id": "showcase",
-    "title": "见证 Nanobanana Joyflix 的创作力量",
-    "description": "无论是将文字构思化为电影长片，还是赋予静态摄影灵动的生命，Nanobanana Joyflix 都能为您带来专业级的视觉震撼。",
+    "title": "见证 AI Video Generator Free 的创作力量",
+    "description": "无论是将文字构思化为电影长片，还是赋予静态摄影灵动的生命，AI Video Generator Free 都能为您带来专业级的视觉震撼。",
     "textToVideo": {
       "title": "AI 文生视频 (Text to Video)",
       "description": "用简单的提示词，构建出一个栩栩如生的动态世界。",
@@ -224,7 +224,7 @@
   "introduce": {
     "id": "introduce",
     "title": "重新定义视觉创作边界",
-    "description": "Nanobanana Joyflix 不仅仅是一个工具，它是您的创意合伙人。我们集成了全球领先的图像与视频生成技术，让复杂的专业级创作变得如对话般简单。",
+    "description": "AI Video Generator Free 不仅仅是一个工具，它是您的创意合伙人。我们集成了全球领先的图像与视频生成技术，让复杂的专业级创作变得如对话般简单。",
     "items": [
       {
         "title": "电影级质感",
@@ -246,7 +246,7 @@
   },
   "benefits": {
     "id": "benefits",
-    "title": "为什么选择 Nanobanana Joyflix？",
+    "title": "为什么选择 AI Video Generator Free？",
     "items": [
       {
         "title": "全能型视觉工作流",
@@ -285,7 +285,7 @@
   },
   "stats": {
     "id": "stats",
-    "title": "深受创作者喜爱的 Nanobanana Joyflix AI",
+    "title": "深受创作者喜爱的 AI Video Generator Free AI",
     "description": "凭借卓越的画质与极简的操作，赢得广泛好评。",
     "label": "数据统计",
     "icon": "ChartBar",
@@ -310,13 +310,13 @@
   "testimonials": {
     "id": "testimonials",
     "title": "超过 500,000 名创作者的选择",
-    "description": "听听内容创作者、营销专家和讲故事的人对 Nanobanana Joyflix 的评价。",
+    "description": "听听内容创作者、营销专家和讲故事的人对 AI Video Generator Free 的评价。",
     "label": "用户评价",
     "items": [
       {
         "title": "Alex G.",
         "label": "社交媒体经理",
-        "description": "Nanobanana Joyflix 的视频生成功能彻底改变了我的工作流。以前需要一整天剪辑的内容，现在只需五分钟。质量始终令人惊叹。",
+        "description": "AI Video Generator Free 的视频生成功能彻底改变了我的工作流。以前需要一整天剪辑的内容，现在只需五分钟。质量始终令人惊叹。",
         "image": {
           "src": "/imgs/users/1.png"
         }
@@ -324,7 +324,7 @@
       {
         "title": "Jenna R.",
         "label": "小企业主",
-        "description": "我一直在寻找一款不设限、不卡顿的 AI 视频生成器。Nanobanana Joyflix 超出了我所有的预期。强大、快速且极其易用。",
+        "description": "我一直在寻找一款不设限、不卡顿的 AI 视频生成器。AI Video Generator Free 超出了我所有的预期。强大、快速且极其易用。",
         "image": {
           "src": "/imgs/users/2.png"
         }
@@ -355,12 +355,12 @@
   },
   "features": {
     "id": "features",
-    "title": "Nanobanana Joyflix 核心功能",
+    "title": "AI Video Generator Free 核心功能",
     "description": "集成旗舰级 AI 图像编辑与电影级视频生成能力，为您提供一站式视觉创作体验。",
     "items": [
       {
         "title": "自然语言图像编辑",
-        "description": "用对话式提示词编辑任何照片。Nanobanana Joyflix 解读复杂指令，实现精准转换。",
+        "description": "用对话式提示词编辑任何照片。AI Video Generator Free 解读复杂指令，实现精准转换。",
         "icon": "RiMagicLine"
       },
       {
@@ -390,6 +390,42 @@
       }
     ]
   },
+  "credits-ways": {
+    "id": "credits-ways",
+    "title": "3 种方式免费获取 AI 视频积分",
+    "description": "无需信用卡，立即开始免费生成 AI 视频。通过以下简单操作赚取更多积分。",
+    "items": [
+      {
+        "icon": "Gift",
+        "subtitle": "立即到账",
+        "title": "注册即得免费积分",
+        "description": "创建免费账户，立即获得赠送积分。无需信用卡，马上开始生成 AI 视频。",
+        "url": "/sign-up",
+        "cta": "立即领取免费积分"
+      },
+      {
+        "icon": "CalendarCheck",
+        "subtitle": "每日签到",
+        "title": "每日签到领积分",
+        "description": "每天登录即可领取每日免费积分。连续签到天数越多，获得的积分奖励越丰厚。",
+        "url": "/activity/checkin",
+        "cta": "立即签到"
+      },
+      {
+        "icon": "Users",
+        "subtitle": "邀请好友",
+        "title": "邀请好友赚积分",
+        "description": "分享你的邀请链接给朋友。当他们注册并生成第一个 AI 视频后，你们双方都能获得额外积分奖励。",
+        "url": "/activity/checkin",
+        "cta": "开始邀请"
+      }
+    ]
+  },
+  "blog-preview": {
+    "id": "blog-preview",
+    "title": "最新博客文章",
+    "description": "技巧、指南和更新，帮助你充分利用我们的免费 AI 视频生成器。"
+  },
   "faq": {
     "id": "faq",
     "label": "常见问题",
@@ -416,7 +452,7 @@
   },
   "cta": {
     "id": "cta",
-    "title": "立即体验 Nanobanana Joyflix",
+    "title": "立即体验 AI Video Generator Free",
     "description": "加入百万创作者行列，今天就开始您的 AI 图像与视频创作之旅。",
     "buttons": [
       {
@@ -431,11 +467,11 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "Nanobanana Joyflix",
-      "description": "Nanobanana Joyflix 是旗舰级 AI 视觉创作平台，集成先进的图像编辑与视频生成模型，提供一流的数字内容生产体验。",
+      "title": "AI Video Generator Free",
+      "description": "AI Video Generator Free 是旗舰级 AI 视觉创作平台，集成先进的图像编辑与视频生成模型，提供一流的数字内容生产体验。",
       "logo": {
-        "src": "/logo.png",
-        "alt": "Nanobanana Joyflix"
+        "src": "/logo.svg",
+        "alt": "AI Video Generator Free"
       },
       "url": "/"
     },
@@ -488,7 +524,7 @@
         {
           "title": "邮箱",
           "icon": "Mail",
-          "url": "mailto:support@nanobanana-joyflix.ai",
+          "url": "mailto:support@aivideogeneratorfree.ai",
           "target": "_self"
         }
       ]

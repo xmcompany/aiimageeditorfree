@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { PERMISSIONS, requirePermission } from '@/core/rbac';
 import { Header, Main, MainHeader } from '@/shared/blocks/dashboard';
 import { TableCard } from '@/shared/blocks/table';
+import { BulkDeleteTable } from '@/shared/blocks/table/bulk-delete-table';
 import { ShowcaseActions } from '@/shared/blocks/table/actions/showcase-actions';
 import { getShowcases, getShowcasesCount, type Showcase } from '@/shared/models/showcase';
 import { Button, Crumb } from '@/shared/types/blocks/common';
@@ -125,7 +126,19 @@ export default async function VideoShowcasesPage({
       <Header crumbs={crumbs} />
       <Main>
         <MainHeader title={t('title')} actions={actions} />
-        <TableCard table={table} />
+        <BulkDeleteTable
+          items={data}
+          deleteApiUrl="/api/admin/showcases/bulk-delete"
+          confirmText="Delete selected video showcases?"
+          columns={[
+            { key: 'title', label: 'Title' },
+            { key: 'tags', label: 'Tags' },
+            { key: 'prompt', label: 'Prompt', truncate: true },
+          ]}
+        />
+        <div className="mt-6">
+          <TableCard table={table} />
+        </div>
       </Main>
     </>
   );

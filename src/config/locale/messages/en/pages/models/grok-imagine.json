@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Grok Imagine AI Video Generator — Free Online | AI Video Generator Free",
-    "description": "Try Grok Imagine AI video generator free online. xAI's AI video generation model with text-to-video and image-to-video capabilities."
+    "title": "Grok Imagine AI Video Generator | AI Video Generator Free",
+    "description": "Try Grok Imagine AI video generator free online. xAI's video generation model with text-to-video and image-to-video capabilities."
   },
   "page": {
     "title": "Grok Imagine AI Video Generator",
@@ -44,15 +44,14 @@
         "description": "Watch real AI-generated videos created with Grok Imagine. Hover to preview, click to play with sound.",
         "videos": [
           {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1762247832657qdblcxkp.mp4",
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/grok-imagine/1776132885839_7vmxu0.mp4",
             "prompt": "Cinematic portrait of a woman sitting by a vinyl record player, retro living room background, soft ambient lighting, warm earthy tones, nostalgic 1970s wardrobe, reflective mood, gentle film grain tex"
           },
           {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1762248271431um2rtrv9.mp4",
-            "prompt": "prompt:string*aspect_ratio:string (2:3 | 3:2 | 1:1 | 9:16 | 16:9)enable_pro:boolean"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/grok-imagine/1776132584314_3w6gfh.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1775029498799_9HJRSiTP.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/grok-imagine/1776132597049_f0gclx.mp4"
           }
         ]
       },

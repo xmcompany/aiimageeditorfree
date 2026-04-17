@@ -2,7 +2,7 @@
 import { useTranslations } from 'next-intl';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Wand, X } from 'lucide-react';
 
 import { Link } from '@/core/i18n/navigation';
@@ -10,6 +10,7 @@ import { LazyImage } from '@/shared/blocks/common';
 import { SmartIcon } from '@/shared/blocks/common/smart-icon';
 import { Button } from '@/shared/components/ui/button';
 import { cn } from '@/shared/lib/utils';
+import { buildGenerateUrl } from '@/shared/lib/generate-url';
 import { Section } from '@/shared/types/blocks/landing';
 
 export function ShowcasesFlow({
@@ -201,7 +202,11 @@ export function ShowcasesFlow({
                       className="inline-flex items-center justify-center whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive rounded-md gap-1.5 has-[>svg]:px-2.5 bg-primary hover:bg-primary/90 text-primary-foreground h-8 w-full border-0 px-1 py-1.5 text-sm font-medium"
                     >
                       <Link
-                        href={`/ai-image-generator?prompt=${encodeURIComponent((item as any).prompt || '')}`}
+                        href={buildGenerateUrl({
+                          type: 'image',
+                          model: (item as any).model || (item as any).tags,
+                          showcaseId: (item as any).id,
+                        })}
                         target="_self"
                       >
                         <Wand className="mr-2 size-4" />

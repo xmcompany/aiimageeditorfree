@@ -14,6 +14,7 @@ import {
 import { getUuid } from '@/shared/lib/hash';
 import { getClientIp } from '@/shared/lib/ip';
 import { grantCreditsForNewUser } from '@/shared/models/credit';
+import { createReferral, findUserByReferralCode } from '@/shared/models/referral';
 import { getEmailService } from '@/shared/services/email';
 import { grantRoleForNewUser } from '@/shared/services/rbac';
 
@@ -142,6 +143,19 @@ export async function getAuthOptions(configs: Record<string, string>) {
 
               // grant role for new user
               await grantRoleForNewUser(user);
+
+              // record referral relationship if ref cookie exists
+              try {
+                const refCode = getCookieFromCtx(ctx, 'ref');
+                if (refCode && typeof refCode === 'string') {
+                  const referrer = await findUserByReferralCode(refCode.trim());
+                  if (referrer && referrer.id !== user.id) {
+                    await createReferral(referrer.id, user.id);
+                  }
+                }
+              } catch {
+                // best-effort
+              }
             } catch (e) {
               console.log('grant credits or role for new user failed', e);
             }

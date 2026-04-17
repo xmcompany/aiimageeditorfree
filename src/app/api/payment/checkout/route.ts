@@ -304,13 +304,13 @@ export async function POST(req: Request) {
       });
 
       return respErr(
-        t('messages.checkout.checkout_failed', { message: e.message })
+        t('messages.checkout.checkout_failed', { message: 'Payment processing failed' })
       );
     }
   } catch (e: any) {
     console.log('checkout failed:', e);
     return respErr(
-      t('messages.checkout.checkout_failed', { message: e.message })
+      t('messages.checkout.checkout_failed', { message: 'Payment processing failed' })
     );
   }
 }

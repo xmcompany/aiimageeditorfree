@@ -161,35 +161,9 @@ export async function consumeCredits({
 
   // consume credits
   const execute = async (tx: any) => {
-    // 1. check credits balance
-    const [creditsBalance] = await tx
-      .select({
-        total: sum(credit.remainingCredits),
-      })
-      .from(credit)
-      .where(
-        and(
-          eq(credit.userId, userId),
-          eq(credit.transactionType, CreditTransactionType.GRANT),
-          eq(credit.status, CreditStatus.ACTIVE),
-          gt(credit.remainingCredits, 0),
-          or(
-            isNull(credit.expiresAt), // Never expires
-            gt(credit.expiresAt, currentTime) // Not yet expired
-          )
-        )
-      );
-
-    // balance is not enough
-    if (
-      !creditsBalance ||
-      !creditsBalance.total ||
-      parseInt(creditsBalance.total) < credits
-    ) {
-      throw new Error(
-        `Insufficient credits, ${creditsBalance?.total || 0} < ${credits}`
-      );
-    }
+    // 1. Lock available credits first (FOR UPDATE), then check balance atomically
+    // This prevents race conditions where two concurrent requests both pass the balance check
+    // before either one deducts credits.
 
     // 2. get available credits, FIFO queue with expiresAt, batch query
     let remainingToConsume = credits; // remaining credits to consume
@@ -229,6 +203,43 @@ export async function consumeCredits({
       // no more credits
       if (batchCredits?.length === 0) {
         break;
+      }
+
+      // On first batch, validate the total balance is sufficient while locks are held
+      if (batchNo === 1) {
+        const totalAvailable = batchCredits.reduce(
+          (acc: number, item: { remainingCredits: number }) => acc + item.remainingCredits, 0
+        );
+        // If the first batch doesn't cover the needed amount, do a full count
+        if (totalAvailable < credits) {
+          const [creditsBalance] = await tx
+            .select({
+              total: sum(credit.remainingCredits),
+            })
+            .from(credit)
+            .where(
+              and(
+                eq(credit.userId, userId),
+                eq(credit.transactionType, CreditTransactionType.GRANT),
+                eq(credit.status, CreditStatus.ACTIVE),
+                gt(credit.remainingCredits, 0),
+                or(
+                  isNull(credit.expiresAt),
+                  gt(credit.expiresAt, currentTime)
+                )
+              )
+            );
+
+          if (
+            !creditsBalance ||
+            !creditsBalance.total ||
+            parseInt(creditsBalance.total) < credits
+          ) {
+            throw new Error(
+              `Insufficient credits, ${creditsBalance?.total || 0} < ${credits}`
+            );
+          }
+        }
       }
 
       // consume credits for each item

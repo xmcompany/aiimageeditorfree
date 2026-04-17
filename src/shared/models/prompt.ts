@@ -29,6 +29,7 @@ export interface NewPrompt {
   status: string;
   sort?: number;
   type?: string;
+  model?: string;
 }
 
 export interface UpdatePrompt {
@@ -40,6 +41,7 @@ export interface UpdatePrompt {
   status?: string;
   sort?: number;
   type?: string;
+  model?: string;
 }
 
 export const PromptStatus = {
@@ -117,7 +119,10 @@ export async function findPrompt({ id }: { id: string }): Promise<Prompt | null>
 export async function addPrompt(data: NewPrompt): Promise<boolean> {
   try {
     const database = await db();
-    await database.insert(prompt).values(data);
+    await database.insert(prompt).values({
+      ...data,
+      model: (data as any).model || null,
+    } as any);
     return true;
   } catch (error) {
     console.error('Add prompt error:', error);
@@ -128,7 +133,10 @@ export async function addPrompt(data: NewPrompt): Promise<boolean> {
 export async function updatePrompt(id: string, data: UpdatePrompt): Promise<boolean> {
   try {
     const database = await db();
-    await database.update(prompt).set(data).where(eq(prompt.id, id));
+    await database.update(prompt).set({
+      ...data,
+      model: (data as any).model || null,
+    } as any).where(eq(prompt.id, id));
     return true;
   } catch (error) {
     console.error('Update prompt error:', error);

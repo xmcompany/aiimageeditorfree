@@ -46,6 +46,23 @@ export default async function VideoPromptEditPage({
         validation: { required: true },
       },
       {
+        name: 'model',
+        type: 'select',
+        title: 'Model',
+        options: [
+          { title: 'Veo 3.1 Lite', value: 'veo_3_1_lite' },
+          { title: 'Veo 3.1 Fast', value: 'veo_3_1_fast' },
+          { title: 'Veo 3.1 Quality', value: 'veo_3_1_quality' },
+          { title: 'Seedance 2.0 Fast', value: 'seedance' },
+          { title: 'Seedance 2.0 Standard', value: 'seedance_standard' },
+          { title: 'Wan 2.7', value: 'wan' },
+          { title: 'Hailuo 2.3', value: 'hailuo' },
+          { title: 'Hailuo 02', value: 'hailuo_02' },
+          { title: 'HappyHorse 1.0', value: 'happyhorse' },
+        ],
+        validation: { required: true },
+      },
+      {
         name: 'promptTitle',
         type: 'text',
         title: t('fields.prompt_title'),
@@ -80,6 +97,7 @@ export default async function VideoPromptEditPage({
         const promptTitle = data.get('promptTitle') as string;
         const promptDescription = data.get('promptDescription') as string;
         const image = data.get('image') as string;
+        const model = data.get('model') as string;
         const title = promptTitle;
         const description = promptDescription;
 
@@ -95,6 +113,7 @@ export default async function VideoPromptEditPage({
           promptDescription: promptDescription?.trim() || '',
           status: PromptStatus.PUBLISHED,
           type: 'video',
+          model: model?.trim() || '',
         };
 
         const result = await updatePrompt(id, updateData);

@@ -22,21 +22,15 @@ import {
   LazyImage,
 } from '@/shared/blocks/common';
 import { Button } from '@/shared/components/ui/button';
-// import {
-//   Card,
-//   CardContent,
-//   CardHeader,
-//   CardTitle,
-// } from '@/shared/components/ui/card';
 import { Label } from '@/shared/components/ui/label';
 import { Progress } from '@/shared/components/ui/progress';
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from '@/shared/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/components/ui/select';
 import { Tabs, TabsList, TabsTrigger } from '@/shared/components/ui/tabs';
 import { Skeleton } from '@/shared/components/ui/skeleton';
 import { Textarea } from '@/shared/components/ui/textarea';
@@ -79,77 +73,28 @@ const MAX_PROMPT_LENGTH = 2000;
 
 const MODEL_OPTIONS = [
   {
+    value: 'nano-banana-2',
+    label: 'Nano Banana 2',
+    scenes: ['text-to-image', 'image-to-image'],
+    schema: 'v2' as const,
+  },
+  {
     value: 'nano-banana-pro',
-    label: 'Nanobanana Joyflix',
-    provider: 'kie',
+    label: 'Nano Banana Pro',
     scenes: ['text-to-image', 'image-to-image'],
+    schema: 'v2' as const,
   },
   {
-    value: 'google/nano-banana-pro',
-    label: 'Nanobanana Joyflix',
-    provider: 'replicate',
-    scenes: ['text-to-image', 'image-to-image'],
-  },
-  {
-    value: 'bytedance/seedream-4',
-    label: 'Seedream 4',
-    provider: 'replicate',
-    scenes: ['text-to-image', 'image-to-image'],
-  },
-  {
-    value: 'fal-ai/nano-banana-pro',
-    label: 'Nanobanana Joyflix',
-    provider: 'fal',
+    value: 'google/nano-banana',
+    label: 'Nano Banana',
     scenes: ['text-to-image'],
+    schema: 'v1' as const,
   },
   {
-    value: 'fal-ai/nano-banana-pro/edit',
-    label: 'Nanobanana Joyflix',
-    provider: 'fal',
+    value: 'google/nano-banana-edit',
+    label: 'Nano Banana Edit',
     scenes: ['image-to-image'],
-  },
-  {
-    value: 'fal-ai/bytedance/seedream/v4/edit',
-    label: 'Seedream 4',
-    provider: 'fal',
-    scenes: ['image-to-image'],
-  },
-  {
-    value: 'fal-ai/z-image/turbo',
-    label: 'Z-Image Turbo',
-    provider: 'fal',
-    scenes: ['text-to-image'],
-  },
-  {
-    value: 'fal-ai/flux-2-flex',
-    label: 'Flux 2 Flex',
-    provider: 'fal',
-    scenes: ['text-to-image'],
-  },
-  {
-    value: 'gemini-3-pro-image-preview',
-    label: 'Gemini 3 Pro Image Preview',
-    provider: 'gemini',
-    scenes: ['text-to-image', 'image-to-image'],
-  },
-];
-
-const PROVIDER_OPTIONS = [
-  {
-    value: 'kie',
-    label: 'Kie',
-  },
-  {
-    value: 'replicate',
-    label: 'Replicate',
-  },
-  {
-    value: 'fal',
-    label: 'Fal',
-  },
-  {
-    value: 'gemini',
-    label: 'Gemini',
+    schema: 'v1' as const,
   },
 ];
 
@@ -222,8 +167,8 @@ export function ImageGenerator({
   const [activeTab, setActiveTab] =
     useState<ImageGeneratorTab>('text-to-image');
 
-  const [costCredits, setCostCredits] = useState<number>(4);
-  const [provider, setProvider] = useState(PROVIDER_OPTIONS[0]?.value ?? '');
+  const [costCredits, setCostCredits] = useState<number>(5);
+  const [provider] = useState('kie');
   const [model, setModel] = useState(MODEL_OPTIONS[0]?.value ?? '');
   // Set default values only when no promptKey is provided
   const [prompt, setPrompt] = useState(
@@ -266,7 +211,7 @@ export function ImageGenerator({
 
   useEffect(() => {
     setIsMounted(true);
-    
+
     // Fetch available AI providers
     fetch('/api/ai/providers')
       .then((res) => res.json())
@@ -275,26 +220,17 @@ export function ImageGenerator({
           const providers = data.data.providers || [];
           console.log('Available AI providers:', providers);
           setAvailableProviders(providers);
-          
-          // Set initial provider and model based on available providers
-          if (providers.length > 0) {
-            const firstProvider = providers[0];
-            setProvider(firstProvider);
-            
-            // Find first available model for this provider
-            const availableModel = MODEL_OPTIONS.find(
-              (option) => 
-                option.scenes.includes(activeTab) && 
-                option.provider === firstProvider
+
+          if (providers.includes('kie')) {
+            // Set default model for text-to-image
+            const defaultModel = MODEL_OPTIONS.find(
+              (option) => option.scenes.includes('text-to-image')
             );
-            
-            if (availableModel) {
-              setModel(availableModel.value);
+            if (defaultModel) {
+              setModel(defaultModel.value);
             }
           } else {
-            // No providers configured, clear provider and model
-            console.log('No AI providers configured, clearing provider and model');
-            setProvider('');
+            console.log('Kie provider not configured');
             setModel('');
           }
         }
@@ -342,20 +278,15 @@ export function ImageGenerator({
             }
             // When promptKey is provided, switch to image-to-image tab
             setActiveTab('image-to-image');
-            setCostCredits(6);
 
-            // Update model based on available providers for image-to-image
-            if (availableProviders.length > 0) {
-              const availableModel = MODEL_OPTIONS.find(
-                (option) =>
-                  option.scenes.includes('image-to-image') &&
-                  availableProviders.includes(option.provider)
-              );
-
-              if (availableModel) {
-                setProvider(availableModel.provider);
-                setModel(availableModel.value);
-              }
+            // Find default model for image-to-image
+            const i2iModel = MODEL_OPTIONS.find(
+              (option) =>
+                option.scenes.includes('image-to-image') &&
+                availableProviders.includes('kie')
+            );
+            if (i2iModel) {
+              setModel(i2iModel.value);
             }
           }
         })
@@ -374,21 +305,14 @@ export function ImageGenerator({
       setPrompt(envConfigs.default_image_prompt);
       setPreviewImage(envConfigs.default_image_preview);
       setActiveTab('text-to-image');
-      setCostCredits(4);
 
-      // Reset to default provider and model for text-to-image
-      if (availableProviders.length > 0) {
-        const firstProvider = availableProviders[0];
-        setProvider(firstProvider);
-
-        const availableModel = MODEL_OPTIONS.find(
-          (option) =>
-            option.scenes.includes('text-to-image') &&
-            option.provider === firstProvider
+      // Reset to default model for text-to-image
+      if (availableProviders.includes('kie')) {
+        const defaultModel = MODEL_OPTIONS.find(
+          (option) => option.scenes.includes('text-to-image')
         );
-
-        if (availableModel) {
-          setModel(availableModel.value);
+        if (defaultModel) {
+          setModel(defaultModel.value);
         }
       }
     }
@@ -404,33 +328,7 @@ export function ImageGenerator({
     setActiveTab(tab);
 
     const availableModels = MODEL_OPTIONS.filter(
-      (option) => 
-        option.scenes.includes(tab) && 
-        option.provider === provider &&
-        availableProviders.includes(option.provider)
-    );
-
-    if (availableModels.length > 0) {
-      setModel(availableModels[0].value);
-    } else {
-      setModel('');
-    }
-
-    if (tab === 'text-to-image') {
-      setCostCredits(4);
-    } else {
-      setCostCredits(6);
-    }
-  };
-
-  const handleProviderChange = (value: string) => {
-    setProvider(value);
-
-    const availableModels = MODEL_OPTIONS.filter(
-      (option) => 
-        option.scenes.includes(activeTab) && 
-        option.provider === value &&
-        availableProviders.includes(option.provider)
+      (option) => option.scenes.includes(tab)
     );
 
     if (availableModels.length > 0) {
@@ -439,6 +337,26 @@ export function ImageGenerator({
       setModel('');
     }
   };
+
+  // Update credits when model changes
+  useEffect(() => {
+    const modelOption = MODEL_OPTIONS.find((o) => o.value === model);
+    if (!modelOption) { setCostCredits(5); return; }
+
+    const isPro = model === 'nano-banana-pro';
+    const isV2 = model === 'nano-banana-2';
+    const isEdit = model === 'google/nano-banana-edit';
+
+    if (isEdit) {
+      setCostCredits(3); // 3 kie API cost, ~4.67x markup
+    } else if (isPro) {
+      setCostCredits(8); // 8 kie API cost (1/2K), ~4.67x markup
+    } else if (isV2) {
+      setCostCredits(5); // 5 kie API cost (1K), ~4.67x markup
+    } else {
+      setCostCredits(3); // nano-banana: 3 kie API cost, ~4.67x markup
+    }
+  }, [model, activeTab]);
 
   const taskStatusLabel = useMemo(() => {
     if (!taskStatus) {
@@ -763,6 +681,12 @@ export function ImageGenerator({
       return;
     }
 
+    // nano-banana-edit requires reference images
+    if (model === 'google/nano-banana-edit' && referenceImageUrls.length === 0) {
+      toast.error('Nano Banana Edit requires a reference image.');
+      return;
+    }
+
     setIsGenerating(true);
     setProgress(15);
     setTaskStatus(AITaskStatus.PENDING);
@@ -771,9 +695,23 @@ export function ImageGenerator({
 
     try {
       const options: any = {};
+      const modelOption = MODEL_OPTIONS.find((o) => o.value === model);
 
-      if (!isTextToImageMode) {
-        options.image_input = referenceImageUrls;
+      if (modelOption?.schema === 'v1') {
+        // nano-banana / nano-banana-edit use image_urls + image_size
+        if (!isTextToImageMode) {
+          options.image_urls = referenceImageUrls;
+        }
+        options.image_size = '1:1';
+      } else {
+        // nano-banana-2 / nano-banana-pro use image_input + aspect_ratio + resolution
+        if (!isTextToImageMode) {
+          options.image_input = referenceImageUrls;
+        } else {
+          options.image_input = [];
+        }
+        options.aspect_ratio = 'auto';
+        options.resolution = '1K';
       }
 
       const isDebugMock = 
@@ -927,7 +865,24 @@ export function ImageGenerator({
                     </TabsList>
                   </Tabs>
 
-                  {/* ... selects ... omitted for brevity but strictly keeping the logic ... */}
+                  {/* Model Selection */}
+                  <div className="space-y-3">
+                    <Label className="text-foreground/80 text-sm font-bold ml-1 uppercase tracking-widest">
+                      {t('form.model')}
+                    </Label>
+                    <Select value={model} onValueChange={setModel}>
+                      <SelectTrigger className="bg-muted/30 dark:bg-black/40 w-full rounded-2xl h-12 border border-border/10 dark:border-zinc-800 text-foreground">
+                        <SelectValue placeholder={t('form.select_model')} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {MODEL_OPTIONS.filter((o) => o.scenes.includes(activeTab)).map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
                   {!isTextToImageMode && (
                     <div className="space-y-3 animate-in fade-in slide-in-from-top-4 duration-500">

@@ -1,10 +1,10 @@
-# Nanobanana Joyflix — Free AI Video Generator
+# AI Video Generator Free — Free AI Video Generator
 
-> Nanobanana Joyflix is a free AI video generator that turns text prompts and images into cinematic videos online. New users receive free credits upon sign-up — no credit card required.
+> AI Video Generator Free is a free AI video generator that turns text prompts and images into cinematic videos online. New users receive free credits upon sign-up — no credit card required.
 
-## What is Nanobanana Joyflix?
+## What is AI Video Generator Free?
 
-Nanobanana Joyflix is a web-based AI video and image creation platform. It provides free AI video generation from text descriptions (text-to-video) and from uploaded photos (image-to-video). Users can also generate and edit AI images. The platform is free to start — new users receive bonus credits automatically when they register.
+AI Video Generator Free is a web-based AI video and image creation platform. It provides free AI video generation from text descriptions (text-to-video) and from uploaded photos (image-to-video). Users can also generate and edit AI images. The platform is free to start — new users receive bonus credits automatically when they register.
 
 ## Core Features
 
@@ -21,7 +21,7 @@ New users receive free credits upon registration. These credits can be used imme
 
 ## Supported AI Models
 
-Nanobanana Joyflix integrates world-class AI video and image generation models including support for text-to-video, image-to-video, and advanced image editing workflows.
+AI Video Generator Free integrates world-class AI video and image generation models including support for text-to-video, image-to-video, and advanced image editing workflows.
 
 ### AI Video Models
 
@@ -30,7 +30,6 @@ Nanobanana Joyflix integrates world-class AI video and image generation models i
 | Seedance 2.0 | ByteDance | Yes | Yes | 720p | 15s | Yes | Yes |
 | Wan 2.7 | Alibaba | Yes | Yes | 1080p | 15s | Yes | No |
 | Kling 3.0 | Kuaishou | Yes | Yes | 1080p | 15s | Yes | No |
-| Sora 2 Pro | OpenAI | Yes | Yes | 1080p | 25s | Yes | No |
 | Veo 3.1 | Google | Yes | Yes | 1080p | 8s | Yes | No |
 | Hailuo 2.3 | MiniMax | Yes | Yes | 1080p | 10s | Yes | No |
 | Grok Imagine | xAI | Yes | Yes | 1080p | 10s | No | No |
@@ -41,7 +40,6 @@ Nanobanana Joyflix integrates world-class AI video and image generation models i
 
 - Seedance 2.0: 480p 11.5 credits/s ($0.058/s), 720p 25 credits/s ($0.125/s)
 - Kling 3.0: 5s 160 credits ($0.80), 10s 320 credits ($1.60)
-- Sora 2 Pro: 10s 30 credits ($0.15), 15s 35 credits ($0.175)
 - Hailuo 2.3: 9.5 credits/s ($0.048/s) for 1080p
 - HappyHorse 1.0: Open-source, free to use
 
@@ -67,23 +65,22 @@ Nanobanana Joyflix integrates world-class AI video and image generation models i
 ### AI Model Pages
 
 - AI Video Model Comparison: /compare
-- Seedance 2.0 (ByteDance): /models/seedance
-- Wan 2.7 (Alibaba): /models/wan
-- Kling 3.0 (Kuaishou): /models/kling
-- Sora 2 Pro (OpenAI): /models/sora
-- Veo 3.1 (Google): /models/veo
-- Hailuo 2.3 (MiniMax): /models/hailuo
-- Grok Imagine (xAI): /models/grok-imagine
-- Runway Gen-4 (Runway): /models/runway
-- HappyHorse 1.0 (Open Source): /models/happyhorse
+- Seedance 2.0 (ByteDance): /seedance
+- Wan 2.7 (Alibaba): /wan
+- Kling 3.0 (Kuaishou): /kling
+- Veo 3.1 (Google): /veo
+- Hailuo 2.3 (MiniMax): /hailuo
+- Grok Imagine (xAI): /grok-imagine
+- Runway Gen-4 (Runway): /runway
+- HappyHorse 1.0 (Open Source): /happyhorse
 
 ## About
 
-Nanobanana Joyflix is trusted by 500,000+ creators worldwide. The platform generates over 1 million AI videos and images. Average AI video generation time is under 60 seconds.
+AI Video Generator Free is trusted by 500,000+ creators worldwide. The platform generates over 1 million AI videos and images. Average AI video generation time is under 60 seconds.
 
 ## Contact
 
-- Email: support@nanobanana-joyflix.ai
+- Email: support@aivideogeneratorfree.ai
 
 ## Legal
 

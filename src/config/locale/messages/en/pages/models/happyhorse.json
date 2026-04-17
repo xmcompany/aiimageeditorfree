@@ -1,21 +1,21 @@
 {
   "metadata": {
-    "title": "HappyHorse 1.0 AI Video Generator — #1 Ranked Open Source | AI Video Generator Free",
-    "description": "Try HappyHorse 1.0 AI video generator free online. #1 ranked open-source AI video model on Artificial Analysis. 15B parameters, native 1080p, audio sync, and multi-shot generation."
+    "title": "HappyHorse AI Video Generator | AI Video Generator Free",
+    "description": "HappyHorse 1.0 is the #1 ranked open-source AI video model. 15B parameters, native 1080p, audio sync. Coming soon — join the waitlist."
   },
   "page": {
-    "title": "HappyHorse 1.0 AI Video Generator",
+    "title": "HappyHorse 1.0 — Happy Horse AI Video Generator",
     "description": "HappyHorse 1.0 is the #1 ranked open-source AI video generation model on Artificial Analysis, featuring 15B parameters, native 1080p output, and synchronized audio generation.",
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "HappyHorse 1.0 — #1 Open Source AI Video Generator",
-        "description": "HappyHorse 1.0 is the top-ranked open-source AI video model on Artificial Analysis. 15B parameters, native 1080p, audio sync, and multi-shot generation — completely free to try.",
+        "title": "HappyHorse 1.0 — Happy Horse AI Video Generator",
+        "description": "Happy Horse AI (HappyHorse 1.0) is the top-ranked open-source AI video model on Artificial Analysis. 15B parameters, native 1080p, audio sync, and multi-shot generation. <strong>Coming soon</strong> to our platform — try other top models free while you wait.",
         "highlight_text": "HappyHorse 1.0",
-        "tip": "<strong>Powered by HappyHorse 1.0</strong> — #1 open-source video model. Free credits available on sign-up.",
+        "tip": "🚀 <strong>HappyHorse 1.0 is coming soon</strong> — sign up now to be notified when Happy Horse AI goes live. Free credits on sign-up.",
         "buttons": [
           {
-            "title": "Generate AI Video with HappyHorse",
+            "title": "Try Other AI Video Models Free",
             "icon": "Video",
             "url": "/ai-video-generator",
             "target": "_self",
@@ -23,8 +23,8 @@
           },
           {
             "title": "Compare AI Video Models",
-            "icon": "ArrowLeft",
-            "url": "/#video-models",
+            "icon": "BarChart3",
+            "url": "/compare",
             "target": "_self",
             "variant": "outline"
           }
@@ -35,13 +35,13 @@
         "show_bg": false,
         "background_image": {
           "src": "/imgs/bg/girl.jpeg",
-          "alt": "HappyHorse 1.0 AI video generator"
+          "alt": "HappyHorse 1.0 Happy Horse AI video generator"
         }
       },
       "comparison": {
         "id": "model-comparison",
-        "title": "HappyHorse 1.0 Version Comparison",
-        "description": "Compare all HappyHorse 1.0 model versions side by side — features, resolution, pricing, and capabilities.",
+        "title": "HappyHorse 1.0 (Happy Horse AI) — Model Specs",
+        "description": "Full specs for Happy Horse 1.0 — the leading open-source AI video generation model.",
         "columns": [
           {
             "key": "hh10",
@@ -51,58 +51,46 @@
         "rows": [
           {
             "label": "Text to Video",
-            "values": {
-              "hh10": "✓"
-            }
+            "values": { "hh10": "✓" }
           },
           {
             "label": "Image to Video",
-            "values": {
-              "hh10": "✓"
-            }
+            "values": { "hh10": "✓" }
           },
           {
             "label": "Audio Sync",
-            "values": {
-              "hh10": "✓"
-            }
+            "values": { "hh10": "✓" }
           },
           {
             "label": "Multi-Shot",
-            "values": {
-              "hh10": "✓"
-            }
+            "values": { "hh10": "✓" }
           },
           {
             "label": "Max Resolution",
-            "values": {
-              "hh10": "1080p"
-            }
+            "values": { "hh10": "1080p" }
           },
           {
             "label": "Duration",
-            "values": {
-              "hh10": "5-15s"
-            }
+            "values": { "hh10": "5–15s" }
           },
           {
             "label": "Parameters",
-            "values": {
-              "hh10": "15B"
-            }
+            "values": { "hh10": "15B" }
           },
           {
             "label": "Open Source",
-            "values": {
-              "hh10": "✓"
-            }
+            "values": { "hh10": "✓" }
+          },
+          {
+            "label": "Platform Status",
+            "values": { "hh10": "Coming Soon" }
           }
         ]
       },
       "capabilities": {
         "id": "features",
         "title": "HappyHorse 1.0 AI Video Generation Capabilities",
-        "description": "HappyHorse 1.0 delivers state-of-the-art open-source AI video generation with comprehensive features.",
+        "description": "Happy Horse AI (HappyHorse 1.0) delivers state-of-the-art open-source video generation — here's what makes it stand out.",
         "items": [
           {
             "title": "#1 Ranked on Artificial Analysis",
@@ -110,18 +98,18 @@
             "icon": "Award"
           },
           {
-            "title": "15B Parameter Model",
-            "description": "A massive 15-billion parameter model delivering professional-grade video quality that rivals closed-source alternatives.",
+            "title": "15B Parameter Architecture",
+            "description": "Happy Horse AI's 15-billion parameter model delivers professional-grade video quality that rivals closed-source alternatives at zero cost.",
             "icon": "Brain"
           },
           {
             "title": "Native 1080p Output",
-            "description": "Generate AI videos in native 1080p resolution — no upscaling needed. Crisp, detailed output suitable for professional use.",
+            "description": "HappyHorse 1.0 generates native 1080p AI video — no upscaling needed. Crisp, detailed output suitable for professional use.",
             "icon": "Monitor"
           },
           {
             "title": "Audio Synchronization",
-            "description": "HappyHorse 1.0 supports synchronized audio generation, creating videos with naturally matched sound and dialogue.",
+            "description": "Happy Horse 1.0 supports synchronized audio generation, creating videos with naturally matched sound and dialogue.",
             "icon": "Volume2"
           },
           {
@@ -141,14 +129,14 @@
           },
           {
             "title": "Open Source & Free",
-            "description": "HappyHorse 1.0 is fully open source, enabling transparent, customizable, and cost-effective AI video generation for everyone.",
+            "description": "HappyHorse 1.0 is fully open source — transparent, customizable, and cost-effective AI video generation for everyone.",
             "icon": "Unlock"
           }
         ]
       },
       "use-cases": {
         "id": "features",
-        "title": "What You Can Create with HappyHorse 1.0 AI Video Generator",
+        "title": "What You Can Create with Happy Horse AI Video Generator",
         "description": "From professional content to creative experiments, HappyHorse 1.0 powers diverse AI video workflows.",
         "items": [
           {
@@ -157,7 +145,7 @@
           },
           {
             "title": "Creative Storytelling",
-            "description": "Create narrative AI videos with multi-shot sequences, synchronized audio, and consistent characters using HappyHorse 1.0."
+            "description": "Create narrative AI videos with multi-shot sequences, synchronized audio, and consistent characters using Happy Horse AI."
           },
           {
             "title": "Social Media Video Production",
@@ -165,34 +153,38 @@
           },
           {
             "title": "Research & Development",
-            "description": "Leverage HappyHorse 1.0's open-source nature for AI video research, customization, and experimental creative projects."
+            "description": "Leverage Happy Horse AI's open-source nature for AI video research, customization, and experimental creative projects."
           }
         ]
       },
       "faq": {
         "id": "faq",
-        "title": "HappyHorse 1.0 AI Video Generator FAQ",
-        "description": "Frequently asked questions about HappyHorse 1.0 AI video generation.",
+        "title": "HappyHorse 1.0 FAQ — Happy Horse AI Video Generator",
+        "description": "Frequently asked questions about HappyHorse 1.0 and Happy Horse AI video generation.",
         "items": [
           {
             "question": "What is HappyHorse 1.0?",
-            "answer": "HappyHorse 1.0 is an open-source AI video generation model with 15B parameters, ranked #1 on the Artificial Analysis benchmark. It supports native 1080p output, audio sync, and multi-shot generation."
+            "answer": "HappyHorse 1.0 (also known as Happy Horse AI) is an open-source AI video generation model with 15B parameters, ranked #1 on the Artificial Analysis benchmark. It supports native 1080p output, audio sync, and multi-shot generation."
+          },
+          {
+            "question": "How to access the HappyHorse 1.0 model?",
+            "answer": "HappyHorse 1.0 is coming soon to AI Video Generator Free. Once live, you can access Happy Horse 1.0 directly from our AI video generator — no setup required. Sign up now to get notified and receive free credits on launch day."
+          },
+          {
+            "question": "How to run Happy Horse AI model?",
+            "answer": "When HappyHorse 1.0 launches on our platform, running Happy Horse AI is simple: sign in, select HappyHorse 1.0 from the model list, enter your text prompt or upload an image, and click Generate. No local installation or GPU required — it runs entirely in the cloud."
+          },
+          {
+            "question": "Is HappyHorse 1.0 available now?",
+            "answer": "HappyHorse 1.0 is not yet available on our platform but is coming soon. You can sign up to be notified when Happy Horse AI goes live. In the meantime, try our other top models like Seedance 2.0, Kling 3.0, and Wan 2.7."
           },
           {
             "question": "Why is HappyHorse 1.0 ranked #1?",
-            "answer": "HappyHorse 1.0 achieves the highest scores on the Artificial Analysis video generation benchmark, outperforming proprietary models in quality, consistency, and prompt adherence."
+            "answer": "Happy Horse AI achieves the highest scores on the Artificial Analysis video generation benchmark, outperforming proprietary models in quality, consistency, and prompt adherence."
           },
           {
-            "question": "Is HappyHorse 1.0 really free?",
-            "answer": "Yes! HappyHorse 1.0 is open source and free to use. You can try it on our platform with free sign-up credits — no credit card required."
-          },
-          {
-            "question": "What resolution does HappyHorse 1.0 support?",
-            "answer": "HappyHorse 1.0 generates native 1080p AI video output without upscaling, delivering crisp and detailed results suitable for professional use."
-          },
-          {
-            "question": "Does HappyHorse 1.0 support audio?",
-            "answer": "Yes, HappyHorse 1.0 supports synchronized audio generation, creating videos with naturally matched sound effects and dialogue."
+            "question": "Is HappyHorse 1.0 free to use?",
+            "answer": "Yes — HappyHorse 1.0 is open source and free. When it launches on our platform, you can try Happy Horse AI with free sign-up credits, no credit card required."
           },
           {
             "question": "How does HappyHorse compare to Seedance, Kling, and Wan?",
@@ -202,14 +194,14 @@
       },
       "cta": {
         "id": "cta",
-        "title": "Start Generating AI Videos with HappyHorse 1.0 Free",
-        "description": "Sign up now and get free credits to generate your first HappyHorse 1.0 AI video — no credit card required.",
+        "title": "HappyHorse 1.0 Is Coming Soon — Try Happy Horse AI Free",
+        "description": "Sign up now to be notified when HappyHorse 1.0 launches. Get free credits and be the first to run Happy Horse AI on our platform.",
         "buttons": [
           {
-            "title": "Try HappyHorse 1.0 Free",
+            "title": "Sign Up for Early Access",
             "url": "/ai-video-generator",
             "target": "_self",
-            "icon": "Video"
+            "icon": "Bell"
           }
         ],
         "className": "bg-muted"

@@ -1,15 +1,15 @@
 {
   "metadata": {
-    "title": "AI Image Generator | Nanobanana Joyflix",
-    "description": "Generate and edit stunning AI images with Nanobanana Joyflix, the next-generation flagship model."
+    "title": "AI Image Generator | AI Video Generator Free",
+    "description": "Generate stunning AI images from text or photos with our free AI image generator. Sign up for bonus credits — no credit card required. Start creating now."
   },
   "page": {
     "title": "AI Image Generator",
-    "description": "Generate stunning images from text or images using Nanobanana Joyflix models."
+    "description": "Generate stunning images from text or images using AI Video Generator Free models."
   },
   "generator": {
     "title": "Prompt",
-    "description": "Generate stunning images using Nanobanana Joyflix models.",
+    "description": "Generate stunning images using AI Video Generator Free models.",
     "tabs": {
       "text-to-image": "Text to Image",
       "image-to-image": "Image to Image"

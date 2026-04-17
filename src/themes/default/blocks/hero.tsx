@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 // import { useTranslations } from 'next-intl';
 
@@ -58,7 +58,7 @@ export function Hero({
       <section
         id={section.id}
         className={cn(
-          `relative pt-16 pb-12 md:pt-48 md:pb-20 overflow-hidden`,
+          `relative pt-16 pb-8 md:pt-48 md:pb-12 overflow-hidden`,
           section.show_bg_spline && 'dark bg-black',
           section.className,
           className
@@ -90,32 +90,35 @@ export function Hero({
           )}
 
           <motion.div {...createFadeInVariant(0.15)}>
-            <h1 className="text-foreground text-4xl font-serif font-extrabold leading-[1.05] tracking-tight text-balance sm:text-7xl lg:text-8xl mb-6 md:mb-0">
-              {texts[0]}
-              <span className="bg-gradient-to-r from-primary via-indigo-400 to-primary bg-clip-text text-transparent drop-shadow-sm">
-                {highlightText || ''}
+            <h1 className="text-foreground font-serif font-extrabold leading-[1.15] tracking-tight text-balance mb-6 md:mb-0">
+              <span className="block bg-gradient-to-r from-primary via-indigo-400 to-primary bg-clip-text text-transparent drop-shadow-sm text-3xl sm:text-5xl lg:text-6xl">
+                {texts[0]}{highlightText || ''}
               </span>
-              {texts[1]}
+              {texts[1] && (
+                <span className="block text-foreground text-3xl sm:text-5xl lg:text-6xl">
+                  {' '}{texts[1].replace(/^\s*[—–-]+\s*/, '')}
+                </span>
+              )}
             </h1>
           </motion.div>
 
           <motion.p
             {...createFadeInVariant(0.3)}
-            className="text-muted-foreground mx-auto mt-6 mb-12 max-w-2xl text-lg text-balance md:text-xl lg:text-2xl opacity-90 leading-relaxed"
+            className="text-muted-foreground mx-auto mt-8 mb-14 max-w-2xl text-lg text-balance md:text-xl lg:text-2xl opacity-90 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: section.description ?? '' }}
           />
 
           {!section.show_hero_input && section.buttons && (
             <motion.div
               {...createFadeInVariant(0.45)}
-              className="flex flex-col items-center justify-center gap-6 sm:flex-row"
+              className="flex flex-wrap items-center justify-center gap-4"
             >
               {section.buttons.map((button, idx) => (
                 <Button
                   asChild
                   size="lg"
                   variant={button.variant || (idx === 0 ? 'default' : 'outline')}
-                  className="min-w-48 rounded-[var(--radius)] px-10 py-7 text-lg shadow-xl transition-all hover:scale-105 active:scale-95"
+                  className="rounded-[var(--radius)] h-14 px-12 text-lg shadow-xl transition-all hover:scale-105 active:scale-95"
                   key={idx}
                 >
                   <Link
@@ -131,17 +134,21 @@ export function Hero({
           )}
 
           {section.show_hero_input && (
-            <motion.div {...createFadeInVariant(0.45)} className="mx-auto max-w-3xl">
+            <motion.div {...createFadeInVariant(0.45)} className="mx-auto max-w-3xl mt-10">
               <HeroInput />
             </motion.div>
           )}
 
           {section.tip && (
-            <motion.p
+            <motion.div
               {...createFadeInVariant(0.6)}
-              className="text-muted-foreground mt-8 block text-center text-sm"
-              dangerouslySetInnerHTML={{ __html: section.tip ?? '' }}
-            />
+              className="mt-8 flex justify-center"
+            >
+              <p
+                className="text-sm text-muted-foreground"
+                dangerouslySetInnerHTML={{ __html: section.tip as string }}
+              />
+            </motion.div>
           )}
 
           {section.show_avatars && (

@@ -17,9 +17,9 @@ export function Updates({
       className={cn('py-24 md:py-36', section.className, className)}
     >
       <div className="mx-auto mb-12 text-center">
-        <h2 className="mb-6 text-4xl font-serif font-extrabold tracking-tight text-pretty lg:text-6xl">
+        <h1 className="mb-6 text-4xl font-serif font-extrabold tracking-tight text-pretty lg:text-6xl">
           {section.title}
-        </h2>
+        </h1>
         <p className="text-muted-foreground mx-auto mb-4 max-w-2xl lg:text-xl opacity-90 leading-relaxed">
           {section.description}
         </p>
@@ -57,9 +57,9 @@ export function Updates({
 
                     <div className="space-y-6">
                       <div className="relative z-10 flex flex-col gap-2">
-                        <h2 className="text-2xl font-semibold tracking-tight text-balance">
+                        <h3 className="text-2xl font-semibold tracking-tight text-balance">
                           {post.title}
-                        </h2>
+                        </h3>
 
                         {/* Tags */}
                         {post.tags && post.tags.length > 0 && (

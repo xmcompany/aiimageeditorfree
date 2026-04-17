@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "title": "AI 发型生成器 | Nanobanana Joyflix",
-    "description": "Nanobanana Joyflix 是 Nanobanana Joyflix 的第二代旗舰 AI 图像编辑模型，提供一流的图像编辑体验。"
+    "title": "AI 发型生成器 | AI Video Generator Free",
+    "description": "免费试用 AI 发型生成器，上传照片即可预览男士、女士等多种发型效果，由 AI Video Generator Free 提供技术支持。"
   },
   "page": {
     "title": "AI 发型生成器",
-    "description": "使用 Nanobanana Joyflix 模型生成发型。"
+    "description": "使用 AI Video Generator Free 模型生成发型。"
   },
    "showcases-flow": {
     "id": "showcases-flow",
@@ -29,7 +29,7 @@
     ],
     "sr_only_title": "发型展示",
     "title": "AI 发型生成器",
-    "description": "使用 Nanobanana Joyflix 模型生成发型。",
+    "description": "使用 AI Video Generator Free 模型生成发型。",
     "buttons": [
       {
         "title": "立即生成",

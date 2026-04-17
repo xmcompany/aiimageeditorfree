@@ -284,18 +284,11 @@ export class ReplicateProvider implements AIProvider {
       } else if (['google/veo-3.1'].includes(model)) {
         input.reference_images = input.image_input;
         delete input.image_input;
-      } else if (['openai/sora-2'].includes(model)) {
-        input.input_reference = options.image_input[0];
-        delete input.image_input;
       }
     }
 
     // duration transform
     if (options.duration) {
-      if (['openai/sora-2'].includes(model)) {
-        input.seconds = Number(options.duration);
-        delete input.duration;
-      }
     }
 
     return input;

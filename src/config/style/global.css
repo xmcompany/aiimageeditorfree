@@ -120,3 +120,16 @@ pre {
     @apply bg-background text-foreground;
   }
 }
+
+[data-video-thumb] video::-webkit-media-controls,
+[data-video-thumb] video::-webkit-media-controls-panel,
+[data-video-thumb] video::-webkit-media-controls-play-button,
+[data-video-thumb] video::-webkit-media-controls-timeline,
+[data-video-thumb] video::-webkit-media-controls-current-time-display,
+[data-video-thumb] video::-webkit-media-controls-time-remaining-display,
+[data-video-thumb] video::-webkit-media-controls-fullscreen-button,
+[data-video-thumb] video::-webkit-media-controls-enclosure,
+[data-video-thumb] video::-webkit-media-controls-overlay-enclosure,
+[data-video-thumb] video::-internal-media-controls-loading-panel {
+  display: none !important;
+}

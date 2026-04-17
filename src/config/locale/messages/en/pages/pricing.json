@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Nanobanana Joyflix Pricing",
-    "description": "Choose the perfect plan for your AI image and video creation needs."
+    "title": "Pricing — Free AI Video & Image Generator",
+    "description": "Choose the best AI video and image generation plan for your needs. Sign up free, then pick monthly, yearly, or one-time credits to start creating."
   },
   "messages": {
     "current_plan": "Current Plan",
@@ -22,7 +22,7 @@
     "sections": {
       "pricing": {
         "id": "pricing",
-        "sr_only_title": "Nanobanana Joyflix Pricing Plans",
+        "sr_only_title": "AI Video Generator Free Pricing Plans",
         "title": "Unleash Your Creativity",
         "description": "Choose the perfect plan for your AI image and video creation needs. All plans include access to our advanced generating technology.",
         "groups": [
@@ -48,8 +48,8 @@
             "features_title": "Includes",
             "features": [
               "500 Credits /mo (≈ 50 videos / 125 images)",
-              "Nanobanana Joyflix AI Video Models",
-              "Nanobanana Joyflix Image Models",
+              "AI Video Generator Free AI Video Models",
+              "AI Video Generator Free Image Models",
               "Image & Text-to-Video/Image",
               "Fast Generation Mode",
               "No Watermarks",
@@ -145,8 +145,8 @@
             "features_title": "Includes",
             "features": [
               "500 Credits /mo (≈ 50 videos / 125 images)",
-              "Nanobanana Joyflix AI Video Models",
-              "Nanobanana Joyflix Image Models",
+              "AI Video Generator Free AI Video Models",
+              "AI Video Generator Free Image Models",
               "Image & Text-to-Video/Image",
               "Fast Generation Mode",
               "No Watermarks",
@@ -246,8 +246,8 @@
             "features": [
               "1000 credits, No Expiration",
               "One-time payment",
-              "Nanobanana Joyflix AI Video Models",
-              "Nanobanana Joyflix Image Models",
+              "AI Video Generator Free AI Video Models",
+              "AI Video Generator Free Image Models",
               "Full commercial rights",
               "Buy more packs as needed"
             ],

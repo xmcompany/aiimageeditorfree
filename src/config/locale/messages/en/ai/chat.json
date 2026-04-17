@@ -2,10 +2,10 @@
   "sidebar": {
     "header": {
       "brand": {
-        "title": "Nanobanana Joyflix Chat",
+        "title": "AI Video Generator Free Chat",
         "logo": {
-          "src": "/logo.png",
-          "alt": "Nanobanana Joyflix Chat"
+          "src": "/logo.svg",
+          "alt": "AI Video Generator Free Chat"
         },
         "url": "/chat"
       },

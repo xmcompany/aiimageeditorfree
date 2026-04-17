@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Wan AI Video Generator — Free Online (2.7, 2.6, 2.5, 2.2) | AI Video Generator Free",
-    "description": "Try Wan AI video generator free online. Alibaba Wan 2.7, 2.6, 2.5, 2.2 models with text-to-video, image-to-video, reference-to-video, video editing, and 720p-1080p output."
+    "title": "Wan AI Video Generator | AI Video Generator Free",
+    "description": "Try Wan AI video generator free online. Alibaba Wan 2.7, 2.6, 2.5 models with text-to-video, image-to-video, and up to 1080p output."
   },
   "page": {
     "title": "Wan 2.7 AI Video Generator",
@@ -44,33 +44,23 @@
         "description": "Watch real AI-generated videos created with Wan 2.7. Hover to preview, click to play with sound.",
         "videos": [
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1775568062605_MPXfAL3r.mp4",
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/wan/1776133157512_r2jy3p.mp4",
             "prompt": "A flower blooming and wilting over two weeks, one photo per day. Same vase, same window, same angle. Light changes with weather. Audio: Quiet domestic.The positive prompt for the generation"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1775568830969_fuvjlzzL.mp4",
-            "prompt": "The video drinks milk tea while doing some improvised dance moves to the music.Text prompts for video generation. Supports both Chinese and English, with a minimum of 2 characters and a maximum of 5,0"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/wan/1776133161172_39gt3i.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1775569895536_8pa5999R.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/wan/1776133164507_ipok06.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1775571133705_Syux4gRV.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/wan/1776133167201_m5y0zo.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1775569612262_xKywje5P.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/wan/1776133190632_2mlmhl.mp4"
           },
           {
-            "src": "https://static.aiquickdraw.com/tools/example/1775570281446_LQwTWxMW.mp4"
-          },
-          {
-            "src": "https://static.aiquickdraw.com/tools/example/1775634648377_W2ZI7lRB.mp4"
-          },
-          {
-            "src": "https://static.aiquickdraw.com/tools/example/1775635790645_B8wpaPoe.mp4"
-          },
-          {
-            "src": "https://static.aiquickdraw.com/tools/example/1775637684106_OLZ14Nne.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/wan/1776133214716_evp09u.mp4"
           }
         ]
       },

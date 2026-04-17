@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Image as ImageIcon, Play, Wand, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -9,15 +9,33 @@ import { Link } from '@/core/i18n/navigation';
 import { LazyImage } from '@/shared/blocks/common';
 import { Button } from '@/shared/components/ui/button';
 import { cn } from '@/shared/lib/utils';
+import { buildGenerateUrl } from '@/shared/lib/generate-url';
+
+function VideoThumbnail({ src, className }: { src: string; className?: string }) {
+  const thumbSrc = src.includes('#') ? src : `${src}#t=0.5`;
+  return (
+    <div className="relative overflow-hidden" data-video-thumb>
+      <video
+        src={thumbSrc}
+        className={`${className} pointer-events-none`}
+        muted
+        playsInline
+        preload="auto"
+      />
+    </div>
+  );
+}
 
 export type ShowcaseItem = {
   description?: string | null;
   id: string;
   title: string;
+  slug?: string;
   prompt?: string | null;
   image: string;
   videoUrl?: string | null;
   type?: string;
+  model?: string | null;
   createdAt: string | Date;
 };
 
@@ -94,7 +112,6 @@ export function ShowcasesFlowDynamic({
       params.append('limit', '20');
     }
     params.append('sortOrder', sortOrder);
-    params.append('_t', Date.now().toString()); // Cache busting
     if (tags) params.append('tags', tags);
     if (excludeTags) params.append('excludeTags', excludeTags);
     if (searchTerm) params.append('searchTerm', searchTerm);
@@ -203,13 +220,10 @@ export function ShowcasesFlowDynamic({
               whileHover={{ scale: 1.02 }}
             >
               {item.image ? (
-                item.image.match(/\.(mp4|webm|mov|m4v)(\?|$)/i) ? (
-                  <video
+                item.image.match(/\.(mp4|webm|mov|m4v)(\?|#|$)/i) ? (
+                  <VideoThumbnail
                     src={item.image}
-                    className="h-auto w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    muted
-                    playsInline
-                    preload="metadata"
+                    className="h-auto w-full transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <LazyImage
@@ -257,7 +271,21 @@ export function ShowcasesFlowDynamic({
                       className="inline-flex items-center justify-center whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive rounded-md gap-1.5 has-[>svg]:px-2.5 bg-primary hover:bg-primary/90 text-primary-foreground h-8 w-full border-0 px-1 py-1.5 text-sm font-medium"
                     >
                       <Link 
-                        href={`${item.type === 'video' || type === 'video' ? '/ai-video-generator' : '/ai-image-generator'}?prompt=${encodeURIComponent(item.prompt || '')}`} 
+                        href={buildGenerateUrl(
+                          usePrompts
+                            ? {
+                                // Prompts: /[model]/[slug]
+                                type: item.type === 'video' || type === 'video' ? 'video' : 'image',
+                                model: item.model,
+                                promptSlug: item.slug,
+                              }
+                            : {
+                                // Showcases: /ai-video-generator/[model]?showcase=[id]
+                                type: item.type === 'video' || type === 'video' ? 'video' : 'image',
+                                model: item.model || (item.tags as any),
+                                showcaseId: item.id,
+                              }
+                        )}
                         target="_self"
                       >
                         <Wand className="mr-2 size-4" />
@@ -357,6 +385,28 @@ export function ShowcasesFlowDynamic({
                       {items[selectedIndex].prompt}
                     </p>
                   )}
+                  <div className="mt-4">
+                    <a
+                      href={buildGenerateUrl(
+                        usePrompts
+                          ? {
+                              type: items[selectedIndex].type === 'video' || type === 'video' ? 'video' : 'image',
+                              model: items[selectedIndex].model,
+                              promptSlug: items[selectedIndex].slug,
+                            }
+                          : {
+                              type: items[selectedIndex].type === 'video' || type === 'video' ? 'video' : 'image',
+                              model: items[selectedIndex].model || (items[selectedIndex] as any).tags,
+                              showcaseId: items[selectedIndex].id,
+                            }
+                      )}
+                      onClick={() => setSelectedIndex(null)}
+                      className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors"
+                    >
+                      <Wand className="h-4 w-4" />
+                      {items[selectedIndex].prompt ? 'Create Similar Video' : 'Generate AI Video'}
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>

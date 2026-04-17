@@ -29,16 +29,17 @@ export async function GET(request: NextRequest) {
         });
         
         // Transform prompts to match showcase format
-        // Use promptTitle as title for the "Create Similar" button
-        const transformedData = prompts.map((prompt) => ({
-          id: prompt.id,
-          title: prompt.promptTitle, // This is the "Title"
-          description: prompt.promptDescription, // This is the "Prompt"
-          prompt: prompt.promptDescription, // Use actual prompt text
-          image: prompt.image || '',
-          videoUrl: prompt.type === 'video' ? (prompt.image || '') : null,
-          type: prompt.type,
-          createdAt: prompt.createdAt.toISOString(),
+        const transformedData = prompts.map((p) => ({
+          id: p.id,
+          title: p.title || p.promptTitle,
+          slug: p.title ? p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') : p.id,
+          description: p.promptDescription,
+          prompt: p.promptDescription,
+          image: p.image || '',
+          videoUrl: p.type === 'video' ? (p.image || '') : null,
+          type: p.type,
+          model: (p as any).model || null,
+          createdAt: p.createdAt.toISOString(),
         }));
         
         console.log(`Found ${transformedData.length} prompts`);

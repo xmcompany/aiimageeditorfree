@@ -1,6 +1,8 @@
+import { headers } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 import { md5 } from '@/shared/lib/hash';
 import { respData, respErr } from '@/shared/lib/resp';
+import { getAuth } from '@/core/auth';
 import { getStorageService } from '@/shared/services/storage';
 
 const extFromMime = (mimeType: string) => {
@@ -20,6 +22,12 @@ const extFromMime = (mimeType: string) => {
 
 export async function POST(req: Request) {
   try {
+    const auth = await getAuth();
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session?.user?.id) {
+      return respErr('Unauthorized');
+    }
+
     const formData = await req.formData();
     const locale = (formData.get('locale') as string) || 'en';
     const t = await getTranslations({ locale, namespace: 'common' });
@@ -35,7 +43,13 @@ export async function POST(req: Request) {
     const storageService = await getStorageService();
     const uploadResults = [];
 
+    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
     for (const file of files) {
+      if (file.size > MAX_FILE_SIZE) {
+        return respErr('File too large, max 10MB');
+      }
+
       // Validate file type
       if (!file.type.startsWith('image/')) {
         return respErr(t('messages.invalid_params'));

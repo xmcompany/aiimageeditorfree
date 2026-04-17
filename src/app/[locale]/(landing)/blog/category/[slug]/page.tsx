@@ -28,7 +28,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const t = await getTranslations('blog.metadata');
+  const t = await getTranslations('pages.blog.metadata');
 
   return {
     title: `${slug} | ${t('title')}`,
@@ -52,8 +52,7 @@ export default async function CategoryBlogPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  // load blog data
-  const t = await getTranslations('blog');
+  const t = await getTranslations('pages.blog');
 
   const { page: pageNum, pageSize } = await searchParams;
   const page = pageNum || 1;
@@ -101,7 +100,7 @@ export default async function CategoryBlogPage({
   categories.unshift({
     id: 'all',
     slug: 'all',
-    title: t('page.all'),
+    title: t('messages.all'),
     url: `/blog`,
   });
 
@@ -113,6 +112,7 @@ export default async function CategoryBlogPage({
     author_name: post.authorName || '',
     author_image: post.authorImage || '',
     created_at: moment(post.createdAt).format('MMM D, YYYY') || '',
+    date: moment(post.createdAt).format('MMM D, YYYY') || '',
     image: post.image || '',
     url: `/blog/${post.slug}`,
   }));

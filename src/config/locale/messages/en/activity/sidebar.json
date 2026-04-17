@@ -21,6 +21,11 @@
         "title": "My Videos",
         "url": "/activity/videos",
         "icon": "RiVideoLine"
+      },
+      {
+        "title": "Daily Check-in",
+        "url": "/activity/checkin",
+        "icon": "RiCalendarCheckLine"
       }
     ]
   },

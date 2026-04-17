@@ -51,16 +51,17 @@ export default function VideoGenerationForm({
   const { user, isCheckSign, setIsShowSignModal } = useAppContext();
   const [prompt, setPrompt] = useState(initialData?.prompt || '');
   const [selectedModel, setSelectedModel] = useState(
-    initialData?.model || 'hailuo'
+    initialData?.model || 'veo_3_1_lite'
   );
   const [parameters, setParameters] = useState<Record<string, any>>(() => {
     if (initialData?.parameters) {
       return initialData.parameters;
     }
-    return getModelDefaults('hailuo');
+    return getModelDefaults(initialData?.model || 'veo_3_1_lite');
   });
   const [startImage, setStartImage] = useState<File | null>(null);
   const [creditsRefreshTrigger, setCreditsRefreshTrigger] = useState(0);
+  const [userCredits, setUserCredits] = useState<{ remainingCredits: number } | null>(null);
   const prevIsGeneratingRef = useRef(isGenerating);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -111,6 +112,12 @@ export default function VideoGenerationForm({
 
   const handleSubmit = () => {
     if (!prompt.trim() || isGenerating) return;
+
+    const requiredCredits = calculateCredits();
+    if (user && userCredits && userCredits.remainingCredits < requiredCredits) {
+      toast.error(t('insufficient_credits') || 'Insufficient credits');
+      return;
+    }
 
     const validation = validateRequiredParams(selectedModel, {
       prompt,
@@ -208,6 +215,7 @@ export default function VideoGenerationForm({
                     selectedModel,
                     parameters
                   )}
+                  onCreditsChange={(credits) => setUserCredits(credits)}
                   className="rounded-2xl border-primary/20 bg-primary/5 p-4"
                 />
               </div>
@@ -234,7 +242,7 @@ export default function VideoGenerationForm({
                 isGenerating ? "opacity-90" : "hover:scale-[1.02] active:scale-[0.98] hover:shadow-primary/25"
               )}
               onClick={handleSubmit}
-              disabled={(!prompt.trim() && !startImage) || isGenerating}
+              disabled={(!prompt.trim() && !startImage) || isGenerating || (!!userCredits && userCredits.remainingCredits < calculateCredits())}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-indigo-400 to-primary bg-[length:200%_auto] animate-[gradient_3s_linear_infinite] opacity-0 group-hover/btn:opacity-100 transition-opacity" />
               <div className="relative z-10 flex items-center justify-center">

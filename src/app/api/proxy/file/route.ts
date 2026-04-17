@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { headers } from 'next/headers';
+import { getAuth } from '@/core/auth';
 
 const BLOCKED_HOSTS = [
   'localhost', '127.0.0.1', '0.0.0.0', '::1',
@@ -32,6 +34,12 @@ function isUrlSafe(input: string): boolean {
 }
 
 export async function GET(req: NextRequest) {
+  const auth = await getAuth();
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session?.user?.id) {
+    return new NextResponse('Unauthorized', { status: 401 });
+  }
+
   const url = req.nextUrl.searchParams.get('url');
 
   if (!url) {

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="play" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+    <linearGradient id="spark1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="aiBadge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#bg)"/>
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <path d="M196 148 L196 364 L368 256 Z" fill="url(#play)" opacity="0.95"/>
+  <path d="M196 148 L196 364 L368 256 Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linejoin="round"/>
+  <g opacity="0.9">
+    <path d="M128 140 L134 124 L140 140 L156 146 L140 152 L134 168 L128 152 L112 146 Z" fill="url(#spark1)"/>
+    <path d="M376 356 L380 346 L384 356 L394 360 L384 364 L380 374 L376 364 L366 360 Z" fill="url(#spark1)"/>
+    <path d="M140 340 L143 332 L146 340 L154 343 L146 346 L143 354 L140 346 L132 343 Z" fill="#fbbf24" opacity="0.7"/>
+  </g>
+  <circle cx="256" cy="256" r="130" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-dasharray="8 12"/>
+  <g transform="translate(340, 56)">
+    <rect x="0" y="0" width="88" height="44" rx="14" fill="url(#aiBadge)"/>
+    <rect x="1" y="1" width="86" height="42" rx="13" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <text x="44" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="white" text-anchor="middle" letter-spacing="1.5">AI</text>
+  </g>
+</svg>

@@ -41,13 +41,13 @@
           "children": [
             {
               "title": "AI Video Prompts",
-              "url": "/prompts/video",
+              "url": "/ai-video-prompts",
               "icon": "Clapperboard",
               "description": "AI video prompts for text to video"
             },
             {
               "title": "AI Image Prompts",
-              "url": "/prompts/image",
+              "url": "/ai-image-prompts",
               "icon": "Image",
               "description": "AI image prompts for text to image"
             }
@@ -59,13 +59,13 @@
           "children": [
             {
               "title": "AI Video Showcases",
-              "url": "/showcases/video",
+              "url": "/ai-video-showcases",
               "icon": "Clapperboard",
               "description": "Stunning AI video generations"
             },
             {
               "title": "AI Image Showcases",
-              "url": "/showcases/image",
+              "url": "/ai-image-showcases",
               "icon": "Image",
               "description": "Excellent AI image generations"
             }
@@ -77,55 +77,37 @@
           "children": [
             {
               "title": "Seedance 2.0",
-              "url": "/models/seedance",
+              "url": "/seedance",
               "icon": "Clapperboard",
               "description": "ByteDance Seedance 2.0 video model"
             },
             {
               "title": "Wan 2.7",
-              "url": "/models/wan",
+              "url": "/wan",
               "icon": "Video",
               "description": "Alibaba Wan 2.7 video generation"
             },
             {
               "title": "Kling 3.0",
-              "url": "/models/kling",
+              "url": "/kling",
               "icon": "Film",
               "description": "Kuaishou Kling cinematic video"
             },
             {
-              "title": "Sora 2 Pro",
-              "url": "/models/sora",
-              "icon": "Sparkles",
-              "description": "OpenAI Sora 2 Pro video model"
-            },
-            {
               "title": "Veo 3.1",
-              "url": "/models/veo",
+              "url": "/veo",
               "icon": "Clapperboard",
               "description": "Google Veo 3.1 video model"
             },
             {
               "title": "Hailuo 2.3",
-              "url": "/models/hailuo",
+              "url": "/hailuo",
               "icon": "Zap",
               "description": "MiniMax Hailuo video generation"
             },
             {
-              "title": "Grok Imagine",
-              "url": "/models/grok-imagine",
-              "icon": "Brain",
-              "description": "xAI Grok video generation"
-            },
-            {
-              "title": "Runway Gen-4",
-              "url": "/models/runway",
-              "icon": "Scissors",
-              "description": "Runway professional AI video"
-            },
-            {
               "title": "HappyHorse 1.0",
-              "url": "/models/happyhorse",
+              "url": "/happyhorse",
               "icon": "Award",
               "description": "#1 Ranked open-source AI video model"
             },
@@ -169,11 +151,11 @@
   "hero": {
     "id": "hero",
     "title": "AI Video Generator Free — Create Stunning AI Videos Online",
-    "description": "Turn text or images into cinematic AI videos in seconds with our free AI video generator. Sign up free and get bonus credits to start creating — no credit card required.",
+    "description": "Turn text or images into cinematic AI videos in seconds with our AI video generator. Sign up and get bonus credits to start creating — no credit card required.",
     "tip": "🎁 New users get free credits instantly upon sign-up. Start generating AI videos for free now.",
     "buttons": [
       {
-        "title": "Generate AI Video Free",
+        "title": "Generate AI Video",
         "icon": "Video",
         "url": "/ai-video-generator",
         "target": "_self",
@@ -183,7 +165,7 @@
       {
         "title": "View AI Video Showcases",
         "icon": "Play",
-        "url": "/showcases/video",
+        "url": "/ai-video-showcases",
         "target": "_self",
         "variant": "outline",
         "size": "lg"
@@ -203,7 +185,7 @@
   "showcases-flow": {
     "id": "showcases",
     "title": "AI Video Generator Free — Real AI Video Results from Real Creators",
-    "description": "Browse AI-generated videos created by our community using the free AI video generator. Every video below was made with text prompts — no editing skills needed."
+    "description": "Browse AI-generated videos created by our community using the AI Video Generator Free. Every video below was made with text prompts — no editing skills needed."
   },
   "logos": {
     "id": "logos",
@@ -213,14 +195,14 @@
   },
   "showcase": {
     "id": "showcase",
-    "title": "How Our Free AI Video Generator Works",
-    "description": "From a simple text prompt to a cinematic AI video — see what our free AI video generator can do.",
+    "title": "How Our AI Video Generator Free Works",
+    "description": "From a simple text prompt to a cinematic AI video — see what our AI Video Generator Free can do.",
     "textToVideo": {
-      "title": "Text to AI Video — Free Generation",
-      "description": "Type any idea and our free AI video generator turns it into a cinematic video in seconds.",
+      "title": "Text to AI Video",
+      "description": "Type any idea and our AI Video Generator Free turns it into a cinematic video in seconds.",
       "buttons": [
         {
-          "title": "Try Free AI Video Generator",
+          "title": "Try ai video generator",
           "url": "/ai-video-generator",
           "target": "_self"
         }
@@ -253,34 +235,37 @@
       ]
     },
     "imageToVideo": {
-      "title": "Image to AI Video — Free Conversion",
-      "description": "Upload any photo and our free AI video generator brings it to life with cinematic motion. No editing skills required.",
+      "title": "Image to AI Video",
+      "description": "Upload any photo and our AI Video Generator Free brings it to life with cinematic motion. No editing skills required.",
       "items": [
         {
           "prompt": "Smoothly rotate this sneaker, keeping the background static",
           "originalImage": {
-            "src": "https://cdn.aivideogeneratorfree.org/uploads/macpaint.png"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/macpaint.png",
+            "alt": "Original sneaker image for AI Video Generator Free image-to-video conversion"
           },
           "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/macpaint.mp4"
         },
         {
           "prompt": "Sunset over Venetian ruins with a weathered gondolier rowing through quiet waters",
           "originalImage": {
-            "src": "https://cdn.aivideogeneratorfree.org/uploads/gondola.jpg"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/gondola.jpg",
+            "alt": "Venetian gondola original photo used in AI Video Generator Free image-to-video"
           },
           "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/gondola.mp4"
         },
         {
           "prompt": "Instantly capture the transformation process of the picture",
           "originalImage": {
-            "src": "https://cdn.aivideogeneratorfree.org/uploads/woman-city-doodle.jpg"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/woman-city-doodle.jpg",
+            "alt": "Woman city doodle original image for AI Video Generator Free animation"
           },
           "videoSrc": "https://cdn.aivideogeneratorfree.org/uploads/woman-city-doodle.mp4"
         }
       ],
       "buttons": [
         {
-          "title": "Try Image to Video Free",
+          "title": "Try Image to Video",
           "url": "/ai-video-generator",
           "target": "_self"
         }
@@ -289,23 +274,23 @@
   },
   "introduce": {
     "id": "introduce",
-    "title": "Why Choose Our Free AI Video Generator",
-    "description": "Our AI video generator combines world-leading video generation models in one free platform. Professional-grade AI video creation is now as simple as typing a sentence.",
+    "title": "Why Choose Our AI Video Generator",
+    "description": "Our AI video generator combines world-leading video generation models in one platform. Professional-grade AI video creation is now as simple as typing a sentence.",
     "items": [
       {
-        "title": "Cinematic AI Video Quality — Free",
-        "description": "Generate 8K-quality AI videos and smooth 60fps footage for free. Our AI video generator delivers stunning detail and motion that rivals professional production.",
+        "title": "Cinematic AI Video Quality",
+        "description": "Generate 8K-quality AI videos and smooth 60fps footage. Our AI video generator delivers stunning detail and motion that rivals professional production.",
         "image": {
           "src": "https://cdn.aivideogeneratorfree.org/uploads/pirate-ship.mp4",
-          "alt": "Free AI video generator cinematic quality output"
+          "alt": "AI Video Generator Free cinematic quality output"
         }
       },
       {
         "title": "Precise AI Video Control",
-        "description": "Use natural language prompts or reference images to control composition, color, and motion in your AI-generated videos. Full creative control, completely free to start.",
+        "description": "Use natural language prompts or reference images to control composition, color, and motion in your AI-generated videos. Full creative control.",
         "image": {
           "src": "https://cdn.aivideogeneratorfree.org/uploads/gondola.jpg",
-          "alt": "AI video generator precise control"
+          "alt": "AI Video Generator Free precise control"
         }
       }
     ]
@@ -313,91 +298,70 @@
   "video-models": {
     "id": "video-models",
     "title": "Compare AI Video Generator Models",
-    "description": "Explore the best AI video generation models available in our free AI video generator. Compare features, resolution, and capabilities to find the right model for your AI video project."
+    "description": "Explore the best AI video generation models available in our AI Video Generator Free. Compare features, resolution, and capabilities to find the right model for your AI video project."
   },
   "benefits": {
     "id": "benefits",
-    "title": "Benefits of Using Our Free AI Video Generator",
+    "title": "Benefits of Using Our AI Video Generator Free",
     "items": [
       {
         "title": "All-in-One AI Video Generator Platform",
-        "description": "Go from text prompt to final AI video output in one free platform. No need to switch between tools — generate, edit, and export all in one place.",
+        "description": "Go from text prompt to final AI video output in one platform. No need to switch between tools — generate, edit, and export all in one place.",
         "icon": "Layers"
       },
       {
         "title": "Consistent AI Character & Style",
-        "description": "Our AI video generator maintains character identity across scenes. Faces, outfits, and styles stay consistent throughout your free AI video projects.",
+        "description": "Our AI video generator maintains character identity across scenes. Faces, outfits, and styles stay consistent throughout your AI video projects.",
         "icon": "RiUserStarLine"
       },
       {
         "title": "Commercial-Ready AI Video Output",
-        "description": "All AI-generated videos are cleared for commercial use. Export watermark-free HD masters — even on the free plan with your sign-up credits.",
+        "description": "All AI-generated videos are cleared for commercial use. Export watermark-free HD masters — even on the starter plan with your sign-up credits.",
         "icon": "RiShieldCheckLine"
       }
     ]
   },
   "usage": {
     "id": "usage",
-    "title": "Generate AI Videos Free in 3 Simple Steps",
+    "title": "Generate AI Videos in 3 Simple Steps",
     "items": [
       {
         "title": "01. Describe Your AI Video Idea",
-        "description": "Type your creative prompt into the free AI video generator, or upload a reference photo as a starting image."
+        "description": "Type your creative prompt into the AI Video Generator Free, or upload a reference photo as a starting image."
       },
       {
         "title": "02. Choose Your AI Video Model",
-        "description": "Select from our range of free AI video generation models — text-to-video, image-to-video, and more."
+        "description": "Select from our range of AI video generation models — text-to-video, image-to-video, and more."
       },
       {
-        "title": "03. Download Your Free AI Video",
+        "title": "03. Download Your AI Video",
         "description": "Click generate and receive your AI video in seconds. Download in HD for free using your sign-up credits."
-      }
-    ]
-  },
-  "stats": {
-    "id": "stats",
-    "title": "Creators Love Our Free AI Video Generator",
-    "description": "Trusted by hundreds of thousands of creators for fast, high-quality AI video generation.",
-    "label": "Stats",
-    "icon": "ChartBar",
-    "items": [
-      {
-        "title": "Creators",
-        "label": "500K+",
-        "description": "Creators using our free AI video generator"
-      },
-      {
-        "title": "AI Videos Generated",
-        "label": "1M+",
-        "description": "High-quality AI videos created for free"
-      },
-      {
-        "title": "Seconds to Generate",
-        "label": "60",
-        "description": "Average AI video generation time"
       }
     ]
   },
   "testimonials": {
     "id": "testimonials",
-    "title": "What Creators Say About Our Free AI Video Generator",
-    "description": "See how content creators, marketers, and filmmakers use our free AI video generator to create stunning AI videos.",
+    "hidden": true,
+    "title": "What Creators Say About Our ai video generator free",
+    "description": "See how content creators, marketers, and filmmakers use our ai video generator free to create stunning AI videos.",
     "label": "Testimonials",
     "items": [
       {
         "title": "Alex G.",
         "label": "Social Media Manager",
-        "description": "This free AI video generator completely changed my workflow. What used to take a full day of editing now takes five minutes. The quality is consistently impressive — and I started for free.",
+        "description": "This ai video generator free completely changed my workflow. What used to take a full day of editing now takes five minutes. The quality is consistently impressive — and I started for free.",
         "image": {
-          "src": "/imgs/users/1.png"
+          "src": "/imgs/users/1.png",
+          "alt": "Alex G. — Social Media Manager using AI Video Generator Free"
         }
       },
       {
         "title": "Jenna R.",
         "label": "Small Business Owner",
-        "description": "I needed a free AI video generator that wasn't limited or clunky. This exceeded all my expectations. The free credits on sign-up let me test everything before committing.",
+        "description": "I needed a AI video generator that wasn't limited or clunky. This exceeded all my expectations. The free credits on sign-up let me test everything before committing.",
         "image": {
-          "src": "/imgs/users/2.png"
+          "src": "/imgs/users/2.png",
+          "alt": "Jenna R. — Small Business Owner using AI Video Generator Free"
         }
       },
       {
@@ -405,15 +369,17 @@
         "label": "Photographer",
         "description": "The image-to-video AI feature is incredible. It added a professional, dynamic feel to my photography portfolio. My clients are wowed — and I generated the first batch completely free.",
         "image": {
-          "src": "/imgs/users/3.png"
+          "src": "/imgs/users/3.png",
+          "alt": "Carlos S. — Photographer using AI Video Generator Free"
         }
       },
       {
         "title": "Maria K.",
         "label": "Film Student",
-        "description": "The text-to-video AI is pure magic. I type an idea and have a visual concept ready almost instantly. The free AI video generator gave me enough credits to build my entire demo reel.",
+        "description": "The text-to-video AI is pure magic. I type an idea and have a visual concept ready almost instantly. The ai video generator free gave me enough credits to build my entire demo reel.",
         "image": {
-          "src": "/imgs/users/4.png"
+          "src": "/imgs/users/4.png",
+          "alt": "Maria K. — Film Student using AI Video Generator Free"
         }
       }
     ]
@@ -426,69 +392,105 @@
   },
   "features": {
     "id": "features",
-    "title": "Free AI Video Generator Core Features",
+    "title": "AI Video Generator Core Features",
     "description": "Everything you need to create professional AI videos — free to start with sign-up credits.",
     "items": [
       {
-        "title": "Free Text-to-Video AI Generation",
-        "description": "Turn any text prompt into a cinematic AI video for free. Just describe your scene and let the AI video generator do the rest.",
+        "title": "Text-to-Video AI Generation",
+        "description": "Turn any text prompt into a cinematic AI video. Just describe your scene and let the AI video generator do the rest.",
         "icon": "RiVideoAddLine"
       },
       {
-        "title": "Free Image-to-Video AI Conversion",
-        "description": "Upload any photo and our free AI video generator animates it with realistic motion and cinematic effects.",
+        "title": "Image-to-Video AI Conversion",
+        "description": "Upload any photo and our AI Video Generator Free animates it with realistic motion and cinematic effects.",
         "icon": "RiMagicLine"
       },
       {
         "title": "AI Character Consistency Across Videos",
-        "description": "Maintain consistent faces, outfits, and styles across all your free AI video generations.",
+        "description": "Maintain consistent faces, outfits, and styles across all your AI video generations.",
         "icon": "RiUserStarLine"
       }
     ]
   },
+  "credits-ways": {
+    "id": "credits-ways",
+    "title": "3 Ways to Get Free AI Video Credits",
+    "description": "Start generating AI videos for free — no credit card required. Earn more credits through these simple actions.",
+    "items": [
+      {
+        "icon": "Gift",
+        "subtitle": "Instant",
+        "title": "Sign Up & Get Free Credits",
+        "description": "Create a free account and receive bonus credits instantly. No credit card required. Start generating AI videos right away.",
+        "url": "/sign-up",
+        "cta": "Get Free Credits Now"
+      },
+      {
+        "icon": "CalendarCheck",
+        "subtitle": "Daily",
+        "title": "Daily Check-In Bonus",
+        "description": "Log in every day to claim your daily free credits. The more consecutive days you check in, the more credits you earn.",
+        "url": "/activity/checkin",
+        "cta": "Check In Today"
+      },
+      {
+        "icon": "Users",
+        "subtitle": "Referral",
+        "title": "Invite Friends & Earn Credits",
+        "description": "Share your referral link with friends. When they sign up and generate their first AI video, both of you earn bonus credits.",
+        "url": "/activity/checkin",
+        "cta": "Start Referring"
+      }
+    ]
+  },
+  "blog-preview": {
+    "id": "blog-preview",
+    "title": "From the Blog",
+    "description": "Tips, guides, and updates to help you get the most out of our AI Video Generator Free."
+  },
   "faq": {
     "id": "faq",
     "label": "FAQ",
-    "title": "Free AI Video Generator — Frequently Asked Questions",
-    "description": "Have more questions about our free AI video generator? Contact us via Discord or Email.",
+    "title": "ai video generator free — Frequently Asked Questions",
+    "description": "Have more questions about our ai video generator free? Contact us via Discord or Email.",
     "items": [
       {
-        "title": "Is this AI video generator really free?",
-        "description": "Yes. When you sign up, you receive free credits that you can use immediately to generate AI videos. No credit card is required to start. Your free credits let you explore text-to-video and image-to-video AI video generation."
+        "title": "Is this AI Video Generator Free really free?",
+        "description": "Yes. When you sign up for AI Video Generator Free, you receive bonus credits immediately to generate AI videos. No credit card is required to start. Your credits let you explore text-to-video and image-to-video generation."
       },
       {
-        "title": "How many free credits do I get when I sign up?",
-        "description": "New users receive free credits automatically upon registration. The exact amount is shown on the sign-up page. These free credits can be used across all AI video generation features."
+        "title": "How many credits do I get when I sign up?",
+        "description": "New users of AI Video Generator Free receive bonus credits automatically upon registration. The exact amount is shown on the sign-up page. These credits can be used across all AI video generation features."
       },
       {
-        "title": "How do I generate the best AI videos from text?",
-        "description": "For the best results with our free AI video generator, be specific in your prompts. Include details about the subject, setting, art style (e.g., 'cinematic', 'anime'), camera angle, and mood. The more descriptive your prompt, the better the AI video output."
+        "title": "How do I get the best results from AI Video Generator Free?",
+        "description": "For the best results with AI Video Generator Free, be specific in your prompts. Include details about the subject, setting, art style (e.g., 'cinematic', 'anime'), camera angle, and mood. The more descriptive your prompt, the better the AI video output."
       },
       {
-        "title": "Can I use an image to generate a free AI video?",
-        "description": "Yes. Sign up for a free account, go to the Image to Video tool, upload your photo, and choose an animation style. Your free sign-up credits cover image-to-video AI generation with no watermark."
+        "title": "Can I use an image to generate an AI video?",
+        "description": "Yes. Sign up for AI Video Generator Free, go to the Image to Video tool, upload your photo, and choose an animation style. Your sign-up credits cover image-to-video AI generation with no watermark."
       },
       {
-        "title": "What makes this the best free AI video generator?",
-        "description": "Our free AI video generator stands out for cinematic quality, precise prompt control, and character consistency. Unlike other tools, we offer advanced style customization and HD output — all accessible with your free sign-up credits."
+        "title": "What makes AI Video Generator Free stand out?",
+        "description": "AI Video Generator Free stands out for cinematic quality, precise prompt control, and character consistency. Unlike other tools, we offer advanced style customization and HD output — all accessible with your sign-up credits."
       },
       {
         "title": "Does the Image to Video AI feature work with any photo?",
-        "description": "For best results, use clear, high-resolution images. Our free AI video generator performs best when subjects are well-defined. Supported formats include JPG, PNG, and HEIC."
+        "description": "For best results, use clear, high-resolution images. AI Video Generator Free performs best when subjects are well-defined. Supported formats include JPG, PNG, and HEIC."
       },
       {
-        "title": "What AI video models does this free AI video generator support?",
-        "description": "Our free AI video generator supports multiple leading AI video models including Seedance 2.0, Wan 2.7 Video, Kling 3.0, and HappyHorse 1.0. Each model offers unique strengths for text-to-video and image-to-video generation."
+        "title": "What AI video models does AI Video Generator Free support?",
+        "description": "AI Video Generator Free supports multiple leading AI video models including Seedance 2.0, Wan 2.7, Kling 3.0, and HappyHorse 1.0. Each model offers unique strengths for text-to-video and image-to-video generation."
       },
       {
-        "title": "Can I use the AI video generator for commercial projects?",
-        "description": "Yes. All AI-generated videos from our free AI video generator are cleared for commercial use. Export watermark-free HD masters — even on the free plan with your sign-up credits."
+        "title": "Can I use AI Video Generator Free for commercial projects?",
+        "description": "Yes. All AI-generated videos from AI Video Generator Free are cleared for commercial use. Export watermark-free HD masters — even on the starter plan with your sign-up credits."
       }
     ]
   },
   "cta": {
     "id": "cta",
-    "title": "Start Generating AI Videos for Free Today",
+    "title": "Start Creating with AI Video Generator Free Today",
     "description": "Join 500,000+ creators. Sign up now and get free credits to generate your first AI video instantly — no credit card needed.",
     "buttons": [
       {
@@ -504,7 +506,7 @@
     "id": "footer",
     "brand": {
       "title": "AI Video Generator Free",
-      "description": "AI Video Generator Free — the free AI video generator trusted by 500K+ creators worldwide.",
+      "description": "AI Video Generator Free — the ai video generator free trusted by 500K+ creators worldwide.",
       "logo": {
         "src": "/logo.png",
         "alt": "AI Video Generator Free"
@@ -517,7 +519,7 @@
           "title": "Product",
           "children": [
             {
-              "title": "Free AI Video Generator",
+              "title": "ai video generator free",
               "url": "/ai-video-generator",
               "target": "_self"
             },
@@ -533,47 +535,32 @@
           "children": [
             {
               "title": "Seedance 2.0",
-              "url": "/models/seedance",
+              "url": "/seedance",
               "target": "_self"
             },
             {
               "title": "Wan 2.7",
-              "url": "/models/wan",
+              "url": "/wan",
               "target": "_self"
             },
             {
               "title": "Kling 3.0",
-              "url": "/models/kling",
-              "target": "_self"
-            },
-            {
-              "title": "Sora 2 Pro",
-              "url": "/models/sora",
+              "url": "/kling",
               "target": "_self"
             },
             {
               "title": "Veo 3.1",
-              "url": "/models/veo",
+              "url": "/veo",
               "target": "_self"
             },
             {
               "title": "Hailuo 2.3",
-              "url": "/models/hailuo",
-              "target": "_self"
-            },
-            {
-              "title": "Grok Imagine",
-              "url": "/models/grok-imagine",
-              "target": "_self"
-            },
-            {
-              "title": "Runway Gen-4",
-              "url": "/models/runway",
+              "url": "/hailuo",
               "target": "_self"
             },
             {
               "title": "HappyHorse 1.0",
-              "url": "/models/happyhorse",
+              "url": "/happyhorse",
               "target": "_self"
             },
             {

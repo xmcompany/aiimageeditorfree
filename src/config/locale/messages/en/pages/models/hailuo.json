@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Hailuo AI Video Generator — Free Online (2.3, 02) | AI Video Generator Free",
-    "description": "Try Hailuo AI video generator free online. MiniMax Hailuo 2.3 and 02 models with text-to-video, image-to-video, and high-quality AI video output."
+    "title": "Hailuo AI Video Generator | AI Video Generator Free",
+    "description": "Try Hailuo AI video generator free online. MiniMax Hailuo 2.3 and 02 models for text-to-video and image-to-video generation."
   },
   "page": {
     "title": "Hailuo 2.3 AI Video Generator",
@@ -44,22 +44,22 @@
         "description": "Watch real AI-generated videos created with Hailuo 2.3. Hover to preview, click to play with sound.",
         "videos": [
           {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/17617366231364e44v2sv.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/hailuo/1776132602967_b2knnm.mp4"
           },
           {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/17617367954436exivpkv.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/hailuo/1776132618772_sdmmgo.mp4"
           },
           {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1758519311173v59mdgzx.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/hailuo/1776132623661_23gjgz.mp4"
           },
           {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/175852306669747hp4y2b.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/hailuo/1776132630272_law8ut.mp4"
           },
           {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/1758521119476yelkzps1.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/hailuo/1776132632841_lyi13o.mp4"
           },
           {
-            "src": "https://file.aiquickdraw.com/custom-page/akr/section-images/175852441202970pyirpe.mp4"
+            "src": "https://cdn.aivideogeneratorfree.org/uploads/model-videos/hailuo/1776132638564_8b5uxk.mp4"
           }
         ]
       },
@@ -127,7 +127,7 @@
             "label": "Pricing (per second)",
             "values": {
               "h23": "-",
-              "h02": "9.5 credits ($0.048/s)"
+              "h02": "9.5 credits"
             }
           }
         ]

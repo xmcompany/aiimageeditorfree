@@ -36,6 +36,7 @@ import {
   UpdateSubscription,
   updateSubscriptionBySubscriptionNo,
 } from '../models/subscription';
+import { handleReferralReward } from '../models/referral';
 
 /**
  * get payment service with configs
@@ -152,6 +153,16 @@ export async function handleCheckoutSuccess({
     }
   }
 
+  // Verify payment amount matches order amount (allow for tax: payment >= order)
+  if (session.paymentInfo?.paymentAmount) {
+    const paymentAmount = Math.round(parseFloat(String(session.paymentInfo.paymentAmount)) * 100) / 100;
+    const orderAmount = parseFloat(order.amount);
+    if (paymentAmount < orderAmount) {
+      console.error(`Payment amount mismatch: paid ${paymentAmount}, expected >= ${orderAmount}`);
+      return { status: 'amount_mismatch' } as any;
+    }
+  }
+
   // payment success
   if (session.paymentStatus === PaymentStatus.SUCCESS) {
     // update order status to be paid
@@ -252,6 +263,19 @@ export async function handleCheckoutSuccess({
       newSubscription,
       newCredit,
     });
+
+    // trigger referral reward if applicable
+    if (order.creditsAmount && order.creditsAmount > 0) {
+      try {
+        await handleReferralReward({
+          refereeId: order.userId,
+          orderNo: order.orderNo,
+          paidCredits: order.creditsAmount,
+        });
+      } catch {
+        // best-effort, don't fail the payment
+      }
+    }
   } else if (
     session.paymentStatus === PaymentStatus.FAILED ||
     session.paymentStatus === PaymentStatus.CANCELED

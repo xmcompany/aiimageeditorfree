@@ -27,6 +27,7 @@ export interface ModelConfig {
   id: string;
   name: string;
   modelName: string; // 用于API请求的实际模型名称
+  provider: 'kie' | 'replicate'; // API 提供商
   img: string; // 模型图标路径
   schema: JsonSchema;
   parseParams?: (params: Record<string, any>) => Record<string, any>; // 可选的参数转换函数，params 为请求参数
@@ -39,78 +40,412 @@ export interface ModelConfig {
 }
 
 export const MODEL_CONFIGS: Record<string, ModelConfig> = {
+  // === Veo 3.1 Lite (cheapest, default/promoted model) ===
+  veo_3_1_lite: {
+    id: 'veo_3_1_lite',
+    name: 'Veo 3.1 Lite',
+    modelName: 'veo3_lite',
+    provider: 'kie',
+    img: '/imgs/logos/vidu.svg',
+    parseParams: (params: Record<string, any>) => {
+      const parsedParams = { ...params };
+      if (params.startImageUrl) {
+        parsedParams['imageUrls'] = [params.startImageUrl];
+      }
+      delete parsedParams.startImageUrl;
+      delete parsedParams.negative_prompt;
+      delete parsedParams.duration;
+      return parsedParams;
+    },
+    calculateCredits: (params: Record<string, any>) => {
+      const resolution = params.resolution || '720p';
+      // Veo 3.1 Lite kie.ai cost: 720p=10, 1080p=15, 4K=50 (per video)
+      // ~4x markup at ~$0.025/site credit
+      const pricing: Record<string, number> = { '720p': 8, '1080p': 12, '4K': 40 };
+      return pricing[resolution] || 8;
+    },
+    getPricingDescription: (params: Record<string, any>, t?: any) => {
+      return t
+        ? t('hero_input.pricing_descriptions.veo_lite')
+        : 'Veo 3.1 Lite: from 8 credits per generation';
+    },
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: {
+          type: 'string',
+          title: 'Prompt',
+          'x-order': 0,
+          description: 'Text prompt for video generation',
+        },
+        startImageUrl: {
+          type: 'string',
+          title: 'Reference Image',
+          format: 'uri',
+          'x-order': 1,
+          nullable: true,
+          description: 'Optional reference image for image-to-video generation',
+        },
+        aspect_ratio: {
+          enum: ['16:9', '9:16'],
+          type: 'string',
+          title: 'Aspect Ratio',
+          description: 'Aspect ratio of the video.',
+          default: '16:9',
+          'x-order': 2,
+        },
+        resolution: {
+          enum: ['720p', '1080p', '4K'],
+          type: 'string',
+          title: 'Resolution',
+          default: '720p',
+          'x-order': 3,
+          description: 'Output video resolution',
+        },
+      },
+    },
+  },
+
+  // === Seedance 2.0 Fast ===
+  seedance: {
+    id: 'seedance',
+    name: 'Seedance 2.0 Fast',
+    modelName: 'bytedance/seedance-2-fast',
+    provider: 'kie',
+    img: '/imgs/logos/nextjs.svg',
+    parseParams: (params: Record<string, any>) => {
+      const parsedParams = { ...params };
+      if (params.startImageUrl) {
+        parsedParams['first_frame_url'] = params.startImageUrl;
+      }
+      delete parsedParams.startImageUrl;
+      delete parsedParams.image;
+      return parsedParams;
+    },
+    calculateCredits: (params: Record<string, any>) => {
+      const duration = params.duration || 5;
+      const resolution = params.resolution || '480p';
+      // Seedance 2.0 Fast (no video input): 480p=15.5 kie/s, 720p=33 kie/s
+      // ~4x markup: 480p=12, 720p=26
+      if (resolution === '720p') return duration * 26;
+      return duration * 12;
+    },
+    getPricingDescription: (params: Record<string, any>, t?: any) => {
+      const resolution = params.resolution || '480p';
+      if (resolution === '720p') {
+        return t
+          ? t('hero_input.pricing_descriptions.seedance_720p')
+          : 'Seedance 2.0 Fast 720p: 26 credits/second';
+      }
+      return t
+        ? t('hero_input.pricing_descriptions.seedance_480p')
+        : 'Seedance 2.0 Fast 480p: 12 credits/second';
+    },
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: {
+          type: 'string',
+          title: 'Prompt',
+          'x-order': 0,
+          description: 'Text prompt for video generation',
+        },
+        first_frame_url: {
+          type: 'string',
+          title: 'First Frame Image',
+          format: 'uri',
+          'x-order': 1,
+          nullable: true,
+          description: 'Optional first frame image for image-to-video generation',
+        },
+        last_frame_url: {
+          type: 'string',
+          title: 'Last Frame Image',
+          format: 'uri',
+          'x-order': 2,
+          nullable: true,
+          description: 'Optional last frame image (must be used with first frame)',
+        },
+        resolution: {
+          enum: ['480p', '720p'],
+          type: 'string',
+          title: 'Resolution',
+          default: '480p',
+          'x-order': 3,
+          description: 'Output video resolution',
+        },
+        aspect_ratio: {
+          enum: ['16:9', '9:16', '4:3', '3:4', '1:1', '21:9'],
+          type: 'string',
+          title: 'Aspect Ratio',
+          default: '16:9',
+          'x-order': 4,
+          description: 'Aspect ratio of the output video',
+        },
+        duration: {
+          enum: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+          type: 'integer',
+          title: 'Duration',
+          default: 5,
+          'x-order': 5,
+          description: 'Duration of the video in seconds (5-15s)',
+        },
+        generate_audio: {
+          type: 'boolean',
+          title: 'Generate Audio',
+          default: false,
+          'x-order': 6,
+          description: 'Generate audio for the video',
+        },
+      },
+    },
+  },
+
+  // === Seedance 2.0 Standard ===
+  seedance_standard: {
+    id: 'seedance_standard',
+    name: 'Seedance 2.0 Standard',
+    modelName: 'bytedance/seedance-2',
+    provider: 'kie',
+    img: '/imgs/logos/nextjs.svg',
+    parseParams: (params: Record<string, any>) => {
+      const parsedParams = { ...params };
+      if (params.startImageUrl) {
+        parsedParams['first_frame_url'] = params.startImageUrl;
+      }
+      delete parsedParams.startImageUrl;
+      delete parsedParams.image;
+      return parsedParams;
+    },
+    calculateCredits: (params: Record<string, any>) => {
+      const duration = params.duration || 5;
+      const resolution = params.resolution || '480p';
+      // Seedance 2.0 Standard (no video input): 480p=19 kie/s, 720p=41 kie/s
+      // ~4x markup: 480p=15, 720p=33
+      if (resolution === '720p') return duration * 33;
+      return duration * 15;
+    },
+    getPricingDescription: (params: Record<string, any>, t?: any) => {
+      const resolution = params.resolution || '480p';
+      if (resolution === '720p') {
+        return t
+          ? t('hero_input.pricing_descriptions.seedance_standard_720p')
+          : 'Seedance 2.0 Standard 720p: 33 credits/second';
+      }
+      return t
+        ? t('hero_input.pricing_descriptions.seedance_standard_480p')
+        : 'Seedance 2.0 Standard 480p: 15 credits/second';
+    },
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: {
+          type: 'string',
+          title: 'Prompt',
+          'x-order': 0,
+          description: 'Text prompt for video generation',
+        },
+        first_frame_url: {
+          type: 'string',
+          title: 'First Frame Image',
+          format: 'uri',
+          'x-order': 1,
+          nullable: true,
+          description: 'Optional first frame image for image-to-video generation',
+        },
+        last_frame_url: {
+          type: 'string',
+          title: 'Last Frame Image',
+          format: 'uri',
+          'x-order': 2,
+          nullable: true,
+          description: 'Optional last frame image (must be used with first frame)',
+        },
+        resolution: {
+          enum: ['480p', '720p'],
+          type: 'string',
+          title: 'Resolution',
+          default: '480p',
+          'x-order': 3,
+          description: 'Output video resolution',
+        },
+        aspect_ratio: {
+          enum: ['16:9', '9:16', '4:3', '3:4', '1:1', '21:9'],
+          type: 'string',
+          title: 'Aspect Ratio',
+          default: '16:9',
+          'x-order': 4,
+          description: 'Aspect ratio of the output video',
+        },
+        duration: {
+          enum: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+          type: 'integer',
+          title: 'Duration',
+          default: 5,
+          'x-order': 5,
+          description: 'Duration of the video in seconds (5-15s)',
+        },
+        generate_audio: {
+          type: 'boolean',
+          title: 'Generate Audio',
+          default: false,
+          'x-order': 6,
+          description: 'Generate audio for the video',
+        },
+      },
+    },
+  },
+
+  // === Wan 2.7 (T2V + I2V, same pricing) ===
+  wan: {
+    id: 'wan',
+    name: 'Wan 2.7',
+    // Dynamic modelName: resolved at API call time based on image upload
+    // No image: wan/2-7-text-to-video (T2V)
+    // With image: wan/2-7-image-to-video (I2V)
+    modelName: 'wan/2-7-text-to-video',
+    provider: 'kie',
+    img: '/imgs/logos/wan.svg',
+    parseParams: (params: Record<string, any>) => {
+      const parsedParams = { ...params };
+      if (params.startImageUrl) {
+        parsedParams['first_frame_url'] = params.startImageUrl;
+      }
+      delete parsedParams.startImageUrl;
+      delete parsedParams.image;
+      return parsedParams;
+    },
+    calculateCredits: (params: Record<string, any>) => {
+      const duration = params.duration || 5;
+      const resolution = params.resolution || '720p';
+      // Wan 2.7 T2V/I2V (same pricing): 720p=16 kie/s, 1080p=24 kie/s
+      // ~4x markup: 720p=13, 1080p=19
+      if (resolution === '1080p') return duration * 19;
+      return duration * 13;
+    },
+    getPricingDescription: (params: Record<string, any>, t?: any) => {
+      const resolution = params.resolution || '720p';
+      if (resolution === '1080p') {
+        return t
+          ? t('hero_input.pricing_descriptions.wan_1080p')
+          : 'Wan 2.7 1080p: 19 credits/second';
+      }
+      return t
+        ? t('hero_input.pricing_descriptions.wan_720p')
+        : 'Wan 2.7 720p: 13 credits/second';
+    },
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: {
+          type: 'string',
+          title: 'Prompt',
+          'x-order': 0,
+          description: 'Text prompt for video generation',
+        },
+        negative_prompt: {
+          type: 'string',
+          title: 'Negative Prompt',
+          default: '',
+          'x-order': 1,
+          description: 'Negative prompt to avoid certain elements',
+        },
+        first_frame_url: {
+          type: 'string',
+          title: 'First Frame Image',
+          format: 'uri',
+          'x-order': 2,
+          nullable: true,
+          description: 'Image for use as the initial frame of the video',
+        },
+        resolution: {
+          enum: ['720p', '1080p'],
+          type: 'string',
+          title: 'Resolution',
+          default: '720p',
+          'x-order': 3,
+          description: 'Output video resolution',
+        },
+        aspect_ratio: {
+          enum: ['16:9', '9:16'],
+          type: 'string',
+          title: 'Aspect Ratio',
+          default: '16:9',
+          'x-order': 4,
+          description: 'Aspect ratio of the output video',
+        },
+        duration: {
+          enum: [5, 10],
+          type: 'integer',
+          title: 'Duration',
+          default: 5,
+          'x-order': 5,
+          description: 'Duration of the video in seconds',
+        },
+      },
+    },
+  },
+
+  // === Hailuo 2.3 (I2V only) ===
   hailuo: {
     id: 'hailuo',
-    name: 'Hailuo',
-    modelName: 'minimax/hailuo-02',
+    name: 'Hailuo 2.3',
+    // I2V only - dynamic model name based on resolution
+    // Standard 768p: hailuo/2-3-image-to-video-standard
+    // Pro 1080p: hailuo/2-3-image-to-video-pro
+    modelName: 'hailuo/2-3-image-to-video-standard',
+    provider: 'kie',
     img: '/imgs/logos/hailuo.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
-
       if (params.startImageUrl) {
         parsedParams['first_frame_image'] = params.startImageUrl;
       }
-
       delete parsedParams.startImageUrl;
-
       return parsedParams;
     },
     calculateCredits: (params: Record<string, any>) => {
       const resolution = params.resolution || '768p';
       const duration = params.duration || 6;
-
-      // 根据图片中的定价表计算积分
-      if (resolution === '768p') {
-        return duration === 6 ? 9 : 15; // 6秒9积分，10秒15积分
-      } else if (resolution === '1080p') {
-        return 16; // 1080p只支持6秒，16积分
-      }
-
-      return 9; // 默认768p 6秒消耗
+      // Hailuo 2.3 I2V (per video, ~4x markup):
+      // Standard 768p 6s: 25 kie -> 20
+      // Standard 768p 10s: 40 kie -> 32
+      // Pro 1080p 6s: 70 kie -> 56
+      if (resolution === '1080p') return 56; // Pro 1080p 6s only
+      if (duration === 10) return 32; // Standard 768p 10s
+      return 20; // Standard 768p 6s
     },
     updateSchema: (params: Record<string, any>, schema: JsonSchema) => {
-      // 创建 schema 的深拷贝，避免修改原始配置
       const newSchema = JSON.parse(JSON.stringify(schema)) as JsonSchema;
-
-      // 规则1：如果时长是 10 秒，则分辨率只允许是 768p
-      if (params.duration === 10) {
-        newSchema.properties.resolution.enum = ['768p'];
-        newSchema.properties.resolution.description =
-          '10 seconds duration is only available for 768p resolution.';
-      }
-
-      // 规则2：如果分辨率是 1080p，则时长只允许是 6 秒
       if (params.resolution === '1080p') {
         newSchema.properties.duration.enum = [6];
         newSchema.properties.duration.description =
           '1080p resolution only supports 6 seconds duration.';
-      }
-
-      // 规则3：如果分辨率是 768p，则时长可以是 6 或 10 秒
-      if (params.resolution === '768p') {
+      } else {
         newSchema.properties.duration.enum = [6, 10];
         newSchema.properties.duration.description =
           '768p resolution supports both 6 and 10 seconds duration.';
       }
-
       return newSchema;
     },
     getPricingDescription: (params: Record<string, any>, t?: any) => {
       const resolution = params.resolution || '768p';
-
-      if (resolution === '768p') {
-        return t
-          ? t('hero_input.pricing_descriptions.hailuo_768p')
-          : '768p: 1.5 credits/second (6s=9, 10s=15)';
-      } else if (resolution === '1080p') {
+      if (resolution === '1080p') {
         return t
           ? t('hero_input.pricing_descriptions.hailuo_1080p')
-          : '1080p: 2.67 credits/second (6s only=16)';
+          : 'Hailuo 2.3 Pro 1080p: 56 credits (6s)';
       }
-
       return t
-        ? t('hero_input.pricing_descriptions.hailuo_standard')
-        : 'Standard pricing: 1.5 credits/second';
+        ? t('hero_input.pricing_descriptions.hailuo_768p')
+        : 'Hailuo 2.3 Standard 768p: 20 credits (6s), 32 credits (10s)';
     },
     schema: {
       type: 'object',
@@ -123,12 +458,19 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
           'x-order': 0,
           description: 'Text prompt for generation',
         },
+        first_frame_image: {
+          type: 'string',
+          title: 'First Frame Image',
+          format: 'uri',
+          'x-order': 1,
+          description:
+            'First frame image for video generation (required for Hailuo 2.3 I2V). The output video will have the same aspect ratio as this image.',
+        },
         duration: {
           enum: [6, 10],
           type: 'integer',
           title: 'Duration',
-          description:
-            'Duration of the video in seconds. 10 seconds is only available for 768p resolution.',
+          description: 'Duration of the video in seconds.',
           default: 6,
           'x-order': 2,
         },
@@ -136,8 +478,7 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
           enum: ['768p', '1080p'],
           type: 'string',
           title: 'Resolution',
-          description:
-            'Pick between standard 768p, or pro 1080p resolution. The pro model is not just high resolution, it is also higher quality.',
+          description: 'Standard 768p or Pro 1080p resolution.',
           default: '768p',
           'x-order': 3,
         },
@@ -148,332 +489,106 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
           'x-order': 4,
           description: 'Use prompt optimizer',
         },
-        first_frame_image: {
-          type: 'string',
-          title: 'First Frame Image',
-          format: 'uri',
-          'x-order': 1,
-          description:
-            'First frame image for video generation. The output video will have the same aspect ratio as this image.',
-        },
       },
     },
   },
-  kling: {
-    id: 'kling',
-    name: 'Kling',
-    modelName: 'kwaivgi/kling-v1.6-standard',
-    img: '/imgs/logos/kling.svg',
+
+  // === Hailuo 02 (T2V + I2V) ===
+  hailuo_02: {
+    id: 'hailuo_02',
+    name: 'Hailuo 02',
+    // Dynamic model name based on image + resolution
+    // T2V Standard: hailuo/02-text-to-video-standard
+    // T2V Pro: hailuo/02-text-to-video-pro
+    // I2V Standard: hailuo/02-image-to-video-standard
+    // I2V Pro: hailuo/02-image-to-video-pro
+    modelName: 'hailuo/02-text-to-video-standard', // default T2V
+    provider: 'kie',
+    img: '/imgs/logos/hailuo.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
-
       if (params.startImageUrl) {
-        parsedParams['start_image'] = params.startImageUrl;
+        parsedParams['first_frame_image'] = params.startImageUrl;
       }
-
       delete parsedParams.startImageUrl;
-
       return parsedParams;
     },
     calculateCredits: (params: Record<string, any>) => {
-      const duration = params.duration || 5;
-      // 5秒视频消耗9积分，10秒视频消耗17积分（基于 $0.05/秒的成本和40%利润率计算得出）
-      return duration === 5 ? 9 : 17;
-    },
-    getPricingDescription: (params: Record<string, any>, t?: any) => {
-      return t
-        ? t('hero_input.pricing_descriptions.kling')
-        : 'Kling: 1.8 credits/second (5s=9, 10s=17)';
-    },
-    schema: {
-      type: 'object',
-      title: 'Input',
-      required: ['prompt'],
-      properties: {
-        prompt: {
-          type: 'string',
-          title: 'Prompt',
-          'x-order': 0,
-          description: 'Text prompt for video generation',
-        },
-        negative_prompt: {
-          type: 'string',
-          title: 'Negative Prompt',
-          default: '',
-          'x-order': 1,
-          description: 'Things you do not want to see in the video',
-        },
-        aspect_ratio: {
-          enum: ['16:9', '9:16', '1:1'],
-          type: 'string',
-          title: 'Aspect Ratio',
-          description:
-            'Aspect ratio of the video. Ignored if start_image is provided.',
-          default: '16:9',
-          'x-order': 2,
-        },
-        start_image: {
-          type: 'string',
-          title: 'Start Image',
-          format: 'uri',
-          'x-order': 3,
-          description: 'First frame of the video',
-        },
-        reference_images: {
-          type: 'array',
-          items: {
-            type: 'string',
-            format: 'uri',
-          },
-          title: 'Reference Images',
-          maxItems: 4,
-          'x-order': 4,
-          description:
-            'Reference images to use in video generation (up to 4 images). Also known as scene elements.',
-        },
-        cfg_scale: {
-          type: 'number',
-          title: 'Cfg Scale',
-          default: 0.5,
-          maximum: 1,
-          minimum: 0,
-          'x-order': 5,
-          description:
-            "Flexibility in video generation; The higher the value, the lower the model's degree of flexibility, and the stronger the relevance to the user's prompt.",
-        },
-        duration: {
-          enum: [5, 10],
-          type: 'integer',
-          title: 'Duration',
-          description: 'Duration of the video in seconds',
-          default: 5,
-          'x-order': 6,
-        },
-      },
-    },
-  },
-  wan: {
-    id: 'wan',
-    name: 'Wan',
-    modelName: 'wavespeedai/wan-2.1-i2v-480p',
-    img: '/imgs/logos/wan.svg',
-    parseParams: (params: Record<string, any>) => {
-      const parsedParams = { ...params };
+      const resolution = params.resolution || '768p';
+      const duration = params.duration || 6;
+      const hasImage = !!params.startImageUrl || !!params.first_frame_image;
 
-      if (params.startImageUrl) {
-        parsedParams['image'] = params.startImageUrl;
+      if (hasImage) {
+        // Hailuo 02 I2V (per video, ~4x markup):
+        // Standard 512p 6s: 12 kie -> 10
+        // Standard 512p 10s: 20 kie -> 16
+        // Standard 768p 10s: 50 kie -> 40
+        // Pro 1080p 6s: 57 kie -> 46
+        if (resolution === '1080p') return 46;
+        if (resolution === '768p') return 40;
+        if (duration === 10) return 16;
+        return 10;
       }
 
-      delete parsedParams.startImageUrl;
-
-      return parsedParams;
+      // Hailuo 02 T2V (per video, ~4x markup):
+      // Standard 768p 6s: 30 kie -> 24
+      // Standard 768p 10s: 50 kie -> 40
+      // Pro 1080p 6s: 57 kie -> 46
+      if (resolution === '1080p') return 46;
+      if (duration === 10) return 40;
+      return 24;
     },
-    calculateCredits: () => {
-      // Wan 模型基础成本为 $0.45 (基于约5秒视频)(在40%利润率下，定价为15积分)
-      return 15;
-    },
-    getPricingDescription: (params: Record<string, any>, t?: any) => {
-      return t
-        ? t('hero_input.pricing_descriptions.wan')
-        : 'Wan: Fixed 15 credits per generation (~5s video)';
-    },
-    schema: {
-      type: 'object',
-      title: 'Input',
-      required: ['prompt', 'startImageUrl'],
-      properties: {
-        prompt: {
-          type: 'string',
-          title: 'Prompt',
-          'x-order': 0,
-          description: 'Text prompt for image generation',
-        },
-        negative_prompt: {
-          type: 'string',
-          title: 'Negative Prompt',
-          default: '',
-          'x-order': 1,
-          description: 'Negative prompt to avoid certain elements',
-        },
-        aspect_ratio: {
-          enum: ['16:9', '9:16'],
-          type: 'string',
-          title: 'Aspect Ratio',
-          description: 'Aspect ratio of the output video.',
-          default: '16:9',
-          'x-order': 2,
-        },
-        image: {
-          type: 'string',
-          title: 'Image',
-          format: 'uri',
-          'x-order': 3,
-          description: 'Image for use as the initial frame of the video.',
-        },
-        fast_mode: {
-          enum: ['Off', 'Balanced', 'Fast'],
-          type: 'string',
-          title: 'fast_mode',
-          description:
-            'Speed up generation with different levels of acceleration. Faster modes may degrade quality somewhat. The speedup is dependent on the content, so different videos may see different speedups.',
-          default: 'Balanced',
-          'x-order': 4,
-        },
-        seed: {
-          type: 'integer',
-          title: 'Seed',
-          'x-order': 5,
-          description: 'Random seed. Set for reproducible generation',
-        },
-        sample_guide_scale: {
-          type: 'number',
-          title: 'Sample Guide Scale',
-          default: 5,
-          maximum: 10,
-          minimum: 1,
-          'x-order': 6,
-          description: 'Guidance scale for generation',
-        },
-        sample_steps: {
-          type: 'integer',
-          title: 'Sample Steps',
-          default: 30,
-          maximum: 40,
-          minimum: 1,
-          'x-order': 7,
-          description: 'Number of inference steps',
-        },
-        sample_shift: {
-          type: 'integer',
-          title: 'Sample Shift',
-          default: 3,
-          maximum: 10,
-          minimum: 0,
-          'x-order': 8,
-          description: 'Flow shift parameter for video generation',
-        },
-        lora_weights: {
-          type: 'string',
-          title: 'Lora Weights',
-          'x-order': 9,
-          description:
-            'Load LoRA weights. Supports HuggingFace URLs in the format huggingface.co/<owner>/<model-name>, CivitAI URLs in the format civitai.com/models/<id>[/<model-name>], or arbitrary .safetensors URLs from the Internet.',
-        },
-        lora_scale: {
-          type: 'number',
-          title: 'Lora Scale',
-          default: 1,
-          maximum: 4,
-          minimum: 0,
-          'x-order': 10,
-          description:
-            'Determines how strongly the main LoRA should be applied. Sane results between 0 and 1 for base inference. You may still need to experiment to find the best value for your particular lora.',
-        },
-        disable_safety_checker: {
-          type: 'boolean',
-          title: 'Disable Safety Checker',
-          default: false,
-          'x-order': 11,
-          description: 'Disable safety checker for generated videos',
-        },
-      },
-    },
-  },
-  pixverse: {
-    id: 'pixverse',
-    name: 'Pixverse',
-    modelName: 'pixverse/pixverse-v4.5',
-    img: '/imgs/logos/pixverse.svg',
-    parseParams: (params: Record<string, any>) => {
-      const parsedParams = { ...params };
+    updateSchema: (params: Record<string, any>, schema: JsonSchema) => {
+      const newSchema = JSON.parse(JSON.stringify(schema)) as JsonSchema;
+      const hasImage = !!params.startImageUrl || !!params.first_frame_image;
 
-      if (params.startImageUrl) {
-        parsedParams['image'] = params.startImageUrl;
-      }
-
-      delete parsedParams.startImageUrl;
-
-      return parsedParams;
-    },
-    calculateCredits: (params: Record<string, any>) => {
-      const quality = params.quality || '540p';
-      const duration = params.duration || 5;
-      const motion = params.motion_mode || 'normal';
-
-      if (quality === '1080p') {
-        // 1080p 只有一种情况
-        return 27; // 5s, normal
-      }
-
-      if (quality === '720p') {
-        if (duration === 5 && motion === 'normal') return 14;
-        if (duration === 5 && motion === 'smooth') return 27;
-        if (duration === 8 && motion === 'normal') return 27;
-      }
-
-      // 涵盖 360p 和 540p
-      if (['360p', '540p'].includes(quality)) {
-        if (duration === 5 && motion === 'normal') return 10;
-        if (duration === 5 && motion === 'smooth') return 20;
-        if (duration === 8 && motion === 'normal') return 20;
-      }
-
-      return 10; // 提供一个默认的最低值
-    },
-    // 新增：处理 Pixverse 的参数禁用规则
-    updateSchema: (params, schema) => {
-      const newSchema = JSON.parse(JSON.stringify(schema));
-      const { properties } = newSchema;
-
-      // 规则1：1080p 不支持 8s 时长和 smooth 动态
-      if (params.quality === '1080p') {
-        properties.duration.enum = [5];
-        properties.motion_mode.enum = ['normal'];
-      }
-
-      // 规则2：smooth 动态只在 5s 时长下可用
-      if (params.motion_mode === 'smooth') {
-        properties.duration.enum = [5];
-        // smooth 动态在 1080p 下不可用
-        if (properties.quality.enum.includes('1080p')) {
-          properties.quality.enum = properties.quality.enum.filter(
-            (q: string) => q !== '1080p'
-          );
+      if (hasImage) {
+        // I2V: 512p (6s, 10s), 768p (10s), 1080p (6s)
+        newSchema.properties.resolution.enum = ['512p', '768p', '1080p'];
+        if (params.resolution === '768p') {
+          newSchema.properties.duration.enum = [10];
+          newSchema.properties.duration.description =
+            '768p I2V only supports 10 seconds duration.';
+        } else if (params.resolution === '1080p') {
+          newSchema.properties.duration.enum = [6];
+          newSchema.properties.duration.description =
+            '1080p only supports 6 seconds duration.';
+        } else {
+          newSchema.properties.duration.enum = [6, 10];
+          newSchema.properties.duration.description =
+            '512p supports both 6 and 10 seconds duration.';
         }
-      }
-
-      // 规则3：8s 时长不支持 smooth 动态
-      if (params.duration === 8) {
-        properties.motion_mode.enum = ['normal'];
+      } else {
+        // T2V: 768p (6s, 10s), 1080p (6s)
+        newSchema.properties.resolution.enum = ['768p', '1080p'];
+        if (params.resolution === '1080p') {
+          newSchema.properties.duration.enum = [6];
+          newSchema.properties.duration.description =
+            '1080p only supports 6 seconds duration.';
+        } else {
+          newSchema.properties.duration.enum = [6, 10];
+          newSchema.properties.duration.description =
+            '768p supports both 6 and 10 seconds duration.';
+        }
       }
 
       return newSchema;
     },
     getPricingDescription: (params: Record<string, any>, t?: any) => {
-      const quality = params.quality || '540p';
-      const motion = params.motion_mode || 'normal';
+      const resolution = params.resolution || '768p';
+      const duration = params.duration || 6;
+      const hasImage = !!params.startImageUrl || !!params.first_frame_image;
 
-      if (quality === '1080p') {
-        return t
-          ? t('hero_input.pricing_descriptions.pixverse_1080p')
-          : 'Pixverse 1080p: 5.4 credits/second (5s=27, normal only)';
-      } else if (quality === '720p') {
-        return motion === 'smooth'
-          ? t
-            ? t('hero_input.pricing_descriptions.pixverse_720p_smooth')
-            : 'Pixverse 720p: 5.4 credits/second (smooth=2x cost)'
-          : t
-          ? t('hero_input.pricing_descriptions.pixverse_720p_normal')
-          : 'Pixverse 720p: 2.8 credits/second (5s=14, 8s=27)';
-      } else {
-        return motion === 'smooth'
-          ? t
-            ? t('hero_input.pricing_descriptions.pixverse_low_smooth')
-            : 'Pixverse 360p/540p: 4 credits/second (smooth=2x cost)'
-          : t
-          ? t('hero_input.pricing_descriptions.pixverse_low_normal')
-          : 'Pixverse 360p/540p: 2 credits/second (5s=10, 8s=20)';
+      if (hasImage) {
+        if (resolution === '1080p') return t ? t('hero_input.pricing_descriptions.hailuo02_i2v_1080p') : 'Hailuo 02 I2V Pro 1080p: 46 credits (6s)';
+        if (resolution === '768p') return t ? t('hero_input.pricing_descriptions.hailuo02_i2v_768p') : 'Hailuo 02 I2V Standard 768p: 40 credits (10s)';
+        if (duration === 10) return t ? t('hero_input.pricing_descriptions.hailuo02_i2v_512p_10s') : 'Hailuo 02 I2V Standard 512p: 16 credits (10s)';
+        return t ? t('hero_input.pricing_descriptions.hailuo02_i2v_512p') : 'Hailuo 02 I2V Standard 512p: 10 credits (6s)';
       }
+
+      if (resolution === '1080p') return t ? t('hero_input.pricing_descriptions.hailuo02_t2v_1080p') : 'Hailuo 02 T2V Pro 1080p: 46 credits (6s)';
+      if (duration === 10) return t ? t('hero_input.pricing_descriptions.hailuo02_t2v_768p_10s') : 'Hailuo 02 T2V Standard 768p: 40 credits (10s)';
+      return t ? t('hero_input.pricing_descriptions.hailuo02_t2v_768p') : 'Hailuo 02 T2V Standard 768p: 24 credits (6s)';
     },
     schema: {
       type: 'object',
@@ -484,235 +599,69 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
           type: 'string',
           title: 'Prompt',
           'x-order': 0,
-          description: 'Text prompt for video generation',
+          description: 'Text prompt for generation',
         },
-        image: {
+        first_frame_image: {
           type: 'string',
-          title: 'Image',
+          title: 'First Frame Image',
           format: 'uri',
           'x-order': 1,
           nullable: true,
-          description: 'Image to use for the first frame of the video',
-        },
-        last_frame_image: {
-          type: 'string',
-          title: 'Last Frame Image',
-          format: 'uri',
-          'x-order': 2,
-          nullable: true,
-          description:
-            'Use to generate a video that transitions from the first image to the last image. Must be used with image.',
-        },
-        quality: {
-          enum: ['360p', '540p', '720p', '1080p'],
-          type: 'string',
-          title: 'quality',
-          description:
-            'Resolution of the video. 360p and 540p cost the same, but 720p and 1080p cost more. See the README for details.',
-          default: '540p',
-          'x-order': 3,
-        },
-        aspect_ratio: {
-          enum: ['16:9', '9:16', '1:1'],
-          type: 'string',
-          title: 'aspect_ratio',
-          description: 'Aspect ratio of the video',
-          default: '16:9',
-          'x-order': 4,
+          description: 'Optional first frame image for image-to-video generation',
         },
         duration: {
-          enum: [5, 8],
-          type: 'integer',
-          title: 'duration',
-          description:
-            'Duration of the video in seconds. 8 second videos cost twice as much as 5 second videos. (1080p does not support 8 second duration)',
-          default: 5,
-          'x-order': 5,
-        },
-        motion_mode: {
-          enum: ['normal', 'smooth'],
-          type: 'string',
-          title: 'motion_mode',
-          description:
-            'Motion mode for the video. Smooth videos generate more frames, so they cost twice as much. (smooth is only available when using a 5 second duration, 1080p does not support smooth motion)',
-          default: 'normal',
-          'x-order': 6,
-        },
-        negative_prompt: {
-          type: 'string',
-          title: 'Negative Prompt',
-          default: '',
-          'x-order': 7,
-          description: 'Negative prompt to avoid certain elements in the video',
-        },
-        seed: {
-          type: 'integer',
-          title: 'Seed',
-          'x-order': 8,
-          description: 'Random seed. Set for reproducible generation',
-        },
-        style: {
-          enum: ['None', 'anime', '3d_animation', 'clay', 'cyberpunk', 'comic'],
-          type: 'string',
-          title: 'style',
-          description: 'Style of the video',
-          default: 'None',
-          'x-order': 9,
-        },
-        effect: {
-          enum: [
-            'None',
-            "Let's YMCA!",
-            'Subject 3 Fever',
-            'Ghibli Live!',
-            'Suit Swagger',
-            'Muscle Surge',
-            '360° Microwave',
-            'Warmth of Jesus',
-            'Emergency Beat',
-            'Anything, Robot',
-            'Kungfu Club',
-            'Mint in Box',
-            'Retro Anime Pop',
-            'Vogue Walk',
-            'Mega Dive',
-            'Evil Trigger',
-          ],
-          type: 'string',
-          title: 'effect',
-          description:
-            'Special effect to apply to the video. Does not work with last_frame_image.',
-          default: 'None',
-          'x-order': 10,
-        },
-        sound_effect_switch: {
-          type: 'boolean',
-          title: 'Sound Effect Switch',
-          default: false,
-          'x-order': 11,
-          description: 'Enable background music or sound effects',
-        },
-        sound_effect_content: {
-          type: 'string',
-          title: 'Sound Effect Content',
-          'x-order': 12,
-          description:
-            'Sound effect prompt. If not given, a random sound effect will be generated.',
-        },
-      },
-    },
-  },
-  luma: {
-    id: 'luma',
-    name: 'Luma',
-    modelName: 'luma/ray-2-720p',
-    img: '/imgs/logos/luma.svg',
-    parseParams: (params: Record<string, any>) => {
-      const parsedParams = { ...params };
-
-      if (params.startImageUrl) {
-        parsedParams['start_image'] = params.startImageUrl;
-      }
-
-      delete parsedParams.startImageUrl;
-
-      return parsedParams;
-    },
-    calculateCredits: (params: Record<string, any>) => {
-      const duration = params.duration || 5;
-      // 5秒视频消耗10积分，9秒视频消耗18积分（基于 $0.06/秒的成本和40%利润率计算得出）
-      return duration === 5 ? 10 : 18;
-    },
-    getPricingDescription: (params: Record<string, any>, t?: any) => {
-      return t
-        ? t('hero_input.pricing_descriptions.luma')
-        : 'Luma: 2 credits/second (5s=10, 9s=18)';
-    },
-    schema: {
-      type: 'object',
-      title: 'Input',
-      required: ['prompt'],
-      properties: {
-        prompt: {
-          type: 'string',
-          title: 'Prompt',
-          'x-order': 0,
-          description: 'Text prompt for video generation',
-        },
-        start_image: {
-          type: 'string',
-          title: 'Start Image',
-          format: 'uri',
-          'x-order': 1,
-          description:
-            'An optional first frame of the video to use as the starting frame.',
-        },
-        end_image: {
-          type: 'string',
-          title: 'End Image',
-          format: 'uri',
-          'x-order': 2,
-          description:
-            'An optional last frame of the video to use as the ending frame.',
-        },
-        duration: {
-          enum: [5, 9],
+          enum: [6, 10],
           type: 'integer',
           title: 'Duration',
-          description: 'Duration of the video in seconds',
-          default: 5,
+          default: 6,
+          'x-order': 2,
+        },
+        resolution: {
+          enum: ['768p', '1080p'],
+          type: 'string',
+          title: 'Resolution',
+          default: '768p',
           'x-order': 3,
         },
-        aspect_ratio: {
-          enum: ['1:1', '3:4', '4:3', '9:16', '16:9', '9:21', '21:9'],
-          type: 'string',
-          title: 'Aspect Ratio',
-          description: 'Aspect ratio of the generated video',
-          default: '16:9',
-          'x-order': 4,
-        },
-        loop: {
+        prompt_optimizer: {
           type: 'boolean',
-          title: 'Loop',
-          default: false,
-          'x-order': 5,
-          description:
-            'Whether the video should loop, with the last frame matching the first frame for smooth, continuous playback.',
-        },
-        concepts: {
-          type: 'array',
-          items: {
-            type: 'string',
-          },
-          title: 'Concepts',
-          'x-order': 6,
-          description:
-            'List of camera concepts to apply to the video generation. Concepts include: truck_left, pan_right, pedestal_down, low_angle, pedestal_up, selfie, pan_left, roll_right, zoom_in, over_the_shoulder, orbit_right, orbit_left, static, tiny_planet, high_angle, bolt_cam, dolly_zoom, overhead, zoom_out, handheld, roll_left, pov, aerial_drone, push_in, crane_down, truck_right, tilt_down, elevator_doors, tilt_up, ground_level, pull_out, aerial, crane_up, eye_level',
+          title: 'Prompt Optimizer',
+          default: true,
+          'x-order': 4,
+          description: 'Use prompt optimizer',
         },
       },
     },
   },
+
+  // === Veo 3.1 Fast ===
   veo_3_1_fast: {
     id: 'veo_3_1_fast',
     name: 'Veo 3.1 Fast',
-    modelName: 'google/veo-3.1-fast',
+    modelName: 'veo3_fast',
+    provider: 'kie',
     img: '/imgs/logos/vidu.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
       if (params.startImageUrl) {
-        parsedParams['reference_images'] = [params.startImageUrl];
+        parsedParams['imageUrls'] = [params.startImageUrl];
       }
       delete parsedParams.startImageUrl;
+      delete parsedParams.negative_prompt;
+      delete parsedParams.duration;
       return parsedParams;
     },
     calculateCredits: (params: Record<string, any>) => {
-      const duration = params.duration || 5;
-      return duration === 5 ? 25 : 50;
+      const resolution = params.resolution || '720p';
+      // Veo 3.1 Fast kie.ai cost: 720p=20, 1080p=25, 4K=60 (per video)
+      // ~4x markup: 720p=16, 1080p=20, 4K=48
+      const pricing: Record<string, number> = { '720p': 16, '1080p': 20, '4K': 48 };
+      return pricing[resolution] || 16;
     },
     getPricingDescription: (params: Record<string, any>, t?: any) => {
       return t
-        ? t('hero_input.pricing_descriptions.veo')
-        : 'Veo 3.1 Fast: 5 credits/second (5s=25, 10s=50)';
+        ? t('hero_input.pricing_descriptions.veo_fast')
+        : 'Veo 3.1 Fast: from 16 credits per generation';
     },
     schema: {
       type: 'object',
@@ -725,28 +674,97 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
           'x-order': 0,
           description: 'Text prompt for video generation',
         },
-        negative_prompt: {
+        startImageUrl: {
           type: 'string',
-          title: 'Negative Prompt',
-          default: '',
+          title: 'Reference Image',
+          format: 'uri',
           'x-order': 1,
-          description: 'Things you do not want to see in the video',
+          nullable: true,
+          description: 'Optional reference image for image-to-video generation',
         },
         aspect_ratio: {
-          enum: ['16:9', '9:16', '1:1'],
+          enum: ['16:9', '9:16'],
           type: 'string',
           title: 'Aspect Ratio',
           description: 'Aspect ratio of the video.',
           default: '16:9',
           'x-order': 2,
         },
-        duration: {
-          enum: [5, 10],
-          type: 'integer',
-          title: 'Duration',
-          description: 'Duration of the video in seconds',
-          default: 5,
+        resolution: {
+          enum: ['720p', '1080p', '4K'],
+          type: 'string',
+          title: 'Resolution',
+          default: '1080p',
           'x-order': 3,
+          description: 'Output video resolution',
+        },
+      },
+    },
+  },
+
+  // === Veo 3.1 Quality ===
+  veo_3_1_quality: {
+    id: 'veo_3_1_quality',
+    name: 'Veo 3.1 Quality',
+    modelName: 'veo3',
+    provider: 'kie',
+    img: '/imgs/logos/vidu.svg',
+    parseParams: (params: Record<string, any>) => {
+      const parsedParams = { ...params };
+      if (params.startImageUrl) {
+        parsedParams['imageUrls'] = [params.startImageUrl];
+      }
+      delete parsedParams.startImageUrl;
+      delete parsedParams.negative_prompt;
+      delete parsedParams.duration;
+      return parsedParams;
+    },
+    calculateCredits: (params: Record<string, any>) => {
+      const resolution = params.resolution || '720p';
+      // Veo 3.1 Quality kie.ai cost: 720p=150, 1080p=155, 4K=190 (per video)
+      // ~4x markup: 720p=120, 1080p=124, 4K=152
+      const pricing: Record<string, number> = { '720p': 120, '1080p': 124, '4K': 152 };
+      return pricing[resolution] || 120;
+    },
+    getPricingDescription: (params: Record<string, any>, t?: any) => {
+      return t
+        ? t('hero_input.pricing_descriptions.veo_quality')
+        : 'Veo 3.1 Quality: from 120 credits per generation';
+    },
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: {
+          type: 'string',
+          title: 'Prompt',
+          'x-order': 0,
+          description: 'Text prompt for video generation',
+        },
+        startImageUrl: {
+          type: 'string',
+          title: 'Reference Image',
+          format: 'uri',
+          'x-order': 1,
+          nullable: true,
+          description: 'Optional reference image for image-to-video generation',
+        },
+        aspect_ratio: {
+          enum: ['16:9', '9:16'],
+          type: 'string',
+          title: 'Aspect Ratio',
+          description: 'Aspect ratio of the video.',
+          default: '16:9',
+          'x-order': 2,
+        },
+        resolution: {
+          enum: ['720p', '1080p', '4K'],
+          type: 'string',
+          title: 'Resolution',
+          default: '720p',
+          'x-order': 3,
+          description: 'Output video resolution',
         },
       },
     },

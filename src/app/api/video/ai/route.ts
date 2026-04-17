@@ -118,8 +118,19 @@ export async function POST(request: NextRequest) {
 
     // Get configs from DB/Env
     const configs = await getAllConfigs();
-    const apiToken = configs.replicate_api_token;
-    if (!apiToken) {
+
+    // Determine provider based on model config
+    const provider = modelConfig.provider || 'replicate';
+    const kieApiKey = configs.kie_api_key;
+    const replicateToken = configs.replicate_api_token;
+
+    if (provider === 'kie' && !kieApiKey) {
+      return NextResponse.json(
+        { error: 'kie_api_key is not configured' },
+        { status: 500 }
+      );
+    }
+    if (provider === 'replicate' && !replicateToken) {
       return NextResponse.json(
         { error: 'replicate_api_token is not configured' },
         { status: 500 }
@@ -129,18 +140,17 @@ export async function POST(request: NextRequest) {
     // Detect mock mode
     const headerMock = request.headers.get('x-debug-mock');
     const queryMock = request.nextUrl.searchParams.get('mock');
-    const referer = request.headers.get('referer');
-    
-    const debugMock = 
-      (headerMock === 'true') || 
-      (queryMock === '1') ||
-      (referer?.includes('mock=1') || false);
+
+    const debugMock =
+      process.env.NODE_ENV === 'development' && (
+        (headerMock === 'true') ||
+        (queryMock === '1')
+      );
 
     console.log('[Video API] Mock detection:', {
       debugMock,
       header: headerMock,
       query: queryMock,
-      referer,
     });
 
     // Calculate required credits
@@ -246,7 +256,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Prepare Replicate Request
+    // Prepare API Request based on provider
     let inputData: any = {
       prompt,
       ...parameters,
@@ -257,20 +267,39 @@ export async function POST(request: NextRequest) {
       inputData = modelConfig.parseParams(inputData);
     }
 
-    const requestData = {
-      input: inputData,
-    };
-
-    const apiUrl = `https://api.replicate.com/v1/models/${modelConfig.modelName}/predictions`;
+    // Resolve dynamic model name for models that change based on image input
+    let resolvedModelName = modelConfig.modelName;
+    if (model === 'wan') {
+      resolvedModelName = startImageUrl ? 'wan/2-7-image-to-video' : 'wan/2-7-text-to-video';
+    } else if (model === 'hailuo') {
+      // Hailuo 2.3 I2V only
+      const resolution = parameters.resolution || '768p';
+      const isPro = resolution === '1080p';
+      resolvedModelName = isPro
+        ? 'hailuo/2-3-image-to-video-pro'
+        : 'hailuo/2-3-image-to-video-standard';
+    } else if (model === 'hailuo_02') {
+      const resolution = parameters.resolution || '768p';
+      const isPro = resolution === '1080p';
+      if (startImageUrl) {
+        resolvedModelName = isPro
+          ? 'hailuo/02-image-to-video-pro'
+          : 'hailuo/02-image-to-video-standard';
+      } else {
+        resolvedModelName = isPro
+          ? 'hailuo/02-text-to-video-pro'
+          : 'hailuo/02-text-to-video-standard';
+      }
+    }
 
     let prediction: ReplicateResponse;
+    let isKieTask = false;
 
     if (debugMock) {
       console.time(`[Mock Video] ${videoDbId}`);
       console.log('Using mock video generation...');
-      // Using a smaller sample video (approx 1MB) to speed up localhost testing
       const mockVideoUrl = envConfigs.mock_video_url;
-      
+
       prediction = {
         id: `mock-${Date.now()}`,
         status: 'succeeded',
@@ -286,8 +315,101 @@ export async function POST(request: NextRequest) {
           cancel: '',
         }
       };
+    } else if (provider === 'kie') {
+      // Kie.ai API
+      isKieTask = true;
+      const kieBaseUrl = 'https://api.kie.ai/api/v1';
+      const kieHeaders = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${kieApiKey}`,
+      };
+
+      // Veo models use separate endpoint
+      if (resolvedModelName.startsWith('veo3')) {
+        const veoPayload: any = {
+          prompt,
+          model: resolvedModelName,
+        };
+        if (inputData.aspect_ratio) veoPayload.aspect_ratio = inputData.aspect_ratio;
+        if (inputData.imageUrls) veoPayload.imageUrls = inputData.imageUrls;
+        if (inputData.resolution) veoPayload.resolution = inputData.resolution;
+
+        console.log('[Kie Veo] Generating:', veoPayload);
+        const veoResp = await fetch(`${kieBaseUrl}/veo/generate`, {
+          method: 'POST',
+          headers: kieHeaders,
+          body: JSON.stringify(veoPayload),
+        });
+
+        if (!veoResp.ok) {
+          const errorText = await veoResp.text();
+          await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
+          return NextResponse.json(
+            { error: 'Veo generation failed', details: errorText },
+            { status: veoResp.status }
+          );
+        }
+
+        const veoResult: any = await veoResp.json();
+        if (veoResult.code !== 200 || !veoResult.data?.taskId) {
+          await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
+          return NextResponse.json(
+            { error: 'Veo generation failed', details: veoResult.msg },
+            { status: 500 }
+          );
+        }
+
+        prediction = {
+          id: `veo-${veoResult.data.taskId}`,
+          status: 'starting',
+          created_at: new Date().toISOString(),
+          urls: { get: '', cancel: '' },
+        };
+      } else {
+        // Market API for other kie models
+        const kiePayload = {
+          model: resolvedModelName,
+          input: inputData,
+        };
+
+        console.log('[Kie Market] Generating:', kiePayload);
+        const kieResp = await fetch(`${kieBaseUrl}/jobs/createTask`, {
+          method: 'POST',
+          headers: kieHeaders,
+          body: JSON.stringify(kiePayload),
+        });
+
+        if (!kieResp.ok) {
+          const errorText = await kieResp.text();
+          await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
+          return NextResponse.json(
+            { error: 'Kie generation failed', details: errorText },
+            { status: kieResp.status }
+          );
+        }
+
+        const kieResult: any = await kieResp.json();
+        if (kieResult.code !== 200 || !kieResult.data?.taskId) {
+          await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
+          return NextResponse.json(
+            { error: 'Kie generation failed', details: kieResult.msg },
+            { status: 500 }
+          );
+        }
+
+        prediction = {
+          id: kieResult.data.taskId,
+          status: 'starting',
+          created_at: new Date().toISOString(),
+          urls: { get: '', cancel: '' },
+        };
+      }
     } else {
-      // Start Prediction
+      // Replicate API
+      const apiToken = replicateToken!;
+      const requestData = { input: inputData };
+      const apiUrl = `https://api.replicate.com/v1/models/${modelConfig.modelName}/predictions`;
+
       const startResponse = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -299,9 +421,7 @@ export async function POST(request: NextRequest) {
 
       if (!startResponse.ok) {
         const errorText = await startResponse.text();
-        await updateVideoRecord(videoDbId, {
-          status: VideoStatus.Failed,
-        });
+        await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
         return NextResponse.json(
           { error: 'Failed to start video generation', details: errorText },
           { status: startResponse.status }
@@ -316,51 +436,133 @@ export async function POST(request: NextRequest) {
     });
 
     // 2. Polling for results
+    let videoUrl = '';
+    let generationTime: number | undefined;
+
     if (!debugMock) {
       const maxPollingTime = 300000; // 5 mins
-      const pollingInterval = 3000;
+      const pollingInterval = 5000;
       const startTime = Date.now();
 
-      while (
-        prediction.status !== 'succeeded' &&
-        prediction.status !== 'failed' &&
-        prediction.status !== 'canceled' &&
-        Date.now() - startTime < maxPollingTime
-      ) {
-        await sleep(pollingInterval);
-        const getResponse = await fetch(prediction.urls.get, {
-          headers: {
-            Authorization: `Bearer ${apiToken}`,
-            'Content-Type': 'application/json',
-          },
-        });
+      if (isKieTask) {
+        // Kie.ai polling
+        const kieBaseUrl = 'https://api.kie.ai/api/v1';
+        const kieHeaders = {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${kieApiKey}`,
+        };
+        const isVeo = prediction.id.startsWith('veo-');
+        const actualTaskId = isVeo ? prediction.id.replace('veo-', '') : prediction.id;
 
-        if (!getResponse.ok) break;
-        prediction = await getResponse.json();
+        while (Date.now() - startTime < maxPollingTime) {
+          await sleep(pollingInterval);
+
+          try {
+            if (isVeo) {
+              // Veo polling
+              const resp = await fetch(`${kieBaseUrl}/veo/record-info?taskId=${actualTaskId}`, { headers: kieHeaders });
+              if (!resp.ok) break;
+              const veoPollResult: any = await resp.json();
+              if (veoPollResult.code !== 200) break;
+
+              // successFlag: 0=generating, 1=success, 2/3=failed
+              if (veoPollResult.data?.successFlag === 1 && veoPollResult.data?.videoUrl) {
+                videoUrl = veoPollResult.data.videoUrl;
+
+                // Resolution-aware HD upgrade
+                const requestedResolution = parameters.resolution || '720p';
+                try {
+                  if (requestedResolution === '1080p' || requestedResolution === '4K') {
+                    const hdResp = await fetch(`${kieBaseUrl}/veo/get-1080p-video?taskId=${actualTaskId}`, { headers: kieHeaders });
+                    if (hdResp.ok) {
+                      const hdResult: any = await hdResp.json();
+                      if (hdResult.code === 200 && hdResult.data?.videoUrl) {
+                        videoUrl = hdResult.data.videoUrl;
+                      }
+                    }
+                  }
+                  if (requestedResolution === '4K') {
+                    const uhdResp = await fetch(`${kieBaseUrl}/veo/get-4k-video?taskId=${actualTaskId}`, { headers: kieHeaders });
+                    if (uhdResp.ok) {
+                      const uhdResult: any = await uhdResp.json();
+                      if (uhdResult.code === 200 && uhdResult.data?.videoUrl) {
+                        videoUrl = uhdResult.data.videoUrl;
+                      }
+                    }
+                  }
+                } catch {}
+                break;
+              } else if (veoPollResult.data?.successFlag === 2 || veoPollResult.data?.successFlag === 3) {
+                await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
+                return NextResponse.json({ error: 'Veo generation failed', id: videoDbId }, { status: 500 });
+              }
+            } else {
+              // Market API polling
+              const resp = await fetch(`${kieBaseUrl}/jobs/recordInfo?taskId=${actualTaskId}`, { headers: kieHeaders });
+              if (!resp.ok) break;
+              const kiePollResult: any = await resp.json();
+              if (kiePollResult.code !== 200) break;
+
+              if (kiePollResult.data?.state === 'success' && kiePollResult.data?.resultJson) {
+                const resultJson = JSON.parse(kiePollResult.data.resultJson);
+                if (resultJson.resultUrls?.[0]) {
+                  videoUrl = resultJson.resultUrls[0];
+                  break;
+                }
+              } else if (kiePollResult.data?.state === 'fail') {
+                await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
+                return NextResponse.json({ error: 'Kie generation failed', details: kiePollResult.data?.failMsg, id: videoDbId }, { status: 500 });
+              }
+            }
+          } catch (e) {
+            console.error('[Kie Polling] Error:', e);
+          }
+        }
+      } else {
+        // Replicate polling (existing logic)
+        while (
+          prediction.status !== 'succeeded' &&
+          prediction.status !== 'failed' &&
+          prediction.status !== 'canceled' &&
+          Date.now() - startTime < maxPollingTime
+        ) {
+          await sleep(pollingInterval);
+          const getResponse = await fetch(prediction.urls.get, {
+            headers: {
+              Authorization: `Bearer ${replicateToken}`,
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (!getResponse.ok) break;
+          prediction = await getResponse.json();
+        }
+
+        if (Date.now() - startTime >= maxPollingTime) {
+          await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
+          return NextResponse.json({ error: 'Video generation timeout', id: videoDbId }, { status: 408 });
+        }
+
+        if (prediction.status === 'failed' || prediction.status === 'canceled') {
+          await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
+          return NextResponse.json({ error: `Video generation ${prediction.status}`, details: prediction.error, id: videoDbId }, { status: 500 });
+        }
+
+        // Handle array or string output from Replicate
+        if (Array.isArray(prediction.output)) {
+          videoUrl = prediction.output[0];
+        } else if (typeof prediction.output === 'string') {
+          videoUrl = prediction.output;
+        }
+
+        generationTime = prediction.metrics?.predict_time
+          ? Math.round(prediction.metrics.predict_time)
+          : undefined;
       }
-
-      if (Date.now() - startTime >= maxPollingTime) {
-        await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
-        return NextResponse.json({ error: 'Video generation timeout', id: videoDbId }, { status: 408 });
-      }
-
-      if (prediction.status === 'failed' || prediction.status === 'canceled') {
-        await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
-        return NextResponse.json({ error: `Video generation ${prediction.status}`, details: prediction.error, id: videoDbId }, { status: 500 });
-      }
-    }
-
-    // 3. Complete Workflow
-    const generationTime = prediction.metrics?.predict_time
-      ? Math.round(prediction.metrics.predict_time)
-      : undefined;
-
-    // Handle array or string output from Replicate
-    let videoUrl = '';
-    if (Array.isArray(prediction.output)) {
-      videoUrl = prediction.output[0];
-    } else if (typeof prediction.output === 'string') {
-      videoUrl = prediction.output;
+    } else {
+      // Mock mode
+      videoUrl = envConfigs.mock_video_url;
+      generationTime = 5;
     }
 
     if (!videoUrl) {
@@ -434,7 +636,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Video generation API error:', error);
     return NextResponse.json(
-      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
+      { error: 'Internal server error', details: 'Unknown error' },
       { status: 500 }
     );
   }
@@ -446,6 +648,12 @@ export async function GET(request: NextRequest) {
 
   if (!predictionId) {
     return NextResponse.json({ error: 'Missing prediction ID' }, { status: 400 });
+  }
+
+  const auth = await getAuth();
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const configs = await getAllConfigs();

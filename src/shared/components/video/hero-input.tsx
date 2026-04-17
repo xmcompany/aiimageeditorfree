@@ -75,9 +75,9 @@ export default function HeroInput() {
     maxHeight: 300,
   })
 
-  const [selectedModel, setSelectedModel] = useState('hailuo')
+  const [selectedModel, setSelectedModel] = useState('veo_3_1_lite')
   const [parameters, setParameters] = useState<Record<string, any>>(() =>
-    getModelDefaults('hailuo')
+    getModelDefaults('veo_3_1_lite')
   )
   const [isGenerating, setIsGenerating] = useState(false)
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
