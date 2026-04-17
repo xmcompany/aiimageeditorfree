@@ -36,7 +36,8 @@
       "hailuo02_i2v_512p_10s": "Hailuo 02 I2V 标准 512p: 16 积分 (10秒)",
       "hailuo02_i2v_768p": "Hailuo 02 I2V 标准 768p: 40 积分 (10秒)",
       "hailuo02_i2v_1080p": "Hailuo 02 I2V 专业 1080p: 46 积分 (6秒)"
-    }
+    },
+    "show_in_gallery": "展示到画廊"
   },
   "upload_image": {
     "title": "起始图片 (可选)",
@@ -162,6 +163,8 @@
       "loading": "加载中...",
       "download": "下载",
       "open_direct": "直接打开",
+      "show_in_gallery": "展示到画廊",
+      "shown_in_gallery": "已展示",
       "failed_title": "生成失败",
       "failed_subtitle": "请尝试使用不同的提示词重试",
       "generating_title": "正在生成您的视频...",

@@ -47,7 +47,6 @@ export default async function AdminImagesPage({
         type: 'image',
         callback: (item: any) => {
           try {
-            // 1. Check taskResult
             if (item.taskResult) {
               if (typeof item.taskResult === 'string' && item.taskResult.startsWith('http')) {
                 return item.taskResult;
@@ -57,7 +56,6 @@ export default async function AdminImagesPage({
               if (url && typeof url === 'string') return url;
             }
 
-            // 2. Check taskInfo
             if (item.taskInfo) {
               const info = typeof item.taskInfo === 'string' ? JSON.parse(item.taskInfo) : item.taskInfo;
               if (info.images && info.images[0]?.imageUrl) return info.images[0].imageUrl;
@@ -65,7 +63,6 @@ export default async function AdminImagesPage({
               if (Array.isArray(info.images) && typeof info.images[0] === 'string') return info.images[0];
             }
 
-            // 3. Check options (for image-to-video source)
             if (item.options) {
               const opts = typeof item.options === 'string' ? JSON.parse(item.options) : item.options;
               if (opts.image_url) return opts.image_url;
@@ -81,8 +78,8 @@ export default async function AdminImagesPage({
           height: 80,
         },
       },
-      { 
-        name: 'prompt', 
+      {
+        name: 'prompt',
         title: t('form.prompt'),
         type: 'copy',
         callback: (item: any) => {
@@ -93,9 +90,9 @@ export default async function AdminImagesPage({
       { name: 'model', title: t('form.model') },
       { name: 'status', title: t('form.status'), type: 'label' },
       { name: 'costCredits', title: t('form.credits'), type: 'label' },
-      { 
-        name: 'user', 
-        title: t('form.userId'), 
+      {
+        name: 'user',
+        title: t('form.userId'),
         type: 'user',
       },
       { name: 'createdAt', title: t('form.createdAt'), type: 'time' },
@@ -103,10 +100,10 @@ export default async function AdminImagesPage({
         name: 'actions',
         title: t('form.actions'),
         callback: (item: any) => (
-          <SetAsShowcase 
-            id={item.id} 
-            type="image" 
-            label={t('actions.set_as_showcase')} 
+          <SetAsShowcase
+            id={item.id}
+            type="image"
+            label={t('actions.set_as_showcase')}
             showcasedLabel={t('actions.showcased')}
             isShowcased={item.isInShowcase}
           />

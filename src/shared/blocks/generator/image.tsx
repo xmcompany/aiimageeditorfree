@@ -195,6 +195,7 @@ export function ImageGenerator({
     null
   );
   const [isMounted, setIsMounted] = useState(false);
+  const [showInGallery, setShowInGallery] = useState(false);
   const savedTaskIdsRef = useRef<Set<string>>(new Set());
   const [isLoadingCredits, setIsLoadingCredits] = useState(false);
   const [availableProviders, setAvailableProviders] = useState<string[]>([]);
@@ -457,8 +458,7 @@ export function ImageGenerator({
 
       const compressedImageUrl = await compressImageFile(imageUrl);
 
-      // 2024-02-12: Disable auto-add to showcase. Only admin or manual publish should add to showcase.
-      /*
+      // Always save to showcase, with showInGallery flag
       console.log('Adding showcase to database...');
       await fetch('/api/showcases/add', {
         method: 'POST',
@@ -470,16 +470,16 @@ export function ImageGenerator({
           prompt: prompt.trim(),
           image: compressedImageUrl,
           tags: promptKey || null,
+          showInGallery: showInGallery ? 1 : 0,
         }),
       });
       console.log('Showcase saved successfully');
-      */
     } catch (error) {
       console.error('Failed to save showcase:', error);
       // Remove from saved set if failed
       savedTaskIdsRef.current.delete(taskIdForTracking);
     }
-  }, [prompt, promptKey]);
+  }, [prompt, promptKey, showInGallery]);
 
   const pollTaskStatus = useCallback(
     async (id: string) => {
@@ -558,7 +558,7 @@ export function ImageGenerator({
               prompt: task.prompt ?? undefined,
             }));
             setGeneratedImages(images);
-            
+
             // Save showcase only once - check before saving
             if (images.length > 0 && !savedTaskIdsRef.current.has(task.id)) {
               await saveShowcase(images[0].url, task.id);
@@ -929,6 +929,29 @@ export function ImageGenerator({
                         {promptLength} / {MAX_PROMPT_LENGTH}
                       </div>
                     </div>
+                  </div>
+
+                  <div className="flex items-center justify-between px-1">
+                    <label className="flex items-center gap-2 cursor-pointer select-none">
+                      <button
+                        type="button"
+                        role="switch"
+                        aria-checked={showInGallery}
+                        onClick={() => setShowInGallery(!showInGallery)}
+                        className={cn(
+                          'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+                          showInGallery ? 'bg-primary' : 'bg-muted-foreground/30'
+                        )}
+                      >
+                        <span
+                          className={cn(
+                            'pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out',
+                            showInGallery ? 'translate-x-4' : 'translate-x-0'
+                          )}
+                        />
+                      </button>
+                      <span className="text-xs font-medium text-muted-foreground">{t('show_in_gallery')}</span>
+                    </label>
                   </div>
 
                   <div className="pt-2">

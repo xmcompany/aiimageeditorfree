@@ -40,7 +40,8 @@
       "hailuo02_i2v_512p_10s": "Hailuo 02 I2V Standard 512p: 16 credits (10s)",
       "hailuo02_i2v_768p": "Hailuo 02 I2V Standard 768p: 40 credits (10s)",
       "hailuo02_i2v_1080p": "Hailuo 02 I2V Pro 1080p: 46 credits (6s)"
-    }
+    },
+    "show_in_gallery": "Show in Gallery"
   },
   "upload_image": {
     "title": "Start Image (Optional)",
@@ -166,6 +167,8 @@
       "loading": "Loading...",
       "download": "Download",
       "open_direct": "Open Direct",
+      "show_in_gallery": "Show in Gallery",
+      "shown_in_gallery": "In Gallery",
       "failed_title": "Generation failed",
       "failed_subtitle": "Please try again with a different prompt",
       "generating_title": "Generating your video...",

@@ -26,12 +26,6 @@
               "url": "/ai-video-generator",
               "icon": "Clapperboard",
               "description": "文生视频、图生视频"
-            },
-            {
-              "title": "AI 发型设计",
-              "url": "/hairstyles",
-              "icon": "Wind",
-              "description": "智能发型试戴与设计"
             }
           ]
         },
@@ -41,13 +35,13 @@
           "children": [
             {
               "title": "AI 图像提示词",
-              "url": "/prompts?type=image",
+              "url": "/ai-image-prompts",
               "icon": "Image",
               "description": "激发灵感的文生图提示词"
             },
             {
               "title": "AI 视频提示词",
-              "url": "/prompts?type=video",
+              "url": "/ai-video-prompts",
               "icon": "Clapperboard",
               "description": "创意无限的文生视频提示词"
             }
@@ -59,13 +53,13 @@
           "children": [
             {
               "title": "AI 图像展示",
-              "url": "/showcases?type=image",
+              "url": "/ai-image-showcases",
               "icon": "Image",
               "description": "优秀的 AI 图像生成作品"
             },
             {
               "title": "AI 视频展示",
-              "url": "/showcases?type=video",
+              "url": "/ai-video-showcases",
               "icon": "Clapperboard",
               "description": "惊艳的 AI 视频生成作品"
             }
@@ -497,7 +491,7 @@
             },
             {
               "title": "案例展示",
-              "url": "/showcases",
+              "url": "/ai-video-showcases",
               "target": "_self"
             }
           ]

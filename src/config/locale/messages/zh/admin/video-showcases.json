@@ -8,6 +8,10 @@
   "deleting": "删除中...",
   "delete_success": "成功删除案例",
   "delete_error": "删除案例失败",
+  "bulk_show": "批量展示",
+  "bulk_hide": "批量隐藏",
+  "visible": "已展示",
+  "hidden": "已隐藏",
   "crumbs": {
     "admin": "管理后台",
     "video-showcases": "视频案例"
@@ -21,6 +25,7 @@
     "videoUrl": "视频链接",
     "tags": "标签",
     "createdAt": "创建时间",
+    "show_in_gallery": "画廊展示",
     "image_tip": "视频封面/缩略图",
     "tags_placeholder": "例如：电影感、动画",
     "tags_tip": "使用逗号分隔多个标签"

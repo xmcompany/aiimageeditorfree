@@ -26,12 +26,6 @@
               "url": "/ai-image-generator",
               "icon": "Image",
               "description": "Text to image, image editing"
-            },
-            {
-              "title": "AI Hairstyle",
-              "url": "/hairstyles",
-              "icon": "Wind",
-              "description": "Smart hairstyle design"
             }
           ]
         },
@@ -86,12 +80,6 @@
               "url": "/wan",
               "icon": "Video",
               "description": "Alibaba Wan 2.7 video generation"
-            },
-            {
-              "title": "Kling 3.0",
-              "url": "/kling",
-              "icon": "Film",
-              "description": "Kuaishou Kling cinematic video"
             },
             {
               "title": "Veo 3.1",
@@ -541,11 +529,6 @@
             {
               "title": "Wan 2.7",
               "url": "/wan",
-              "target": "_self"
-            },
-            {
-              "title": "Kling 3.0",
-              "url": "/kling",
               "target": "_self"
             },
             {

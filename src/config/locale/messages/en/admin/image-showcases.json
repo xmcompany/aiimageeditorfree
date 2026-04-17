@@ -8,6 +8,10 @@
   "deleting": "Deleting...",
   "delete_success": "Successfully deleted showcase",
   "delete_error": "Failed to delete showcase",
+  "bulk_show": "Show Selected",
+  "bulk_hide": "Hide Selected",
+  "visible": "Visible",
+  "hidden": "Hidden",
   "crumbs": {
     "admin": "Admin",
     "showcases": "Image Showcases"
@@ -19,6 +23,7 @@
     "image": "Image",
     "tags": "Tags",
     "createdAt": "Created At",
+    "show_in_gallery": "Gallery",
     "image_tip": "Upload showcase image",
     "tags_placeholder": "e.g. hairstyles",
     "tags_tip": "Use comma to separate multiple tags"

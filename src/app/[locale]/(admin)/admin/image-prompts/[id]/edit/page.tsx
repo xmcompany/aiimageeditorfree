@@ -46,6 +46,16 @@ export default async function PromptEditPage({
         validation: { required: true },
       },
       {
+        name: 'model',
+        type: 'select',
+        title: 'Model',
+        options: [
+          { title: 'Nano Banana 2', value: 'nano-banana-2' },
+          { title: 'Nano Banana Pro', value: 'nano-banana-pro' },
+          { title: 'Nano Banana V1', value: 'google/nano-banana' },
+        ],
+      },
+      {
         name: 'promptTitle',
         type: 'text',
         title: t('fields.prompt_title'),
@@ -84,6 +94,7 @@ export default async function PromptEditPage({
         const promptTitle = data.get('promptTitle') as string;
         const promptDescription = data.get('promptDescription') as string;
         const image = data.get('image') as string;
+        const model = data.get('model') as string;
         const title = promptTitle;
         const description = promptDescription;
 
@@ -99,6 +110,7 @@ export default async function PromptEditPage({
           promptDescription: promptDescription?.trim() || '',
           status: PromptStatus.PUBLISHED,
           type: 'image',
+          model: model?.trim() || '',
         };
 
         const result = await updatePrompt(id, updateData);

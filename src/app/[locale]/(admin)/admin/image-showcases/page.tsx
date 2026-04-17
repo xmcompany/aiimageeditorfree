@@ -2,12 +2,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { PERMISSIONS, requirePermission } from '@/core/rbac';
 import { Header, Main, MainHeader } from '@/shared/blocks/dashboard';
-import { TableCard } from '@/shared/blocks/table';
-import { BulkDeleteTable } from '@/shared/blocks/table/bulk-delete-table';
-import { ShowcaseActions } from '@/shared/blocks/table/actions/showcase-actions';
-import { getShowcases, getShowcasesCount, type Showcase } from '@/shared/models/showcase';
+import { BulkDeleteTable, BulkAction } from '@/shared/blocks/table/bulk-delete-table';
+import { getShowcases, getShowcasesCount } from '@/shared/models/showcase';
 import { Button, Crumb } from '@/shared/types/blocks/common';
-import { type Table } from '@/shared/types/blocks/table';
 
 export default async function ShowcasesPage({
   params,
@@ -20,7 +17,7 @@ export default async function ShowcasesPage({
   setRequestLocale(locale);
 
   await requirePermission({
-    code: PERMISSIONS.CATEGORIES_READ,
+    code: PERMISSIONS.IMAGES_WRITE,
     redirectUrl: '/admin/no-permission',
     locale,
   });
@@ -39,83 +36,27 @@ export default async function ShowcasesPage({
   const total = await getShowcasesCount({ type: 'image' });
   const data = await getShowcases({ page, limit, type: 'image' });
 
-  const table: Table = {
-    columns: [
-      {
-        name: 'image',
-        title: t('form.image'),
-        type: 'image',
-        metadata: {
-          width: 50,
-          height: 50,
-        },
-      },
-      { 
-        name: 'title', 
-        title: t('form.title'),
-        callback: (item: Showcase) => {
-          const text = item.title || '';
-          return text.length > 50 ? text.substring(0, 50) + '...' : text;
-        },
-      },
-      { 
-        name: 'prompt', 
-        title: t('form.prompt'),
-        type: 'copy',
-        callback: (item: Showcase) => {
-          const text = item.prompt || '';
-          return text.length > 50 ? text.substring(0, 50) + '...' : text;
-        },
-      },
-      /* { 
-        name: 'description', 
-        title: t('form.description'),
-        callback: (item: Showcase) => {
-          const text = item.description || '';
-          return text.length > 50 ? text.substring(0, 50) + '...' : text;
-        },
-      }, */
-      { name: 'tags', title: t('form.tags') },
-      { name: 'createdAt', title: t('form.createdAt'), type: 'time' },
-      {
-        name: 'action',
-        title: '',
-        callback: (item: Showcase) => (
-          <ShowcaseActions 
-            id={item.id}
-            editUrl={`/admin/image-showcases/${item.id}/edit`}
-            editLabel={t('edit')}
-            deleteLabel={t('delete')}
-            confirmText={t('delete_confirm')}
-            deletingText={t('deleting')}
-            successText={t('delete_success')}
-            errorText={t('delete_error')}
-          />
-        ),
-      },
-    ],
-    actions: [
-      {
-        id: 'edit',
-        title: t('edit'),
-        icon: 'RiEditLine',
-        url: '/admin/image-showcases/[id]/edit',
-      },
-    ],
-    data,
-    pagination: {
-      total,
-      page,
-      limit,
-    },
-  };
-
   const actions: Button[] = [
     {
       id: 'add',
       title: t('add'),
       icon: 'RiAddLine',
       url: '/admin/image-showcases/add',
+    },
+  ];
+
+  const bulkActions: BulkAction[] = [
+    {
+      label: t('bulk_show'),
+      variant: 'default',
+      apiUrl: '/api/admin/showcases/bulk-toggle',
+      payload: (ids: string[]) => ({ ids, show: true }),
+    },
+    {
+      label: t('bulk_hide'),
+      variant: 'outline',
+      apiUrl: '/api/admin/showcases/bulk-toggle',
+      payload: (ids: string[]) => ({ ids, show: false }),
     },
   ];
 
@@ -128,15 +69,34 @@ export default async function ShowcasesPage({
           items={data}
           deleteApiUrl="/api/admin/showcases/bulk-delete"
           confirmText="Delete selected image showcases?"
+          bulkActions={bulkActions}
           columns={[
-            { key: 'title', label: 'Title' },
-            { key: 'tags', label: 'Tags' },
-            { key: 'prompt', label: 'Prompt' },
+            { key: 'image', label: t('form.image'), type: 'image', metadata: { width: 50, height: 50 } },
+            { key: 'title', label: t('form.title'), truncate: true },
+            { key: 'prompt', label: t('form.prompt'), type: 'copy', truncate: true },
+            { key: 'tags', label: t('form.tags') },
+            {
+              key: 'showInGallery',
+              label: t('form.show_in_gallery'),
+              render: (item: any) => (
+                <span className={item.showInGallery ? 'text-green-600 font-medium' : 'text-muted-foreground'}>
+                  {item.showInGallery ? t('visible') : t('hidden')}
+                </span>
+              ),
+            },
+            { key: 'createdAt', label: t('form.createdAt'), type: 'time' },
           ]}
+          rowActions={{
+            editUrlTemplate: '/admin/image-showcases/[id]/edit',
+            editLabel: t('edit'),
+            deleteLabel: t('delete'),
+            deleteApiUrl: '/api/admin/showcases/delete',
+            confirmText: t('delete_confirm'),
+            deletingText: t('deleting'),
+            successText: t('delete_success'),
+            errorText: t('delete_error'),
+          }}
         />
-        <div className="mt-6">
-          <TableCard table={table} />
-        </div>
       </Main>
     </>
   );

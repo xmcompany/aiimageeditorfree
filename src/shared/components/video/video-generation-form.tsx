@@ -30,6 +30,8 @@ interface VideoGenerationFormProps {
     startImage?: File;
   }) => void;
   isGenerating: boolean;
+  showInGallery?: boolean;
+  onShowInGalleryChange?: (value: boolean) => void;
   initialData?: {
     prompt?: string;
     model?: string;
@@ -42,6 +44,8 @@ interface VideoGenerationFormProps {
 export default function VideoGenerationForm({
   onGenerate,
   isGenerating,
+  showInGallery = false,
+  onShowInGalleryChange,
   initialData,
   onGenerationSuccess,
 }: VideoGenerationFormProps) {
@@ -224,6 +228,28 @@ export default function VideoGenerationForm({
         </div>
 
         <div className="relative z-10 mt-10">
+          <div className="flex items-center justify-between mb-3">
+            <label className="flex items-center gap-2 cursor-pointer select-none">
+              <button
+                type="button"
+                role="switch"
+                aria-checked={showInGallery}
+                onClick={() => onShowInGalleryChange?.(!showInGallery)}
+                className={cn(
+                  'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+                  showInGallery ? 'bg-primary' : 'bg-muted-foreground/30'
+                )}
+              >
+                <span
+                  className={cn(
+                    'pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out',
+                    showInGallery ? 'translate-x-4' : 'translate-x-0'
+                  )}
+                />
+              </button>
+              <span className="text-xs font-medium text-muted-foreground">{t('show_in_gallery')}</span>
+            </label>
+          </div>
           {!isMounted ? (
             <Button className="w-full rounded-2xl h-14 text-lg font-bold shadow-xl" disabled size="lg">
               <Loader2 className="mr-2 h-5 w-5 animate-spin" />

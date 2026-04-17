@@ -1,4 +1,4 @@
-import { eq, desc, asc, ne, isNull, or, and, like, notLike, ilike, notIlike, count } from 'drizzle-orm';
+import { eq, desc, asc, ne, isNull, or, and, like, notLike, ilike, notIlike, count, inArray } from 'drizzle-orm';
 
 import { db } from '@/core/db';
 import { showcase } from '@/config/db/schema';
@@ -26,6 +26,7 @@ export interface NewShowcase {
   videoUrl?: string | null;
   tags?: string | null;
   type?: string;
+  showInGallery?: number;
 }
 
 export async function addShowcase(data: NewShowcase): Promise<Showcase | null> {
@@ -38,6 +39,34 @@ export async function addShowcase(data: NewShowcase): Promise<Showcase | null> {
   }
 }
 
+export async function findShowcaseByVideoUrl(videoUrl: string): Promise<Showcase | null> {
+  try {
+    const [result] = await db()
+      .select()
+      .from(showcase)
+      .where(eq(showcase.videoUrl, videoUrl))
+      .limit(1);
+    return result || null;
+  } catch (error) {
+    console.error('Failed to find showcase by video URL:', error);
+    return null;
+  }
+}
+
+export async function findShowcaseByPromptAndType(prompt: string, type: string): Promise<Showcase | null> {
+  try {
+    const [result] = await db()
+      .select()
+      .from(showcase)
+      .where(and(eq(showcase.prompt, prompt), eq(showcase.type, type)))
+      .limit(1);
+    return result || null;
+  } catch (error) {
+    console.error('Failed to find showcase by prompt and type:', error);
+    return null;
+  }
+}
+
 export interface GetLatestShowcasesOptions {
   limit?: number;
   tags?: string;
@@ -45,6 +74,7 @@ export interface GetLatestShowcasesOptions {
   searchTerm?: string;
   sortOrder?: 'asc' | 'desc';
   type?: string;
+  visibleOnly?: boolean;
 }
 
 export async function getLatestShowcases({
@@ -54,9 +84,15 @@ export async function getLatestShowcases({
   searchTerm,
   sortOrder = 'desc',
   type,
+  visibleOnly = true,
 }: GetLatestShowcasesOptions = {}): Promise<Showcase[]> {
   try {
     const conditions = [];
+
+    // Only show items with showInGallery=1 for public display
+    if (visibleOnly) {
+      conditions.push(eq(showcase.showInGallery, 1));
+    }
 
     if (tags) {
       // Support multiple tags separated by comma
@@ -220,5 +256,19 @@ export async function getShowcases({
   } catch (error) {
     console.error('Failed to get showcases:', error);
     return [];
+  }
+}
+
+export async function bulkToggleShowInGallery(ids: string[], show: boolean): Promise<number> {
+  try {
+    const result = await db()
+      .update(showcase)
+      .set({ showInGallery: show ? 1 : 0 })
+      .where(inArray(showcase.id, ids))
+      .returning();
+    return result.length;
+  } catch (error) {
+    console.error('Failed to bulk toggle showInGallery:', error);
+    return 0;
   }
 }

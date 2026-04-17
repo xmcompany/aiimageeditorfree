@@ -6,7 +6,11 @@
   },
   "actions": {
     "set_as_showcase": "Set as Showcase",
-    "showcased": "Showcased"
+    "showcased": "Showcased",
+    "show_in_gallery": "Show in Gallery",
+    "hide_from_gallery": "Hide from Gallery",
+    "bulk_show": "Show Selected",
+    "bulk_hide": "Hide Selected"
   },
   "form": {
     "image": "Image",
@@ -16,6 +20,7 @@
     "createdAt": "Created At",
     "credits": "Credits",
     "userId": "User",
-    "actions": "Actions"
+    "actions": "Actions",
+    "show_in_gallery": "Gallery"
   }
 }

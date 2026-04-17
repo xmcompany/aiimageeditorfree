@@ -4,6 +4,8 @@ import { db } from '@/core/db';
 import { aiTask, credit, showcase } from '@/config/db/schema';
 import { AITaskStatus } from '@/extensions/ai';
 import { appendUserToResult, User } from '@/shared/models/user';
+import { getUuid } from '@/shared/lib/hash';
+import { addShowcase, deleteShowcase, findShowcaseByPromptAndType } from '@/shared/models/showcase';
 
 import { consumeCredits, CreditStatus } from './credit';
 
@@ -193,6 +195,7 @@ export async function getAITasks({
         taskResult: aiTask.taskResult,
         createdAt: aiTask.createdAt,
         updatedAt: aiTask.updatedAt,
+        showInGallery: aiTask.showInGallery,
         showcaseId: sql`min(${showcase.id})`,
      })
      .from(aiTask)
@@ -227,4 +230,59 @@ export async function getAITasks({
   }
 
   return result;
+}
+
+export async function toggleAITaskShowInGallery(id: string, show: boolean): Promise<{ success: boolean; message: string }> {
+  try {
+    const task = await findAITaskById(id);
+    if (!task) return { success: false, message: 'Task not found' };
+
+    // Update the flag
+    await db()
+      .update(aiTask)
+      .set({ showInGallery: show ? 1 : 0 })
+      .where(eq(aiTask.id, id));
+
+    if (show) {
+      // Check if showcase already exists
+      const existing = await findShowcaseByPromptAndType(task.prompt, task.mediaType);
+      if (existing) return { success: true, message: 'Already in gallery' };
+
+      // Parse image URL from taskResult
+      let imageUrl = '';
+      try {
+        const result = typeof task.taskResult === 'string' ? JSON.parse(task.taskResult || '{}') : task.taskResult;
+        imageUrl = result.url || (result.images && result.images[0]) || '';
+      } catch (e) {
+        // Try taskInfo
+        try {
+          const info = typeof task.taskInfo === 'string' ? JSON.parse(task.taskInfo || '{}') : task.taskInfo;
+          if (info.images && info.images[0]?.imageUrl) imageUrl = info.images[0].imageUrl;
+          else if (Array.isArray(info.images) && typeof info.images[0] === 'string') imageUrl = info.images[0];
+        } catch (e2) { /* ignore */ }
+      }
+
+      if (!imageUrl) return { success: false, message: 'No image URL found' };
+
+      await addShowcase({
+        id: getUuid(),
+        userId: task.userId,
+        title: task.prompt.substring(0, 100),
+        prompt: task.prompt,
+        image: imageUrl,
+        type: task.mediaType,
+      });
+    } else {
+      // Remove from showcase
+      const existing = await findShowcaseByPromptAndType(task.prompt, task.mediaType);
+      if (existing) {
+        await deleteShowcase(existing.id);
+      }
+    }
+
+    return { success: true, message: show ? 'Shown in gallery' : 'Hidden from gallery' };
+  } catch (error: any) {
+    console.error('toggleAITaskShowInGallery error:', error);
+    return { success: false, message: error.message || 'Error occurred' };
+  }
 }

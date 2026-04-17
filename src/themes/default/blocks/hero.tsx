@@ -142,12 +142,16 @@ export function Hero({
           {section.tip && (
             <motion.div
               {...createFadeInVariant(0.6)}
-              className="mt-8 flex justify-center"
+              className="mt-12 flex justify-center"
             >
-              <p
-                className="text-sm text-muted-foreground"
-                dangerouslySetInnerHTML={{ __html: section.tip as string }}
-              />
+              <a
+                href="#credits-ways"
+                className="inline-flex w-fit items-center gap-2.5 rounded-full border border-primary/20 bg-primary/10 px-6 py-3 text-base font-semibold text-primary transition-all hover:bg-primary/20 hover:scale-105"
+              >
+                <span>🎁</span>
+                <span>How to Generate AI Videos for Free?</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </a>
             </motion.div>
           )}
 

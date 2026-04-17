@@ -1,0 +1,42 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	"name": "aivideogeneratorfree",// 这里和你项目仓库名保持一致
+	"compatibility_date": "2026-04-17",
+	"compatibility_flags": ["nodejs_compat"],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"r2_buckets": [
+		// Use R2 incremental cache
+		// See https://opennext.js.org/cloudflare/caching
+		{
+			"binding": "NEXT_INC_CACHE_R2_BUCKET",
+			// Create the bucket before deploying
+			// You can change the bucket name if you want
+			// See https://developers.cloudflare.com/workers/wrangler/commands/#r2-bucket-create
+			"bucket_name": "cache"
+		}
+	],
+	"observability": {
+		"enabled": true,
+		"head_sampling_rate": 1,
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"invocation_logs": true
+		}
+	},
+    //  ！！！这里是环境变量的配置 ！！！注意：这个会提交到git上，一定要私有仓库，避免泄露，部分值做了xxx处理【【可删除这条注释】
+	"vars": {
+		"NEXT_PUBLIC_APP_URL": "https://aivideogeneratorfree.org", 
+		"NEXT_PUBLIC_APP_NAME": "Free AI Video Generator",
+		"NEXT_PUBLIC_THEME": "default",
+		"NEXT_PUBLIC_APPEARANCE": "system",
+		"DATABASE_PROVIDER": "postgresql",
+		"DB_SINGLETON_ENABLED": "false",
+		"DB_MAX_CONNECTIONS": "10"
+	}
+}
+

@@ -35,6 +35,7 @@ export default function VideoGenerator({
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationProgress, setGenerationProgress] = useState('');
   const [formPrompt, setFormPrompt] = useState('');
+  const [showInGallery, setShowInGallery] = useState(false);
   const hasAutoTriggered = useRef(false);
   const t = useTranslations('video.generator');
 
@@ -66,6 +67,22 @@ export default function VideoGenerator({
       setIsGenerating(false);
       setGenerationProgress('');
       toast.success('Video generation completed!');
+
+      // Auto-save to showcase
+      if (completedVideo.videoUrl) {
+        fetch('/api/showcases/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: completedVideo.prompt?.substring(0, 100) || '',
+            prompt: completedVideo.prompt || '',
+            image: completedVideo.thumbnailUrl || completedVideo.startImageUrl || '',
+            videoUrl: completedVideo.videoUrl,
+            type: 'video',
+            showInGallery: showInGallery ? 1 : 0,
+          }),
+        }).catch((e) => console.error('Failed to save showcase:', e));
+      }
     },
     onFailed: () => {
       setCurrentVideo((prev) => (prev ? { ...prev, status: 'failed' } : null));
@@ -212,6 +229,8 @@ export default function VideoGenerator({
             <VideoGenerationForm
               onGenerate={handleVideoGeneration}
               isGenerating={isGenerating}
+              showInGallery={showInGallery}
+              onShowInGalleryChange={setShowInGallery}
               initialData={
                 currentVideo
                   ? {

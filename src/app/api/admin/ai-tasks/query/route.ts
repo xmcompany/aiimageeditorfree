@@ -1,71 +1,69 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { eq } from 'drizzle-orm';
-import { getTranslations } from 'next-intl/server';
 import { db } from '@/core/db';
 import { prompt } from '@/config/db/schema';
-import { AIMediaType, AITaskStatus } from '@/extensions/ai';
-import { respData, respErr } from '@/shared/lib/resp';
-import {
-  findAITaskById,
-  UpdateAITask,
-  updateAITaskById,
-} from '@/shared/models/ai_task';
 import { getUserInfo } from '@/shared/models/user';
+import { hasPermission } from '@/shared/services/rbac';
+import { PERMISSIONS } from '@/core/rbac';
+import { findAITaskById, updateAITaskById, UpdateAITask } from '@/shared/models/ai_task';
 import { getAIService } from '@/shared/services/ai';
+import { AIMediaType, AITaskStatus } from '@/extensions/ai';
 
-export async function POST(req: Request) {
-  const body = await req.json().catch(() => ({}));
-  const locale = body?.locale || 'en';
-  const t = await getTranslations({ locale, namespace: 'common' });
-
+/**
+ * Admin-only AI task query endpoint.
+ * Unlike /api/ai/query, this does NOT check task.userId === user.id,
+ * allowing admins to poll any task (including admin-generated ones).
+ */
+export async function POST(req: NextRequest) {
   try {
-    const { taskId } = body;
-    if (!taskId) {
-      return respErr(t('messages.invalid_params'));
-    }
-
     const user = await getUserInfo();
     if (!user) {
-      return respErr(t('messages.no_auth'));
+      return NextResponse.json({ code: 401, message: 'Unauthorized' }, { status: 401 });
+    }
+
+    const allowed = await hasPermission(user.id, PERMISSIONS.AITASKS_WRITE);
+    if (!allowed) {
+      return NextResponse.json({ code: 403, message: 'Permission denied' }, { status: 403 });
+    }
+
+    const { taskId } = await req.json();
+    if (!taskId) {
+      return NextResponse.json({ code: 400, message: 'taskId is required' }, { status: 400 });
     }
 
     const task = await findAITaskById(taskId);
     if (!task || !task.taskId) {
-      return respErr(t('messages.not_found'));
-    }
-
-    if (task.userId !== user.id) {
-      return respErr(t('messages.no_permission'));
+      return NextResponse.json({ code: 404, message: 'Task not found' }, { status: 404 });
     }
 
     const aiService = await getAIService();
     const aiProvider = aiService.getProvider(task.provider);
     if (!aiProvider) {
-      return respErr(t('messages.invalid_ai_provider', { defaultValue: 'invalid ai provider' }));
+      return NextResponse.json({ code: 400, message: 'AI provider not available' }, { status: 400 });
     }
 
-    const result = await aiProvider?.query?.({
+    const result = await aiProvider.query?.({
       taskId: task.taskId,
-      mediaType: task.mediaType,
+      mediaType: task.mediaType as any,
       model: task.model,
     });
 
     if (!result?.taskStatus) {
-      return respErr(t('messages.failed'));
+      return NextResponse.json({ code: 500, message: 'Query failed' }, { status: 500 });
     }
 
-    // update ai task
-    const updateAITask: UpdateAITask = {
+    const updateData: UpdateAITask = {
       status: result.taskStatus,
       taskInfo: result.taskInfo ? JSON.stringify(result.taskInfo) : null,
       taskResult: result.taskResult ? JSON.stringify(result.taskResult) : null,
-      creditId: task.creditId, // credit consumption record id
     };
-    if (updateAITask.taskInfo !== task.taskInfo) {
-      await updateAITaskById(task.id, updateAITask);
+
+    // Only write if something changed
+    if (updateData.taskInfo !== task.taskInfo || updateData.status !== task.status) {
+      await updateAITaskById(task.id, updateData);
     }
 
     // ── Auto-update prompt image/video when admin generation completes ────────
-    // Only run when the task just transitioned to SUCCESS (taskInfo changed)
     const justCompleted =
       result.taskStatus === AITaskStatus.SUCCESS &&
       task.status !== AITaskStatus.SUCCESS;
@@ -92,19 +90,22 @@ export async function POST(req: Request) {
           }
         }
       } catch (e) {
-        // Non-fatal: log but don't fail the query response
         console.error('[admin-generate] Failed to update prompt media:', e);
       }
     }
     // ─────────────────────────────────────────────────────────────────────────
 
-    task.status = updateAITask.status || '';
-    task.taskInfo = updateAITask.taskInfo || null;
-    task.taskResult = updateAITask.taskResult || null;
-
-    return respData(task);
-  } catch (e: any) {
-    console.log('ai query failed', e);
-    return respErr(t('messages.failed'));
+    return NextResponse.json({
+      code: 0,
+      data: {
+        ...task,
+        status: updateData.status,
+        taskInfo: updateData.taskInfo,
+        taskResult: updateData.taskResult,
+      },
+    });
+  } catch (error: any) {
+    console.error('Admin AI task query error:', error);
+    return NextResponse.json({ code: 500, message: error.message }, { status: 500 });
   }
 }

@@ -33,23 +33,22 @@ export default async function PromptAddPage({
 
   const form: Form = {
     fields: [
-      /* {
-        name: 'title',
-        type: 'text',
-        title: 'Title',
-        validation: { required: true },
-      },
-      {
-        name: 'description',
-        type: 'textarea',
-        title: 'Description',
-      }, */
       {
         name: 'image',
         type: 'upload_image',
         title: t('fields.image'),
         tip: t('fields.image_tip'),
         validation: { required: true },
+      },
+      {
+        name: 'model',
+        type: 'select',
+        title: 'Model',
+        options: [
+          { title: 'Nano Banana 2', value: 'nano-banana-2' },
+          { title: 'Nano Banana Pro', value: 'nano-banana-pro' },
+          { title: 'Nano Banana V1', value: 'google/nano-banana' },
+        ],
       },
       {
         name: 'promptTitle',
@@ -82,6 +81,7 @@ export default async function PromptAddPage({
         const promptTitle = data.get('promptTitle') as string;
         const promptDescription = data.get('promptDescription') as string;
         const image = data.get('image') as string;
+        const model = data.get('model') as string;
         const title = promptTitle;
         const description = promptDescription;
 
@@ -99,6 +99,7 @@ export default async function PromptAddPage({
           promptDescription: promptDescription?.trim() || '',
           status: PromptStatus.PUBLISHED,
           type: 'image',
+          model: model?.trim() || '',
         };
 
         const result = await addPrompt(newPrompt);

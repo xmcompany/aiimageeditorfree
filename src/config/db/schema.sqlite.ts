@@ -535,6 +535,7 @@ export const aiTask = table(
     costCredits: integer('cost_credits').notNull().default(0),
     scene: text('scene').notNull().default(''),
     creditId: text('credit_id'), // credit consumption record id
+    showInGallery: integer('show_in_gallery').notNull().default(0), // 0 = hidden, 1 = shown in gallery
   },
   (table) => [
     // Composite: Query user's AI tasks by status
@@ -664,6 +665,7 @@ export const showcase = table(
     tags: text('tags'),
     description: text('description'),
     type: text('type').notNull().default('image'),
+    showInGallery: integer('show_in_gallery').notNull().default(0),
     createdAt: integer('created_at', { mode: 'timestamp_ms' })
       .default(sqliteNowMs)
       .notNull(),
@@ -712,6 +714,7 @@ export const video = table(
     generationTime: integer('generation_time'), // Generation time in seconds
     creditsUsed: integer('credits_used').notNull().default(0), // Credits consumed for this generation
     isDeleted: integer('is_deleted').notNull().default(0), // Soft delete flag: 0 = active, 1 = deleted
+    showInGallery: integer('show_in_gallery').notNull().default(0), // 0 = hidden, 1 = shown in gallery
     createdAt: integer('created_at', { mode: 'timestamp_ms' })
       .default(sqliteNowMs)
       .notNull(),

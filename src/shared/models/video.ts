@@ -2,6 +2,8 @@ import { and, count, desc, eq, sql } from 'drizzle-orm';
 
 import { video, user, showcase } from '@/config/db/schema';
 import { db } from '@/core/db';
+import { getUuid } from '@/shared/lib/hash';
+import { addShowcase, deleteShowcase, findShowcaseByVideoUrl } from '@/shared/models/showcase';
 
 /**
  * Insert a new video record
@@ -197,6 +199,7 @@ export async function getVideos({
       createdAt: video.createdAt,
       updatedAt: video.updatedAt,
       isDeleted: video.isDeleted,
+      showInGallery: video.showInGallery,
       user: user, // Select all user fields
       showcaseId: sql`min(${showcase.id})`, // Use min to avoid duplicates
     })
@@ -238,4 +241,50 @@ export async function getVideosCount({
     .from(video)
     .where(and(...conditions));
   return result.count;
+}
+
+export async function toggleVideoShowInGallery(id: string, show: boolean): Promise<{ success: boolean; message: string }> {
+  try {
+    const videoRecord = await getVideoByIdIncludeDeleted(id);
+    if (!videoRecord) return { success: false, message: 'Video not found' };
+
+    // Update the flag
+    await db()
+      .update(video)
+      .set({ showInGallery: show ? 1 : 0 })
+      .where(eq(video.id, id));
+
+    if (show) {
+      // Check if showcase already exists
+      const videoUrl = videoRecord.videoUrl;
+      if (!videoUrl) return { success: false, message: 'No video URL' };
+
+      const existing = await findShowcaseByVideoUrl(videoUrl);
+      if (existing) return { success: true, message: 'Already in gallery' };
+
+      await addShowcase({
+        id: getUuid(),
+        userId: videoRecord.userId,
+        title: videoRecord.prompt.substring(0, 100),
+        prompt: videoRecord.prompt,
+        image: videoRecord.firstFrameImageUrl || videoRecord.startImageUrl || '',
+        videoUrl: videoUrl,
+        type: 'video',
+      });
+    } else {
+      // Remove from showcase
+      const videoUrl = videoRecord.videoUrl;
+      if (videoUrl) {
+        const existing = await findShowcaseByVideoUrl(videoUrl);
+        if (existing) {
+          await deleteShowcase(existing.id);
+        }
+      }
+    }
+
+    return { success: true, message: show ? 'Shown in gallery' : 'Hidden from gallery' };
+  } catch (error: any) {
+    console.error('toggleVideoShowInGallery error:', error);
+    return { success: false, message: error.message || 'Error occurred' };
+  }
 }

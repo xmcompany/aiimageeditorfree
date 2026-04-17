@@ -274,13 +274,12 @@ export function ShowcasesFlowDynamic({
                         href={buildGenerateUrl(
                           usePrompts
                             ? {
-                                // Prompts: /[model]/[slug]
                                 type: item.type === 'video' || type === 'video' ? 'video' : 'image',
                                 model: item.model,
                                 promptSlug: item.slug,
+                                promptTitle: item.title,
                               }
                             : {
-                                // Showcases: /ai-video-generator/[model]?showcase=[id]
                                 type: item.type === 'video' || type === 'video' ? 'video' : 'image',
                                 model: item.model || (item.tags as any),
                                 showcaseId: item.id,
@@ -393,6 +392,7 @@ export function ShowcasesFlowDynamic({
                               type: items[selectedIndex].type === 'video' || type === 'video' ? 'video' : 'image',
                               model: items[selectedIndex].model,
                               promptSlug: items[selectedIndex].slug,
+                              promptTitle: items[selectedIndex].title,
                             }
                           : {
                               type: items[selectedIndex].type === 'video' || type === 'video' ? 'video' : 'image',

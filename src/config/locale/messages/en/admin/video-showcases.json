@@ -8,6 +8,10 @@
   "deleting": "Deleting...",
   "delete_success": "Successfully deleted showcase",
   "delete_error": "Failed to delete showcase",
+  "bulk_show": "Show Selected",
+  "bulk_hide": "Hide Selected",
+  "visible": "Visible",
+  "hidden": "Hidden",
   "crumbs": {
     "admin": "Admin",
     "video-showcases": "Video Showcases"
@@ -21,6 +25,7 @@
     "video": "Video",
     "videoUrl": "Video URL",
     "createdAt": "Created At",
+    "show_in_gallery": "Gallery",
     "image_tip": "Video cover/thumbnail",
     "tags_placeholder": "e.g. cinematic, animation",
     "tags_tip": "Use comma to separate multiple tags"

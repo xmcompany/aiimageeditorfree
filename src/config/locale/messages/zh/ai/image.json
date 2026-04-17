@@ -40,6 +40,8 @@
     "ready_to_generate_description": "正在为您生成精美图片，通常需要几秒钟时间。",
     "no_images_generated": "没有生成图片",
     "ready_for_generating": "准备生成",
-    "download": "下载"
+    "download": "下载",
+    "show_in_gallery": "展示到画廊",
+    "shown_in_gallery": "已展示"
   }
 }

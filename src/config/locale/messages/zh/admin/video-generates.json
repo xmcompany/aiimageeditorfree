@@ -6,7 +6,11 @@
   },
   "actions": {
     "set_as_showcase": "设为优秀案例",
-    "showcased": "已收录"
+    "showcased": "已收录",
+    "show_in_gallery": "展示到画廊",
+    "hide_from_gallery": "从画廊隐藏",
+    "bulk_show": "批量展示",
+    "bulk_hide": "批量隐藏"
   },
   "form": {
     "video": "视频",
@@ -16,7 +20,8 @@
     "createdAt": "创建时间",
     "creditsUsed": "消耗积分",
     "userId": "用户",
-    "actions": "操作"
+    "actions": "操作",
+    "show_in_gallery": "画廊"
   },
   "delete": "删除",
   "delete_confirm": "确定要删除这个视频吗？"
