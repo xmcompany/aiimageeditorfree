@@ -18,6 +18,11 @@
 			// See https://developers.cloudflare.com/workers/wrangler/commands/#r2-bucket-create
 			"bucket_name": "cache"
 		}
+	],"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE", // 固定值 不要改【可删除掉中文备注】
+			"id": "1bf1f93ddfdd4d3282a15553bd94a47d" // 上面复制的Hyperdrive 配置 ID【可删除掉中文备注】
+		}
 	],
 	"observability": {
 		"enabled": true,
