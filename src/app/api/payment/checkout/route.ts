@@ -297,6 +297,8 @@ export async function POST(req: Request) {
 
       return respData(result.checkoutInfo);
     } catch (e: any) {
+      console.log('paypal checkout error:', e?.message || e, JSON.stringify({ orderNo, paymentProviderName, checkoutPrice, paymentProductId }));
+
       // update order status to completed, means checkout failed
       await updateOrderByOrderNo(orderNo, {
         status: OrderStatus.COMPLETED, // means checkout failed
