@@ -183,21 +183,7 @@ export function VideoModels({
           </div>
         </ScrollAnimation>
 
-        <ScrollAnimation delay={0.3}>
-          <div className="text-center">
-            <p className="text-sm text-muted-foreground">
-              Powered by world-leading AI video generation models via{' '}
-              <a
-                href="https://kie.ai/market"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Kie.ai
-              </a>
-            </p>
-          </div>
-        </ScrollAnimation>
+
       </div>
     </section>
   );

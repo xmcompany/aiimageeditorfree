@@ -796,7 +796,7 @@ export async function getSettings() {
       name: 'resend_sender_email',
       title: t('resend_sender_email.title'),
       type: 'text',
-      placeholder: 'AI Video Generator Free <no-reply@aivideogeneratorfree.ai>',
+      placeholder: 'AI Video Generator Free <no-reply@aivideogeneratorfree.org>',
       group: 'resend',
       tab: 'email',
     },
