@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { toast } from 'sonner';
 import { Trash2, CheckSquare, Square, MoreHorizontal, Edit } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
@@ -17,7 +17,7 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/components/ui/dropdown-menu';
 
-type ColumnType = 'text' | 'image' | 'video' | 'copy' | 'label' | 'time' | 'action';
+type ColumnType = 'text' | 'image' | 'video' | 'copy' | 'label' | 'time' | 'action' | 'boolean';
 
 interface BulkColumn {
   key: string;
@@ -25,7 +25,6 @@ interface BulkColumn {
   type?: ColumnType;
   truncate?: boolean;
   metadata?: Record<string, any>;
-  render?: (item: any) => ReactNode;
 }
 
 export interface RowActions {
@@ -44,7 +43,7 @@ export interface BulkAction {
   icon?: ReactNode;
   variant?: 'default' | 'outline' | 'destructive';
   apiUrl: string;
-  payload?: (ids: string[]) => Record<string, any>;
+  payload?: Record<string, any>;
 }
 
 interface BulkDeleteTableProps {
@@ -189,6 +188,15 @@ function CellContent({
       if (!value) return <span className="text-muted-foreground">-</span>;
       return <span className="text-muted-foreground whitespace-nowrap">{moment(value).fromNow()}</span>;
     }
+    case 'boolean': {
+      const trueLabel = column.metadata?.trueLabel || 'Visible';
+      const falseLabel = column.metadata?.falseLabel || 'Hidden';
+      return (
+        <span className={value ? 'text-green-600 font-medium' : 'text-muted-foreground'}>
+          {value ? trueLabel : falseLabel}
+        </span>
+      );
+    }
     default: {
       const text = value || '';
       const display = column.truncate && text.length > 50 ? text.substring(0, 50) + '...' : text;
@@ -280,7 +288,7 @@ export function BulkDeleteTable({
                   setBulkLoading(true);
                   try {
                     const ids = Array.from(selected);
-                    const payload = ba.payload ? ba.payload(ids) : { ids };
+                    const payload = ba.payload ? { ...ba.payload, ids } : { ids };
                     const res = await fetch(ba.apiUrl, {
                       method: 'POST',
                       headers: { 'Content-Type': 'application/json' },

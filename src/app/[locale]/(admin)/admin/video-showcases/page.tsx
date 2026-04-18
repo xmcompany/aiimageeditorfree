@@ -50,13 +50,13 @@ export default async function VideoShowcasesPage({
       label: t('bulk_show'),
       variant: 'default',
       apiUrl: '/api/admin/showcases/bulk-toggle',
-      payload: (ids: string[]) => ({ ids, show: true }),
+      payload: { show: true },
     },
     {
       label: t('bulk_hide'),
       variant: 'outline',
       apiUrl: '/api/admin/showcases/bulk-toggle',
-      payload: (ids: string[]) => ({ ids, show: false }),
+      payload: { show: false },
     },
   ];
 
@@ -78,11 +78,8 @@ export default async function VideoShowcasesPage({
             {
               key: 'showInGallery',
               label: t('form.show_in_gallery'),
-              render: (item: any) => (
-                <span className={item.showInGallery ? 'text-green-600 font-medium' : 'text-muted-foreground'}>
-                  {item.showInGallery ? t('visible') : t('hidden')}
-                </span>
-              ),
+              type: 'boolean',
+              metadata: { trueLabel: t('visible'), falseLabel: t('hidden') },
             },
             { key: 'createdAt', label: t('form.createdAt'), type: 'time' },
           ]}
