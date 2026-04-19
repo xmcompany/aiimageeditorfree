@@ -104,14 +104,23 @@ export function Hero({
 
           <motion.p
             {...createFadeInVariant(0.3)}
-            className="text-muted-foreground mx-auto mt-8 mb-14 max-w-2xl text-lg text-balance md:text-xl lg:text-2xl opacity-90 leading-relaxed"
+            className="text-muted-foreground mx-auto mt-8 mb-6 max-w-2xl text-lg text-balance md:text-xl lg:text-2xl opacity-90 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: section.description ?? '' }}
           />
+
+          {section.powered_by && (
+            <motion.p
+              {...createFadeInVariant(0.38)}
+              className="text-muted-foreground/70 mx-auto mb-8 text-sm font-medium tracking-wide"
+            >
+              {section.powered_by}
+            </motion.p>
+          )}
 
           {!section.show_hero_input && section.buttons && (
             <motion.div
               {...createFadeInVariant(0.45)}
-              className="flex flex-wrap items-center justify-center gap-4"
+              className="flex flex-wrap items-center justify-center gap-4 mb-14"
             >
               {section.buttons.map((button, idx) => (
                 <Button

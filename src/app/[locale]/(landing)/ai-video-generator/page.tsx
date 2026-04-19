@@ -71,6 +71,7 @@ export default async function TextToVideoPage({ params, searchParams }: PageProp
         h1_title: t.raw('page.title'),
         title: t.raw('page.title'),
         description: t.raw('page.description'),
+        powered_by: t.raw('page.powered_by'),
       },
       generator: {
         component: (

@@ -5,7 +5,8 @@
   },
   "page": {
     "title": "AI 图像生成器",
-    "description": "使用 AI Video Generator Free 模型，通过文字或图片生成惊艳的 AI 图像。"
+    "description": "使用 AI Video Generator Free 模型，通过文字或图片生成惊艳的 AI 图像。",
+    "powered_by": "Powered by Google Nano Banana"
   },
   "generator": {
     "title": "提示词",

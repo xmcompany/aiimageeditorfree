@@ -45,6 +45,11 @@ export function CustomFeatures({
         <p className="text-muted-foreground text-md mx-auto mb-4 max-w-2xl lg:text-xl opacity-90 leading-relaxed">
           {section.description}
         </p>
+        {section.powered_by && (
+          <p className="text-muted-foreground/70 mx-auto mt-2 text-sm font-medium tracking-wide">
+            {section.powered_by}
+          </p>
+        )}
       </motion.div>
     </section>)
 }

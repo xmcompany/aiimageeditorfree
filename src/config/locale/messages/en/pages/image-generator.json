@@ -5,7 +5,8 @@
   },
   "page": {
     "title": "AI Image Generator",
-    "description": "Generate stunning images from text or images using AI Video Generator Free models."
+    "description": "Generate stunning images from text or images using AI Video Generator Free models.",
+    "powered_by": "Powered by Google Nano Banana"
   },
   "generator": {
     "title": "Prompt",

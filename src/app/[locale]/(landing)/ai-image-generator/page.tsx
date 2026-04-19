@@ -37,6 +37,7 @@ export default async function CreatePage({
         h1_title: t.raw('page.title'),
         title: t.raw('page.title'),
         description: t.raw('page.description'),
+        powered_by: t.raw('page.powered_by'),
       },
       generator: {
         component: <ImageGenerator srOnlyTitle={t.raw('generator.title')} promptKey={promptKey} />,
