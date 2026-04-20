@@ -13,7 +13,6 @@
       "veo_3_1_quality": "Veo 3.1 Quality",
       "seedance": "Seedance 2.0 Fast",
       "seedance_standard": "Seedance 2.0 Standard",
-      "wan": "Wan 2.7",
       "hailuo": "Hailuo 2.3",
       "hailuo_02": "Hailuo 02"
     },
@@ -25,8 +24,6 @@
       "seedance_720p": "Seedance 2.0 Fast 720p: 26 积分/秒 (5秒=130)",
       "seedance_standard_480p": "Seedance 2.0 Standard 480p: 15 积分/秒 (5秒=75)",
       "seedance_standard_720p": "Seedance 2.0 Standard 720p: 33 积分/秒 (5秒=165)",
-      "wan_720p": "Wan 2.7 720p: 13 积分/秒 (5秒=65)",
-      "wan_1080p": "Wan 2.7 1080p: 19 积分/秒 (5秒=95)",
       "hailuo_768p": "Hailuo 2.3 标准 768p: 20 积分 (6秒), 32 积分 (10秒)",
       "hailuo_1080p": "Hailuo 2.3 专业 1080p: 56 积分 (6秒)",
       "hailuo02_t2v_768p": "Hailuo 02 T2V 标准 768p: 24 积分 (6秒)",

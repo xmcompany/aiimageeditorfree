@@ -10,7 +10,7 @@
       "hero": {
         "id": "hero",
         "title": "AI Video Model Comparison — Find the Best Model for Your Needs",
-        "description": "Compare Veo, Seedance, Wan, Hailuo, and HappyHorse side by side. See features, pricing, resolution, and capabilities at a glance.",
+        "description": "Compare Veo, Seedance, Hailuo, and HappyHorse side by side. See features, pricing, resolution, and capabilities at a glance.",
         "highlight_text": "AI Video Model Comparison",
         "tip": "<strong>All models powered by their respective AI providers</strong> — Free credits available on sign-up.",
         "buttons": [
@@ -38,7 +38,6 @@
           {"key": "veo_quality", "label": "Veo 3.1 Quality"},
           {"key": "seedance", "label": "Seedance 2.0 Fast"},
           {"key": "seedance_std", "label": "Seedance 2.0 Std"},
-          {"key": "wan", "label": "Wan 2.7"},
           {"key": "hailuo", "label": "Hailuo 2.3"},
           {"key": "hailuo_02", "label": "Hailuo 02"},
           {"key": "happyhorse", "label": "HappyHorse 1.0"}
@@ -52,7 +51,6 @@
               "veo_quality": "Google",
               "seedance": "ByteDance",
               "seedance_std": "ByteDance",
-              "wan": "Alibaba",
               "hailuo": "MiniMax",
               "hailuo_02": "MiniMax",
               "happyhorse": "Open Source"
@@ -66,7 +64,6 @@
               "veo_quality": "✓",
               "seedance": "✓",
               "seedance_std": "✓",
-              "wan": "✓",
               "hailuo": "-",
               "hailuo_02": "✓",
               "happyhorse": "✓"
@@ -80,7 +77,6 @@
               "veo_quality": "✓",
               "seedance": "✓",
               "seedance_std": "✓",
-              "wan": "✓",
               "hailuo": "✓",
               "hailuo_02": "✓",
               "happyhorse": "✓"
@@ -94,7 +90,6 @@
               "veo_quality": "✓",
               "seedance": "✓",
               "seedance_std": "✓",
-              "wan": "-",
               "hailuo": "-",
               "hailuo_02": "-",
               "happyhorse": "✓"
@@ -108,7 +103,6 @@
               "veo_quality": "-",
               "seedance": "✓",
               "seedance_std": "✓",
-              "wan": "-",
               "hailuo": "-",
               "hailuo_02": "-",
               "happyhorse": "-"
@@ -122,7 +116,6 @@
               "veo_quality": "4K",
               "seedance": "720p",
               "seedance_std": "720p",
-              "wan": "1080p",
               "hailuo": "1080p",
               "hailuo_02": "1080p",
               "happyhorse": "1080p"
@@ -136,7 +129,6 @@
               "veo_quality": "8s",
               "seedance": "5-15s",
               "seedance_std": "5-15s",
-              "wan": "5-10s",
               "hailuo": "6-10s",
               "hailuo_02": "6-10s",
               "happyhorse": "5-15s"
@@ -150,7 +142,6 @@
               "veo_quality": "Photorealism",
               "seedance": "Cinematic Fast",
               "seedance_std": "Cinematic Quality",
-              "wan": "Multi-Modal",
               "hailuo": "I2V Focused",
               "hailuo_02": "Budget T2V/I2V",
               "happyhorse": "Open Source"
@@ -168,7 +159,6 @@
           {"key": "veo_quality", "label": "Veo 3.1 Quality"},
           {"key": "seedance", "label": "Seedance 2.0 Fast"},
           {"key": "seedance_std", "label": "Seedance 2.0 Std"},
-          {"key": "wan", "label": "Wan 2.7"},
           {"key": "hailuo", "label": "Hailuo 2.3"},
           {"key": "hailuo_02", "label": "Hailuo 02"}
         ],
@@ -181,7 +171,6 @@
               "veo_quality": "Per generation",
               "seedance": "Per second",
               "seedance_std": "Per second",
-              "wan": "Per second",
               "hailuo": "Per video",
               "hailuo_02": "Per video"
             }
@@ -194,7 +183,6 @@
               "veo_quality": "120 credits",
               "seedance": "26 credits/s",
               "seedance_std": "33 credits/s",
-              "wan": "13 credits/s",
               "hailuo": "20 credits (6s, 768p)",
               "hailuo_02": "24 credits (6s, 768p)"
             }
@@ -207,7 +195,6 @@
               "veo_quality": "124 credits",
               "seedance": "-",
               "seedance_std": "-",
-              "wan": "19 credits/s",
               "hailuo": "56 credits (6s)",
               "hailuo_02": "46 credits (6s)"
             }
@@ -220,7 +207,6 @@
               "veo_quality": "152 credits",
               "seedance": "-",
               "seedance_std": "-",
-              "wan": "-",
               "hailuo": "-",
               "hailuo_02": "-"
             }
@@ -233,7 +219,6 @@
               "veo_quality": "120 credits (8s fixed)",
               "seedance": "130 credits",
               "seedance_std": "165 credits",
-              "wan": "65 credits",
               "hailuo": "20 credits (6s, I2V)",
               "hailuo_02": "24 credits (6s, T2V)"
             }
@@ -247,7 +232,7 @@
         "items": [
           {
             "question": "Which AI video model is the best?",
-            "answer": "It depends on your needs. Veo 3.1 Quality produces the most photorealistic results up to 4K. Seedance 2.0 excels at cinematic video with audio and lip sync. Wan 2.7 offers versatile T2V and I2V modes. HappyHorse 1.0 is the best open-source option, ranked #1 on Artificial Analysis."
+            "answer": "It depends on your needs. Veo 3.1 Quality produces the most photorealistic results up to 4K. Seedance 2.0 excels at cinematic video with audio and lip sync. HappyHorse 1.0 is the best open-source option, ranked #1 on Artificial Analysis."
           },
           {
             "question": "Which AI video model is the cheapest?",
@@ -255,7 +240,7 @@
           },
           {
             "question": "Which AI video model has the highest resolution?",
-            "answer": "Veo 3.1 (all tiers) supports up to 4K output. Wan 2.7, Hailuo 2.3 Pro, and Hailuo 02 Pro support up to 1080p. Seedance 2.0 supports up to 720p."
+            "answer": "Veo 3.1 (all tiers) supports up to 4K output. Hailuo 2.3 Pro and Hailuo 02 Pro support up to 1080p. Seedance 2.0 supports up to 720p."
           },
           {
             "question": "Can I try these AI video models for free?",

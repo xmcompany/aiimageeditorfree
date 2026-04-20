@@ -76,12 +76,6 @@
               "description": "ByteDance Seedance 2.0 video model"
             },
             {
-              "title": "Wan 2.7",
-              "url": "/wan",
-              "icon": "Video",
-              "description": "Alibaba Wan 2.7 video generation"
-            },
-            {
               "title": "Veo 3.1",
               "url": "/veo",
               "icon": "Clapperboard",
@@ -160,7 +154,7 @@
       }
     ],
     "show_avatars": false,
-    "avatars_tip": "1,500,000+ creators' choice",
+    "avatars_tip": "Trusted by creators worldwide",
     "show_award": false,
     "show_hero_input": false,
     "show_bg_spline": false,
@@ -178,7 +172,7 @@
   "logos": {
     "id": "logos",
     "title": "World-Class AI Video Generation Models",
-    "description": "Powered by Seedance 2.0, Wan 2.7, Kling 3.0, HappyHorse 1.0 and more — the best AI video generator models in one free platform.",
+    "description": "Powered by Seedance 2.0, Kling 3.0, HappyHorse 1.0 and more — the best AI video generator models in one free platform.",
     "hidden": true
   },
   "showcase": {
@@ -468,7 +462,7 @@
       },
       {
         "title": "What AI video models does AI Video Generator Free support?",
-        "description": "AI Video Generator Free supports multiple leading AI video models including Seedance 2.0, Wan 2.7, Kling 3.0, and HappyHorse 1.0. Each model offers unique strengths for text-to-video and image-to-video generation."
+        "description": "AI Video Generator Free supports multiple leading AI video models including Seedance 2.0, Kling 3.0, and HappyHorse 1.0. Each model offers unique strengths for text-to-video and image-to-video generation."
       },
       {
         "title": "Can I use AI Video Generator Free for commercial projects?",
@@ -479,7 +473,7 @@
   "cta": {
     "id": "cta",
     "title": "Start Creating with AI Video Generator Free Today",
-    "description": "Join 500,000+ creators. Sign up now and get free credits to generate your first AI video instantly — no credit card needed.",
+    "description": "Sign up now and get free credits to generate your first AI video instantly — no credit card needed.",
     "buttons": [
       {
         "title": "Get Free AI Video Credits",
@@ -524,11 +518,6 @@
             {
               "title": "Seedance 2.0",
               "url": "/seedance",
-              "target": "_self"
-            },
-            {
-              "title": "Wan 2.7",
-              "url": "/wan",
               "target": "_self"
             },
             {

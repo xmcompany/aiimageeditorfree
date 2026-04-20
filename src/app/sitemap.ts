@@ -18,7 +18,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${appUrl}/ai-image-prompts`, lastModified, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${appUrl}/compare`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${appUrl}/seedance`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${appUrl}/wan`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${appUrl}/veo`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${appUrl}/hailuo`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${appUrl}/happyhorse`, lastModified, changeFrequency: 'monthly', priority: 0.8 },

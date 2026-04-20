@@ -44,17 +44,6 @@ const videoModels: VideoModel[] = [
     versions: ['2.0 Fast', '2.0 Standard'],
   },
   {
-    name: 'Wan 2.7',
-    provider: 'Alibaba',
-    slug: 'wan',
-    description: 'Alibaba Wan 2.7 offers T2V and I2V generation modes with full-modality input up to 1080p.',
-    capabilities: ['Text to Video', 'Image to Video'],
-    resolution: '720p-1080p',
-    duration: '5-10s',
-    icon: 'Video',
-    versions: ['2.7 T2V', '2.7 I2V'],
-  },
-  {
     name: 'Hailuo 2.3',
     provider: 'MiniMax',
     slug: 'hailuo',

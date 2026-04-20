@@ -57,7 +57,6 @@ export const localeMessagesPaths = [
   'pages/image-generator',
   'pages/hairstyles',
   'pages/models/seedance',
-  'pages/models/wan',
   'pages/models/hailuo',
   'pages/models/veo',
   'pages/models/happyhorse',

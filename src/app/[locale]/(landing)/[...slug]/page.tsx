@@ -54,7 +54,7 @@ export async function generateMetadata({
   // src/config/locale/messages/{locale}/pages/**/*.json
 
   // dynamic page slug
-  const MODEL_SLUGS_META = ['seedance','wan','veo','hailuo','happyhorse','kling','runway'];
+  const MODEL_SLUGS_META = ['seedance','veo','hailuo','happyhorse','kling','runway'];
   const rawMetaSlug = typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
   const dynamicPageSlug = MODEL_SLUGS_META.includes(rawMetaSlug)
     ? `models.${rawMetaSlug}`
@@ -127,7 +127,7 @@ export default async function DynamicPage({
   // src/config/locale/messages/{locale}/pages/**/*.json
 
   // dynamic page slug
-  const MODEL_SLUGS = ['seedance','wan','veo','hailuo','happyhorse','kling','runway'];
+  const MODEL_SLUGS = ['seedance','veo','hailuo','happyhorse','kling','runway'];
   const rawDynamicSlug = typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
   // Support /seedance → pages.models.seedance (model pages without /models/ prefix)
   const dynamicPageSlug = MODEL_SLUGS.includes(rawDynamicSlug)
@@ -224,7 +224,7 @@ export default async function DynamicPage({
         const comparePageUrl = `${appUrl}/compare`;
         const pageTitle = pageData.sections?.hero?.title || pageData.title || '';
         const pageDesc = pageData.sections?.hero?.description || pageData.description || '';
-        const modelSlugs = ['seedance', 'wan', 'veo', 'hailuo', 'happyhorse'];
+        const modelSlugs = ['seedance', 'veo', 'hailuo', 'happyhorse'];
 
         structuredData = {
           '@context': 'https://schema.org',

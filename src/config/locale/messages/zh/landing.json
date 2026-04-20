@@ -117,7 +117,7 @@
       }
     ],
     "show_avatars": false,
-    "avatars_tip": "1,500,000+ 创作者的共同选择",
+    "avatars_tip": "深受全球创作者信赖",
     "show_award": false,
     "show_hero_input": false,
     "show_bg_spline": false,
@@ -286,12 +286,12 @@
     "items": [
       {
         "title": "创作者",
-        "label": "500K+",
+        "label": "持续增长",
         "description": "全球创作者的共同选择"
       },
       {
         "title": "生成的视频",
-        "label": "1M+",
+        "label": "持续增长",
         "description": "高品质 AI 视频产出"
       },
       {
@@ -303,7 +303,7 @@
   },
   "testimonials": {
     "id": "testimonials",
-    "title": "超过 500,000 名创作者的选择",
+    "title": "创作者们的选择",
     "description": "听听内容创作者、营销专家和讲故事的人对 AI Video Generator Free 的评价。",
     "label": "用户评价",
     "items": [
@@ -447,7 +447,7 @@
   "cta": {
     "id": "cta",
     "title": "立即体验 AI Video Generator Free",
-    "description": "加入百万创作者行列，今天就开始您的 AI 图像与视频创作之旅。",
+    "description": "今天就开始您的 AI 图像与视频创作之旅。",
     "buttons": [
       {
         "title": "立即免费体验",

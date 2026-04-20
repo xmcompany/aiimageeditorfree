@@ -41,7 +41,7 @@
           }
         ],
         "show_avatars": true,
-        "avatars_tip": "999+ 用户在使用 AI Video Generator Free 上站",
+        "avatars_tip": "深受全球创作者信赖",
         "show_award": false,
         "background_image": {
           "src": "/imgs/bg/tree.jpg",
@@ -212,7 +212,7 @@
         "description": "因其易用且上线飞快。",
         "items": [
           {
-            "title": "999+",
+            "title": "持续增长",
             "description": "位用户"
           },
           {

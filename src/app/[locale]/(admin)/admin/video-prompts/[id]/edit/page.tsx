@@ -55,7 +55,6 @@ export default async function VideoPromptEditPage({
           { title: 'Veo 3.1 Quality', value: 'veo_3_1_quality' },
           { title: 'Seedance 2.0 Fast', value: 'seedance' },
           { title: 'Seedance 2.0 Standard', value: 'seedance_standard' },
-          { title: 'Wan 2.7', value: 'wan' },
           { title: 'Hailuo 2.3', value: 'hailuo' },
           { title: 'Hailuo 02', value: 'hailuo_02' },
           { title: 'HappyHorse 1.0', value: 'happyhorse' },

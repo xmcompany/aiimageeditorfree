@@ -41,7 +41,7 @@
           }
         ],
         "show_avatars": true,
-        "avatars_tip": "999+ users are using AI Video Generator Free",
+        "avatars_tip": "Trusted by creators worldwide",
         "show_award": false,
         "background_image": {
           "src": "/imgs/bg/tree.jpg",
@@ -213,7 +213,7 @@
         "description": "for it's easy to use and fast to ship.",
         "items": [
           {
-            "title": "999+",
+            "title": "Growing",
             "description": "Customers"
           },
           {

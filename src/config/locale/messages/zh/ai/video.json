@@ -6,7 +6,7 @@
   "page": {
     "title": "AI 视频生成器",
     "description": "使用 AI 模型生成视频，支持文本到视频、图片到视频和视频到视频。",
-    "powered_by": "Powered by Google Veo · ByteDance Seedance · Alibaba Wan · MiniMax Hailuo · Kuaishou Kling · Runway"
+    "powered_by": "Powered by Google Veo · ByteDance Seedance · MiniMax Hailuo · Kuaishou Kling · Runway"
   },
   "generator": {
     "title": "视频生成器",

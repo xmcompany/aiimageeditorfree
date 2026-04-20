@@ -11,10 +11,6 @@ const DEFAULT_LOGOS = [
     src: '/imgs/logos/luma.svg',
   },
   {
-    title: 'Wan',
-    src: '/imgs/logos/wan.svg',
-  },
-  {
     title: 'Pika',
     src: '/imgs/logos/pika.svg',
   },

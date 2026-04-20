@@ -74,7 +74,6 @@ const VIDEO_MODELS = [
   { value: 'veo_3_1_quality', label: 'Veo 3.1 Quality', provider: 'kie' },
   { value: 'seedance', label: 'Seedance 2.0 Fast', provider: 'kie' },
   { value: 'seedance_standard', label: 'Seedance 2.0 Standard', provider: 'kie' },
-  { value: 'wan', label: 'Wan 2.7', provider: 'kie' },
   { value: 'hailuo', label: 'Hailuo 2.3', provider: 'kie' },
   { value: 'hailuo_02', label: 'Hailuo 02', provider: 'kie' },
 ];

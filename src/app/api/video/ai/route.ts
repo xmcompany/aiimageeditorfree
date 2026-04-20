@@ -269,9 +269,7 @@ export async function POST(request: NextRequest) {
 
     // Resolve dynamic model name for models that change based on image input
     let resolvedModelName = modelConfig.modelName;
-    if (model === 'wan') {
-      resolvedModelName = startImageUrl ? 'wan/2-7-image-to-video' : 'wan/2-7-text-to-video';
-    } else if (model === 'hailuo') {
+    if (model === 'hailuo') {
       // Hailuo 2.3 I2V only
       const resolution = parameters.resolution || '768p';
       const isPro = resolution === '1080p';

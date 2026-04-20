@@ -17,7 +17,6 @@
       "veo_3_1_quality": "Veo 3.1 Quality",
       "seedance": "Seedance 2.0 Fast",
       "seedance_standard": "Seedance 2.0 Standard",
-      "wan": "Wan 2.7",
       "hailuo": "Hailuo 2.3",
       "hailuo_02": "Hailuo 02"
     },
@@ -29,8 +28,6 @@
       "seedance_720p": "Seedance 2.0 Fast 720p: 26 credits/second (5s=130)",
       "seedance_standard_480p": "Seedance 2.0 Standard 480p: 15 credits/second (5s=75)",
       "seedance_standard_720p": "Seedance 2.0 Standard 720p: 33 credits/second (5s=165)",
-      "wan_720p": "Wan 2.7 720p: 13 credits/second (5s=65)",
-      "wan_1080p": "Wan 2.7 1080p: 19 credits/second (5s=95)",
       "hailuo_768p": "Hailuo 2.3 Standard 768p: 20 credits (6s), 32 credits (10s)",
       "hailuo_1080p": "Hailuo 2.3 Pro 1080p: 56 credits (6s)",
       "hailuo02_t2v_768p": "Hailuo 02 T2V Standard 768p: 24 credits (6s)",

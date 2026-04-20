@@ -28,7 +28,6 @@ AI Video Generator Free integrates world-class AI video and image generation mod
 | Model | Provider | Text-to-Video | Image-to-Video | Max Resolution | Max Duration | Audio | Lip Sync |
 |-------|----------|:---:|:---:|:---:|:---:|:---:|:---:|
 | Seedance 2.0 | ByteDance | Yes | Yes | 720p | 15s | Yes | Yes |
-| Wan 2.7 | Alibaba | Yes | Yes | 1080p | 15s | Yes | No |
 | Kling 3.0 | Kuaishou | Yes | Yes | 1080p | 15s | Yes | No |
 | Veo 3.1 | Google | Yes | Yes | 1080p | 8s | Yes | No |
 | Hailuo 2.3 | MiniMax | Yes | Yes | 1080p | 10s | Yes | No |
@@ -66,7 +65,6 @@ AI Video Generator Free integrates world-class AI video and image generation mod
 
 - AI Video Model Comparison: /compare
 - Seedance 2.0 (ByteDance): /seedance
-- Wan 2.7 (Alibaba): /wan
 - Kling 3.0 (Kuaishou): /kling
 - Veo 3.1 (Google): /veo
 - Hailuo 2.3 (MiniMax): /hailuo
@@ -76,7 +74,7 @@ AI Video Generator Free integrates world-class AI video and image generation mod
 
 ## About
 
-AI Video Generator Free is trusted by 500,000+ creators worldwide. The platform generates over 1 million AI videos and images. Average AI video generation time is under 60 seconds.
+AI Video Generator Free is trusted by creators worldwide. Average AI video generation time is under 60 seconds.
 
 ## Contact
 
