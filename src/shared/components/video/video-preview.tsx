@@ -104,6 +104,13 @@ export default function VideoPreview({
                   </div>
                   <p className="text-foreground text-xl font-bold mb-2 animate-pulse">{t('generating_title')}</p>
                   <p className="text-muted-foreground text-sm font-medium italic tracking-tight">{generationProgress || t('generating_subtitle')}</p>
+                  <p className="text-muted-foreground/70 text-xs mt-4 leading-relaxed max-w-xs mx-auto">
+                    ⏳ This may take a few minutes. You can leave this page and check the result later at{' '}
+                    <a href="/activity/ai-tasks" className="text-primary underline underline-offset-2 hover:opacity-80 not-italic font-medium">
+                      My Tasks
+                    </a>
+                    .
+                  </p>
                 </div>
               ) : video?.status === 'completed' && video.videoUrl ? (
                 <video
