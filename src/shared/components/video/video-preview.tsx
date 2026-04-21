@@ -135,10 +135,12 @@ export default function VideoPreview({
                 <div className="bg-muted/30 p-5 rounded-2xl border border-border/5">
                   <p className="text-foreground leading-relaxed italic line-clamp-3">"{video.prompt}"</p>
                 </div>
-                <div className="flex items-center gap-4 text-muted-foreground text-xs font-bold uppercase tracking-widest pl-2">
-                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/10">Model: {video.model}</span>
-                  <span className="opacity-50">ID: {video.id.slice(0, 8)}</span>
-                </div>
+                {video.id !== 'showcase' && (
+                  <div className="flex items-center gap-4 text-muted-foreground text-xs font-bold uppercase tracking-widest pl-2">
+                    <span className="bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/10">Model: {video.model}</span>
+                    <span className="opacity-50">ID: {video.id.slice(0, 8)}</span>
+                  </div>
+                )}
               </div>
             )}
           </div>

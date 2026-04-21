@@ -24,6 +24,7 @@ interface PageProps {
     type?: string;
     prompt?: string;
     model?: string;
+    showcase?: string;
   }>;
 }
 
@@ -36,9 +37,31 @@ export default async function TextToVideoPage({ params, searchParams }: PageProp
     headers: await headers(),
   });
 
-  const { id, type, prompt, model } = await searchParams;
+  const { id, type, prompt, model, showcase: showcaseId } = await searchParams;
   let initialVideo: GeneratedVideo | null = null;
   const isNewGeneration = type === 'new';
+
+  // Load showcase data if showcase id provided
+  let showcaseVideo: { videoUrl: string; prompt: string; image?: string } | null = null;
+  let showcasePrompt: string | undefined = prompt;
+  if (showcaseId) {
+    try {
+      const { getShowcase } = await import('@/shared/models/showcase');
+      const sc = await getShowcase(showcaseId);
+      if (sc) {
+        if (sc.videoUrl) {
+          showcaseVideo = {
+            videoUrl: sc.videoUrl,
+            prompt: sc.prompt || '',
+            image: sc.image || undefined,
+          };
+        }
+        if (sc.prompt && !showcasePrompt) {
+          showcasePrompt = sc.prompt;
+        }
+      }
+    } catch { /* ignore */ }
+  }
 
   // Only load video if user is logged in and has an ID
   if (id && session?.user?.id) {
@@ -78,19 +101,12 @@ export default async function TextToVideoPage({ params, searchParams }: PageProp
           <VideoGenerator
             initialVideo={initialVideo}
             isNewGeneration={isNewGeneration}
-            prompt={prompt}
+            prompt={showcasePrompt}
             defaultModel={model}
+            showcaseVideo={showcaseVideo}
           />
         ),
       },
-      // gallery: {
-      //   title: t.raw('gallery.title'),
-      //   component: (
-      //     <div className="container mx-auto max-w-6xl">
-      //       <VideoGallery />
-      //     </div>
-      //   )
-      // }
     },
   };
 

@@ -28,6 +28,7 @@ interface PageProps {
     id?: string;
     type?: string;
     prompt?: string;
+    showcase?: string;
   }>;
 }
 
@@ -38,22 +39,30 @@ export default async function TextToVideoModelPage({ params, searchParams }: Pag
   const auth = await getAuth();
   const session = await auth.api.getSession({ headers: await headers() });
 
-  const { id, type, prompt } = await searchParams;
+  const { id, type, prompt, showcase: showcaseId } = await searchParams;
   let initialVideo: GeneratedVideo | null = null;
   const isNewGeneration = type === 'new';
 
-  // Load showcase prompt if showcase id provided
+  // Load showcase data if showcase id provided
+  let showcaseVideo: { videoUrl: string; prompt: string; image?: string } | null = null;
   let showcasePrompt: string | undefined = prompt;
-  if (!showcasePrompt && searchParams) {
-    const sp = await searchParams;
-    const showcaseId = (sp as any).showcase;
-    if (showcaseId) {
-      try {
-        const { getShowcase } = await import('@/shared/models/showcase');
-        const sc = await getShowcase(showcaseId);
-        if (sc?.prompt) showcasePrompt = sc.prompt;
-      } catch { /* ignore */ }
-    }
+  if (showcaseId) {
+    try {
+      const { getShowcase } = await import('@/shared/models/showcase');
+      const sc = await getShowcase(showcaseId);
+      if (sc) {
+        if (sc.videoUrl) {
+          showcaseVideo = {
+            videoUrl: sc.videoUrl,
+            prompt: sc.prompt || '',
+            image: sc.image || undefined,
+          };
+        }
+        if (sc.prompt && !showcasePrompt) {
+          showcasePrompt = sc.prompt;
+        }
+      }
+    } catch { /* ignore */ }
   }
 
   if (id && session?.user?.id) {
@@ -94,6 +103,7 @@ export default async function TextToVideoModelPage({ params, searchParams }: Pag
             isNewGeneration={isNewGeneration}
             prompt={showcasePrompt}
             defaultModel={model}
+            showcaseVideo={showcaseVideo}
           />
         ),
       },
