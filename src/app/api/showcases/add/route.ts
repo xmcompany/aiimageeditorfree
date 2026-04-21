@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { title, prompt, image, videoUrl, tags, type, showInGallery } = body;
+    const { title, prompt, image, videoUrl, tags, type, showInGallery, model, parameters } = body;
 
     if (!title?.trim() || !image?.trim()) {
       return NextResponse.json(
@@ -43,6 +43,8 @@ export async function POST(request: NextRequest) {
       tags: finalTags || null,
       type: type || 'image',
       showInGallery: showInGallery ?? 0,
+      model: model || null,
+      parameters: parameters ? JSON.stringify(parameters) : null,
     };
 
     const result = await addShowcase(newShowcase);

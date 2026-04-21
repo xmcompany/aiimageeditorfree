@@ -578,6 +578,7 @@ export const prompt = table(
     sort: integer('sort').default(0).notNull(),
     type: text('type').notNull().default('image'),
     model: text('model'), // AI model id, e.g. seedance, kling, veo
+    parameters: text('parameters'), // JSON string storing generation parameters
   },
   (table) => [
     index('idx_prompt_status').on(table.status),
@@ -600,6 +601,8 @@ export const showcase = table(
     description: text('description'),
     type: text('type').notNull().default('image'),
     showInGallery: integer('show_in_gallery').notNull().default(0),
+    model: text('model'), // AI model id used for generation
+    parameters: text('parameters'), // JSON string storing generation parameters
     createdAt: timestamp('created_at').defaultNow().notNull(),
   },
   (table) => [

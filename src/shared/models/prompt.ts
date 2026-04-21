@@ -16,6 +16,8 @@ export interface Prompt {
   updatedAt: Date;
   sort: number;
   type: string;
+  model?: string | null;
+  parameters?: string | null;
 }
 
 export interface NewPrompt {
@@ -30,6 +32,7 @@ export interface NewPrompt {
   sort?: number;
   type?: string;
   model?: string;
+  parameters?: string;
 }
 
 export interface UpdatePrompt {
@@ -42,6 +45,7 @@ export interface UpdatePrompt {
   sort?: number;
   type?: string;
   model?: string;
+  parameters?: string;
 }
 
 export const PromptStatus = {

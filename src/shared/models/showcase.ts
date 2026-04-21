@@ -14,6 +14,8 @@ export interface Showcase {
   tags: string | null;
   createdAt: Date;
   type: string;
+  model?: string | null;
+  parameters?: string | null;
 }
 
 export interface NewShowcase {
@@ -27,6 +29,8 @@ export interface NewShowcase {
   tags?: string | null;
   type?: string;
   showInGallery?: number;
+  model?: string | null;
+  parameters?: string | null;
 }
 
 export async function addShowcase(data: NewShowcase): Promise<Showcase | null> {

@@ -24,6 +24,8 @@ interface VideoGeneratorProps {
     videoUrl: string;
     prompt: string;
     image?: string;
+    model?: string;
+    parameters?: Record<string, any>;
   } | null;
 }
 
@@ -41,6 +43,8 @@ export default function VideoGenerator({
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationProgress, setGenerationProgress] = useState('');
   const [formPrompt, setFormPrompt] = useState('');
+  const [formModel, setFormModel] = useState<string | undefined>(undefined);
+  const [formParameters, setFormParameters] = useState<Record<string, any> | undefined>(undefined);
   const [showInGallery, setShowInGallery] = useState(false);
   const hasAutoTriggered = useRef(false);
   const t = useTranslations('video.generator');
@@ -50,8 +54,8 @@ export default function VideoGenerator({
     ? {
         id: 'showcase',
         prompt: showcaseVideo.prompt,
-        model: '',
-        parameters: {},
+        model: showcaseVideo.model || '',
+        parameters: showcaseVideo.parameters || {},
         videoUrl: showcaseVideo.videoUrl,
         thumbnailUrl: showcaseVideo.image,
         status: 'completed',
@@ -70,6 +74,14 @@ export default function VideoGenerator({
               setFormPrompt(data.data.promptDescription);
             } else {
               setFormPrompt(prompt);
+            }
+            if (data.success && data.data?.model) {
+              setFormModel(data.data.model);
+            }
+            if (data.success && data.data?.parameters) {
+              try {
+                setFormParameters(JSON.parse(data.data.parameters));
+              } catch { /* ignore */ }
             }
           })
           .catch(() => setFormPrompt(prompt));
@@ -100,6 +112,8 @@ export default function VideoGenerator({
             videoUrl: completedVideo.videoUrl,
             type: 'video',
             showInGallery: showInGallery ? 1 : 0,
+            model: completedVideo.model || null,
+            parameters: completedVideo.parameters || null,
           }),
         }).catch((e) => console.error('Failed to save showcase:', e));
       }
@@ -125,6 +139,8 @@ export default function VideoGenerator({
     if (formPrompt) {
       const timer = setTimeout(() => {
         setFormPrompt('');
+        setFormModel(undefined);
+        setFormParameters(undefined);
       }, 100);
       return () => clearTimeout(timer);
     }
@@ -261,7 +277,8 @@ export default function VideoGenerator({
                     }
                   : {
                       prompt: formPrompt || undefined,
-                      model: defaultModel || undefined,
+                      model: formModel || showcaseVideo?.model || defaultModel || undefined,
+                      parameters: formParameters || showcaseVideo?.parameters || undefined,
                     }
               }
             />

@@ -44,7 +44,7 @@ export default async function TextToVideoModelPage({ params, searchParams }: Pag
   const isNewGeneration = type === 'new';
 
   // Load showcase data if showcase id provided
-  let showcaseVideo: { videoUrl: string; prompt: string; image?: string } | null = null;
+  let showcaseVideo: { videoUrl: string; prompt: string; image?: string; model?: string; parameters?: Record<string, any> } | null = null;
   let showcasePrompt: string | undefined = prompt;
   if (showcaseId) {
     try {
@@ -56,6 +56,8 @@ export default async function TextToVideoModelPage({ params, searchParams }: Pag
             videoUrl: sc.videoUrl,
             prompt: sc.prompt || '',
             image: sc.image || undefined,
+            model: sc.model || undefined,
+            parameters: sc.parameters ? JSON.parse(sc.parameters) : undefined,
           };
         }
         if (sc.prompt && !showcasePrompt) {
