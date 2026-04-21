@@ -20,6 +20,11 @@ interface VideoGeneratorProps {
   className?: string;
   prompt?: string;
   defaultModel?: string;
+  showcaseVideo?: {
+    videoUrl: string;
+    prompt: string;
+    image?: string;
+  } | null;
 }
 
 export default function VideoGenerator({
@@ -28,6 +33,7 @@ export default function VideoGenerator({
   className,
   prompt,
   defaultModel,
+  showcaseVideo,
 }: VideoGeneratorProps) {
   const [currentVideo, setCurrentVideo] = useState<GeneratedVideo | null>(
     initialVideo || null
@@ -38,6 +44,20 @@ export default function VideoGenerator({
   const [showInGallery, setShowInGallery] = useState(false);
   const hasAutoTriggered = useRef(false);
   const t = useTranslations('video.generator');
+
+  // Build a pseudo-completed video from showcase data to show in preview
+  const showcaseAsVideo: GeneratedVideo | null = showcaseVideo
+    ? {
+        id: 'showcase',
+        prompt: showcaseVideo.prompt,
+        model: '',
+        parameters: {},
+        videoUrl: showcaseVideo.videoUrl,
+        thumbnailUrl: showcaseVideo.image,
+        status: 'completed',
+        createdAt: new Date(),
+      }
+    : null;
 
   useEffect(() => {
     if (prompt) {
@@ -247,7 +267,7 @@ export default function VideoGenerator({
             />
 
             <VideoPreview
-              video={currentVideo}
+              video={currentVideo || showcaseAsVideo}
               isGenerating={isGenerating}
               generationProgress={generationProgress}
               onPromptSelect={handlePromptSelect}
