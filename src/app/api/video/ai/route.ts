@@ -433,6 +433,21 @@ export async function POST(request: NextRequest) {
       replicatePredictionId: prediction.id,
     });
 
+    // For kie tasks, return immediately after task submission.
+    // The frontend will poll /api/video/status which queries kie directly.
+    // This avoids serverless function timeouts (30-60s) causing false failures.
+    if (isKieTask && !debugMock) {
+      console.log(`[Kie Task] Submitted task ${prediction.id} for video ${videoDbId}, returning immediately for frontend polling`);
+      return NextResponse.json({
+        success: true,
+        data: {
+          id: videoDbId,
+          status: 'generating',
+          message: 'Video generation started, please poll for status',
+        },
+      });
+    }
+
     // 2. Polling for results
     let videoUrl = '';
     let generationTime: number | undefined;
@@ -442,81 +457,7 @@ export async function POST(request: NextRequest) {
       const pollingInterval = 5000;
       const startTime = Date.now();
 
-      if (isKieTask) {
-        // Kie.ai polling
-        const kieBaseUrl = 'https://api.kie.ai/api/v1';
-        const kieHeaders = {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${kieApiKey}`,
-        };
-        const isVeo = prediction.id.startsWith('veo-');
-        const actualTaskId = isVeo ? prediction.id.replace('veo-', '') : prediction.id;
-
-        while (Date.now() - startTime < maxPollingTime) {
-          await sleep(pollingInterval);
-
-          try {
-            if (isVeo) {
-              // Veo polling
-              const resp = await fetch(`${kieBaseUrl}/veo/record-info?taskId=${actualTaskId}`, { headers: kieHeaders });
-              if (!resp.ok) break;
-              const veoPollResult: any = await resp.json();
-              if (veoPollResult.code !== 200) break;
-
-              // successFlag: 0=generating, 1=success, 2/3=failed
-              if (veoPollResult.data?.successFlag === 1 && veoPollResult.data?.videoUrl) {
-                videoUrl = veoPollResult.data.videoUrl;
-
-                // Resolution-aware HD upgrade
-                const requestedResolution = parameters.resolution || '720p';
-                try {
-                  if (requestedResolution === '1080p' || requestedResolution === '4K') {
-                    const hdResp = await fetch(`${kieBaseUrl}/veo/get-1080p-video?taskId=${actualTaskId}`, { headers: kieHeaders });
-                    if (hdResp.ok) {
-                      const hdResult: any = await hdResp.json();
-                      if (hdResult.code === 200 && hdResult.data?.videoUrl) {
-                        videoUrl = hdResult.data.videoUrl;
-                      }
-                    }
-                  }
-                  if (requestedResolution === '4K') {
-                    const uhdResp = await fetch(`${kieBaseUrl}/veo/get-4k-video?taskId=${actualTaskId}`, { headers: kieHeaders });
-                    if (uhdResp.ok) {
-                      const uhdResult: any = await uhdResp.json();
-                      if (uhdResult.code === 200 && uhdResult.data?.videoUrl) {
-                        videoUrl = uhdResult.data.videoUrl;
-                      }
-                    }
-                  }
-                } catch {}
-                break;
-              } else if (veoPollResult.data?.successFlag === 2 || veoPollResult.data?.successFlag === 3) {
-                await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
-                return NextResponse.json({ error: 'Veo generation failed', id: videoDbId }, { status: 500 });
-              }
-            } else {
-              // Market API polling
-              const resp = await fetch(`${kieBaseUrl}/jobs/recordInfo?taskId=${actualTaskId}`, { headers: kieHeaders });
-              if (!resp.ok) break;
-              const kiePollResult: any = await resp.json();
-              if (kiePollResult.code !== 200) break;
-
-              if (kiePollResult.data?.state === 'success' && kiePollResult.data?.resultJson) {
-                const resultJson = JSON.parse(kiePollResult.data.resultJson);
-                if (resultJson.resultUrls?.[0]) {
-                  videoUrl = resultJson.resultUrls[0];
-                  break;
-                }
-              } else if (kiePollResult.data?.state === 'fail') {
-                await updateVideoRecord(videoDbId, { status: VideoStatus.Failed });
-                return NextResponse.json({ error: 'Kie generation failed', details: kiePollResult.data?.failMsg, id: videoDbId }, { status: 500 });
-              }
-            }
-          } catch (e) {
-            console.error('[Kie Polling] Error:', e);
-          }
-        }
-      } else {
+      {
         // Replicate polling (existing logic)
         while (
           prediction.status !== 'succeeded' &&

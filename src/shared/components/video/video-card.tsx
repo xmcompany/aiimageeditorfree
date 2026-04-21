@@ -37,6 +37,7 @@ export interface GeneratedVideo {
   startImageUrl?: string;
   status: GeneratedVideoStatus;
   createdAt: Date;
+  failReason?: string;
 }
 
 interface VideoCardProps {

@@ -84,8 +84,8 @@ export default function VideoGenerator({
         }).catch((e) => console.error('Failed to save showcase:', e));
       }
     },
-    onFailed: () => {
-      setCurrentVideo((prev) => (prev ? { ...prev, status: 'failed' } : null));
+    onFailed: (errorMsg) => {
+      setCurrentVideo((prev) => (prev ? { ...prev, status: 'failed', failReason: errorMsg } : null));
       setIsGenerating(false);
       setGenerationProgress('');
     },

@@ -93,7 +93,7 @@ export async function createVideo(data: CreateVideoData) {
       id: id,
       userId: data.userId,
       mediaType: AIMediaType.VIDEO,
-      provider: 'nanobanana-joyflix-video',
+      provider: 'kie',
       model: data.model,
       prompt: data.prompt,
       scene: parsedParams?.startImageUrl ? 'image-to-video' : 'text-to-video',

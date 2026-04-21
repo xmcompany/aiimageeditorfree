@@ -89,7 +89,9 @@ export default function VideoPreview({
                     <span className="text-3xl font-bold">!</span>
                   </div>
                   <p className="text-foreground text-xl font-bold mb-2">{t('failed_title')}</p>
-                  <p className="text-muted-foreground text-sm max-w-xs mx-auto">{t('failed_subtitle')}</p>
+                  <p className="text-muted-foreground text-sm max-w-xs mx-auto">
+                    {video.failReason || t('failed_subtitle')}
+                  </p>
                 </div>
               ) : isGenerating || video?.status === 'generating' ? (
                 <div className="text-center p-8 animate-in fade-in zoom-in-95">

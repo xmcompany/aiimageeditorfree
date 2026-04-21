@@ -37,7 +37,9 @@ export async function POST(req: NextRequest) {
     }
 
     const aiService = await getAIService();
-    const aiProvider = aiService.getProvider(task.provider);
+    // 'nanobanana-joyflix-video' was a legacy incorrect provider name, map it to 'kie'
+    const providerName = task.provider === 'nanobanana-joyflix-video' ? 'kie' : task.provider;
+    const aiProvider = aiService.getProvider(providerName);
     if (!aiProvider) {
       return NextResponse.json({ code: 400, message: 'AI provider not available' }, { status: 400 });
     }

@@ -42,10 +42,10 @@ export function useVideoPolling({
             body: JSON.stringify({ videoId }),
           });
 
-          const result = await response.json();
+          const result = await response.json() as { success?: boolean; data?: any };
 
           if (result.success && result.data) {
-            const status = result.data.status;
+            const status = result.data.status as string;
 
             if (status === 'completed') {
               const completedVideo = {
@@ -60,10 +60,13 @@ export function useVideoPolling({
               stopPolling();
               onCompleted?.(completedVideo);
             } else if (status === 'failed') {
+              const reason = result.data.failReason as string | undefined;
               stopPolling();
-              onFailed?.('Video generation failed');
-              toast.error('Video generation failed');
-            } else if (status === 'generating') {
+              onFailed?.(reason || 'Video generation failed');
+              toast.error(reason || 'Video generation failed');
+            } else if (status === 'uploading') {
+              onProgressUpdate?.('Uploading video...');
+            } else if (status === 'generating' || status === 'pending') {
               onProgressUpdate?.('Video is being generated...');
             }
           }
