@@ -584,8 +584,14 @@ export class KieProvider implements AIProvider {
     let videos: AIVideo[] | undefined = undefined;
 
     // Get video URL on success
-    if (taskStatus === AITaskStatus.SUCCESS && data?.videoUrl) {
-      let videoUrl = data.videoUrl;
+    // API returns video URL in data.response.resultUrls[0] (current docs)
+    // or data.videoUrl (legacy field — keep as fallback)
+    const rawVideoUrl =
+      data?.response?.resultUrls?.[0] ||
+      data?.videoUrl;
+
+    if (taskStatus === AITaskStatus.SUCCESS && rawVideoUrl) {
+      let videoUrl = rawVideoUrl;
 
       // Try to get 1080p version
       try {

@@ -81,9 +81,15 @@ export async function POST(request: NextRequest) {
                 if (veoPollResult.code === 200 && veoPollResult.data) {
                   const successFlag = veoPollResult.data.successFlag;
 
-                  if (successFlag === 1 && veoPollResult.data.videoUrl) {
+                  // API returns video URL in data.response.resultUrls[0] (current docs)
+                  // or data.videoUrl (legacy field — keep as fallback)
+                  const rawVideoUrl =
+                    veoPollResult.data?.response?.resultUrls?.[0] ||
+                    veoPollResult.data?.videoUrl;
+
+                  if (successFlag === 1 && rawVideoUrl) {
                     // Success — get best quality URL
-                    let videoUrl = veoPollResult.data.videoUrl;
+                    let videoUrl = rawVideoUrl;
                     const requestedResolution =
                       typeof videoData.parameters === 'string'
                         ? JSON.parse(videoData.parameters)?.resolution
