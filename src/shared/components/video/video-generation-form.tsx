@@ -299,6 +299,15 @@ export default function VideoGenerationForm({
               {tVideo('generator.sign_in_to_generate')}
             </Button>
           )}
+          {isGenerating && (
+            <p className="text-center text-xs text-muted-foreground mt-3 leading-relaxed">
+              ⏳ Video generation may take a few minutes. You can leave this page and check the result later at{' '}
+              <a href="/activity/ai-tasks" className="text-primary underline underline-offset-2 hover:opacity-80">
+                My Tasks
+              </a>
+              .
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -64,8 +64,9 @@ export async function POST(request: NextRequest) {
             };
 
             const taskId = videoData.replicatePredictionId;
-            const isVeo = taskId.startsWith('veo-');
-            const actualTaskId = isVeo ? taskId.replace('veo-', '') : taskId;
+            const isVeoModel = videoData.model?.includes('veo');
+            const isVeo = taskId.startsWith('veo-') || isVeoModel;
+            const actualTaskId = taskId.startsWith('veo-') ? taskId.replace('veo-', '') : taskId;
 
             if (isVeo) {
               // Query Veo task status
