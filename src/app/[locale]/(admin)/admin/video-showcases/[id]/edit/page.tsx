@@ -56,7 +56,6 @@ export default async function VideoShowcaseEditPage({
         name: 'image',
         type: 'upload_image',
         title: t('form.image'),
-        validation: { required: true },
         value: showcase.image,
         tip: t('form.image_tip'),
       },
@@ -98,7 +97,7 @@ export default async function VideoShowcaseEditPage({
         const tags = data.get('tags') as string;
         const description = prompt;
 
-        if (!title?.trim() || !prompt?.trim() || !image?.trim() || !videoUrl?.trim()) {
+        if (!title?.trim() || !prompt?.trim() || !videoUrl?.trim()) {
           throw new Error(tAction('messages.validation_error'));
         }
 
