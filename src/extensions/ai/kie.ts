@@ -326,7 +326,7 @@ export class KieProvider implements AIProvider {
     return {
       taskStatus: AITaskStatus.PENDING,
       taskId: data.taskId,
-      taskInfo: { isVeo: true },
+      taskInfo: {},
       taskResult: data,
     };
   }
@@ -553,8 +553,11 @@ export class KieProvider implements AIProvider {
       Authorization: `Bearer ${this.configs.apiKey}`,
     };
 
+    // Strip 'veo-' prefix if present (added internally for routing)
+    const actualTaskId = taskId.startsWith('veo-') ? taskId.replace('veo-', '') : taskId;
+
     // Query task status
-    const statusUrl = `${this.baseUrl}/veo/record-info?taskId=${taskId}`;
+    const statusUrl = `${this.baseUrl}/veo/record-info?taskId=${actualTaskId}`;
     const resp = await fetch(statusUrl, {
       method: 'GET',
       headers,
@@ -584,23 +587,24 @@ export class KieProvider implements AIProvider {
     let videos: AIVideo[] | undefined = undefined;
 
     // Get video URL on success
-    // API returns video URL in data.response.resultUrls[0] (current docs)
-    // or data.videoUrl (legacy field — keep as fallback)
+    // API returns video URL in data.response.resultUrls[0]
     const rawVideoUrl =
       data?.response?.resultUrls?.[0] ||
-      data?.videoUrl;
+      data?.videoUrl; // legacy fallback
 
     if (taskStatus === AITaskStatus.SUCCESS && rawVideoUrl) {
       let videoUrl = rawVideoUrl;
 
       // Try to get 1080p version
+      // GET /veo/get-1080p-video?taskId={taskId}&index=0
+      // Response: { code: 200, data: { resultUrl: "..." } }  (note: singular "resultUrl")
       try {
-        const hdUrl = `${this.baseUrl}/veo/get-1080p-video?taskId=${taskId}`;
-        const hdResp = await fetch(hdUrl, { headers });
+        const hdUrl = `${this.baseUrl}/veo/get-1080p-video?taskId=${actualTaskId}&index=0`;
+        const hdResp = await fetch(hdUrl, { method: 'GET', headers });
         if (hdResp.ok) {
-          const hdData = await hdResp.json();
-          if (hdData.code === 200 && hdData.data?.videoUrl) {
-            videoUrl = hdData.data.videoUrl;
+          const hdData = await hdResp.json() as any;
+          if (hdData.code === 200 && hdData.data?.resultUrl) {
+            videoUrl = hdData.data.resultUrl;
           }
         }
       } catch {
@@ -634,8 +638,7 @@ export class KieProvider implements AIProvider {
       taskStatus,
       taskInfo: {
         videos,
-        isVeo: true,
-        successFlag,
+        errorMessage: data?.errorMessage || data?.failMsg,
         createTime: new Date(),
       },
       taskResult: data,

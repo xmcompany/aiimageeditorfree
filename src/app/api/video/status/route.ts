@@ -97,28 +97,32 @@ export async function POST(request: NextRequest) {
 
                     try {
                       if (requestedResolution === '1080p' || requestedResolution === '4K') {
+                        // GET /veo/get-1080p-video?taskId={taskId}&index=0
+                        // Response: { code: 200, data: { resultUrl: "..." } }  (singular "resultUrl")
                         const hdResp = await fetch(
-                          `${kieBaseUrl}/veo/get-1080p-video?taskId=${actualTaskId}`,
-                          { headers: kieHeaders }
+                          `${kieBaseUrl}/veo/get-1080p-video?taskId=${actualTaskId}&index=0`,
+                          { method: 'GET', headers: kieHeaders }
                         );
                         if (hdResp.ok) {
                           const hdResult: any = await hdResp.json();
-                          if (hdResult.code === 200 && hdResult.data?.videoUrl) {
-                            videoUrl = hdResult.data.videoUrl;
+                          if (hdResult.code === 200 && hdResult.data?.resultUrl) {
+                            videoUrl = hdResult.data.resultUrl;
                           }
                         }
                       }
                       if (requestedResolution === '4K') {
-                        const uhdResp = await fetch(
-                          `${kieBaseUrl}/veo/get-4k-video?taskId=${actualTaskId}`,
-                          { headers: kieHeaders }
-                        );
-                        if (uhdResp.ok) {
-                          const uhdResult: any = await uhdResp.json();
-                          if (uhdResult.code === 200 && uhdResult.data?.videoUrl) {
-                            videoUrl = uhdResult.data.videoUrl;
+                        // POST /veo/get-4k-video — submits async 4K upgrade task
+                        // Returns { data: { resultUrls: null } } immediately (async)
+                        // The 4K URL will be available via /veo/record-info later
+                        // For now just use 1080p URL already obtained above
+                        await fetch(
+                          `${kieBaseUrl}/veo/get-4k-video`,
+                          {
+                            method: 'POST',
+                            headers: kieHeaders,
+                            body: JSON.stringify({ taskId: actualTaskId, index: 0 }),
                           }
-                        }
+                        ).catch(() => {}); // fire-and-forget, 4K is async
                       }
                     } catch {
                       // Fall back to standard quality
@@ -140,7 +144,8 @@ export async function POST(request: NextRequest) {
                     }
                   } else if (successFlag === 2 || successFlag === 3) {
                     // Failed — capture error reason from kie
-                    const kieFailMsg = veoPollResult.data?.failMsg || veoPollResult.data?.errorMsg || veoPollResult.data?.message;
+                    // docs field: data.errorMessage (not failMsg)
+                    const kieFailMsg = veoPollResult.data?.errorMessage || veoPollResult.data?.failMsg || veoPollResult.data?.errorMsg;
                     failReason = kieFailMsg || 'Generation failed';
                     await updateVideoRecord(videoId, { status: VideoStatus.Failed });
                     videoData = { ...videoData, status: VideoStatus.Failed };
