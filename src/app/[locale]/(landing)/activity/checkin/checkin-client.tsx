@@ -2,10 +2,19 @@
 
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { Calendar, Gift, Users, Copy, Check, Flame } from 'lucide-react';
+import { Calendar, Gift, Users, Copy, Check, Flame, Coins } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
 import { Badge } from '@/shared/components/ui/badge';
+
+interface ReferralItem {
+  id: string;
+  status: string;
+  rewardCredits: number;
+  rewardedAt: string | null;
+  createdAt: string;
+  referee: { name: string | null; email: string | null } | null;
+}
 
 interface CheckinClientProps {
   checkedInToday: boolean;
@@ -22,6 +31,7 @@ interface CheckinClientProps {
   };
   referralCode: string;
   referralUrl: string;
+  referrals?: ReferralItem[];
 }
 
 export default function CheckinClient({
@@ -31,6 +41,7 @@ export default function CheckinClient({
   config,
   referralCode,
   referralUrl,
+  referrals = [],
 }: CheckinClientProps) {
   const [checkedInToday, setCheckedInToday] = useState(initialCheckedIn);
   const [streak, setStreak] = useState(initialStreak);
@@ -206,6 +217,81 @@ export default function CheckinClient({
             </Button>
           </div>
           <p className="text-xs text-muted-foreground">Your referral code: <code className="bg-muted px-1 rounded">{referralCode}</code></p>
+        </CardContent>
+      </Card>
+
+      {/* Referral list */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between">
+            <span className="flex items-center gap-2">
+              <Users className="h-5 w-5" />
+              My Referrals
+            </span>
+            <span className="text-sm font-normal text-muted-foreground">{referrals.length} total</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {referrals.length === 0 ? (
+            <p className="text-sm text-muted-foreground text-center py-6">
+              No referrals yet. Share your link to start earning!
+            </p>
+          ) : (
+            <div className="space-y-1">
+              {/* Header */}
+              <div className="grid grid-cols-[1fr_80px_100px_90px] gap-2 px-2 py-1 text-xs font-medium text-muted-foreground border-b">
+                <span>User</span>
+                <span>Status</span>
+                <span>Reward</span>
+                <span>Joined</span>
+              </div>
+              {referrals.map(r => (
+                <div
+                  key={r.id}
+                  className="grid grid-cols-[1fr_80px_100px_90px] gap-2 items-center px-2 py-2 rounded-lg hover:bg-muted/50 text-sm"
+                >
+                  <div className="min-w-0">
+                    <p className="font-medium truncate">{r.referee?.name || 'Anonymous'}</p>
+                    {r.referee?.email && (
+                      <p className="text-xs text-muted-foreground truncate">{r.referee.email}</p>
+                    )}
+                  </div>
+                  <div>
+                    <Badge
+                      variant={r.status === 'rewarded' ? 'default' : 'secondary'}
+                      className="text-xs"
+                    >
+                      {r.status === 'rewarded' ? 'Paid' : 'Registered'}
+                    </Badge>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm">
+                    {r.status === 'rewarded' ? (
+                      <>
+                        <Coins className="h-3.5 w-3.5 text-primary" />
+                        <span className="font-medium text-primary">+{r.rewardCredits}</span>
+                      </>
+                    ) : (
+                      <span className="text-muted-foreground text-xs">Pending</span>
+                    )}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {new Date(r.createdAt).toLocaleDateString()}
+                  </div>
+                </div>
+              ))}
+
+              {/* Summary */}
+              {referrals.some(r => r.status === 'rewarded') && (
+                <div className="flex items-center justify-between pt-3 mt-2 border-t text-sm">
+                  <span className="text-muted-foreground">Total earned</span>
+                  <span className="flex items-center gap-1 font-semibold text-primary">
+                    <Coins className="h-4 w-4" />
+                    {referrals.filter(r => r.status === 'rewarded').reduce((sum, r) => sum + r.rewardCredits, 0)} credits
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>

@@ -1,4 +1,4 @@
-import { and, eq, sum } from 'drizzle-orm';
+import { and, count, desc, eq, sum } from 'drizzle-orm';
 import { db } from '@/core/db';
 import { referral, user } from '@/config/db/schema';
 import { getAllConfigs } from './config';
@@ -6,6 +6,15 @@ import { grantCreditsForUser } from './credit';
 import { User, findUserById } from './user';
 
 export type Referral = typeof referral.$inferSelect;
+
+export type ReferralWithReferee = Referral & {
+  referee?: {
+    id: string;
+    name: string | null;
+    email: string | null;
+    image: string | null;
+  } | null;
+};
 
 const REFERRAL_CREDIT_CAP = 2000;
 
@@ -130,10 +139,105 @@ export async function handleReferralReward({
   });
 }
 
-// 获取用户的推荐列表
-export async function getReferralsByReferrer(referrerId: string): Promise<Referral[]> {
-  return db()
-    .select()
+// 获取用户的推荐列表（含被推荐人信息）
+export async function getReferralsByReferrer(referrerId: string): Promise<ReferralWithReferee[]> {
+  const rows = await db()
+    .select({
+      id: referral.id,
+      referrerId: referral.referrerId,
+      refereeId: referral.refereeId,
+      orderNo: referral.orderNo,
+      rewardCredits: referral.rewardCredits,
+      status: referral.status,
+      rewardedAt: referral.rewardedAt,
+      expiresAt: referral.expiresAt,
+      createdAt: referral.createdAt,
+      refereeName: user.name,
+      refereeEmail: user.email,
+      refereeImage: user.image,
+    })
     .from(referral)
-    .where(eq(referral.referrerId, referrerId));
+    .leftJoin(user, eq(referral.refereeId, user.id))
+    .where(eq(referral.referrerId, referrerId))
+    .orderBy(desc(referral.createdAt));
+
+  return rows.map(r => ({
+    id: r.id,
+    referrerId: r.referrerId,
+    refereeId: r.refereeId,
+    orderNo: r.orderNo,
+    rewardCredits: r.rewardCredits,
+    status: r.status,
+    rewardedAt: r.rewardedAt,
+    expiresAt: r.expiresAt,
+    createdAt: r.createdAt,
+    referee: {
+      id: r.refereeId,
+      name: r.refereeName ?? null,
+      email: r.refereeEmail ?? null,
+      image: r.refereeImage ?? null,
+    },
+  }));
+}
+
+// 获取所有推荐记录（管理后台用），含推荐人和被推荐人信息
+export async function getAllReferrals({
+  page = 1,
+  limit = 30,
+}: { page?: number; limit?: number } = {}): Promise<(ReferralWithReferee & { referrerEmail?: string | null; referrerName?: string | null })[]> {
+  const rows = await db()
+    .select({
+      id: referral.id,
+      referrerId: referral.referrerId,
+      refereeId: referral.refereeId,
+      orderNo: referral.orderNo,
+      rewardCredits: referral.rewardCredits,
+      status: referral.status,
+      rewardedAt: referral.rewardedAt,
+      expiresAt: referral.expiresAt,
+      createdAt: referral.createdAt,
+      refereeEmail: user.email,
+      refereeName: user.name,
+      refereeImage: user.image,
+    })
+    .from(referral)
+    .leftJoin(user, eq(referral.refereeId, user.id))
+    .orderBy(desc(referral.createdAt))
+    .limit(limit)
+    .offset((page - 1) * limit);
+
+  // Fetch referrer info separately to avoid complex alias joins
+  const referrerIds = [...new Set(rows.map((r) => r.referrerId))];
+  const referrers = referrerIds.length > 0
+    ? await db().select({ id: user.id, email: user.email, name: user.name }).from(user)
+        .then((all: { id: string; email: string | null; name: string | null }[]) =>
+          all.filter((u) => referrerIds.includes(u.id))
+        )
+    : [];
+  const referrerMap = Object.fromEntries(referrers.map((u) => [u.id, u]));
+
+  return rows.map(r => ({
+    id: r.id,
+    referrerId: r.referrerId,
+    refereeId: r.refereeId,
+    orderNo: r.orderNo,
+    rewardCredits: r.rewardCredits,
+    status: r.status,
+    rewardedAt: r.rewardedAt,
+    expiresAt: r.expiresAt,
+    createdAt: r.createdAt,
+    referee: {
+      id: r.refereeId,
+      name: r.refereeName ?? null,
+      email: r.refereeEmail ?? null,
+      image: r.refereeImage ?? null,
+    },
+    referrerEmail: referrerMap[r.referrerId]?.email ?? null,
+    referrerName: referrerMap[r.referrerId]?.name ?? null,
+  }));
+}
+
+export async function getReferralsCount(): Promise<number> {
+  const [result] = await db().select({ count: count() }).from(referral);
+  return result?.count ?? 0;
 }

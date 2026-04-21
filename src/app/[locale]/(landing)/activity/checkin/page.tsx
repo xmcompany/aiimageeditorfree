@@ -4,7 +4,7 @@ import { getAuth } from '@/core/auth';
 import CheckinClient from './checkin-client';
 import { getCheckinHistory, getTodayCheckin, getLastCheckin } from '@/shared/models/checkin';
 import { getAllConfigs } from '@/shared/models/config';
-import { getReferralCode } from '@/shared/models/referral';
+import { getReferralCode, getReferralsByReferrer } from '@/shared/models/referral';
 import { envConfigs } from '@/config';
 
 export default async function CheckinPage() {
@@ -15,11 +15,12 @@ export default async function CheckinPage() {
   }
 
   const userId = session.user.id;
-  const [todayRecord, lastRecord, history, configs] = await Promise.all([
+  const [todayRecord, lastRecord, history, configs, referrals] = await Promise.all([
     getTodayCheckin(userId),
     getLastCheckin(userId),
     getCheckinHistory(userId, 35),
     getAllConfigs(),
+    getReferralsByReferrer(userId),
   ]);
 
   const referralCode = getReferralCode(userId);
@@ -41,6 +42,22 @@ export default async function CheckinPage() {
       }}
       referralCode={referralCode}
       referralUrl={`${appUrl}/?ref=${referralCode}`}
+      referrals={referrals.map(r => ({
+        id: r.id,
+        status: r.status,
+        rewardCredits: r.rewardCredits ?? 0,
+        rewardedAt: r.rewardedAt ? r.rewardedAt.toISOString() : null,
+        createdAt: r.createdAt.toISOString(),
+        referee: r.referee
+          ? {
+              name: r.referee.name ?? null,
+              // mask email: ab***@gmail.com
+              email: r.referee.email
+                ? r.referee.email.replace(/(.{2}).+(@.+)/, '$1***$2')
+                : null,
+            }
+          : null,
+      }))}
     />
   );
 }

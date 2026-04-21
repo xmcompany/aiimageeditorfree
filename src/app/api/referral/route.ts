@@ -34,6 +34,14 @@ export async function GET(req: NextRequest) {
         rewardCredits: r.rewardCredits,
         rewardedAt: r.rewardedAt,
         createdAt: r.createdAt,
+        referee: r.referee
+          ? {
+              name: r.referee.name,
+              email: r.referee.email
+                ? r.referee.email.replace(/(.{2}).+(@.+)/, '$1***$2') // mask email
+                : null,
+            }
+          : null,
       })),
       config: {
         rewardRate: parseFloat(configs.referral_reward_rate as string) || 0.2,
