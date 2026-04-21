@@ -84,7 +84,7 @@ export default function VideoGenerationForm({
 
   const handleModelChange = (modelId: string) => {
     setSelectedModel(modelId);
-    if (!initialData) {
+    if (!initialData?.parameters) {
       setParameters(getModelDefaults(modelId));
     }
   };
