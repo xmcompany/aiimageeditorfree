@@ -13,6 +13,7 @@ interface VideoPreviewProps {
   video: GeneratedVideo | null;
   isGenerating: boolean;
   generationProgress?: string;
+  progressPercent?: number;
   onPromptSelect?: (prompt: string) => void;
 }
 
@@ -20,6 +21,7 @@ export default function VideoPreview({
   video,
   isGenerating,
   generationProgress,
+  progressPercent = 0,
   onPromptSelect,
 }: VideoPreviewProps) {
   const t = useTranslations('video.generator.preview');
@@ -94,7 +96,7 @@ export default function VideoPreview({
                   </p>
                 </div>
               ) : isGenerating || video?.status === 'generating' ? (
-                <div className="text-center p-8 animate-in fade-in zoom-in-95">
+                <div className="text-center p-8 animate-in fade-in zoom-in-95 w-full">
                   <div className="relative w-24 h-24 mx-auto mb-8">
                     <div className="absolute inset-0 border-4 border-primary/20 rounded-full" />
                     <div className="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)]" />
@@ -104,6 +106,20 @@ export default function VideoPreview({
                   </div>
                   <p className="text-foreground text-xl font-bold mb-2 animate-pulse">{t('generating_title')}</p>
                   <p className="text-muted-foreground text-sm font-medium italic tracking-tight">{generationProgress || t('generating_subtitle')}</p>
+                  {progressPercent > 0 && (
+                    <div className="mt-6 w-full max-w-xs mx-auto space-y-2">
+                      <div className="flex items-center justify-between text-xs font-bold text-primary/70">
+                        <span>Progress</span>
+                        <span>{progressPercent}%</span>
+                      </div>
+                      <div className="h-2 bg-primary/20 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-primary to-indigo-400 rounded-full transition-all duration-500"
+                          style={{ width: `${progressPercent}%` }}
+                        />
+                      </div>
+                    </div>
+                  )}
                   <p className="text-muted-foreground/70 text-xs mt-4 leading-relaxed max-w-xs mx-auto">
                     ⏳ This may take a few minutes. You can leave this page and check the result later at{' '}
                     <a href="/activity/ai-tasks" className="text-primary underline underline-offset-2 hover:opacity-80 not-italic font-medium">

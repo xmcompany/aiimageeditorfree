@@ -42,11 +42,13 @@ export default function VideoGenerator({
   );
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationProgress, setGenerationProgress] = useState('');
+  const [progressPercent, setProgressPercent] = useState(0);
   const [formPrompt, setFormPrompt] = useState('');
   const [formModel, setFormModel] = useState<string | undefined>(undefined);
   const [formParameters, setFormParameters] = useState<Record<string, any> | undefined>(undefined);
   const [showInGallery, setShowInGallery] = useState(false);
   const hasAutoTriggered = useRef(false);
+  const hasSavedShowcaseRef = useRef<string | null>(null);
   const t = useTranslations('video.generator');
 
   // Build a pseudo-completed video from showcase data to show in preview
@@ -98,33 +100,60 @@ export default function VideoGenerator({
       setCurrentVideo(completedVideo);
       setIsGenerating(false);
       setGenerationProgress('');
+      setProgressPercent(0);
       toast.success('Video generation completed!');
 
-      // Auto-save to showcase
-      if (completedVideo.videoUrl) {
-        fetch('/api/showcases/add', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            title: completedVideo.prompt?.substring(0, 100) || '',
-            prompt: completedVideo.prompt || '',
-            image: completedVideo.thumbnailUrl || completedVideo.startImageUrl || '',
-            videoUrl: completedVideo.videoUrl,
-            type: 'video',
-            showInGallery: showInGallery ? 1 : 0,
-            model: completedVideo.model || null,
-            parameters: completedVideo.parameters || null,
-          }),
-        }).catch((e) => console.error('Failed to save showcase:', e));
+      // Auto-save to showcase (delay to allow thumbnail extraction to complete)
+      if (completedVideo.videoUrl && hasSavedShowcaseRef.current !== completedVideo.id) {
+        hasSavedShowcaseRef.current = completedVideo.id;
+        setTimeout(async () => {
+          // Re-fetch latest video data to get thumbnailUrl after frame extraction
+          let thumbnailUrl = completedVideo.thumbnailUrl || completedVideo.startImageUrl || '';
+          try {
+            const statusResp = await fetch('/api/video/status', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ videoId: completedVideo.id }),
+            });
+            if (statusResp.ok) {
+              const statusResult = await statusResp.json();
+              if (statusResult.success && statusResult.data?.thumbnailUrl) {
+                thumbnailUrl = statusResult.data.thumbnailUrl;
+              }
+            }
+          } catch { /* ignore, use original value */ }
+
+          fetch('/api/showcases/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: completedVideo.prompt?.substring(0, 100) || '',
+              prompt: completedVideo.prompt || '',
+              image: thumbnailUrl,
+              videoUrl: completedVideo.videoUrl,
+              type: 'video',
+              showInGallery: showInGallery ? 1 : 0,
+              model: completedVideo.model || null,
+              parameters: completedVideo.parameters || null,
+            }),
+          }).catch((e) => console.error('Failed to save showcase:', e));
+        }, 5000);
       }
     },
     onFailed: (errorMsg) => {
       setCurrentVideo((prev) => (prev ? { ...prev, status: 'failed', failReason: errorMsg } : null));
       setIsGenerating(false);
       setGenerationProgress('');
+      setProgressPercent(0);
     },
     onProgressUpdate: (message) => {
       setGenerationProgress(message);
+      setProgressPercent((prev) => {
+        if (message === 'Checking generation status...') return Math.max(prev, 15);
+        if (message === 'Video is being generated...') return Math.min(prev + 8, 80);
+        if (message === 'Uploading video...') return Math.max(prev, 85);
+        return Math.min(prev + 3, 95);
+      });
     },
   });
 
@@ -177,6 +206,8 @@ export default function VideoGenerator({
     existingVideoId?: string
   ) => {
     setIsGenerating(true);
+    setProgressPercent(10);
+    hasSavedShowcaseRef.current = null;
 
     const newVideo: GeneratedVideo = {
       id: existingVideoId || Date.now().toString(),
@@ -287,6 +318,7 @@ export default function VideoGenerator({
               video={currentVideo || showcaseAsVideo}
               isGenerating={isGenerating}
               generationProgress={generationProgress}
+              progressPercent={progressPercent}
               onPromptSelect={handlePromptSelect}
             />
           </div>
