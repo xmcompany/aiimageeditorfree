@@ -16,7 +16,19 @@ import {
 } from '@/shared/components/ui/dropdown-menu';
 import { cacheSet } from '@/shared/lib/cache';
 
+/** Do not call useSearchParams / useLocale in the tree when only one locale — avoids Next.js 15 RSC errors. */
 export function LocaleSelector({
+  type = 'icon',
+}: {
+  type?: 'icon' | 'button';
+}) {
+  if (locales.length <= 1) {
+    return null;
+  }
+  return <LocaleSelectorInner type={type} />;
+}
+
+function LocaleSelectorInner({
   type = 'icon',
 }: {
   type?: 'icon' | 'button';
@@ -29,12 +41,10 @@ export function LocaleSelector({
 
   useEffect(() => {
     setMounted(true);
-    // console.log('localeNames (v2):', localeNames, 'locales:', locales);
   }, []);
 
   const handleSwitchLanguage = (value: string) => {
     if (value !== currentLocale) {
-      // Update localStorage to sync with locale detector
       cacheSet('locale', value);
       const query = searchParams?.toString?.() ?? '';
       const href = query ? `${pathname}?${query}` : pathname;
@@ -44,7 +54,6 @@ export function LocaleSelector({
     }
   };
 
-  // Return a placeholder during SSR to avoid hydration mismatch
   if (!mounted) {
     return (
       <Button

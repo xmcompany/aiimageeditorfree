@@ -7,6 +7,36 @@ import { envConfigs } from '@/config';
 import { getLocalPage } from '@/shared/models/post';
 import { getLatestShowcases } from '@/shared/models/showcase';
 
+/** Legacy AI video model marketing pages — hidden (404). */
+const LEGACY_VIDEO_MODEL_SLUGS = new Set([
+  'seedance',
+  'wan',
+  'veo',
+  'hailuo',
+  'happyhorse',
+  'kling',
+  'runway',
+  'grok-imagine',
+]);
+
+/** Image model marketing pages: /{slug} → pages.models.{slug} */
+const IMAGE_MODEL_SLUGS: string[] = [
+  'gpt-4o-image',
+  'seedream-5-lite',
+  'flux-kontext',
+  'nano-banana',
+  'nano-banana-edit',
+  'nano-banana-2',
+  'google-pro-image-to-image',
+];
+
+function toDynamicPageSlug(raw: string): string {
+  if (IMAGE_MODEL_SLUGS.includes(raw)) {
+    return `models.${raw}`;
+  }
+  return raw;
+}
+
 // dynamic page metadata
 export async function generateMetadata({
   params,
@@ -53,13 +83,14 @@ export async function generateMetadata({
   // 2. static page not found, try to get dynamic page metadata from
   // src/config/locale/messages/{locale}/pages/**/*.json
 
-  // dynamic page slug
-  const MODEL_SLUGS_META = ['seedance','veo','hailuo','happyhorse','kling','runway'];
-  const rawMetaSlug = typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
-  const dynamicPageSlug = MODEL_SLUGS_META.includes(rawMetaSlug)
-    ? `models.${rawMetaSlug}`
-    : rawMetaSlug;
+  const rawMetaSlug =
+    typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
 
+  if (LEGACY_VIDEO_MODEL_SLUGS.has(rawMetaSlug)) {
+    notFound();
+  }
+
+  const dynamicPageSlug = toDynamicPageSlug(rawMetaSlug);
   const messageKey = `pages.${dynamicPageSlug}`;
 
   try {
@@ -126,14 +157,14 @@ export default async function DynamicPage({
   // try to get dynamic page content from
   // src/config/locale/messages/{locale}/pages/**/*.json
 
-  // dynamic page slug
-  const MODEL_SLUGS = ['seedance','veo','hailuo','happyhorse','kling','runway'];
-  const rawDynamicSlug = typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
-  // Support /seedance → pages.models.seedance (model pages without /models/ prefix)
-  const dynamicPageSlug = MODEL_SLUGS.includes(rawDynamicSlug)
-    ? `models.${rawDynamicSlug}`
-    : rawDynamicSlug;
+  const rawDynamicSlug =
+    typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
 
+  if (LEGACY_VIDEO_MODEL_SLUGS.has(rawDynamicSlug)) {
+    notFound();
+  }
+
+  const dynamicPageSlug = toDynamicPageSlug(rawDynamicSlug);
   const messageKey = `pages.${dynamicPageSlug}`;
 
   try {
@@ -148,12 +179,13 @@ export default async function DynamicPage({
       let structuredData: Record<string, any> | null = null;
 
       const isModelPage = dynamicPageSlug.startsWith('models.');
-      const isComparePage = dynamicPageSlug === 'compare';
+      const isComparePage =
+        dynamicPageSlug === 'compare' ||
+        dynamicPageSlug === 'compare-image-models';
 
       if (isModelPage) {
         const modelSlug = dynamicPageSlug.replace('models.', '');
 
-        // 从数据库按 tag 查询该模型的视频，注入到 videos section
         if (pageData.sections?.videos) {
           try {
             const dbShowcases = await getLatestShowcases({
@@ -164,26 +196,51 @@ export default async function DynamicPage({
             });
 
             if (dbShowcases.length > 0) {
-              // 数据库有数据，覆盖静态 json 里的视频列表
               pageData.sections.videos.videos = dbShowcases
-                .filter(s => s.videoUrl || s.image)
-                .map(s => ({
+                .filter((s) => s.videoUrl || s.image)
+                .map((s) => ({
                   src: s.videoUrl || s.image,
                   poster: s.videoUrl ? s.image : undefined,
                   prompt: s.prompt || undefined,
                   label: s.title || undefined,
                 }));
             }
-            // 注入模型 tag，供 model-videos 组件构建生成链接
             pageData.sections.videos.tag = modelSlug;
           } catch {
-            // 查询失败时保留静态兜底
+            // keep static fallback
           }
         }
 
-        const modelPageUrl = `${appUrl}/models/${modelSlug}`;
+        if (pageData.sections?.images) {
+          try {
+            const presetGenTag = (pageData.sections.images as { tag?: string }).tag;
+            const dbShowcases = await getLatestShowcases({
+              tags: modelSlug,
+              type: 'image',
+              limit: 12,
+              sortOrder: 'desc',
+            });
+
+            if (dbShowcases.length > 0) {
+              pageData.sections.images.images = dbShowcases
+                .filter((s) => s.image)
+                .map((s) => ({
+                  src: s.image,
+                  prompt: s.prompt || undefined,
+                  label: s.title || undefined,
+                }));
+            }
+            (pageData.sections.images as { tag?: string }).tag =
+              presetGenTag || modelSlug;
+          } catch {
+            // keep static fallback
+          }
+        }
+
+        const modelPageUrl = `${appUrl}/${modelSlug}`;
         const pageTitle = pageData.sections?.hero?.title || pageData.title || '';
-        const pageDesc = pageData.sections?.hero?.description || pageData.description || '';
+        const pageDesc =
+          pageData.sections?.hero?.description || pageData.description || '';
         const metaData = t.raw('metadata') || {};
         const graphItems: any[] = [
           {
@@ -220,11 +277,12 @@ export default async function DynamicPage({
           '@context': 'https://schema.org',
           '@graph': graphItems,
         };
-      } else if (isComparePage) {
+      } else if (dynamicPageSlug === 'compare') {
         const comparePageUrl = `${appUrl}/compare`;
         const pageTitle = pageData.sections?.hero?.title || pageData.title || '';
-        const pageDesc = pageData.sections?.hero?.description || pageData.description || '';
-        const modelSlugs = ['seedance', 'veo', 'hailuo', 'happyhorse'];
+        const pageDesc =
+          pageData.sections?.hero?.description || pageData.description || '';
+        const modelSlugs = ['seedance', 'wan', 'veo', 'hailuo', 'happyhorse'];
 
         structuredData = {
           '@context': 'https://schema.org',
@@ -235,10 +293,34 @@ export default async function DynamicPage({
               description: pageDesc,
               url: comparePageUrl,
               numberOfItems: modelSlugs.length,
-              itemListElement: modelSlugs.map((slug, index) => ({
+              itemListElement: modelSlugs.map((s, index) => ({
                 '@type': 'ListItem',
                 position: index + 1,
-                url: `${appUrl}/models/${slug}`,
+                url: `${appUrl}/${s}`,
+              })),
+            },
+          ],
+        };
+      } else if (dynamicPageSlug === 'compare-image-models') {
+        const comparePageUrl = `${appUrl}/compare-image-models`;
+        const pageTitle = pageData.sections?.hero?.title || pageData.title || '';
+        const pageDesc =
+          pageData.sections?.hero?.description || pageData.description || '';
+        const modelSlugs = [...IMAGE_MODEL_SLUGS];
+
+        structuredData = {
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'ItemList',
+              name: pageTitle,
+              description: pageDesc,
+              url: comparePageUrl,
+              numberOfItems: modelSlugs.length,
+              itemListElement: modelSlugs.map((s, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                url: `${appUrl}/${s}`,
               })),
             },
           ],

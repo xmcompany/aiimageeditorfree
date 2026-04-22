@@ -21,9 +21,6 @@ export function Time({
   }
 
   let locale = useLocale();
-  if (locale === 'zh') {
-    locale = 'zh-cn';
-  }
 
   return (
     <div className={className}>

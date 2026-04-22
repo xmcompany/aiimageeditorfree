@@ -2,104 +2,24 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "AI Video Generator Free",
+      "title": "AI Image Editor Free",
       "logo": {
         "src": "/logo.png",
-        "alt": "AI Video Generator Free"
+        "alt": "AI Image Editor Free"
       },
       "url": "/"
     },
     "nav": {
       "items": [
         {
-          "title": "Create",
-          "icon": "Sparkles",
-          "children": [
-            {
-              "title": "AI Video Generator",
-              "url": "/ai-video-generator",
-              "icon": "Clapperboard",
-              "description": "Text to video, image to video"
-            },
-            {
-              "title": "AI Image Generator",
-              "url": "/ai-image-generator",
-              "icon": "Image",
-              "description": "Text to image, image editing"
-            }
-          ]
+          "title": "AI Image Generator",
+          "url": "/ai-image-generator",
+          "icon": "Image"
         },
         {
-          "title": "Prompt Library",
-          "icon": "Wand",
-          "children": [
-            {
-              "title": "AI Video Prompts",
-              "url": "/ai-video-prompts",
-              "icon": "Clapperboard",
-              "description": "AI video prompts for text to video"
-            },
-            {
-              "title": "AI Image Prompts",
-              "url": "/ai-image-prompts",
-              "icon": "Image",
-              "description": "AI image prompts for text to image"
-            }
-          ]
-        },
-        {
-          "title": "Showcases",
-          "icon": "Image",
-          "children": [
-            {
-              "title": "AI Video Showcases",
-              "url": "/ai-video-showcases",
-              "icon": "Clapperboard",
-              "description": "Stunning AI video generations"
-            },
-            {
-              "title": "AI Image Showcases",
-              "url": "/ai-image-showcases",
-              "icon": "Image",
-              "description": "Excellent AI image generations"
-            }
-          ]
-        },
-        {
-          "title": "AI Models",
-          "icon": "Cpu",
-          "children": [
-            {
-              "title": "Seedance 2.0",
-              "url": "/seedance",
-              "icon": "Clapperboard",
-              "description": "ByteDance Seedance 2.0 video model"
-            },
-            {
-              "title": "Veo 3.1",
-              "url": "/veo",
-              "icon": "Clapperboard",
-              "description": "Google Veo 3.1 video model"
-            },
-            {
-              "title": "Hailuo 2.3",
-              "url": "/hailuo",
-              "icon": "Zap",
-              "description": "MiniMax Hailuo video generation"
-            },
-            {
-              "title": "HappyHorse 1.0",
-              "url": "/happyhorse",
-              "icon": "Award",
-              "description": "#1 Ranked open-source AI video model"
-            },
-            {
-              "title": "Compare All Models",
-              "url": "/compare",
-              "icon": "BarChart3",
-              "description": "Side-by-side AI video model comparison"
-            }
-          ]
+          "title": "Compare Models",
+          "url": "/compare-image-models",
+          "icon": "BarChart3"
         },
         {
           "title": "Pricing",
@@ -128,51 +48,51 @@
     },
     "show_sign": true,
     "show_theme": true,
-    "show_locale": true
+    "show_locale": false
   },
   "hero": {
     "id": "hero",
-    "title": "AI Video Generator Free — Create Stunning AI Videos Online",
-    "description": "Turn text or images into cinematic AI videos in seconds with our AI video generator. Sign up and get bonus credits to start creating — no credit card required.",
-    "tip": "🎁 New users get free credits instantly upon sign-up. Start generating AI videos for free now.",
+    "title": "AI Image Editor Free — Edit & Create Images with AI Online",
+    "description": "Edit photos and generate new images with AI in seconds. Sign up and get bonus credits to start — no credit card required.",
+    "tip": "🎁 New users get free credits instantly upon sign-up. Start using our AI image editor for free now.",
     "buttons": [
       {
-        "title": "Generate AI Video",
-        "icon": "Video",
-        "url": "/ai-video-generator",
+        "title": "Try AI Image Generator",
+        "icon": "Image",
+        "url": "/ai-image-generator",
         "target": "_self",
         "variant": "default",
         "size": "lg"
       },
       {
-        "title": "View AI Video Showcases",
-        "icon": "Play",
-        "url": "/ai-video-showcases",
+        "title": "View AI Image Showcases",
+        "icon": "Image",
+        "url": "/ai-image-showcases",
         "target": "_self",
         "variant": "outline",
         "size": "lg"
       }
     ],
     "show_avatars": false,
-    "avatars_tip": "Trusted by creators worldwide",
+    "avatars_tip": "1,500,000+ creators' choice",
     "show_award": false,
     "show_hero_input": false,
     "show_bg_spline": false,
-    "highlight_text": "AI Video Generator Free",
+    "highlight_text": "AI Image Editor Free",
     "background_image": {
       "src": "/imgs/bg/girl.jpeg",
-      "alt": "AI video generator free online"
+      "alt": "AI image editor free online"
     }
   },
   "showcases-flow": {
     "id": "showcases",
-    "title": "AI Video Generator Free — Real AI Video Results from Real Creators",
-    "description": "Browse AI-generated videos created by our community using the AI Video Generator Free. Every video below was made with text prompts — no editing skills needed."
+    "title": "AI Image Editor Free — Real AI Image Results from Real Creators",
+    "description": "Browse AI-generated images from our community. Every example below was made with text prompts — no design skills needed."
   },
   "logos": {
     "id": "logos",
     "title": "World-Class AI Video Generation Models",
-    "description": "Powered by Seedance 2.0, Kling 3.0, HappyHorse 1.0 and more — the best AI video generator models in one free platform.",
+    "description": "Powered by Seedance 2.0, Wan 2.7, Kling 3.0, HappyHorse 1.0 and more — the best AI video generator models in one free platform.",
     "hidden": true
   },
   "showcase": {
@@ -374,22 +294,22 @@
   },
   "features": {
     "id": "features",
-    "title": "AI Video Generator Core Features",
-    "description": "Everything you need to create professional AI videos — free to start with sign-up credits.",
+    "title": "AI Image Editor Core Features",
+    "description": "Everything you need to create and refine images with AI — free to start with sign-up credits.",
     "items": [
       {
-        "title": "Text-to-Video AI Generation",
-        "description": "Turn any text prompt into a cinematic AI video. Just describe your scene and let the AI video generator do the rest.",
-        "icon": "RiVideoAddLine"
+        "title": "Text-to-Image AI Generation",
+        "description": "Describe what you want and generate new images from text prompts. Pick a style and iterate until it matches your vision.",
+        "icon": "RiImageAddLine"
       },
       {
-        "title": "Image-to-Video AI Conversion",
-        "description": "Upload any photo and our AI Video Generator Free animates it with realistic motion and cinematic effects.",
+        "title": "AI Photo Editing & Enhancement",
+        "description": "Upload a photo and edit or enhance it with AI — adjust details, style, and quality without complex software.",
         "icon": "RiMagicLine"
       },
       {
-        "title": "AI Character Consistency Across Videos",
-        "description": "Maintain consistent faces, outfits, and styles across all your AI video generations.",
+        "title": "Consistent Style & Characters",
+        "description": "Keep colors, subjects, and character looks aligned across multiple AI image generations for a cohesive set.",
         "icon": "RiUserStarLine"
       }
     ]
@@ -462,7 +382,7 @@
       },
       {
         "title": "What AI video models does AI Video Generator Free support?",
-        "description": "AI Video Generator Free supports multiple leading AI video models including Seedance 2.0, Kling 3.0, and HappyHorse 1.0. Each model offers unique strengths for text-to-video and image-to-video generation."
+        "description": "AI Video Generator Free supports multiple leading AI video models including Seedance 2.0, Wan 2.7, Kling 3.0, and HappyHorse 1.0. Each model offers unique strengths for text-to-video and image-to-video generation."
       },
       {
         "title": "Can I use AI Video Generator Free for commercial projects?",
@@ -473,7 +393,7 @@
   "cta": {
     "id": "cta",
     "title": "Start Creating with AI Video Generator Free Today",
-    "description": "Sign up now and get free credits to generate your first AI video instantly — no credit card needed.",
+    "description": "Join 500,000+ creators. Sign up now and get free credits to generate your first AI video instantly — no credit card needed.",
     "buttons": [
       {
         "title": "Get Free AI Video Credits",
@@ -501,43 +421,63 @@
           "title": "Product",
           "children": [
             {
-              "title": "ai video generator free",
-              "url": "/ai-video-generator",
+              "title": "AI Image Generator",
+              "url": "/ai-image-generator",
               "target": "_self"
             },
             {
-              "title": "AI Image Generator",
-              "url": "/ai-image-generator",
+              "title": "AI Image Prompts",
+              "url": "/ai-image-prompts",
+              "target": "_self"
+            },
+            {
+              "title": "AI Image Showcases",
+              "url": "/ai-image-showcases",
               "target": "_self"
             }
           ]
         },
         {
-          "title": "AI Video Models",
+          "title": "AI Image Models",
           "children": [
             {
-              "title": "Seedance 2.0",
-              "url": "/seedance",
+              "title": "Compare All",
+              "url": "/compare-image-models",
               "target": "_self"
             },
             {
-              "title": "Veo 3.1",
-              "url": "/veo",
+              "title": "GPT-4o Image",
+              "url": "/gpt-4o-image",
               "target": "_self"
             },
             {
-              "title": "Hailuo 2.3",
-              "url": "/hailuo",
+              "title": "Seedream 5 Lite",
+              "url": "/seedream-5-lite",
               "target": "_self"
             },
             {
-              "title": "HappyHorse 1.0",
-              "url": "/happyhorse",
+              "title": "Flux Kontext",
+              "url": "/flux-kontext",
               "target": "_self"
             },
             {
-              "title": "Compare All Models",
-              "url": "/compare",
+              "title": "Nano Banana",
+              "url": "/nano-banana",
+              "target": "_self"
+            },
+            {
+              "title": "Nano Banana Edit",
+              "url": "/nano-banana-edit",
+              "target": "_self"
+            },
+            {
+              "title": "Nano Banana 2",
+              "url": "/nano-banana-2",
+              "target": "_self"
+            },
+            {
+              "title": "Pro Image-to-Image",
+              "url": "/google-pro-image-to-image",
               "target": "_self"
             }
           ]
@@ -567,7 +507,7 @@
       ]
     },
     "show_theme": true,
-    "show_locale": true,
+    "show_locale": false,
     "show_built_with": false
   }
 }

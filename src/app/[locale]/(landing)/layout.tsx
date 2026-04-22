@@ -2,6 +2,9 @@ import { ReactNode, Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
 
 import { getThemeLayout } from '@/core/theme';
+
+/** Avoid stale cached header/footer when editing `landing.json` (next-intl messages). */
+export const dynamic = 'force-dynamic';
 import { LocaleDetector, TopBanner } from '@/shared/blocks/common';
 import { ReferralTracker } from '@/shared/components/referral-tracker';
 import {

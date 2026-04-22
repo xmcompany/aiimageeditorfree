@@ -44,7 +44,7 @@ export default async function LandingPage({
     excludeTags: 'hairstyles',
     sortOrder: 'desc',
     limit: 20,
-    type: 'video',
+    type: 'image',
   });
 
   const initialShowcases = rawShowcases
@@ -67,8 +67,6 @@ export default async function LandingPage({
     'hero',
     'showcases-flow',
     'logos',
-    'showcase',
-    'video-models',
     'introduce',
     'benefits',
     'usage',
@@ -97,7 +95,7 @@ export default async function LandingPage({
               sortOrder="desc"
               hideCreateButton={true}
               initialItems={initialShowcases}
-              type="video"
+              type="image"
             />
           ),
         };
@@ -119,7 +117,7 @@ export default async function LandingPage({
         const sectionData = t.raw(section) as Section;
         // Inject dynamic initial credits amount into hero tip
         if (section === 'hero' && sectionData && initialCreditsAmount > 0) {
-          (sectionData as any).tip = `🎁 New users get ${initialCreditsAmount} free credits instantly upon sign-up. <a href="/blog/how-to-create-ai-videos-for-free" class="underline hover:opacity-80">How to Create AI Videos for Free →</a>`;
+          (sectionData as any).tip = `🎁 New users get ${initialCreditsAmount} free credits instantly upon sign-up. <a href="/ai-image-generator" class="underline hover:opacity-80">Start editing images →</a>`;
         }
         // Inject dynamic credits amount into credits-ways section
         if (section === 'credits-ways' && sectionData) {
@@ -140,10 +138,10 @@ export default async function LandingPage({
 
   // Structured data (application/ld+json)
   const appUrl = envConfigs.app_url || 'https://aivideogeneratorfree.ai';
-  const appName = envConfigs.app_name || 'AI Video Generator Free';
+  const appName = envConfigs.app_name || 'AI Image Editor Free';
   const freeOfferDescription = initialCreditsAmount > 0
-    ? `Sign up free and get ${initialCreditsAmount} bonus credits to generate AI videos instantly. No credit card required.`
-    : 'Sign up free and get bonus credits to generate AI videos instantly. No credit card required.';
+    ? `Sign up free and get ${initialCreditsAmount} bonus credits to create and edit AI images instantly. No credit card required.`
+    : 'Sign up free and get bonus credits to create and edit AI images instantly. No credit card required.';
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -153,12 +151,12 @@ export default async function LandingPage({
         '@id': `${appUrl}/#website`,
         url: appUrl,
         name: appName,
-        description: 'Free AI video generator — create cinematic videos from text or images online.',
+        description: 'Free AI image editor online — create and edit images with AI.',
         potentialAction: {
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: `${appUrl}/prompts?q={search_term_string}`,
+            urlTemplate: `${appUrl}/ai-image-prompts?q={search_term_string}`,
           },
           'query-input': 'required name=search_term_string',
         },
@@ -166,7 +164,7 @@ export default async function LandingPage({
       {
         '@type': 'WebApplication',
         '@id': `${appUrl}/#webapp`,
-        name: `${appName} — Free AI Video Generator`,
+        name: `${appName} — Free AI Image Editor`,
         url: appUrl,
         applicationCategory: 'MultimediaApplication',
         operatingSystem: 'Web',
@@ -177,11 +175,10 @@ export default async function LandingPage({
           description: freeOfferDescription,
         },
         featureList: [
-          'Free AI video generation from text prompts',
-          'Free image to video AI conversion',
-          'AI image generation and editing',
-          'Character consistency across AI videos',
-          'HD watermark-free export',
+          'Free AI image generation from text prompts',
+          'AI photo editing and enhancement',
+          'Text-to-image and image-to-image workflows',
+          'HD export with sign-up credits',
         ],
         screenshot: `${appUrl}/preview.png`,
       },
@@ -190,7 +187,7 @@ export default async function LandingPage({
         mainEntity: [
           {
             '@type': 'Question',
-            name: 'Is this AI video generator really free?',
+            name: 'Is this AI image editor really free?',
             acceptedAnswer: {
               '@type': 'Answer',
               text: freeOfferDescription,
@@ -198,18 +195,18 @@ export default async function LandingPage({
           },
           {
             '@type': 'Question',
-            name: 'How do I generate AI videos from text for free?',
+            name: 'How do I edit or generate images with AI for free?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Sign up for a free account, go to the AI Video Generator, type your text prompt describing the scene, select a model, and click generate. Your free credits cover the generation instantly.',
+              text: 'Sign up for a free account, open the AI Image Generator, enter a prompt or upload an image, pick a model, and generate. Your free credits cover the generation.',
             },
           },
           {
             '@type': 'Question',
-            name: 'Can I convert an image to a video for free using AI?',
+            name: 'What can I do with AI Image Editor Free?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Yes. Upload any photo to the Image to Video tool and our free AI video generator animates it with cinematic motion. Supported formats include JPG, PNG, and HEIC.',
+              text: 'Create new images from text, edit existing photos, and browse prompts and showcases — all in one place with free starter credits.',
             },
           },
         ],

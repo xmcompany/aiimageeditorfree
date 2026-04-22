@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 import { Link, usePathname } from '@/core/i18n/navigation';
@@ -313,7 +313,11 @@ export function Header({ header }: { header: HeaderType }) {
                     ))}
 
                   {header.show_theme ? <ThemeToggler /> : null}
-                  {header.show_locale ? <LocaleSelector /> : null}
+                  {header.show_locale ? (
+                    <Suspense fallback={null}>
+                      <LocaleSelector />
+                    </Suspense>
+                  ) : null}
                   <div className="flex-1 md:hidden"></div>
                   {header.show_sign ? (
                     <SignUser userNav={header.user_nav} />
