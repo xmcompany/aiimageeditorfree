@@ -73,6 +73,18 @@ const MAX_PROMPT_LENGTH = 2000;
 
 const MODEL_OPTIONS = [
   {
+    value: 'gpt-image-2-text-to-image',
+    label: 'GPT Image 2',
+    scenes: ['text-to-image'],
+    schema: 'gpt2-t2i' as const,
+  },
+  {
+    value: 'gpt-image-2-image-to-image',
+    label: 'GPT Image 2',
+    scenes: ['image-to-image'],
+    schema: 'gpt2-i2i' as const,
+  },
+  {
     value: 'nano-banana-2',
     label: 'Nano Banana 2',
     scenes: ['text-to-image', 'image-to-image'],
@@ -347,8 +359,11 @@ export function ImageGenerator({
     const isPro = model === 'nano-banana-pro';
     const isV2 = model === 'nano-banana-2';
     const isEdit = model === 'google/nano-banana-edit';
+    const isGptImage2 = model === 'gpt-image-2-text-to-image' || model === 'gpt-image-2-image-to-image';
 
-    if (isEdit) {
+    if (isGptImage2) {
+      setCostCredits(3); // GPT Image 2: 3 credits
+    } else if (isEdit) {
       setCostCredits(3); // 3 kie API cost, ~4.67x markup
     } else if (isPro) {
       setCostCredits(8); // 8 kie API cost (1/2K), ~4.67x markup
@@ -697,7 +712,16 @@ export function ImageGenerator({
       const options: any = {};
       const modelOption = MODEL_OPTIONS.find((o) => o.value === model);
 
-      if (modelOption?.schema === 'v1') {
+      if (modelOption?.schema === 'gpt2-t2i') {
+        // GPT Image 2 text-to-image: aspect_ratio only
+        options.aspect_ratio = 'auto';
+      } else if (modelOption?.schema === 'gpt2-i2i') {
+        // GPT Image 2 image-to-image: input_urls + aspect_ratio
+        if (!isTextToImageMode) {
+          options.input_urls = referenceImageUrls;
+        }
+        options.aspect_ratio = 'auto';
+      } else if (modelOption?.schema === 'v1') {
         // nano-banana / nano-banana-edit use image_urls + image_size
         if (!isTextToImageMode) {
           options.image_urls = referenceImageUrls;

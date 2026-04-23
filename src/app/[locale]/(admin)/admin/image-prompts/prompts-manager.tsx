@@ -68,6 +68,7 @@ interface GenerateTask {
 }
 
 const IMAGE_MODELS = [
+  { value: 'gpt-image-2-text-to-image', label: 'GPT Image 2 (Text)', provider: 'kie' },
   { value: 'nano-banana-2', label: 'Nano Banana 2', provider: 'kie' },
   { value: 'nano-banana-pro', label: 'Nano Banana Pro', provider: 'kie' },
   { value: 'google/nano-banana', label: 'Nano Banana V1', provider: 'kie' },

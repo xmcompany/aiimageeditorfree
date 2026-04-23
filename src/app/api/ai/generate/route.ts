@@ -59,8 +59,11 @@ export async function POST(request: Request) {
       const isV2 = model === 'nano-banana-2';
       const isEdit = model === 'google/nano-banana-edit';
       const isNanoV1 = model === 'google/nano-banana';
+      const isGptImage2 = model === 'gpt-image-2-text-to-image' || model === 'gpt-image-2-image-to-image';
 
-      if (isEdit) {
+      if (isGptImage2) {
+        costCredits = 3; // GPT Image 2: 3 credits
+      } else if (isEdit) {
         costCredits = 3; // 3 kie API cost, ~4.67x markup
       } else if (isPro) {
         costCredits = 8; // 8 kie API cost (1/2K), ~4.67x markup

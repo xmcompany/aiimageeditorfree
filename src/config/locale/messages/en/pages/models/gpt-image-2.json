@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "title": "GPT Image 2 AI Image Generator | AI Video Generator Free",
+    "description": "Try GPT Image 2 AI image generator free online. OpenAI's latest image generation model with text-to-image and image-to-image capabilities. No credit card required."
+  },
+  "page": {
+    "title": "GPT Image 2 AI Image Generator",
+    "description": "GPT Image 2 is OpenAI's latest AI image generation model supporting text-to-image and image-to-image creation with exceptional prompt understanding and photorealistic output.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "GPT Image 2 AI Image Generator — Free Online",
+        "description": "Generate stunning AI images from text descriptions or reference photos using GPT Image 2 — OpenAI's most capable image model. Exceptional prompt adherence, photorealistic quality, and creative flexibility. Sign up free and start creating today.",
+        "highlight_text": "GPT Image 2",
+        "tip": "<strong>Powered by GPT Image 2</strong> — Free credits available on sign-up.",
+        "buttons": [
+          {
+            "title": "Generate AI Image with GPT Image 2",
+            "icon": "Image",
+            "url": "/ai-image-generator",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "Explore AI Image Models",
+            "icon": "ArrowLeft",
+            "url": "/ai-image-generator",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": {
+          "src": "/imgs/bg/girl.jpeg",
+          "alt": "GPT Image 2 AI image generator"
+        }
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "GPT Image 2 AI Image Generation Capabilities",
+        "description": "Built on OpenAI's advanced language model foundation, GPT Image 2 delivers superior prompt understanding, photorealistic output, and versatile creative control for both text-to-image and image-to-image workflows.",
+        "items": [
+          {
+            "title": "Text to Image Generation",
+            "description": "Describe your vision in natural language and the model renders it with remarkable accuracy. GPT Image 2 excels at interpreting complex, multi-element prompts that other models struggle with.",
+            "icon": "Type"
+          },
+          {
+            "title": "Image to Image Editing",
+            "description": "Upload a reference photo and guide the transformation with a text instruction. The model preserves context and style while applying your requested changes seamlessly.",
+            "icon": "Image"
+          },
+          {
+            "title": "Advanced Prompt Understanding",
+            "description": "Powered by OpenAI's language model, this generator understands nuanced descriptions, spatial relationships, and artistic styles — producing outputs that closely match your intent.",
+            "icon": "Brain"
+          },
+          {
+            "title": "Photorealistic Quality",
+            "description": "Every generated image features accurate lighting, fine textures, and strong compositional balance. Ideal for product mockups, concept art, social media visuals, and creative projects.",
+            "icon": "Sparkles"
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "GPT Image 2 AI Image Generator FAQ",
+        "description": "Common questions about using GPT Image 2 for AI image generation on our platform.",
+        "items": [
+          {
+            "question": "What is GPT Image 2?",
+            "answer": "GPT Image 2 is OpenAI's latest image generation model. It supports both text-to-image and image-to-image creation, combining strong language understanding with high-fidelity visual synthesis to produce photorealistic and creative outputs."
+          },
+          {
+            "question": "Can I use GPT Image 2 for free?",
+            "answer": "Yes. New users receive free credits on sign-up, which can be used to generate images with this model immediately. No credit card is required to get started."
+          },
+          {
+            "question": "How many credits does it cost per image?",
+            "answer": "Each generation costs 3 credits, making it one of the most affordable high-quality options available on the platform."
+          },
+          {
+            "question": "How does GPT Image 2 compare to other image models?",
+            "answer": "Compared to models like Nano Banana, GPT Image 2 offers stronger prompt adherence and more accurate rendering of complex scenes. It is particularly well-suited for detailed, instruction-heavy prompts where precision matters."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Start Generating AI Images with GPT Image 2 Free",
+        "description": "Sign up now, claim your free credits, and create your first image with GPT Image 2 in seconds. No credit card required.",
+        "buttons": [
+          {
+            "title": "Try GPT Image 2 Free",
+            "url": "/ai-image-generator",
+            "target": "_self",
+            "icon": "Image"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}
