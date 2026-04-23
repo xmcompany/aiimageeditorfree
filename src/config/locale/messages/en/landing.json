@@ -17,14 +17,49 @@
           "icon": "Image"
         },
         {
-          "title": "GPT Image 2",
-          "url": "/gpt-image-2",
-          "icon": "Image"
-        },
-        {
-          "title": "Compare Models",
-          "url": "/compare-image-models",
-          "icon": "BarChart3"
+          "title": "AI Models",
+          "icon": "Cpu",
+          "children": [
+            {
+              "title": "GPT Image 2",
+              "url": "/gpt-image-2",
+              "icon": "Image",
+              "description": "OpenAI GPT Image 2 generation"
+            },
+            {
+              "title": "GPT-4o Image",
+              "url": "/gpt-4o-image",
+              "icon": "Image",
+              "description": "OpenAI GPT-4o image generation"
+            },
+            {
+              "title": "Nano Banana 2",
+              "url": "/nano-banana-2",
+              "icon": "Image",
+              "description": "Google Nano Banana 2 generation"
+            },
+            {
+              "title": "Nano Banana Pro",
+              "url": "/nano-banana",
+              "icon": "Image",
+              "description": "Google Nano Banana Pro generation"
+            },
+            {
+              "title": "Flux Kontext",
+              "url": "/flux-kontext",
+              "icon": "Image",
+              "description": "Black Forest Labs Flux Kontext"
+            },
+            {
+              "separator": true
+            },
+            {
+              "title": "Compare All Models",
+              "url": "/compare-image-models",
+              "icon": "BarChart3",
+              "description": "Side-by-side image model comparison"
+            }
+          ]
         },
         {
           "title": "Pricing",
