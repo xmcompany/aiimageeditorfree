@@ -154,6 +154,9 @@ export function ImageGenerator({
   const [costCredits, setCostCredits] = useState<number>(5);
   const [provider] = useState('kie');
   const [model, setModel] = useState(MODEL_OPTIONS[0]?.value ?? '');
+  const [resolution, setResolution] = useState('1K');
+  const [aspectRatio, setAspectRatio] = useState('1:1');
+  const [outputFormat, setOutputFormat] = useState('png');
   // Set default values only when no promptKey is provided
   const [prompt, setPrompt] = useState(
     promptKey || envConfigs.default_image_prompt
@@ -326,14 +329,20 @@ export function ImageGenerator({
     }
   };
 
-  // Update credits when model changes
+  // Update credits when model or resolution changes
   useEffect(() => {
     const modelOption = MODEL_OPTIONS.find((o) => o.value === model);
     if (!modelOption) { setCostCredits(5); return; }
 
-    // v2 schema models use resolution '1K' by default
-    setCostCredits(calculateImageCredits(model, '1K'));
-  }, [model, activeTab]);
+    // Reset resolution to 1K when switching models (Pro has no 2K)
+    if (modelOption.schema !== 'v2') {
+      setResolution('1K');
+    } else if (model === 'nano-banana-pro' && resolution === '2K') {
+      setResolution('1K');
+    }
+
+    setCostCredits(calculateImageCredits(model, resolution));
+  }, [model, resolution, activeTab]);
 
   const taskStatusLabel = useMemo(() => {
     if (!taskStatus) {
@@ -701,8 +710,9 @@ export function ImageGenerator({
         } else {
           options.image_input = [];
         }
-        options.aspect_ratio = 'auto';
-        options.resolution = '1K';
+        options.aspect_ratio = aspectRatio;
+        options.resolution = resolution;
+        options.output_format = outputFormat;
       }
 
       const isDebugMock = 
@@ -879,6 +889,61 @@ export function ImageGenerator({
                       </SelectContent>
                     </Select>
                   </div>
+
+                  {/* Aspect Ratio / Resolution / Output Format for v2 schema models */}
+                  {(() => {
+                    const currentModelOption = MODEL_OPTIONS.find((o) => o.value === model);
+                    if (currentModelOption?.schema !== 'v2') return null;
+                    return (
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="space-y-2">
+                          <Label className="text-foreground/80 text-xs font-bold ml-1 uppercase tracking-widest">
+                            {t('form.aspect_ratio')}
+                          </Label>
+                          <Select value={aspectRatio} onValueChange={setAspectRatio}>
+                            <SelectTrigger className="bg-muted/30 dark:bg-black/40 rounded-2xl h-10 border border-border/10 dark:border-zinc-800 text-foreground text-sm">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {['1:1', '16:9', '9:16', '4:3', '3:4', '3:2', '2:3'].map((v) => (
+                                <SelectItem key={v} value={v}>{v}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-2">
+                          <Label className="text-foreground/80 text-xs font-bold ml-1 uppercase tracking-widest">
+                            {t('form.resolution')}
+                          </Label>
+                          <Select value={resolution} onValueChange={setResolution}>
+                            <SelectTrigger className="bg-muted/30 dark:bg-black/40 rounded-2xl h-10 border border-border/10 dark:border-zinc-800 text-foreground text-sm">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {(model === 'nano-banana-2' ? ['1K', '2K', '4K'] : ['1K', '4K']).map((v) => (
+                                <SelectItem key={v} value={v}>{v}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-2">
+                          <Label className="text-foreground/80 text-xs font-bold ml-1 uppercase tracking-widest">
+                            {t('form.output_format')}
+                          </Label>
+                          <Select value={outputFormat} onValueChange={setOutputFormat}>
+                            <SelectTrigger className="bg-muted/30 dark:bg-black/40 rounded-2xl h-10 border border-border/10 dark:border-zinc-800 text-foreground text-sm">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {['png', 'jpg', 'webp'].map((v) => (
+                                <SelectItem key={v} value={v}>{v.toUpperCase()}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+                    );
+                  })()}
 
                   {!isTextToImageMode && (
                     <div className="space-y-3 animate-in fade-in slide-in-from-top-4 duration-500">
