@@ -39,6 +39,9 @@ export function Footer({ footer }: { footer: FooterType }) {
 
                 <div className="flex min-w-0 flex-wrap gap-4 sm:flex-col">
                   {item.children?.map((subItem, iidx) => (
+                    subItem.separator ? (
+                      <hr key={iidx} aria-hidden className="w-full border-t border-border/50" />
+                    ) : (
                     <Link
                       key={iidx}
                       href={subItem.url || ''}
@@ -47,6 +50,7 @@ export function Footer({ footer }: { footer: FooterType }) {
                     >
                       <span className="break-words">{subItem.title || ''}</span>
                     </Link>
+                    )
                   ))}
                 </div>
               </div>

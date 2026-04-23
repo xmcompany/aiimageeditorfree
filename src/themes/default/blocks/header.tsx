@@ -119,6 +119,9 @@ export function Header({ header }: { header: HeaderType }) {
                   <div className="border-foreground/5 bg-card ring-foreground/5 rounded-[calc(var(--radius)-2px)] border border-transparent p-2 shadow ring-1">
                     <ul className="mt-1 space-y-2">
                       {item.children?.map((subItem: NavItem, index: number) => (
+                        subItem.separator ? (
+                          <li key={index} aria-hidden className="my-1 border-t border-border/50" />
+                        ) : (
                         <ListItem
                           key={index}
                           href={subItem.url || ''}
@@ -130,6 +133,7 @@ export function Header({ header }: { header: HeaderType }) {
                             <SmartIcon name={subItem.icon as string} />
                           )}
                         </ListItem>
+                        )
                       ))}
                     </ul>
                   </div>
@@ -169,6 +173,9 @@ export function Header({ header }: { header: HeaderType }) {
                     <AccordionContent className="pb-5">
                       <ul>
                         {item.children?.map((subItem: NavItem, iidx) => (
+                          subItem.separator ? (
+                            <li key={iidx} aria-hidden className="my-1 border-t border-border/50" />
+                          ) : (
                           <li key={iidx}>
                             <Link
                               href={subItem.url || ''}
@@ -186,6 +193,7 @@ export function Header({ header }: { header: HeaderType }) {
                               <div className="text-base">{subItem.title}</div>
                             </Link>
                           </li>
+                          )
                         ))}
                       </ul>
                     </AccordionContent>

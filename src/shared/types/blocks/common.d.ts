@@ -35,6 +35,7 @@ export interface NavItem {
   image?: Image;
   is_expand?: boolean;
   is_active?: boolean;
+  separator?: boolean;
   children?: NavItem[];
   className?: string;
 }

@@ -94,6 +94,21 @@
               "description": "#1 Ranked open-source AI video model"
             },
             {
+              "separator": true
+            },
+            {
+              "title": "GPT Image 2",
+              "url": "/models/gpt-image-2",
+              "icon": "Image",
+              "description": "OpenAI GPT Image 2 image generation"
+            },
+            {
+              "title": "Nano Banana",
+              "url": "/models/nano-banana",
+              "icon": "Image",
+              "description": "Google Nano Banana image generation"
+            },
+            {
               "title": "Compare All Models",
               "url": "/compare",
               "icon": "BarChart3",
@@ -533,6 +548,19 @@
             {
               "title": "HappyHorse 1.0",
               "url": "/happyhorse",
+              "target": "_self"
+            },
+            {
+              "separator": true
+            },
+            {
+              "title": "GPT Image 2",
+              "url": "/models/gpt-image-2",
+              "target": "_self"
+            },
+            {
+              "title": "Nano Banana",
+              "url": "/models/nano-banana",
               "target": "_self"
             },
             {
