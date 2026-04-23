@@ -866,6 +866,21 @@ export function calculateImageCredits(model: string, resolution?: string): numbe
   return config.calculateCredits({ resolution: resolution || '1K' });
 }
 
+// Helper function to get image model options for admin prompts-manager (with provider)
+export function getImageModelAdminOptions(): Array<{ value: string; label: string; provider: string }> {
+  return Object.values(MODEL_CONFIGS)
+    .filter((m) => m.mediaType === 'image')
+    .filter((m, i, arr) => arr.findIndex((a) => a.id === m.id) === i)
+    .map((m) => ({ value: m.modelName, label: m.name, provider: m.provider }));
+}
+
+// Helper function to get video model options for admin prompts-manager (with provider)
+export function getVideoModelAdminOptions(): Array<{ value: string; label: string; provider: string }> {
+  return Object.values(MODEL_CONFIGS)
+    .filter((m) => m.mediaType === 'video')
+    .map((m) => ({ value: m.id, label: m.name, provider: m.provider }));
+}
+
 // Helper function to get default parameters for a model from schema
 export function getModelDefaults(modelId: string): Record<string, any> {
   const config = getModelConfig(modelId);

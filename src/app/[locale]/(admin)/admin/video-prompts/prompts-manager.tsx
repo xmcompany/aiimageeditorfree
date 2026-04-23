@@ -21,6 +21,7 @@ import {
 import { Badge } from '@/shared/components/ui/badge';
 import { cn } from '@/shared/lib/utils';
 import { Link } from '@/core/i18n/navigation';
+import { getVideoModelAdminOptions } from '@/config/model-config';
 
 interface PromptItem {
   id: string;
@@ -68,15 +69,7 @@ function saveStoredTasks(promptId: string, tasks: GenerateTask[]) {
   }
 }
 
-const VIDEO_MODELS = [
-  { value: 'veo_3_1_lite', label: 'Veo 3.1 Lite', provider: 'kie' },
-  { value: 'veo_3_1_fast', label: 'Veo 3.1 Fast', provider: 'kie' },
-  { value: 'veo_3_1_quality', label: 'Veo 3.1 Quality', provider: 'kie' },
-  { value: 'seedance', label: 'Seedance 2.0 Fast', provider: 'kie' },
-  { value: 'seedance_standard', label: 'Seedance 2.0 Standard', provider: 'kie' },
-  { value: 'hailuo', label: 'Hailuo 2.3', provider: 'kie' },
-  { value: 'hailuo_02', label: 'Hailuo 02', provider: 'kie' },
-];
+const VIDEO_MODELS = getVideoModelAdminOptions();
 
 export function VideoPromptsManager({ initialData }: { initialData: PromptItem[] }) {
   const [prompts, setPrompts] = useState<PromptItem[]>(initialData);
