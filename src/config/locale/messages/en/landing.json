@@ -114,6 +114,8 @@
               "icon": "Image",
               "description": "Google Nano Banana image generation"
             }
+          ]
+        },
         {
           "title": "Pricing",
           "url": "/pricing",
