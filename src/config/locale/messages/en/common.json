@@ -85,6 +85,7 @@
     "no_permission": "No permission",
     "not_found": "Not found",
     "failed": "Operation failed",
-    "success": "Operation successful"
+    "success": "Operation successful",
+    "content_violation": "Content violates our policies and cannot be generated"
   }
 }

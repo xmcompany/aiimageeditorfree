@@ -8,6 +8,7 @@ import { getRemainingCredits } from '@/shared/models/credit';
 import { getUserInfo } from '@/shared/models/user';
 import { getAIService } from '@/shared/services/ai';
 import { getStorageService } from '@/shared/services/storage';
+import { moderateContent } from '@/shared/lib/content-moderation';
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => ({}));
@@ -91,6 +92,13 @@ export async function POST(request: Request) {
       scene = 'text-to-music';
     } else {
       return respErr(t('messages.invalid_params'));
+    }
+
+    // content moderation: keyword filter + OpenAI (before deducting credits)
+    const imageUrl = options?.init_image || options?.image_url || options?.imageUrl;
+    const moderationResult = await moderateContent({ text: prompt, imageUrl });
+    if (moderationResult.flagged) {
+      return respErr(t('messages.content_violation'));
     }
 
     // check credits

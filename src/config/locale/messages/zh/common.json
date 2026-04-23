@@ -85,6 +85,7 @@
     "no_permission": "没有权限",
     "not_found": "未找到",
     "failed": "操作失败",
-    "success": "操作成功"
+    "success": "操作成功",
+    "content_violation": "内容违规，无法生成"
   }
 }
