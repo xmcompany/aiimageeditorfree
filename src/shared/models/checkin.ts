@@ -17,14 +17,16 @@ async function getCheckinConfigs(): Promise<Record<string, string>> {
   return map;
 }
 export function getTodayDate(): string {
-  return new Date().toISOString().slice(0, 10);
+  // Use US Pacific Time (America/Los_Angeles) as the canonical check-in timezone.
+  // Check-in resets daily at midnight PT.
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
 }
 
 // 获取昨天的日期字符串
 export function getYesterdayDate(): string {
   const d = new Date();
   d.setDate(d.getDate() - 1);
-  return d.toISOString().slice(0, 10);
+  return d.toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
 }
 
 // 获取用户最近一次签到记录
@@ -147,14 +149,22 @@ export async function doCheckin(user: User, ip?: string): Promise<{
 
   const creditsToGrant = calcCheckinCredits(streak, configs);
 
-  // 插入签到记录
-  await db().insert(checkin).values({
-    id: crypto.randomUUID(),
-    userId: user.id,
-    checkinDate: today,
-    streak,
-    creditsGranted: creditsToGrant,
-  });
+  // 插入签到记录 (use try/catch to handle concurrent duplicate inserts)
+  try {
+    await db().insert(checkin).values({
+      id: crypto.randomUUID(),
+      userId: user.id,
+      checkinDate: today,
+      streak,
+      creditsGranted: creditsToGrant,
+    });
+  } catch (e: any) {
+    // If a concurrent request already inserted a record for today, treat as already checked in
+    if (e?.message?.includes('unique') || e?.message?.includes('duplicate') || e?.code === '23505') {
+      return { success: false, alreadyCheckedIn: true, message: 'Already checked in today' };
+    }
+    throw e;
+  }
 
   // 发放积分
   await grantCreditsForUser({

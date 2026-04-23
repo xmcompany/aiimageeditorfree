@@ -4,6 +4,7 @@ import { calculateImageCredits } from '@/config/model-config';
 import { AIMediaType, AITaskStatus } from '@/extensions/ai';
 import { getUuid } from '@/shared/lib/hash';
 import { respData, respErr } from '@/shared/lib/resp';
+import { enforceMinIntervalRateLimit } from '@/shared/lib/rate-limit';
 import { createAITask, NewAITask } from '@/shared/models/ai_task';
 import { getRemainingCredits } from '@/shared/models/credit';
 import { getUserInfo } from '@/shared/models/user';
@@ -12,6 +13,18 @@ import { getStorageService } from '@/shared/services/storage';
 import { moderateContent } from '@/shared/lib/content-moderation';
 
 export async function POST(request: Request) {
+  // Rate limit: 1 generation request per 3 seconds per IP
+  const limited = enforceMinIntervalRateLimit(request, {
+    intervalMs: 3000,
+    keyPrefix: 'ai-generate',
+  });
+  if (limited) {
+    return Response.json(
+      { code: 429, message: 'Too many requests, please try again later.' },
+      { status: 429 }
+    );
+  }
+
   const body = await request.json().catch(() => ({}));
   const locale = body?.locale || 'en';
   const t = await getTranslations({ locale, namespace: 'common' });
@@ -21,9 +34,11 @@ export async function POST(request: Request) {
 
     const url = new URL(request.url);
     const debugMock = 
-      (request.headers.get('x-debug-mock') === 'true') || 
-      (url.searchParams.get('mock') === '1') ||
-      (request.headers.get('referer')?.includes('mock=1'));
+      process.env.NODE_ENV === 'development' && (
+        (request.headers.get('x-debug-mock') === 'true') || 
+        (url.searchParams.get('mock') === '1') ||
+        (request.headers.get('referer')?.includes('mock=1'))
+      );
 
     if (!provider || !mediaType || !model) {
       return respErr(t('messages.invalid_params'));

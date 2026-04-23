@@ -6,6 +6,7 @@ import {
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
 import { envConfigs } from '@/config';
@@ -679,7 +680,7 @@ export const checkin = table(
     createdAt: timestamp('created_at').defaultNow().notNull(),
   },
   (table) => [
-    index('idx_checkin_user_date').on(table.userId, table.checkinDate),
+    uniqueIndex('idx_checkin_user_date').on(table.userId, table.checkinDate),
   ]
 );
 

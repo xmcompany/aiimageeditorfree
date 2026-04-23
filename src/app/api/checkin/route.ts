@@ -4,6 +4,7 @@ import { getAuth } from '@/core/auth';
 import { doCheckin, getTodayCheckin, getCheckinHistory, getLastCheckin } from '@/shared/models/checkin';
 import { getAllConfigs } from '@/shared/models/config';
 import { findUserById } from '@/shared/models/user';
+import { enforceMinIntervalRateLimit } from '@/shared/lib/rate-limit';
 
 // GET: 获取签到状态
 export async function GET(req: NextRequest) {
@@ -39,6 +40,13 @@ export async function GET(req: NextRequest) {
 
 // POST: 执行签到
 export async function POST(req: NextRequest) {
+  // Rate limit: 1 check-in request per 5 seconds per IP
+  const limited = enforceMinIntervalRateLimit(req, {
+    intervalMs: 5000,
+    keyPrefix: 'checkin-post',
+  });
+  if (limited) return limited;
+
   const auth = await getAuth();
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session?.user?.id) {
