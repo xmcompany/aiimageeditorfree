@@ -9,10 +9,9 @@
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "Nano Banana AI Image Generator — Free Online",
-        "description": "Create high-quality AI images from text prompts or reference photos using Google Nano Banana — a fast, capable image generation model built for creative workflows. Sign up free and start generating today.",
+        "title": "Nano Banana AI Image Generator �?Free Online",
+        "description": "Create high-quality AI images from text prompts or reference photos using Google Nano Banana �?a fast, capable image generation model built for creative workflows. Sign up free and start generating today.",
         "highlight_text": "Nano Banana",
-        "tip": "<strong>Powered by Google Nano Banana</strong> — Free credits available on sign-up.",
         "buttons": [
           {
             "title": "Generate AI Image with Nano Banana",
@@ -45,7 +44,7 @@
         "items": [
           {
             "title": "Text to Image Generation",
-            "description": "Type a description and Nano Banana renders it into a detailed image within seconds. The model handles a wide range of styles — from photorealistic scenes to illustrated concepts.",
+            "description": "Type a description and Nano Banana renders it into a detailed image within seconds. The model handles a wide range of styles �?from photorealistic scenes to illustrated concepts.",
             "icon": "Type"
           },
           {

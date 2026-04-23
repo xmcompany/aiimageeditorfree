@@ -9,10 +9,9 @@
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "GPT Image 2 AI Image Generator — Free Online",
-        "description": "Generate stunning AI images from text descriptions or reference photos using GPT Image 2 — OpenAI's most capable image model. Exceptional prompt adherence, photorealistic quality, and creative flexibility. Sign up free and start creating today.",
+        "title": "GPT Image 2 AI Image Generator �?Free Online",
+        "description": "Generate stunning AI images from text descriptions or reference photos using GPT Image 2 �?OpenAI's most capable image model. Exceptional prompt adherence, photorealistic quality, and creative flexibility. Sign up free and start creating today.",
         "highlight_text": "GPT Image 2",
-        "tip": "<strong>Powered by GPT Image 2</strong> — Free credits available on sign-up.",
         "buttons": [
           {
             "title": "Generate AI Image with GPT Image 2",
@@ -55,7 +54,7 @@
           },
           {
             "title": "Advanced Prompt Understanding",
-            "description": "Powered by OpenAI's language model, this generator understands nuanced descriptions, spatial relationships, and artistic styles — producing outputs that closely match your intent.",
+            "description": "Powered by OpenAI's language model, this generator understands nuanced descriptions, spatial relationships, and artistic styles �?producing outputs that closely match your intent.",
             "icon": "Brain"
           },
           {
