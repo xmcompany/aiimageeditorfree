@@ -1,4 +1,4 @@
-import { md5 } from '@/shared/lib/hash';
+﻿import { md5 } from '@/shared/lib/hash';
 
 type MinIntervalOptions = {
   /**

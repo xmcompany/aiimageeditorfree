@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
@@ -21,6 +21,7 @@ import {
 import { Badge } from '@/shared/components/ui/badge';
 import { cn } from '@/shared/lib/utils';
 import { Link } from '@/core/i18n/navigation';
+import { getVideoModelAdminOptions } from '@/config/model-config';
 
 interface PromptItem {
   id: string;
@@ -68,15 +69,7 @@ function saveStoredTasks(promptId: string, tasks: GenerateTask[]) {
   }
 }
 
-const VIDEO_MODELS = [
-  { value: 'veo_3_1_lite', label: 'Veo 3.1 Lite', provider: 'kie' },
-  { value: 'veo_3_1_fast', label: 'Veo 3.1 Fast', provider: 'kie' },
-  { value: 'veo_3_1_quality', label: 'Veo 3.1 Quality', provider: 'kie' },
-  { value: 'seedance', label: 'Seedance 2.0 Fast', provider: 'kie' },
-  { value: 'seedance_standard', label: 'Seedance 2.0 Standard', provider: 'kie' },
-  { value: 'hailuo', label: 'Hailuo 2.3', provider: 'kie' },
-  { value: 'hailuo_02', label: 'Hailuo 02', provider: 'kie' },
-];
+const VIDEO_MODELS = getVideoModelAdminOptions();
 
 export function VideoPromptsManager({ initialData }: { initialData: PromptItem[] }) {
   const [prompts, setPrompts] = useState<PromptItem[]>(initialData);
@@ -94,7 +87,7 @@ export function VideoPromptsManager({ initialData }: { initialData: PromptItem[]
     statusFilter === 'all' ? true : p.status === statusFilter
   );
 
-  // ── Selection helpers ──────────────────────────────────────────────────────
+  // 鈹€鈹€ Selection helpers 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
   const toggleAll = () => {
     if (selected.size === filtered.length) {
       setSelected(new Set());
@@ -109,7 +102,7 @@ export function VideoPromptsManager({ initialData }: { initialData: PromptItem[]
     setSelected(next);
   };
 
-  // ── Bulk delete ────────────────────────────────────────────────────────────
+  // 鈹€鈹€ Bulk delete 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
   const handleBulkDelete = async () => {
     if (selected.size === 0) return;
     if (!confirm(`Delete ${selected.size} selected prompt(s)?`)) return;
@@ -135,7 +128,7 @@ export function VideoPromptsManager({ initialData }: { initialData: PromptItem[]
     }
   };
 
-  // ── Single delete ──────────────────────────────────────────────────────────
+  // 鈹€鈹€ Single delete 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
   const handleSingleDelete = async (id: string) => {
     if (!confirm('Delete this prompt?')) return;
     try {
@@ -157,7 +150,7 @@ export function VideoPromptsManager({ initialData }: { initialData: PromptItem[]
     }
   };
 
-  // ── Open detail dialog — restore persisted tasks ───────────────────────────
+  // 鈹€鈹€ Open detail dialog 鈥?restore persisted tasks 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
   const openDetail = (p: PromptItem) => {
     setSelectedPrompt(p);
     const savedModel = VIDEO_MODELS.find((m) => m.value === p.model);
@@ -166,7 +159,7 @@ export function VideoPromptsManager({ initialData }: { initialData: PromptItem[]
     setDetailTasks(loadStoredTasks(p.id));
   };
 
-  // ── Generate ───────────────────────────────────────────────────────────────
+  // 鈹€鈹€ Generate 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
   const generateInDetail = async () => {
     if (!selectedPrompt) return;
     const modelConfig = VIDEO_MODELS.find((m) => m.value === detailModel) || VIDEO_MODELS[0];
@@ -196,7 +189,7 @@ export function VideoPromptsManager({ initialData }: { initialData: PromptItem[]
           saveStoredTasks(selectedPrompt.id, updated);
           return updated;
         });
-        toast.success('Video generation task created — check AI Tasks for results');
+        toast.success('Video generation task created 鈥?check AI Tasks for results');
       } else {
         toast.error(data.message);
       }
@@ -401,7 +394,7 @@ export function VideoPromptsManager({ initialData }: { initialData: PromptItem[]
               <div className="space-y-3 border-t pt-4">
                 <div className="text-sm font-medium">Generate Video with AI</div>
                 <p className="text-muted-foreground text-xs">
-                  Runs in the background — check{' '}
+                  Runs in the background 鈥?check{' '}
                   <Link href="/admin/ai-tasks?type=video" className="underline">AI Tasks</Link>{' '}
                   for results.
                 </p>
@@ -432,8 +425,7 @@ export function VideoPromptsManager({ initialData }: { initialData: PromptItem[]
                         <Badge variant="secondary">pending</Badge>
                         <span className="text-muted-foreground">{task.model}</span>
                         <span className="text-muted-foreground font-mono text-xs truncate flex-1">
-                          {task.taskId.slice(0, 24)}…
-                        </span>
+                          {task.taskId.slice(0, 24)}鈥?                        </span>
                         <span className="text-muted-foreground text-xs shrink-0">{task.submittedAt}</span>
                       </div>
                     ))}

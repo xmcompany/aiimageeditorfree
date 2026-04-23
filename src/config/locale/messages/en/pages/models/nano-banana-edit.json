@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "title": "Google Nano Banana Edit — Image Editing AI | AI Image Editor Free",
+    "description": "Nano Banana Edit on Kie.ai: reference-driven image editing. Docs, workflow tips, and how to run edits in our image generator."
+  },
+  "page": {
+    "title": "Nano Banana Edit",
+    "description": "Nano Banana Edit expects reference images and prompt instructions to apply targeted edits while preserving intent from the source photo.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Nano Banana Edit — Image-to-Image",
+        "description": "Use Nano Banana Edit when you need to change outfits, lighting, or objects while keeping the original composition. Reference images are required for this route.",
+        "highlight_text": "Nano Banana Edit",
+        "tip": "<strong>Docs:</strong> <a href=\"https://docs.kie.ai/market/google/nano-banana-edit\" class=\"underline hover:opacity-80\" target=\"_blank\" rel=\"noopener noreferrer\">Kie.ai Nano Banana Edit →</a>",
+        "buttons": [
+          { "title": "Open AI Image Generator", "icon": "Image", "url": "/ai-image-generator", "target": "_self", "variant": "default" },
+          { "title": "Compare AI Image Models", "icon": "BarChart3", "url": "/compare-image-models", "target": "_self", "variant": "outline" }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": { "src": "/imgs/bg/girl.jpeg", "alt": "Nano Banana Edit" }
+      },
+      "images": {
+        "id": "model-images",
+        "title": "Before / after style examples",
+        "description": "Placeholder images — tag showcases with nano-banana-edit for real examples.",
+        "images": [
+          { "src": "https://picsum.photos/seed/nbe1/800/800", "prompt": "Change jacket color to navy, keep pose" },
+          { "src": "https://picsum.photos/seed/nbe2/800/800", "prompt": "Convert to golden hour lighting" },
+          { "src": "https://picsum.photos/seed/nbe3/800/800", "prompt": "Replace background with minimal studio" }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Why Nano Banana Edit",
+        "description": "Purpose-built for editing workflows instead of starting from a blank canvas.",
+        "items": [
+          { "title": "Reference-first", "description": "Edits are anchored to your uploaded images for more controllable results.", "icon": "ImagePlus" },
+          { "title": "Instruction following", "description": "Describe precise changes without re-specifying the entire scene.", "icon": "MessageSquare" },
+          { "title": "Pairs with T2I", "description": "Use alongside Nano Banana text-to-image when you need both creation and retouching.", "icon": "Link" }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "label": "FAQ",
+        "title": "Nano Banana Edit FAQ",
+        "description": "",
+        "items": [
+          { "question": "Documentation?", "answer": "https://docs.kie.ai/market/google/nano-banana-edit" },
+          { "question": "Why does the UI ask for reference images?", "answer": "This model route is designed for image-to-image editing; upload at least one reference image before generating." }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Try image editing",
+        "description": "Switch to image-to-image in the generator and select Nano Banana Edit.",
+        "buttons": [{ "title": "AI Image Generator", "url": "/ai-image-generator", "target": "_self", "icon": "Image" }],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

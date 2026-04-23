@@ -1,4 +1,4 @@
-import {
+﻿import {
   boolean,
   index,
   integer,
@@ -6,6 +6,7 @@ import {
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
 import { envConfigs } from '@/config';
@@ -36,6 +37,8 @@ export const user = table(
     utmSource: text('utm_source').notNull().default(''),
     ip: text('ip').notNull().default(''),
     locale: text('locale').notNull().default(''),
+    banned: boolean('banned').default(false).notNull(),
+    bannedReason: text('banned_reason'),
   },
   (table) => [
     // Search users by name in admin dashboard
@@ -677,7 +680,7 @@ export const checkin = table(
     createdAt: timestamp('created_at').defaultNow().notNull(),
   },
   (table) => [
-    index('idx_checkin_user_date').on(table.userId, table.checkinDate),
+    uniqueIndex('idx_checkin_user_date').on(table.userId, table.checkinDate),
   ]
 );
 

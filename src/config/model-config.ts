@@ -28,8 +28,11 @@ export interface ModelConfig {
   name: string;
   modelName: string; // 用于API请求的实际模型名称
   provider: 'kie' | 'replicate'; // API 提供商
+  mediaType: 'video' | 'image'; // 媒体类型
   img: string; // 模型图标路径
   schema: JsonSchema;
+  scenes?: string[]; // 支持的场景，如 ['text-to-image', 'image-to-image']
+  optionSchema?: string; // 前端参数 schema 标识，如 'v1', 'v2', 'gpt2-t2i', 'gpt2-i2i'
   parseParams?: (params: Record<string, any>) => Record<string, any>; // 可选的参数转换函数，params 为请求参数
   calculateCredits?: (params: Record<string, any>) => number; // 计算积分消耗的函数
   updateSchema?: (
@@ -46,6 +49,7 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
     name: 'Veo 3.1 Lite',
     modelName: 'veo3_lite',
     provider: 'kie',
+    mediaType: 'video',
     img: '/imgs/logos/vidu.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
@@ -114,6 +118,7 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
     name: 'Seedance 2.0 Fast',
     modelName: 'bytedance/seedance-2-fast',
     provider: 'kie',
+    mediaType: 'video',
     img: '/imgs/logos/nextjs.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
@@ -211,6 +216,7 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
     name: 'Seedance 2.0 Standard',
     modelName: 'bytedance/seedance-2',
     provider: 'kie',
+    mediaType: 'video',
     img: '/imgs/logos/nextjs.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
@@ -311,6 +317,7 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
     // Pro 1080p: hailuo/2-3-image-to-video-pro
     modelName: 'hailuo/2-3-image-to-video-standard',
     provider: 'kie',
+    mediaType: 'video',
     img: '/imgs/logos/hailuo.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
@@ -412,6 +419,7 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
     // I2V Pro: hailuo/02-image-to-video-pro
     modelName: 'hailuo/02-text-to-video-standard', // default T2V
     provider: 'kie',
+    mediaType: 'video',
     img: '/imgs/logos/hailuo.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
@@ -548,6 +556,7 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
     name: 'Veo 3.1 Fast',
     modelName: 'veo3_fast',
     provider: 'kie',
+    mediaType: 'video',
     img: '/imgs/logos/vidu.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
@@ -616,6 +625,7 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
     name: 'Veo 3.1 Quality',
     modelName: 'veo3',
     provider: 'kie',
+    mediaType: 'video',
     img: '/imgs/logos/vidu.svg',
     parseParams: (params: Record<string, any>) => {
       const parsedParams = { ...params };
@@ -677,11 +687,198 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
       },
     },
   },
+
+  // =============================================
+  // IMAGE MODELS
+  // =============================================
+
+  // === GPT Image 2 (Text-to-Image) ===
+  'gpt-image-2-text-to-image': {
+    id: 'gpt-image-2-text-to-image',
+    name: 'GPT Image 2',
+    modelName: 'gpt-image-2-text-to-image',
+    provider: 'kie',
+    mediaType: 'image',
+    img: '',
+    scenes: ['text-to-image'],
+    optionSchema: 'gpt2-t2i',
+    calculateCredits: () => 3,
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: { type: 'string', title: 'Prompt', 'x-order': 0 },
+      },
+    },
+  },
+
+  // === GPT Image 2 (Image-to-Image) ===
+  'gpt-image-2-image-to-image': {
+    id: 'gpt-image-2-image-to-image',
+    name: 'GPT Image 2',
+    modelName: 'gpt-image-2-image-to-image',
+    provider: 'kie',
+    mediaType: 'image',
+    img: '',
+    scenes: ['image-to-image'],
+    optionSchema: 'gpt2-i2i',
+    calculateCredits: () => 3,
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: { type: 'string', title: 'Prompt', 'x-order': 0 },
+      },
+    },
+  },
+
+  // === Nano Banana 2 ===
+  'nano-banana-2': {
+    id: 'nano-banana-2',
+    name: 'Nano Banana 2',
+    modelName: 'nano-banana-2',
+    provider: 'kie',
+    mediaType: 'image',
+    img: '',
+    scenes: ['text-to-image', 'image-to-image'],
+    optionSchema: 'v2',
+    calculateCredits: (params: Record<string, any>) => {
+      const resolution = params.resolution || '1K';
+      const pricing: Record<string, number> = { '1K': 5, '2K': 8, '4K': 12 };
+      return pricing[resolution] || 5;
+    },
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: { type: 'string', title: 'Prompt', 'x-order': 0 },
+      },
+    },
+  },
+
+  // === Nano Banana Pro ===
+  'nano-banana-pro': {
+    id: 'nano-banana-pro',
+    name: 'Nano Banana Pro',
+    modelName: 'nano-banana-pro',
+    provider: 'kie',
+    mediaType: 'image',
+    img: '',
+    scenes: ['text-to-image', 'image-to-image'],
+    optionSchema: 'v2',
+    calculateCredits: (params: Record<string, any>) => {
+      const resolution = params.resolution || '1K';
+      const pricing: Record<string, number> = { '1K': 8, '2K': 8, '4K': 14 };
+      return pricing[resolution] || 8;
+    },
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: { type: 'string', title: 'Prompt', 'x-order': 0 },
+      },
+    },
+  },
+
+  // === Nano Banana (V1) ===
+  'google/nano-banana': {
+    id: 'google/nano-banana',
+    name: 'Nano Banana',
+    modelName: 'google/nano-banana',
+    provider: 'kie',
+    mediaType: 'image',
+    img: '',
+    scenes: ['text-to-image'],
+    optionSchema: 'v1',
+    calculateCredits: () => 3,
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: { type: 'string', title: 'Prompt', 'x-order': 0 },
+      },
+    },
+  },
+
+  // === Nano Banana Edit (V1 Image-to-Image) ===
+  'google/nano-banana-edit': {
+    id: 'google/nano-banana-edit',
+    name: 'Nano Banana Edit',
+    modelName: 'google/nano-banana-edit',
+    provider: 'kie',
+    mediaType: 'image',
+    img: '',
+    scenes: ['image-to-image'],
+    optionSchema: 'v1',
+    calculateCredits: () => 3,
+    schema: {
+      type: 'object',
+      title: 'Input',
+      required: ['prompt'],
+      properties: {
+        prompt: { type: 'string', title: 'Prompt', 'x-order': 0 },
+      },
+    },
+  },
 };
 
 // Helper function to get model configuration
 export function getModelConfig(modelId: string): ModelConfig | null {
   return MODEL_CONFIGS[modelId] || null;
+}
+
+// Helper function to get image model options for admin pages
+export function getImageModelOptions(): Array<{ title: string; value: string }> {
+  return Object.values(MODEL_CONFIGS)
+    .filter((m) => m.mediaType === 'image' && m.scenes?.includes('text-to-image'))
+    .filter((m, i, arr) => arr.findIndex((a) => a.name === m.name) === i) // dedupe by name
+    .map((m) => ({ title: m.name, value: m.modelName }));
+}
+
+// Helper function to get image model options for frontend generator
+export function getImageModelFrontendOptions(): Array<{
+  value: string;
+  label: string;
+  scenes: string[];
+  schema: string;
+}> {
+  return Object.values(MODEL_CONFIGS)
+    .filter((m) => m.mediaType === 'image')
+    .map((m) => ({
+      value: m.modelName,
+      label: m.name,
+      scenes: m.scenes || [],
+      schema: (m.optionSchema || 'v2') as string,
+    }));
+}
+
+// Helper function to calculate image model credits
+export function calculateImageCredits(model: string, resolution?: string): number {
+  const config = MODEL_CONFIGS[model];
+  if (!config || config.mediaType !== 'image' || !config.calculateCredits) {
+    return 5; // fallback
+  }
+  return config.calculateCredits({ resolution: resolution || '1K' });
+}
+
+// Helper function to get image model options for admin prompts-manager (with provider)
+export function getImageModelAdminOptions(): Array<{ value: string; label: string; provider: string }> {
+  return Object.values(MODEL_CONFIGS)
+    .filter((m) => m.mediaType === 'image')
+    .filter((m, i, arr) => arr.findIndex((a) => a.id === m.id) === i)
+    .map((m) => ({ value: m.modelName, label: m.name, provider: m.provider }));
+}
+
+// Helper function to get video model options for admin prompts-manager (with provider)
+export function getVideoModelAdminOptions(): Array<{ value: string; label: string; provider: string }> {
+  return Object.values(MODEL_CONFIGS)
+    .filter((m) => m.mediaType === 'video')
+    .map((m) => ({ value: m.id, label: m.name, provider: m.provider }));
 }
 
 // Helper function to get default parameters for a model from schema

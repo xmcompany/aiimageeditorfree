@@ -1,4 +1,4 @@
-{
+﻿{
   "fields": {
     "id": "ID",
     "name": "Name",
@@ -25,7 +25,9 @@
       "view": "View User",
       "delete": "Delete User",
       "edit_roles": "Edit Roles",
-      "grant_credits": "Grant Credits"
+      "grant_credits": "Grant Credits",
+      "ban": "Ban User",
+      "unban": "Unban User"
     },
     "search": {
       "email": {
@@ -86,6 +88,27 @@
       "valid_days_tip": "0 means no expiration",
       "description": "Credits Grant Description",
       "description_placeholder": "Admin grant credits"
+    }
+  },
+  "ban": {
+    "title_ban": "Ban User",
+    "title_unban": "Unban User",
+    "crumbs": {
+      "admin": "Admin",
+      "users": "Users",
+      "ban": "Ban / Unban"
+    },
+    "buttons": {
+      "ban": "Ban",
+      "unban": "Unban"
+    },
+    "messages": {
+      "success_ban": "User has been banned",
+      "success_unban": "User has been unbanned"
+    },
+    "fields": {
+      "banned_reason": "Ban Reason",
+      "banned_reason_placeholder": "Describe why this user is being banned"
     }
   }
 }

@@ -1,4 +1,4 @@
-{
+﻿{
   "metadata": {
     "title": "AI Image Editor Free | Free Online AI Photo Editor",
     "description": "Edit and create images with AI for free. Sign up for bonus credits — no credit card required. Fast, easy AI image editing online.",
@@ -37,7 +37,7 @@
     "verify_email_page_title": "Check your email",
     "verify_email_page_description": "To continue, click the link sent to",
     "verify_email_continue": "Continue",
-    "verify_email_tip": "After verifying, click “Continue”.",
+    "verify_email_tip": "After verifying, click \"Continue\".",
     "verify_email_not_verified_yet": "Not verified yet. Please click the link in your email first.",
     "verify_email_account_mismatch": "Signed in as {current}. This page is waiting for {expected}.",
     "resend_verification_countdown": "Resend verification email ({seconds}s)",
@@ -85,6 +85,8 @@
     "no_permission": "No permission",
     "not_found": "Not found",
     "failed": "Operation failed",
-    "success": "Operation successful"
+    "success": "Operation successful",
+    "content_violation": "Content violates our policies and cannot be generated",
+    "user_banned": "Your account has been suspended. Please contact support."
   }
 }

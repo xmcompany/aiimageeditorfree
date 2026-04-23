@@ -1,4 +1,4 @@
-import moment from 'moment';
+﻿import moment from 'moment';
 import { useLocale } from 'next-intl';
 
 export function Time({
@@ -21,6 +21,9 @@ export function Time({
   }
 
   let locale = useLocale();
+  if (locale === 'zh') {
+    locale = 'zh-cn';
+  }
 
   return (
     <div className={className}>

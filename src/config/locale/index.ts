@@ -63,6 +63,7 @@ export const localeMessagesPaths = [
   'pages/models/nano-banana-edit',
   'pages/models/nano-banana-2',
   'pages/models/google-pro-image-to-image',
+  'pages/models/gpt-image-2',
   'pages/compare',
   'pages/compare-image-models',
   'admin/image-prompts',

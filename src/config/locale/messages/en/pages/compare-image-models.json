@@ -1,0 +1,131 @@
+{
+  "metadata": {
+    "title": "Compare AI Image Models 2026 | AI Image Editor Free",
+    "description": "Compare GPT-4o Image, Seedream 5 Lite, Flux Kontext, Nano Banana, Nano Banana Edit, Nano Banana 2, and Pro image-to-image — features, inputs, and best use cases."
+  },
+  "page": {
+    "title": "AI Image Model Comparison",
+    "description": "Side-by-side overview of image models documented on Kie.ai and available through our AI Image Generator.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Compare AI Image Models",
+        "description": "Pick the right model for text-to-image, editing, or pro-quality image-to-image. Click a model name to open its full guide.",
+        "highlight_text": "AI Image Models",
+        "tip": "<strong>Powered by Kie.ai integrations</strong> — Free credits on sign-up where applicable.",
+        "buttons": [
+          {
+            "title": "Open AI Image Generator",
+            "icon": "Image",
+            "url": "/ai-image-generator",
+            "target": "_self",
+            "variant": "default",
+            "size": "lg"
+          }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false
+      },
+      "overview": {
+        "id": "model-comparison",
+        "title": "All models at a glance",
+        "description": "High-level comparison. See each model page for API links, examples, and FAQs.",
+        "columns": [
+          { "key": "g4o", "label": "GPT-4o Image" },
+          { "key": "seedream", "label": "Seedream 5 Lite" },
+          { "key": "flux", "label": "Flux Kontext" },
+          { "key": "nb", "label": "Nano Banana" },
+          { "key": "nbe", "label": "Nano Banana Edit" },
+          { "key": "nb2", "label": "Nano Banana 2" },
+          { "key": "pro", "label": "Pro I2I" }
+        ],
+        "rows": [
+          {
+            "label": "Primary docs",
+            "values": {
+              "g4o": "4o Image API",
+              "seedream": "Seedream 5 Lite",
+              "flux": "Flux Kontext",
+              "nb": "Nano Banana",
+              "nbe": "Nano Banana Edit",
+              "nb2": "Nanobanana2",
+              "pro": "Pro I2I"
+            }
+          },
+          {
+            "label": "Text-to-image",
+            "values": {
+              "g4o": "✓",
+              "seedream": "✓",
+              "flux": "Contextual",
+              "nb": "✓",
+              "nbe": "-",
+              "nb2": "✓",
+              "pro": "✓"
+            }
+          },
+          {
+            "label": "Reference / edit focus",
+            "values": {
+              "g4o": "-",
+              "seedream": "-",
+              "flux": "✓",
+              "nb": "-",
+              "nbe": "✓",
+              "nb2": "✓",
+              "pro": "✓"
+            }
+          },
+          {
+            "label": "Best for",
+            "values": {
+              "g4o": "General T2I",
+              "seedream": "Fast / volume T2I",
+              "flux": "Structure-preserving edits",
+              "nb": "Everyday T2I",
+              "nbe": "Photo-style edits",
+              "nb2": "Controlled v2 T2I & I2I",
+              "pro": "Highest quality I2I"
+            }
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "label": "FAQ",
+        "title": "Choosing a model",
+        "description": "Short answers — detailed behavior depends on your Kie.ai project and quota.",
+        "items": [
+          {
+            "question": "Which model should I start with?",
+            "answer": "For simple text-only images, try Nano Banana or Seedream 5 Lite. For edits that need a reference image, use Nano Banana Edit, Flux Kontext, or Pro image-to-image."
+          },
+          {
+            "question": "Where are the official Kie.ai docs?",
+            "answer": "Each model page lists the matching documentation URL (4o Image, Seedream, Flux Kontext, Nano Banana family, and Pro image-to-image)."
+          },
+          {
+            "question": "Do credits cost the same for every model?",
+            "answer": "No — Pro and some high-resolution routes typically consume more credits. Check your balance before large batches."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Generate AI images",
+        "description": "Open the generator and select the model that fits your task.",
+        "buttons": [
+          {
+            "title": "AI Image Generator",
+            "url": "/ai-image-generator",
+            "target": "_self",
+            "icon": "Image"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

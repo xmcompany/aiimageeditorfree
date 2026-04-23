@@ -243,7 +243,9 @@ export function LocaleDetector() {
           <div className="flex items-center justify-between gap-4">
             <div className="flex flex-1 items-center gap-3">
               <span className="text-sm">
-                {`We detected your browser language is ${targetLocaleName}. Switch to it?`}
+                {browserLocale === 'zh'
+                  ? `检测到浏览器语言是: ${targetLocaleName}，是否切换？`
+                  : `We detected your browser language is ${targetLocaleName}. Switch to it?`}
               </span>
             </div>
             <div className="flex flex-shrink-0 items-center gap-2">
@@ -253,7 +255,7 @@ export function LocaleDetector() {
                 size="sm"
                 className="bg-background text-xs"
               >
-                Switch
+                {browserLocale === 'zh' ? '切换到中文' : 'Switch'}
               </Button>
               <button
                 onClick={handleDismiss}

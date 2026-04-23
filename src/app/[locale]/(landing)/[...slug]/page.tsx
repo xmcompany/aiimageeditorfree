@@ -7,18 +7,6 @@ import { envConfigs } from '@/config';
 import { getLocalPage } from '@/shared/models/post';
 import { getLatestShowcases } from '@/shared/models/showcase';
 
-/** Legacy AI video model marketing pages — hidden (404). */
-const LEGACY_VIDEO_MODEL_SLUGS = new Set([
-  'seedance',
-  'wan',
-  'veo',
-  'hailuo',
-  'happyhorse',
-  'kling',
-  'runway',
-  'grok-imagine',
-]);
-
 /** Image model marketing pages: /{slug} → pages.models.{slug} */
 const IMAGE_MODEL_SLUGS: string[] = [
   'gpt-4o-image',
@@ -28,6 +16,7 @@ const IMAGE_MODEL_SLUGS: string[] = [
   'nano-banana-edit',
   'nano-banana-2',
   'google-pro-image-to-image',
+  'gpt-image-2',
 ];
 
 function toDynamicPageSlug(raw: string): string {
@@ -85,10 +74,6 @@ export async function generateMetadata({
 
   const rawMetaSlug =
     typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
-
-  if (LEGACY_VIDEO_MODEL_SLUGS.has(rawMetaSlug)) {
-    notFound();
-  }
 
   const dynamicPageSlug = toDynamicPageSlug(rawMetaSlug);
   const messageKey = `pages.${dynamicPageSlug}`;
@@ -159,10 +144,6 @@ export default async function DynamicPage({
 
   const rawDynamicSlug =
     typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
-
-  if (LEGACY_VIDEO_MODEL_SLUGS.has(rawDynamicSlug)) {
-    notFound();
-  }
 
   const dynamicPageSlug = toDynamicPageSlug(rawDynamicSlug);
   const messageKey = `pages.${dynamicPageSlug}`;

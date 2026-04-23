@@ -94,7 +94,7 @@ export default function CheckinClient({
     <div className="container max-w-4xl py-8 space-y-8">
       <div>
         <h1 className="text-2xl font-bold">Daily Check-in</h1>
-        <p className="text-muted-foreground mt-1">Check in every day to earn free credits</p>
+        <p className="text-muted-foreground mt-1">Check in every day to earn free credits. Resets daily at midnight PT (Pacific Time).</p>
       </div>
 
       {/* Check-in card */}

@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+﻿import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import { getAuth } from '@/core/auth';
 import { getStorageService } from '@/shared/services/storage';
+import { moderateContent } from '@/shared/lib/content-moderation';
 
 export async function POST(request: NextRequest) {
   try {
@@ -50,6 +51,17 @@ export async function POST(request: NextRequest) {
         { error: result.error || 'Upload failed' },
         { status: 500 }
       );
+    }
+
+    // content moderation: check uploaded image via OpenAI
+    if (result.url && file.type.startsWith('image/')) {
+      const moderationResult = await moderateContent({ imageUrl: result.url });
+      if (moderationResult.flagged) {
+        return NextResponse.json(
+          { error: 'Content violation detected' },
+          { status: 400 }
+        );
+      }
     }
 
     return NextResponse.json({

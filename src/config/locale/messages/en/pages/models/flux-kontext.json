@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "title": "Flux Kontext API — AI Image Editing | AI Image Editor Free",
+    "description": "Flux Kontext on Kie.ai: context-aware image generation and editing. Quickstart, features, and how to run it from our AI image generator."
+  },
+  "page": {
+    "title": "Flux Kontext",
+    "description": "Flux Kontext excels at image-conditioned workflows — keep identity, layout, or style while applying large prompt-driven changes.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Flux Kontext — Image API",
+        "description": "Use Flux Kontext when you need strong reference fidelity and editable outputs. Follow the Kie.ai Flux Kontext quickstart for request fields and callbacks.",
+        "highlight_text": "Flux Kontext",
+        "tip": "<strong>Docs:</strong> <a href=\"https://docs.kie.ai/flux-kontext-api/quickstart\" class=\"underline hover:opacity-80\" target=\"_blank\" rel=\"noopener noreferrer\">Flux Kontext quickstart →</a>",
+        "buttons": [
+          { "title": "Open AI Image Generator", "icon": "Image", "url": "/ai-image-generator", "target": "_self", "variant": "default" },
+          { "title": "Compare AI Image Models", "icon": "BarChart3", "url": "/compare-image-models", "target": "_self", "variant": "outline" }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": { "src": "/imgs/bg/girl.jpeg", "alt": "Flux Kontext" }
+      },
+      "images": {
+        "id": "model-images",
+        "title": "Example visuals",
+        "description": "Placeholder gallery — tag showcases with flux-kontext to pull live examples.",
+        "images": [
+          { "src": "https://picsum.photos/seed/fx1/800/800", "prompt": "Same character, new outfit — editorial lighting" },
+          { "src": "https://picsum.photos/seed/fx2/800/800", "prompt": "Product swap on identical scene layout" },
+          { "src": "https://picsum.photos/seed/fx3/800/800", "prompt": "Sketch to render while preserving composition" }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Flux Kontext strengths",
+        "description": "Designed for editing and transformation tasks that depend on a reference image or strong scene context.",
+        "items": [
+          { "title": "Context-aware edits", "description": "Apply changes without throwing away structure you want to keep.", "icon": "Layers" },
+          { "title": "Creative control", "description": "Combine prompts with references for iterative art-direction workflows.", "icon": "SlidersHorizontal" },
+          { "title": "Developer-friendly", "description": "Use Kie.ai quickstart patterns for task creation and polling.", "icon": "Terminal" }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "label": "FAQ",
+        "title": "Flux Kontext FAQ",
+        "description": "",
+        "items": [
+          { "question": "Quickstart URL?", "answer": "https://docs.kie.ai/flux-kontext-api/quickstart" },
+          { "question": "When choose Kontext vs plain text-to-image?", "answer": "Prefer Kontext when the input image must influence the result — style transfer, inpainting-style edits, or identity-preserving changes." }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Try Flux workflows",
+        "description": "Open the generator and pick a model that matches your Kie.ai configuration.",
+        "buttons": [{ "title": "AI Image Generator", "url": "/ai-image-generator", "target": "_self", "icon": "Image" }],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

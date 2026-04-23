@@ -1,6 +1,4 @@
-import { Suspense } from 'react';
-
-import { envConfigs } from '@/config';
+﻿import { envConfigs } from '@/config';
 import {
   BrandLogo,
   LocaleSelector,
@@ -30,9 +28,7 @@ export default function AuthLayout({
       </div>
       <div className="absolute top-4 right-4 flex items-center gap-4">
         <ThemeToggler />
-        <Suspense fallback={null}>
-          <LocaleSelector type="button" />
-        </Suspense>
+        <LocaleSelector type="button" />
       </div>
       <div className="w-full px-4">{children}</div>
     </div>

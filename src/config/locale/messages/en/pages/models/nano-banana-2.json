@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "title": "Nano Banana 2 — AI Image Model | AI Image Editor Free",
+    "description": "Nano Banana 2 on Kie.ai: next-gen text and image input workflows. Docs, features, and deep links to our image generator."
+  },
+  "page": {
+    "title": "Nano Banana 2",
+    "description": "Nano Banana 2 improves control with updated input schemas — aspect ratio, resolution, and multi-image inputs where supported.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Nano Banana 2",
+        "description": "Use Nano Banana 2 when you need finer control over output shape and quality settings. Follow Kie.ai Nanobanana2 market documentation for the exact parameter matrix.",
+        "highlight_text": "Nano Banana 2",
+        "tip": "<strong>Docs:</strong> <a href=\"https://docs.kie.ai/market/google/nanobanana2\" class=\"underline hover:opacity-80\" target=\"_blank\" rel=\"noopener noreferrer\">Kie.ai Nanobanana2 →</a>",
+        "buttons": [
+          { "title": "Open AI Image Generator", "icon": "Image", "url": "/ai-image-generator/nano-banana-2", "target": "_self", "variant": "default" },
+          { "title": "Compare AI Image Models", "icon": "BarChart3", "url": "/compare-image-models", "target": "_self", "variant": "outline" }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": { "src": "/imgs/bg/girl.jpeg", "alt": "Nano Banana 2" }
+      },
+      "images": {
+        "id": "model-images",
+        "title": "Example images",
+        "description": "Community gallery — tag showcases with nano-banana-2.",
+        "tag": "nano-banana-2",
+        "images": [
+          { "src": "https://picsum.photos/seed/nb2a/800/800", "prompt": "High-detail character turnaround, neutral lighting" },
+          { "src": "https://picsum.photos/seed/nb2b/800/800", "prompt": "Architectural interior, warm wood and concrete" },
+          { "src": "https://picsum.photos/seed/nb2c/800/800", "prompt": "Vibrant poster art, limited palette" }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Nano Banana 2 strengths",
+        "description": "Best when you want upgraded control versus first-generation Nano Banana.",
+        "items": [
+          { "title": "v2 input schema", "description": "Uses the v2 parameter layout described in Kie.ai docs (aspect ratio, resolution, image inputs).", "icon": "LayoutGrid" },
+          { "title": "Text & image", "description": "Supports both text-to-image and image-guided scenes depending on tab and inputs.", "icon": "Images" },
+          { "title": "Deep link", "description": "Use /ai-image-generator/nano-banana-2 to open the generator with this model segment.", "icon": "ExternalLink" }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "label": "FAQ",
+        "title": "Nano Banana 2 FAQ",
+        "description": "",
+        "items": [
+          { "question": "Documentation?", "answer": "https://docs.kie.ai/market/google/nanobanana2" },
+          { "question": "Difference from Nano Banana (v1)?", "answer": "v2 adds more control knobs and refined defaults. Compare pricing and limits on Kie.ai for your account tier." }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Generate with Nano Banana 2",
+        "description": "Opens the generator on the Nano Banana 2 route.",
+        "buttons": [{ "title": "Open Nano Banana 2", "url": "/ai-image-generator/nano-banana-2", "target": "_self", "icon": "Image" }],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

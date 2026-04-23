@@ -1,8 +1,16 @@
-import { getTranslations } from 'next-intl/server';
+﻿import { getTranslations } from 'next-intl/server';
 import { respData, respErr } from '@/shared/lib/resp';
+import { enforceMinIntervalRateLimit } from '@/shared/lib/rate-limit';
 import { isEmailVerified } from '@/shared/models/user';
 
 export async function POST(req: Request) {
+  // Rate limit: 1 request per 3 seconds per IP to prevent email enumeration
+  const limited = enforceMinIntervalRateLimit(req, {
+    intervalMs: 3000,
+    keyPrefix: 'is-email-verified',
+  });
+  if (limited) return limited;
+
   const body = await req.json().catch(() => ({}));
   const locale = body?.locale || 'en';
   const t = await getTranslations({ locale, namespace: 'common' });

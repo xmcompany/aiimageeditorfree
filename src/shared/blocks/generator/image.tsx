@@ -1,6 +1,14 @@
-'use client';
+﻿'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/shared/components/ui/dialog';
 import { useParams } from 'next/navigation';
 import {
   CreditCard,
@@ -37,6 +45,7 @@ import { Textarea } from '@/shared/components/ui/textarea';
 import { useAppContext } from '@/shared/contexts/app';
 import { cn } from '@/shared/lib/utils';
 import { envConfigs } from '@/config';
+import { getImageModelFrontendOptions, calculateImageCredits } from '@/config/model-config';
 
 interface ImageGeneratorProps {
   allowMultipleImages?: boolean;
@@ -71,32 +80,7 @@ const POLL_INTERVAL = 5000;
 const GENERATION_TIMEOUT = 180000;
 const MAX_PROMPT_LENGTH = 2000;
 
-const MODEL_OPTIONS = [
-  {
-    value: 'nano-banana-2',
-    label: 'Nano Banana 2',
-    scenes: ['text-to-image', 'image-to-image'],
-    schema: 'v2' as const,
-  },
-  {
-    value: 'nano-banana-pro',
-    label: 'Nano Banana Pro',
-    scenes: ['text-to-image', 'image-to-image'],
-    schema: 'v2' as const,
-  },
-  {
-    value: 'google/nano-banana',
-    label: 'Nano Banana',
-    scenes: ['text-to-image'],
-    schema: 'v1' as const,
-  },
-  {
-    value: 'google/nano-banana-edit',
-    label: 'Nano Banana Edit',
-    scenes: ['image-to-image'],
-    schema: 'v1' as const,
-  },
-];
+const MODEL_OPTIONS = getImageModelFrontendOptions();
 
 function parseTaskResult(taskResult: string | null): any {
   if (!taskResult) {
@@ -170,6 +154,9 @@ export function ImageGenerator({
   const [costCredits, setCostCredits] = useState<number>(5);
   const [provider] = useState('kie');
   const [model, setModel] = useState(MODEL_OPTIONS[0]?.value ?? '');
+  const [resolution, setResolution] = useState('1K');
+  const [aspectRatio, setAspectRatio] = useState('1:1');
+  const [outputFormat, setOutputFormat] = useState('png');
   // Set default values only when no promptKey is provided
   const [prompt, setPrompt] = useState(
     promptKey || envConfigs.default_image_prompt
@@ -202,6 +189,9 @@ export function ImageGenerator({
   const [isLoadingProviders, setIsLoadingProviders] = useState(true);
   const hasLoadedCreditsRef = useRef(false);
   const [isPreviewImageLoaded, setIsPreviewImageLoaded] = useState(false);
+  const [showShortPromptDialog, setShowShortPromptDialog] = useState(false);
+  const pendingGenerateRef = useRef(false);
+  const [violationMessage, setViolationMessage] = useState<string | null>(null);
 
   useEffect(() => {
     setIsPreviewImageLoaded(false);
@@ -339,25 +329,20 @@ export function ImageGenerator({
     }
   };
 
-  // Update credits when model changes
+  // Update credits when model or resolution changes
   useEffect(() => {
     const modelOption = MODEL_OPTIONS.find((o) => o.value === model);
     if (!modelOption) { setCostCredits(5); return; }
 
-    const isPro = model === 'nano-banana-pro';
-    const isV2 = model === 'nano-banana-2';
-    const isEdit = model === 'google/nano-banana-edit';
-
-    if (isEdit) {
-      setCostCredits(3); // 3 kie API cost, ~4.67x markup
-    } else if (isPro) {
-      setCostCredits(8); // 8 kie API cost (1/2K), ~4.67x markup
-    } else if (isV2) {
-      setCostCredits(5); // 5 kie API cost (1K), ~4.67x markup
-    } else {
-      setCostCredits(3); // nano-banana: 3 kie API cost, ~4.67x markup
+    // Reset resolution to 1K when switching models (Pro has no 2K)
+    if (modelOption.schema !== 'v2') {
+      setResolution('1K');
+    } else if (model === 'nano-banana-pro' && resolution === '2K') {
+      setResolution('1K');
     }
-  }, [model, activeTab]);
+
+    setCostCredits(calculateImageCredits(model, resolution));
+  }, [model, resolution, activeTab]);
 
   const taskStatusLabel = useMemo(() => {
     if (!taskStatus) {
@@ -671,6 +656,12 @@ export function ImageGenerator({
       return;
     }
 
+    if (trimmedPrompt.length < 10 && !pendingGenerateRef.current) {
+      setShowShortPromptDialog(true);
+      return;
+    }
+    pendingGenerateRef.current = false;
+
     if (!provider || !model) {
       toast.error('Provider or model is not configured correctly.');
       return;
@@ -697,7 +688,16 @@ export function ImageGenerator({
       const options: any = {};
       const modelOption = MODEL_OPTIONS.find((o) => o.value === model);
 
-      if (modelOption?.schema === 'v1') {
+      if (modelOption?.schema === 'gpt2-t2i') {
+        // GPT Image 2 text-to-image: aspect_ratio only
+        options.aspect_ratio = 'auto';
+      } else if (modelOption?.schema === 'gpt2-i2i') {
+        // GPT Image 2 image-to-image: input_urls + aspect_ratio
+        if (!isTextToImageMode) {
+          options.input_urls = referenceImageUrls;
+        }
+        options.aspect_ratio = 'auto';
+      } else if (modelOption?.schema === 'v1') {
         // nano-banana / nano-banana-edit use image_urls + image_size
         if (!isTextToImageMode) {
           options.image_urls = referenceImageUrls;
@@ -710,8 +710,9 @@ export function ImageGenerator({
         } else {
           options.image_input = [];
         }
-        options.aspect_ratio = 'auto';
-        options.resolution = '1K';
+        options.aspect_ratio = aspectRatio;
+        options.resolution = resolution;
+        options.output_format = outputFormat;
       }
 
       const isDebugMock = 
@@ -785,7 +786,11 @@ export function ImageGenerator({
       await fetchUserCredits();
     } catch (error: any) {
       console.error('Failed to generate image:', error);
-      toast.error(`Failed to generate image: ${error.message}`);
+      if (error.message?.includes('Content violates') || error.message?.includes('content_violation') || error.message?.includes('suspended')) {
+        setViolationMessage(error.message);
+      } else {
+        toast.error(`Failed to generate image: ${error.message}`);
+      }
       resetTaskState();
     }
   };
@@ -824,6 +829,7 @@ export function ImageGenerator({
   };
 
   return (
+    <>
     <section className={cn('pt-4 md:pt-6 pb-16 md:pb-24 relative overflow-hidden', className)}>
       {/* Premium Background Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10 h-full w-full">
@@ -883,6 +889,61 @@ export function ImageGenerator({
                       </SelectContent>
                     </Select>
                   </div>
+
+                  {/* Aspect Ratio / Resolution / Output Format for v2 schema models */}
+                  {(() => {
+                    const currentModelOption = MODEL_OPTIONS.find((o) => o.value === model);
+                    if (currentModelOption?.schema !== 'v2') return null;
+                    return (
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="space-y-2">
+                          <Label className="text-foreground/80 text-xs font-bold ml-1 uppercase tracking-widest">
+                            {t('form.aspect_ratio')}
+                          </Label>
+                          <Select value={aspectRatio} onValueChange={setAspectRatio}>
+                            <SelectTrigger className="bg-muted/30 dark:bg-black/40 rounded-2xl h-10 border border-border/10 dark:border-zinc-800 text-foreground text-sm">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {['1:1', '16:9', '9:16', '4:3', '3:4', '3:2', '2:3'].map((v) => (
+                                <SelectItem key={v} value={v}>{v}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-2">
+                          <Label className="text-foreground/80 text-xs font-bold ml-1 uppercase tracking-widest">
+                            {t('form.resolution')}
+                          </Label>
+                          <Select value={resolution} onValueChange={setResolution}>
+                            <SelectTrigger className="bg-muted/30 dark:bg-black/40 rounded-2xl h-10 border border-border/10 dark:border-zinc-800 text-foreground text-sm">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {(model === 'nano-banana-2' ? ['1K', '2K', '4K'] : ['1K', '4K']).map((v) => (
+                                <SelectItem key={v} value={v}>{v}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-2">
+                          <Label className="text-foreground/80 text-xs font-bold ml-1 uppercase tracking-widest">
+                            {t('form.output_format')}
+                          </Label>
+                          <Select value={outputFormat} onValueChange={setOutputFormat}>
+                            <SelectTrigger className="bg-muted/30 dark:bg-black/40 rounded-2xl h-10 border border-border/10 dark:border-zinc-800 text-foreground text-sm">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {['png', 'jpg', 'webp'].map((v) => (
+                                <SelectItem key={v} value={v}>{v.toUpperCase()}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+                    );
+                  })()}
 
                   {!isTextToImageMode && (
                     <div className="space-y-3 animate-in fade-in slide-in-from-top-4 duration-500">
@@ -1169,5 +1230,37 @@ export function ImageGenerator({
         </div>
       </div>
     </section>
+
+    <Dialog open={showShortPromptDialog} onOpenChange={setShowShortPromptDialog}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Prompt is very short</DialogTitle>
+          <DialogDescription>
+            Your prompt is less than 10 characters. A short prompt may result in unexpected output. Do you want to continue?
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setShowShortPromptDialog(false)}>Cancel</Button>
+          <Button onClick={() => { pendingGenerateRef.current = true; setShowShortPromptDialog(false); handleGenerate(); }}>
+            Continue
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+
+    <Dialog open={!!violationMessage} onOpenChange={() => setViolationMessage(null)}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Content Policy Violation</DialogTitle>
+          <DialogDescription>
+            {violationMessage}
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button onClick={() => setViolationMessage(null)}>OK</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+    </>
   );
 }

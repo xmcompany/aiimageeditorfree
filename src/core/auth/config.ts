@@ -1,4 +1,4 @@
-import { drizzleAdapter } from 'better-auth/adapters/drizzle';
+﻿import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { oneTap } from 'better-auth/plugins';
 import { getLocale } from 'next-intl/server';
 
@@ -53,6 +53,17 @@ const authOptions = {
         input: false,
         required: false,
         defaultValue: '',
+      },
+      banned: {
+        type: 'boolean',
+        input: false,
+        required: false,
+        defaultValue: false,
+      },
+      bannedReason: {
+        type: 'string',
+        input: false,
+        required: false,
       },
     },
   },

@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "title": "Google Nano Banana — AI Image Model | AI Image Editor Free",
+    "description": "Google Nano Banana text-to-image on Kie.ai: fast, versatile AI images. Documentation, examples, and link to our image generator."
+  },
+  "page": {
+    "title": "Nano Banana",
+    "description": "Google Nano Banana is a popular text-to-image model on Kie.ai — strong for everyday creative and product-style prompts.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Google Nano Banana — Text-to-Image",
+        "description": "Nano Banana focuses on accessible, high-quality text-to-image generation. Pair it with the in-app model selector when your Kie.ai project exposes google/nano-banana.",
+        "highlight_text": "Nano Banana",
+        "tip": "<strong>Docs:</strong> <a href=\"https://docs.kie.ai/market/google/nano-banana\" class=\"underline hover:opacity-80\" target=\"_blank\" rel=\"noopener noreferrer\">Kie.ai Nano Banana →</a>",
+        "buttons": [
+          { "title": "Open AI Image Generator", "icon": "Image", "url": "/ai-image-generator", "target": "_self", "variant": "default" },
+          { "title": "Compare AI Image Models", "icon": "BarChart3", "url": "/compare-image-models", "target": "_self", "variant": "outline" }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": { "src": "/imgs/bg/girl.jpeg", "alt": "Nano Banana" }
+      },
+      "images": {
+        "id": "model-images",
+        "title": "Example images",
+        "description": "Tag showcases with nano-banana to show community results here.",
+        "images": [
+          { "src": "https://picsum.photos/seed/nb1/800/800", "prompt": "Cute mascot sticker, flat vector, white background" },
+          { "src": "https://picsum.photos/seed/nb2/800/800", "prompt": "Macro food photo, natural window light" },
+          { "src": "https://picsum.photos/seed/nb3/800/800", "prompt": "Sci-fi book cover, bold typography, teal and orange" }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Nano Banana highlights",
+        "description": "Balanced quality and ease of use for text-only prompts.",
+        "items": [
+          { "title": "Text-to-image", "description": "Describe a scene and generate a still image in one step.", "icon": "Sparkles" },
+          { "title": "Broad styles", "description": "Works across illustration, photo, and graphic styles when prompted clearly.", "icon": "Palette" },
+          { "title": "Kie.ai market", "description": "Pricing and limits are defined by your Kie.ai project and route.", "icon": "Coins" }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "label": "FAQ",
+        "title": "Nano Banana FAQ",
+        "description": "",
+        "items": [
+          { "question": "Documentation?", "answer": "https://docs.kie.ai/market/google/nano-banana" },
+          { "question": "How do I select it in the app?", "answer": "Open AI Image Generator and choose the Nano Banana model in the dropdown when available for your account." }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Generate with Nano Banana",
+        "description": "Use free sign-up credits where applicable.",
+        "buttons": [{ "title": "AI Image Generator", "url": "/ai-image-generator", "target": "_self", "icon": "Image" }],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

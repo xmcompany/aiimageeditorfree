@@ -22,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${appUrl}/hailuo`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${appUrl}/happyhorse`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${appUrl}/runway`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${appUrl}/gpt-image-2`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${appUrl}/pricing`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${appUrl}/blog`, lastModified, changeFrequency: 'weekly', priority: 0.7 },
   ];

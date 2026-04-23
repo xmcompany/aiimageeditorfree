@@ -1,9 +1,10 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import moment from 'moment';
-import { Coins, Download, MoreHorizontal, RefreshCw, Loader2 } from 'lucide-react';
+import { Coins, Download, MoreHorizontal, RefreshCw, Loader2, Trash2, CheckSquare, Square } from 'lucide-react';
+import { toast } from 'sonner';
 
 import { AITaskStatus } from '@/extensions/ai/types';
 import { LazyImage } from '@/shared/blocks/common';
@@ -126,6 +127,8 @@ export function AdminAITasksGrid({ tasks }: { tasks: AITask[] }) {
   const [selected, setSelected] = useState<AITask | null>(null);
   const [localTasks, setLocalTasks] = useState<AITask[]>(tasks);
   const [pollingIds, setPollingIds] = useState<Set<string>>(new Set());
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [bulkDeleting, setBulkDeleting] = useState(false);
   const router = useRouter();
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -197,6 +200,47 @@ export function AdminAITasksGrid({ tasks }: { tasks: AITask[] }) {
     }
   };
 
+  const toggleSelect = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedIds.size === localTasks.length) {
+      setSelectedIds(new Set());
+    } else {
+      setSelectedIds(new Set(localTasks.map((t) => t.id)));
+    }
+  };
+
+  const handleBulkDelete = async () => {
+    if (selectedIds.size === 0) return;
+    if (!confirm(`Delete ${selectedIds.size} selected task(s)? This cannot be undone.`)) return;
+    setBulkDeleting(true);
+    try {
+      const res = await fetch('/api/admin/ai-tasks/bulk-delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids: Array.from(selectedIds) }),
+      });
+      const data = await res.json();
+      if (data.code === 0) {
+        toast.success(`Deleted ${selectedIds.size} task(s)`);
+        setLocalTasks((prev) => prev.filter((t) => !selectedIds.has(t.id)));
+        setSelectedIds(new Set());
+      } else {
+        toast.error(data.message || 'Delete failed');
+      }
+    } catch {
+      toast.error('Network error');
+    } finally {
+      setBulkDeleting(false);
+    }
+  };
+
   if (!localTasks.length) return (
     <div className="text-muted-foreground flex w-full items-center justify-center py-16">
       No tasks found
@@ -205,10 +249,38 @@ export function AdminAITasksGrid({ tasks }: { tasks: AITask[] }) {
 
   return (
     <>
+      {/* Toolbar */}
+      <div className="flex flex-wrap items-center gap-3">
+        <button
+          onClick={toggleSelectAll}
+          className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-sm"
+        >
+          {selectedIds.size === localTasks.length && localTasks.length > 0
+            ? <CheckSquare className="h-4 w-4" />
+            : <Square className="h-4 w-4" />}
+          {selectedIds.size > 0 ? `${selectedIds.size} selected` : 'Select all'}
+        </button>
+
+        <div className="flex-1" />
+
+        {selectedIds.size > 0 && (
+          <Button
+            variant="destructive"
+            size="sm"
+            onClick={handleBulkDelete}
+            disabled={bulkDeleting}
+            className="gap-1.5"
+          >
+            <Trash2 className="h-4 w-4" />
+            {bulkDeleting ? 'Deleting...' : `Delete ${selectedIds.size}`}
+          </Button>
+        )}
+      </div>
+
       {pendingTasks.length > 0 && (
         <div className="flex items-center gap-2 rounded-md border border-yellow-200 bg-yellow-50 px-3 py-2 text-sm text-yellow-800 dark:border-yellow-800 dark:bg-yellow-950 dark:text-yellow-200">
           <Loader2 className="h-4 w-4 animate-spin" />
-          {pendingTasks.length} task{pendingTasks.length > 1 ? 's' : ''} in progress — auto-refreshing every 5s
+          {pendingTasks.length} task{pendingTasks.length > 1 ? 's' : ''} in progress 鈥?auto-refreshing every 5s
         </div>
       )}
 
@@ -220,10 +292,10 @@ export function AdminAITasksGrid({ tasks }: { tasks: AITask[] }) {
           return (
             <div
               key={task.id}
-              className="bg-card hover:bg-accent/50 group relative cursor-pointer overflow-hidden rounded-lg border transition-colors"
+              className={`bg-card hover:bg-accent/50 group relative cursor-pointer overflow-hidden rounded-lg border transition-colors ${selectedIds.has(task.id) ? 'ring-2 ring-primary' : ''}`}
               onClick={() => setSelected(task)}
             >
-              {/* 预览区域 */}
+              {/* 棰勮鍖哄煙 */}
               <div className="bg-muted relative aspect-square w-full overflow-hidden">
                 {thumb.type === 'image' && thumb.url ? (
                   <LazyImage src={thumb.url} alt="" className="h-full w-full object-cover" />
@@ -235,19 +307,35 @@ export function AdminAITasksGrid({ tasks }: { tasks: AITask[] }) {
                     <span className="text-xs">{task.mediaType}</span>
                   </div>
                 )}
-                {/* 状态角标 */}
+                {/* 鐘舵€佽鏍?*/}
                 <div className="absolute top-1.5 left-1.5">
                   <StatusBadge status={task.status ?? ''} />
                 </div>
-                {/* 更多按钮 */}
-                <div className="absolute top-1.5 right-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-                  <div className="bg-background/80 rounded-full p-1">
-                    <MoreHorizontal className="h-3.5 w-3.5" />
+                {/* 閫夋嫨妗?*/}
+                <div
+                  className="absolute top-1.5 right-1.5 opacity-0 transition-opacity group-hover:opacity-100 z-10"
+                  onClick={(e) => { e.stopPropagation(); toggleSelect(task.id); }}
+                >
+                  <div className="bg-background/80 rounded-full p-1 cursor-pointer">
+                    {selectedIds.has(task.id)
+                      ? <CheckSquare className="h-4 w-4 text-primary" />
+                      : <Square className="h-4 w-4" />}
                   </div>
                 </div>
+                {/* 閫変腑鏃跺缁堟樉绀?*/}
+                {selectedIds.has(task.id) && (
+                  <div
+                    className="absolute top-1.5 right-1.5 z-10"
+                    onClick={(e) => { e.stopPropagation(); toggleSelect(task.id); }}
+                  >
+                    <div className="bg-background/80 rounded-full p-1 cursor-pointer">
+                      <CheckSquare className="h-4 w-4 text-primary" />
+                    </div>
+                  </div>
+                )}
               </div>
 
-              {/* 底部信息 */}
+              {/* 搴曢儴淇℃伅 */}
               <div className="flex items-center justify-between px-2 py-1.5">
                 <div className="text-muted-foreground flex items-center gap-1 text-xs">
                   <Coins className="h-3 w-3" />
@@ -262,21 +350,21 @@ export function AdminAITasksGrid({ tasks }: { tasks: AITask[] }) {
         })}
       </div>
 
-      {/* 详情弹窗 */}
+      {/* 璇︽儏寮圭獥 */}
       <Dialog open={!!selected} onOpenChange={(open) => !open && setSelected(null)}>
         <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-base">
-              {selected?.mediaType} · {selected?.model}
+              {selected?.mediaType} 路 {selected?.model}
             </DialogTitle>
           </DialogHeader>
 
           {selected && (
             <div className="space-y-4">
-              {/* 结果预览 */}
+              {/* 缁撴灉棰勮 */}
               <TaskResultPreview taskInfo={selected.taskInfo} mediaType={selected.mediaType} />
 
-              {/* 详细信息 */}
+              {/* 璇︾粏淇℃伅 */}
               <div className="grid gap-y-2 text-sm" style={{ gridTemplateColumns: 'auto 1fr' }}>
                 <div className="text-muted-foreground pr-8">Provider</div>
                 <div className="break-all">{selected.provider || '-'}</div>
@@ -316,7 +404,7 @@ export function AdminAITasksGrid({ tasks }: { tasks: AITask[] }) {
                 </div>
               )}
 
-              {/* 操作按钮 */}
+              {/* 鎿嶄綔鎸夐挳 */}
               <div className="flex flex-wrap gap-2">
                 {(selected.status === AITaskStatus.PENDING || selected.status === AITaskStatus.PROCESSING) && (
                   <Button

@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+﻿import { nanoid } from 'nanoid';
 
 import { getUuid } from '@/shared/lib/hash';
 
@@ -174,6 +174,10 @@ export class KieProvider implements AIProvider {
       }
       if (options.output_format) {
         payload.input.output_format = options.output_format;
+      }
+      // gpt-image-2 image-to-image: input_urls
+      if (options.input_urls && Array.isArray(options.input_urls)) {
+        payload.input.input_urls = options.input_urls;
       }
     }
 

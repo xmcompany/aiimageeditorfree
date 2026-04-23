@@ -1,6 +1,7 @@
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+﻿import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { PERMISSIONS, requirePermission } from '@/core/rbac';
+import { getImageModelOptions } from '@/config/model-config';
 import { Header, Main, MainHeader } from '@/shared/blocks/dashboard';
 import { FormCard } from '@/shared/blocks/form';
 import { getUuid } from '@/shared/lib/hash';
@@ -44,11 +45,7 @@ export default async function PromptAddPage({
         name: 'model',
         type: 'select',
         title: 'Model',
-        options: [
-          { title: 'Nano Banana 2', value: 'nano-banana-2' },
-          { title: 'Nano Banana Pro', value: 'nano-banana-pro' },
-          { title: 'Nano Banana V1', value: 'google/nano-banana' },
-        ],
+        options: getImageModelOptions(),
       },
       {
         name: 'promptTitle',

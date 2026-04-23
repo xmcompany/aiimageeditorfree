@@ -1,15 +1,30 @@
-import { getTranslations } from 'next-intl/server';
+﻿import { getTranslations } from 'next-intl/server';
 import { envConfigs } from '@/config';
+import { calculateImageCredits } from '@/config/model-config';
 import { AIMediaType, AITaskStatus } from '@/extensions/ai';
 import { getUuid } from '@/shared/lib/hash';
 import { respData, respErr } from '@/shared/lib/resp';
+import { enforceMinIntervalRateLimit } from '@/shared/lib/rate-limit';
 import { createAITask, NewAITask } from '@/shared/models/ai_task';
 import { getRemainingCredits } from '@/shared/models/credit';
 import { getUserInfo } from '@/shared/models/user';
 import { getAIService } from '@/shared/services/ai';
 import { getStorageService } from '@/shared/services/storage';
+import { moderateContent } from '@/shared/lib/content-moderation';
 
 export async function POST(request: Request) {
+  // Rate limit: 1 generation request per 3 seconds per IP
+  const limited = enforceMinIntervalRateLimit(request, {
+    intervalMs: 3000,
+    keyPrefix: 'ai-generate',
+  });
+  if (limited) {
+    return Response.json(
+      { code: 429, message: 'Too many requests, please try again later.' },
+      { status: 429 }
+    );
+  }
+
   const body = await request.json().catch(() => ({}));
   const locale = body?.locale || 'en';
   const t = await getTranslations({ locale, namespace: 'common' });
@@ -19,9 +34,11 @@ export async function POST(request: Request) {
 
     const url = new URL(request.url);
     const debugMock = 
-      (request.headers.get('x-debug-mock') === 'true') || 
-      (url.searchParams.get('mock') === '1') ||
-      (request.headers.get('referer')?.includes('mock=1'));
+      process.env.NODE_ENV === 'development' && (
+        (request.headers.get('x-debug-mock') === 'true') || 
+        (url.searchParams.get('mock') === '1') ||
+        (request.headers.get('referer')?.includes('mock=1'))
+      );
 
     if (!provider || !mediaType || !model) {
       return respErr(t('messages.invalid_params'));
@@ -50,27 +67,18 @@ export async function POST(request: Request) {
       return respErr(t('messages.no_auth'));
     }
 
+    // check if user is banned
+    if ((user as any).banned) {
+      return respErr(t('messages.user_banned'));
+    }
+
     // todo: get cost credits from settings
     let costCredits = 4;
 
     if (mediaType === AIMediaType.IMAGE) {
-      // Image pricing: site credits = API kie credits → ~4.67x markup
-      const isPro = model === 'nano-banana-pro';
-      const isV2 = model === 'nano-banana-2';
-      const isEdit = model === 'google/nano-banana-edit';
-      const isNanoV1 = model === 'google/nano-banana';
-
-      if (isEdit) {
-        costCredits = 3; // 3 kie API cost, ~4.67x markup
-      } else if (isPro) {
-        costCredits = 8; // 8 kie API cost (1/2K), ~4.67x markup
-      } else if (isV2) {
-        costCredits = 5; // 5 kie API cost (1K), ~4.67x markup
-      } else if (isNanoV1) {
-        costCredits = 3; // 3 kie API cost, ~4.67x markup
-      } else {
-        return respErr(t('messages.invalid_params'));
-      }
+      // Image pricing from model-config, based on resolution
+      const resolution = options?.resolution || '1K';
+      costCredits = calculateImageCredits(model, resolution);
     } else if (mediaType === AIMediaType.VIDEO) {
       // generate video
       if (scene === 'text-to-video') {
@@ -88,6 +96,13 @@ export async function POST(request: Request) {
       scene = 'text-to-music';
     } else {
       return respErr(t('messages.invalid_params'));
+    }
+
+    // content moderation: keyword filter + OpenAI (before deducting credits)
+    const imageUrl = options?.init_image || options?.image_url || options?.imageUrl;
+    const moderationResult = await moderateContent({ text: prompt, imageUrl });
+    if (moderationResult.flagged) {
+      return respErr(t('messages.content_violation'));
     }
 
     // check credits

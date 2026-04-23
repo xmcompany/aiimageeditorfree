@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "title": "GPT-4o Image API — AI Image Generation | AI Image Editor Free",
+    "description": "Learn about OpenAI GPT-4o image generation via Kie.ai: fast text-to-image, high-quality visuals, and API quickstart. Try AI images free with sign-up credits."
+  },
+  "page": {
+    "title": "GPT-4o Image",
+    "description": "GPT-4o image capabilities exposed through Kie.ai — production-oriented text-to-image workflows with straightforward API integration.",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "GPT-4o Image — Text-to-Image AI",
+        "description": "Generate images from natural language prompts using GPT-4o-class image models. Ideal for rapid ideation, marketing visuals, and creative exploration. Official API patterns follow the Kie.ai 4o Image quickstart.",
+        "highlight_text": "GPT-4o Image",
+        "tip": "<strong>Docs:</strong> <a href=\"https://docs.kie.ai/4o-image-api/quickstart\" class=\"underline hover:opacity-80\" target=\"_blank\" rel=\"noopener noreferrer\">Kie.ai 4o Image API quickstart →</a>",
+        "buttons": [
+          {
+            "title": "Open AI Image Generator",
+            "icon": "Image",
+            "url": "/ai-image-generator",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "Compare AI Image Models",
+            "icon": "BarChart3",
+            "url": "/compare-image-models",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "show_hero_input": false,
+        "show_bg_spline": false,
+        "show_bg": false,
+        "background_image": {
+          "src": "/imgs/bg/girl.jpeg",
+          "alt": "GPT-4o image generation"
+        }
+      },
+      "images": {
+        "id": "model-images",
+        "title": "Example AI Images (placeholders)",
+        "description": "Replace with your gallery by tagging showcases with gpt-4o-image in the admin.",
+        "images": [
+          { "src": "https://picsum.photos/seed/g4oa/800/800", "prompt": "Soft pastel product hero shot, minimal studio lighting" },
+          { "src": "https://picsum.photos/seed/g4ob/800/800", "prompt": "Futuristic city skyline at blue hour, cinematic" },
+          { "src": "https://picsum.photos/seed/g4oc/800/800", "prompt": "Watercolor botanical illustration, white background" }
+        ]
+      },
+      "capabilities": {
+        "id": "features",
+        "title": "Why use GPT-4o Image",
+        "description": "Strong prompt understanding and balanced quality-to-speed for everyday image generation tasks.",
+        "items": [
+          { "title": "Prompt fidelity", "description": "Interprets detailed instructions for composition, style, and subject matter.", "icon": "Type" },
+          { "title": "Fast iteration", "description": "Well suited for drafts, A/B visual concepts, and creative exploration.", "icon": "Zap" },
+          { "title": "API-first", "description": "Integrate using the Kie.ai quickstart flow and standard task callbacks.", "icon": "Code" }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "label": "FAQ",
+        "title": "GPT-4o Image FAQ",
+        "description": "Common questions about GPT-4o image generation on Kie.ai.",
+        "items": [
+          { "question": "Where is the official API documentation?", "answer": "See the Kie.ai quickstart: https://docs.kie.ai/4o-image-api/quickstart" },
+          { "question": "Can I try it on this site?", "answer": "Yes — open the AI Image Generator after sign-up. Available models in the UI may vary; credits apply per generation." },
+          { "question": "Is this the same as OpenAI’s consumer ChatGPT images?", "answer": "This page describes the Kie.ai integration path for GPT-4o image-style generation. Capabilities depend on the exact model id configured in your Kie.ai project." }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Start with AI images",
+        "description": "Sign up for free credits and open the image generator.",
+        "buttons": [
+          { "title": "AI Image Generator", "url": "/ai-image-generator", "target": "_self", "icon": "Image" }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

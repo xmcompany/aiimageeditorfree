@@ -1,4 +1,4 @@
-import { and, count, desc, eq, sum } from 'drizzle-orm';
+import { and, count, desc, eq, inArray, sql, sum } from 'drizzle-orm';
 import { db } from '@/core/db';
 import { referral, user } from '@/config/db/schema';
 import { getAllConfigs } from './config';
@@ -37,14 +37,21 @@ export function getReferralCode(userId: string): string {
 
 // 通过推荐码找用户
 export async function findUserByReferralCode(code: string): Promise<User | null> {
-  // 查找 id 以该 code 开头的用户（去掉横线后前8位）
-  const allUsers = await db()
+  if (!code || code.length !== 8) return null;
+
+  // UUID format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+  // Referral code is the first 8 hex chars (no dashes), which matches the UUID prefix before the first dash.
+  // Use SQL LIKE to query efficiently instead of loading all users into memory.
+  const prefix = code.toLowerCase();
+  const results = await db()
     .select()
     .from(user)
-    .limit(1000); // 实际项目可以加专属 referral_code 字段优化
+    .where(sql`lower(${user.id}) like ${prefix + '%'}`)
+    .limit(10);
 
-  const found = allUsers.find(u =>
-    u.id.replace(/-/g, '').slice(0, 8).toLowerCase() === code.toLowerCase()
+  // Verify exact match (first 8 chars of id without dashes)
+  const found = results.find((u: any) =>
+    u.id.replace(/-/g, '').slice(0, 8).toLowerCase() === prefix
   );
   return found || null;
 }
@@ -161,7 +168,7 @@ export async function getReferralsByReferrer(referrerId: string): Promise<Referr
     .where(eq(referral.referrerId, referrerId))
     .orderBy(desc(referral.createdAt));
 
-  return rows.map(r => ({
+  return rows.map((r: any) => ({
     id: r.id,
     referrerId: r.referrerId,
     refereeId: r.refereeId,
@@ -207,16 +214,14 @@ export async function getAllReferrals({
     .offset((page - 1) * limit);
 
   // Fetch referrer info separately to avoid complex alias joins
-  const referrerIds = [...new Set(rows.map((r) => r.referrerId))];
+  const referrerIds = [...new Set(rows.map((r: any) => r.referrerId))] as string[];
   const referrers = referrerIds.length > 0
     ? await db().select({ id: user.id, email: user.email, name: user.name }).from(user)
-        .then((all: { id: string; email: string | null; name: string | null }[]) =>
-          all.filter((u) => referrerIds.includes(u.id))
-        )
+        .where(inArray(user.id, referrerIds))
     : [];
-  const referrerMap = Object.fromEntries(referrers.map((u) => [u.id, u]));
+  const referrerMap = Object.fromEntries(referrers.map((u: any) => [u.id, u]));
 
-  return rows.map(r => ({
+  return rows.map((r: any) => ({
     id: r.id,
     referrerId: r.referrerId,
     refereeId: r.refereeId,

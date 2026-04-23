@@ -46,6 +46,7 @@ import {
 import { Badge } from '@/shared/components/ui/badge';
 import { cn } from '@/shared/lib/utils';
 import { Link } from '@/core/i18n/navigation';
+import { getImageModelAdminOptions } from '@/config/model-config';
 
 interface PromptItem {
   id: string;
@@ -67,11 +68,7 @@ interface GenerateTask {
   submittedAt: string;
 }
 
-const IMAGE_MODELS = [
-  { value: 'nano-banana-2', label: 'Nano Banana 2', provider: 'kie' },
-  { value: 'nano-banana-pro', label: 'Nano Banana Pro', provider: 'kie' },
-  { value: 'google/nano-banana', label: 'Nano Banana V1', provider: 'kie' },
-];
+const IMAGE_MODELS = getImageModelAdminOptions();
 
 export function ImagePromptsManager({ initialData }: { initialData: PromptItem[] }) {
   const [prompts, setPrompts] = useState<PromptItem[]>(initialData);

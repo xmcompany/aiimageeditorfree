@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+﻿import { getTranslations } from 'next-intl/server';
 
 import { PERMISSIONS, requirePermission } from '@/core/rbac';
 import { Header, Main, MainHeader } from '@/shared/blocks/dashboard';
@@ -117,6 +117,12 @@ export default async function AdminUsersPage({
             title: t('list.buttons.edit_roles'),
             icon: 'Users',
             url: `/admin/users/${item.id}/edit-roles`,
+          },
+          {
+            name: 'ban',
+            title: (item as any).banned ? t('list.buttons.unban') : t('list.buttons.ban'),
+            icon: 'Ban',
+            url: `/admin/users/${item.id}/ban`,
           },
         ],
       },
