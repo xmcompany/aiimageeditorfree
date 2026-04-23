@@ -1,4 +1,4 @@
-import { and, count, desc, eq, sql } from 'drizzle-orm';
+import { and, count, desc, eq, inArray, sql } from 'drizzle-orm';
 
 import { db } from '@/core/db';
 import { aiTask, credit, showcase } from '@/config/db/schema';
@@ -285,4 +285,13 @@ export async function toggleAITaskShowInGallery(id: string, show: boolean): Prom
     console.error('toggleAITaskShowInGallery error:', error);
     return { success: false, message: error.message || 'Error occurred' };
   }
+}
+
+export async function deleteAITasks(ids: string[]): Promise<number> {
+  if (!ids.length) return 0;
+  const result = await db()
+    .delete(aiTask)
+    .where(inArray(aiTask.id, ids))
+    .returning();
+  return result.length;
 }
