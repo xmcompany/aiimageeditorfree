@@ -54,6 +54,17 @@ const authOptions = {
         required: false,
         defaultValue: '',
       },
+      banned: {
+        type: 'boolean',
+        input: false,
+        required: false,
+        defaultValue: false,
+      },
+      bannedReason: {
+        type: 'string',
+        input: false,
+        required: false,
+      },
     },
   },
   advanced: {
