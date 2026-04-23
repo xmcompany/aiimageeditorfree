@@ -224,6 +224,7 @@ export function ImageGenerator({
   const [isPreviewImageLoaded, setIsPreviewImageLoaded] = useState(false);
   const [showShortPromptDialog, setShowShortPromptDialog] = useState(false);
   const pendingGenerateRef = useRef(false);
+  const [violationMessage, setViolationMessage] = useState<string | null>(null);
 
   useEffect(() => {
     setIsPreviewImageLoaded(false);
@@ -825,7 +826,11 @@ export function ImageGenerator({
       await fetchUserCredits();
     } catch (error: any) {
       console.error('Failed to generate image:', error);
-      toast.error(`Failed to generate image: ${error.message}`);
+      if (error.message?.includes('Content violates') || error.message?.includes('content_violation') || error.message?.includes('suspended')) {
+        setViolationMessage(error.message);
+      } else {
+        toast.error(`Failed to generate image: ${error.message}`);
+      }
       resetTaskState();
     }
   };
@@ -1224,6 +1229,20 @@ export function ImageGenerator({
           <Button onClick={() => { pendingGenerateRef.current = true; setShowShortPromptDialog(false); handleGenerate(); }}>
             Continue
           </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+
+    <Dialog open={!!violationMessage} onOpenChange={() => setViolationMessage(null)}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Content Policy Violation</DialogTitle>
+          <DialogDescription>
+            {violationMessage}
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button onClick={() => setViolationMessage(null)}>OK</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
