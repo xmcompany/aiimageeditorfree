@@ -655,6 +655,7 @@ export function VideoGenerator({
   };
 
   return (
+    <>
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10 h-full w-full">
@@ -1005,5 +1006,6 @@ export function VideoGenerator({
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
+    </>
   );
 }

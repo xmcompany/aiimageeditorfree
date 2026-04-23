@@ -866,6 +866,7 @@ export function ImageGenerator({
   };
 
   return (
+    <>
     <section className={cn('pt-4 md:pt-6 pb-16 md:pb-24 relative overflow-hidden', className)}>
       {/* Premium Background Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10 h-full w-full">
@@ -1228,5 +1229,6 @@ export function ImageGenerator({
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
+    </>
   );
 }
