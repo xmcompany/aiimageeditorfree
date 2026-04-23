@@ -311,7 +311,7 @@ export function AdminAITasksGrid({ tasks }: { tasks: AITask[] }) {
                 <div className="absolute top-1.5 left-1.5">
                   <StatusBadge status={task.status ?? ''} />
                 </div>
-                {/* 閫夋嫨妗?*/}
+                {/* 选择框 */}
                 <div
                   className="absolute top-1.5 right-1.5 opacity-0 transition-opacity group-hover:opacity-100 z-10"
                   onClick={(e) => { e.stopPropagation(); toggleSelect(task.id); }}
@@ -322,7 +322,7 @@ export function AdminAITasksGrid({ tasks }: { tasks: AITask[] }) {
                       : <Square className="h-4 w-4" />}
                   </div>
                 </div>
-                {/* 閫変腑鏃跺缁堟樉绀?*/}
+                {/* 选中时始终显示 */}
                 {selectedIds.has(task.id) && (
                   <div
                     className="absolute top-1.5 right-1.5 z-10"

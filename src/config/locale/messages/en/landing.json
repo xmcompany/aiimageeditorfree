@@ -17,6 +17,11 @@
           "icon": "Image"
         },
         {
+          "title": "GPT Image 2",
+          "url": "/gpt-image-2",
+          "icon": "Image"
+        },
+        {
           "title": "Compare Models",
           "url": "/compare-image-models",
           "icon": "BarChart3"
@@ -478,6 +483,11 @@
             {
               "title": "Pro Image-to-Image",
               "url": "/google-pro-image-to-image",
+              "target": "_self"
+            },
+            {
+              "title": "GPT Image 2",
+              "url": "/gpt-image-2",
               "target": "_self"
             }
           ]

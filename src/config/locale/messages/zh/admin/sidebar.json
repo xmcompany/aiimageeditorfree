@@ -12,71 +12,72 @@
   },
   "main_navs": [
     {
-      "title": "System",
+      "title": "系统管理",
       "items": [
         {
-          "title": "Dashboard",
+          "title": "数据仪表盘",
           "url": "/admin/dashboard",
           "icon": "LayoutDashboard"
         },
         {
-          "title": "Users & Permissions",
+          "title": "用户与访问权限",
           "icon": "User",
+          "is_expand": true,
           "children": [
             {
-              "title": "Users",
+              "title": "用户管理",
               "url": "/admin/users",
               "icon": "User"
             },
             {
-              "title": "Roles",
+              "title": "角色定义",
               "url": "/admin/roles",
               "icon": "Users"
             },
             {
-              "title": "Permissions",
+              "title": "权限分配",
               "url": "/admin/permissions",
               "icon": "ShieldCheck"
             }
           ]
         },
         {
-          "title": "Pages & Content",
+          "title": "内容运营",
           "icon": "FileText",
           "children": [
             {
-              "title": "Categories",
+              "title": "栏目分类",
               "icon": "Folder",
               "url": "/admin/categories"
             },
             {
-              "title": "Posts",
+              "title": "文章管理",
               "icon": "FileText",
               "url": "/admin/posts"
             },
             {
-              "title": "Feedbacks",
+              "title": "用户反馈",
               "icon": "MessageSquare",
               "url": "/admin/feedbacks"
             }
           ]
         },
         {
-          "title": "Payments & Credits",
+          "title": "财务与积分",
           "icon": "DollarSign",
           "children": [
             {
-              "title": "Payments",
+              "title": "支付流水",
               "url": "/admin/payments",
               "icon": "DollarSign"
             },
             {
-              "title": "Subscriptions",
+              "title": "订阅管理",
               "url": "/admin/subscriptions",
               "icon": "CreditCard"
             },
             {
-              "title": "Credits",
+              "title": "积分记录",
               "url": "/admin/credits",
               "icon": "Coins"
             }
@@ -85,52 +86,52 @@
       ]
     },
     {
-      "title": "AI Creation",
+      "title": "AI 创作管理",
       "items": [
         {
-          "title": "AI Image",
+          "title": "AI 图像管理",
           "icon": "Image",
           "children": [
              {
-              "title": "Image Prompts",
+              "title": "图像提示词",
               "icon": "Wand",
               "url": "/admin/image-prompts"
             },
             {
-              "title": "Image Showcases",
+              "title": "图像案例",
               "icon": "Award",
               "url": "/admin/image-showcases"
             },
             {
-              "title": "Image Generates",
+              "title": "图像生成",
               "icon": "Database",
               "url": "/admin/image-generates"
             }
           ]
         },
         {
-          "title": "AI Video",
+          "title": "AI 视频管理",
           "icon": "Video",
           "children": [
              {
-              "title": "Video Prompts",
+              "title": "视频提示词",
               "icon": "Wand",
               "url": "/admin/video-prompts"
             },
             {
-              "title": "Video Showcases",
+              "title": "视频案例",
               "icon": "Award",
               "url": "/admin/video-showcases"
             },
             {
-              "title": "Video Generates",
+              "title": "视频生成",
               "icon": "Database",
               "url": "/admin/video-generates"
             }
           ]
         },
         {
-          "title": "AI Tasks",
+          "title": "AI 生成任务",
           "url": "/admin/ai-tasks",
           "icon": "Brain"
         }
@@ -140,12 +141,12 @@
   "bottom_nav": {
     "items": [
       {
-        "title": "Settings",
+        "title": "配置中心",
         "url": "/admin/settings/general",
         "icon": "Settings"
       },
       {
-        "title": "API Keys",
+        "title": "API 密钥管理",
         "url": "/admin/apikeys",
         "icon": "Key"
       }
@@ -155,7 +156,7 @@
     "nav": {
       "items": [
         {
-          "title": "Profile",
+          "title": "个人中心",
           "url": "/settings/profile",
           "icon": "User",
           "target": "_blank"
@@ -170,7 +171,7 @@
     "nav": {
       "items": [
         {
-          "title": "Home",
+          "title": "产品首页",
           "url": "/",
           "icon": "Home",
           "target": "_blank"

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Content moderation: keyword filter + OpenAI Moderation API (double protection)
  */
 
@@ -13,12 +13,12 @@ const BLOCKED_SINGLE = [
   // racial slurs
   'nigger', 'faggot', 'chink', 'spic', 'kike',
   // Chinese explicit
-  '鑹叉儏', '鎬х埍', '鍋氱埍', '寮哄ジ', '涔变鸡', '鍎跨鑹叉儏', '鏂╅', '閰峰垜', '鑲㈣В',
+  '色情', '性爱', '做爱', '强奸', '乱伦', '儿童色情', '斩首', '酷刑', '肢解',
 ];
 
 // Combination rules: ALL keywords in a group must appear together to block
 const BLOCKED_COMBINATIONS = [
-  // crush/squash + person 鈫?size fetish violence
+  // crush/squash + person → size fetish violence
   { words: ['crush', 'man'], label: 'violence' },
   { words: ['crush', 'woman'], label: 'violence' },
   { words: ['crush', 'person'], label: 'violence' },

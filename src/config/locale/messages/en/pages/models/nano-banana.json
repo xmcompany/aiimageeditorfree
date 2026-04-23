@@ -1,63 +1,104 @@
 {
   "metadata": {
-    "title": "Google Nano Banana — AI Image Model | AI Image Editor Free",
-    "description": "Google Nano Banana text-to-image on Kie.ai: fast, versatile AI images. Documentation, examples, and link to our image generator."
+    "title": "Nano Banana AI Image Generator | AI Video Generator Free",
+    "description": "Try Nano Banana AI image generator free online. Google's fast image generation model with text-to-image and image-to-image capabilities. No credit card required."
   },
   "page": {
-    "title": "Nano Banana",
-    "description": "Google Nano Banana is a popular text-to-image model on Kie.ai — strong for everyday creative and product-style prompts.",
+    "title": "Nano Banana AI Image Generator",
+    "description": "Google Nano Banana is an AI image generation model supporting text-to-image and image-to-image creation with fast inference and high-quality visual output.",
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "Google Nano Banana — Text-to-Image",
-        "description": "Nano Banana focuses on accessible, high-quality text-to-image generation. Pair it with the in-app model selector when your Kie.ai project exposes google/nano-banana.",
+        "title": "Nano Banana AI Image Generator - Free Online",
+        "description": "Create high-quality AI images from text prompts or reference photos using Google Nano Banana - a fast, capable image generation model built for creative workflows. Sign up free and start generating today.",
         "highlight_text": "Nano Banana",
-        "tip": "<strong>Docs:</strong> <a href=\"https://docs.kie.ai/market/google/nano-banana\" class=\"underline hover:opacity-80\" target=\"_blank\" rel=\"noopener noreferrer\">Kie.ai Nano Banana →</a>",
         "buttons": [
-          { "title": "Open AI Image Generator", "icon": "Image", "url": "/ai-image-generator", "target": "_self", "variant": "default" },
-          { "title": "Compare AI Image Models", "icon": "BarChart3", "url": "/compare-image-models", "target": "_self", "variant": "outline" }
+          {
+            "title": "Generate AI Image with Nano Banana",
+            "icon": "Image",
+            "url": "/ai-image-generator",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "Explore AI Image Models",
+            "icon": "ArrowLeft",
+            "url": "/ai-image-generator",
+            "target": "_self",
+            "variant": "outline"
+          }
         ],
         "show_avatars": false,
         "show_hero_input": false,
         "show_bg_spline": false,
         "show_bg": false,
-        "background_image": { "src": "/imgs/bg/girl.jpeg", "alt": "Nano Banana" }
-      },
-      "images": {
-        "id": "model-images",
-        "title": "Example images",
-        "description": "Tag showcases with nano-banana to show community results here.",
-        "images": [
-          { "src": "https://picsum.photos/seed/nb1/800/800", "prompt": "Cute mascot sticker, flat vector, white background" },
-          { "src": "https://picsum.photos/seed/nb2/800/800", "prompt": "Macro food photo, natural window light" },
-          { "src": "https://picsum.photos/seed/nb3/800/800", "prompt": "Sci-fi book cover, bold typography, teal and orange" }
-        ]
+        "background_image": {
+          "src": "/imgs/bg/girl.jpeg",
+          "alt": "Nano Banana AI image generator"
+        }
       },
       "capabilities": {
         "id": "features",
-        "title": "Nano Banana highlights",
-        "description": "Balanced quality and ease of use for text-only prompts.",
+        "title": "Nano Banana AI Image Generation Capabilities",
+        "description": "Google Nano Banana is designed for speed and quality. Whether you are generating from a text description or transforming an existing photo, the model delivers sharp, detailed results with low latency.",
         "items": [
-          { "title": "Text-to-image", "description": "Describe a scene and generate a still image in one step.", "icon": "Sparkles" },
-          { "title": "Broad styles", "description": "Works across illustration, photo, and graphic styles when prompted clearly.", "icon": "Palette" },
-          { "title": "Kie.ai market", "description": "Pricing and limits are defined by your Kie.ai project and route.", "icon": "Coins" }
+          {
+            "title": "Text to Image Generation",
+            "description": "Type a description and Nano Banana renders it into a detailed image within seconds. The model handles a wide range of styles - from photorealistic scenes to illustrated concepts.",
+            "icon": "Type"
+          },
+          {
+            "title": "Image to Image Transformation",
+            "description": "Upload a reference photo and apply style transfers or targeted edits using a text prompt. The model preserves the original composition while applying your creative direction.",
+            "icon": "Image"
+          },
+          {
+            "title": "Fast Inference",
+            "description": "Nano Banana is optimized for low-latency generation, making it ideal for iterative creative workflows where speed matters as much as quality.",
+            "icon": "Zap"
+          },
+          {
+            "title": "Multiple Model Versions",
+            "description": "Choose from Nano Banana V1 for quick text-to-image tasks, Nano Banana Pro for higher resolution output, or Nano Banana 2 for the best balance of quality and speed.",
+            "icon": "Sparkles"
+          }
         ]
       },
       "faq": {
         "id": "faq",
-        "label": "FAQ",
-        "title": "Nano Banana FAQ",
-        "description": "",
+        "title": "Nano Banana AI Image Generator FAQ",
+        "description": "Common questions about using Nano Banana for AI image generation on our platform.",
         "items": [
-          { "question": "Documentation?", "answer": "https://docs.kie.ai/market/google/nano-banana" },
-          { "question": "How do I select it in the app?", "answer": "Open AI Image Generator and choose the Nano Banana model in the dropdown when available for your account." }
+          {
+            "question": "What is Google Nano Banana?",
+            "answer": "Google Nano Banana is an AI image generation model that supports both text-to-image and image-to-image creation. It is designed for fast inference and high-quality output across a variety of visual styles."
+          },
+          {
+            "question": "Can I use Nano Banana for free?",
+            "answer": "Yes. New users receive free credits on sign-up, which can be used immediately to generate images. No credit card is required to get started."
+          },
+          {
+            "question": "What is the difference between Nano Banana versions?",
+            "answer": "V1 supports text-to-image only and costs 3 credits per generation. Nano Banana Pro supports both text-to-image and image-to-image at higher resolution for 8 credits. Nano Banana 2 offers an improved quality-speed balance for 5 credits."
+          },
+          {
+            "question": "Which Nano Banana version should I use?",
+            "answer": "For quick drafts and simple prompts, V1 is the most cost-effective choice. For professional-quality output or image editing tasks, Nano Banana Pro or Nano Banana 2 are recommended."
+          }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "Generate with Nano Banana",
-        "description": "Use free sign-up credits where applicable.",
-        "buttons": [{ "title": "AI Image Generator", "url": "/ai-image-generator", "target": "_self", "icon": "Image" }],
+        "title": "Start Generating AI Images with Nano Banana Free",
+        "description": "Sign up now, claim your free credits, and create your first image with Nano Banana in seconds. No credit card required.",
+        "buttons": [
+          {
+            "title": "Try Nano Banana Free",
+            "url": "/ai-image-generator",
+            "target": "_self",
+            "icon": "Image"
+          }
+        ],
         "className": "bg-muted"
       }
     }

@@ -18,6 +18,14 @@ import { AIMediaType, AITaskStatus } from '@/extensions/ai/types';
 import { ImageUploader, ImageUploaderValue } from '@/shared/blocks/common';
 import { Button } from '@/shared/components/ui/button';
 import { Label } from '@/shared/components/ui/label';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/shared/components/ui/dialog';
 // import { Progress } from '@/shared/components/ui/progress';
 import {
   Select,
@@ -220,6 +228,9 @@ export function VideoGenerator({
   const [isMounted, setIsMounted] = useState(false);
   const [isLoadingCredits, setIsLoadingCredits] = useState(false);
   const hasLoadedCreditsRef = useRef(false);
+  const [showShortPromptDialog, setShowShortPromptDialog] = useState(false);
+  const pendingGenerateRef = useRef(false);
+  const [violationMessage, setViolationMessage] = useState<string | null>(null);
 
   const { user, isCheckSign, setIsShowSignModal, fetchUserCredits } =
     useAppContext();
@@ -499,6 +510,12 @@ export function VideoGenerator({
       return;
     }
 
+    if (trimmedPrompt.length < 10 && isTextToVideoMode && !pendingGenerateRef.current) {
+      setShowShortPromptDialog(true);
+      return;
+    }
+    pendingGenerateRef.current = false;
+
     if (!provider || !model) {
       toast.error('Provider or model is not configured correctly.');
       return;
@@ -598,7 +615,11 @@ export function VideoGenerator({
       await fetchUserCredits();
     } catch (error: any) {
       console.error('Failed to generate video:', error);
-      toast.error(`Failed to generate video: ${error.message}`);
+      if (error.message?.includes('Content violates') || error.message?.includes('content_violation') || error.message?.includes('suspended')) {
+        setViolationMessage(error.message);
+      } else {
+        toast.error(`Failed to generate video: ${error.message}`);
+      }
       resetTaskState();
     }
   };
@@ -637,6 +658,7 @@ export function VideoGenerator({
   };
 
   return (
+    <>
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 pointer-events-none -z-10 h-full w-full">
@@ -970,5 +992,37 @@ export function VideoGenerator({
         </div>
       </div>
     </section>
+
+    <Dialog open={showShortPromptDialog} onOpenChange={setShowShortPromptDialog}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Prompt is very short</DialogTitle>
+          <DialogDescription>
+            Your prompt is less than 10 characters. A short prompt may result in unexpected output. Do you want to continue?
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setShowShortPromptDialog(false)}>Cancel</Button>
+          <Button onClick={() => { pendingGenerateRef.current = true; setShowShortPromptDialog(false); handleGenerate(); }}>
+            Continue
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+
+    <Dialog open={!!violationMessage} onOpenChange={() => setViolationMessage(null)}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Content Policy Violation</DialogTitle>
+          <DialogDescription>
+            {violationMessage}
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button onClick={() => setViolationMessage(null)}>OK</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+    </>
   );
 }

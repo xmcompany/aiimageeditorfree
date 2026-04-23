@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { getUserInfo } from '@/shared/models/user';
 import { hasPermission } from '@/shared/services/rbac';
 import { PERMISSIONS } from '@/core/rbac';

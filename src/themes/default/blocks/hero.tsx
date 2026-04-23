@@ -157,7 +157,7 @@ export function Hero({
                 href={section.tip_url || '/#credits-ways'}
                 className="inline-flex w-fit items-center gap-2.5 rounded-full border border-primary/20 bg-primary/10 px-6 py-3 text-base font-semibold text-primary transition-all hover:bg-primary/20 hover:scale-105"
               >
-                <span>馃巵</span>
+                <span>🎁</span>
                 <span>{section.tip_text || 'How to Generate AI Videos for Free?'}</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </a>
