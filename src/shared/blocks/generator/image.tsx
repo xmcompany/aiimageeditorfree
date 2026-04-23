@@ -222,7 +222,7 @@ export function ImageGenerator({
             }
           } else {
             console.log('Kie provider not configured');
-            setModel('');
+            // Keep the initial default model instead of clearing it
           }
         }
       })
