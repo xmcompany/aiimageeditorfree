@@ -45,6 +45,7 @@ import { Textarea } from '@/shared/components/ui/textarea';
 import { useAppContext } from '@/shared/contexts/app';
 import { cn } from '@/shared/lib/utils';
 import { envConfigs } from '@/config';
+import { getImageModelFrontendOptions, calculateImageCredits } from '@/config/model-config';
 
 interface ImageGeneratorProps {
   allowMultipleImages?: boolean;
@@ -79,44 +80,7 @@ const POLL_INTERVAL = 5000;
 const GENERATION_TIMEOUT = 180000;
 const MAX_PROMPT_LENGTH = 2000;
 
-const MODEL_OPTIONS = [
-  {
-    value: 'gpt-image-2-text-to-image',
-    label: 'GPT Image 2',
-    scenes: ['text-to-image'],
-    schema: 'gpt2-t2i' as const,
-  },
-  {
-    value: 'gpt-image-2-image-to-image',
-    label: 'GPT Image 2',
-    scenes: ['image-to-image'],
-    schema: 'gpt2-i2i' as const,
-  },
-  {
-    value: 'nano-banana-2',
-    label: 'Nano Banana 2',
-    scenes: ['text-to-image', 'image-to-image'],
-    schema: 'v2' as const,
-  },
-  {
-    value: 'nano-banana-pro',
-    label: 'Nano Banana Pro',
-    scenes: ['text-to-image', 'image-to-image'],
-    schema: 'v2' as const,
-  },
-  {
-    value: 'google/nano-banana',
-    label: 'Nano Banana',
-    scenes: ['text-to-image'],
-    schema: 'v1' as const,
-  },
-  {
-    value: 'google/nano-banana-edit',
-    label: 'Nano Banana Edit',
-    scenes: ['image-to-image'],
-    schema: 'v1' as const,
-  },
-];
+const MODEL_OPTIONS = getImageModelFrontendOptions();
 
 function parseTaskResult(taskResult: string | null): any {
   if (!taskResult) {
@@ -367,22 +331,8 @@ export function ImageGenerator({
     const modelOption = MODEL_OPTIONS.find((o) => o.value === model);
     if (!modelOption) { setCostCredits(5); return; }
 
-    const isPro = model === 'nano-banana-pro';
-    const isV2 = model === 'nano-banana-2';
-    const isEdit = model === 'google/nano-banana-edit';
-    const isGptImage2 = model === 'gpt-image-2-text-to-image' || model === 'gpt-image-2-image-to-image';
-
-    if (isGptImage2) {
-      setCostCredits(3); // GPT Image 2: 3 credits
-    } else if (isEdit) {
-      setCostCredits(3); // 3 kie API cost, ~4.67x markup
-    } else if (isPro) {
-      setCostCredits(8); // 8 kie API cost (1/2K), ~4.67x markup
-    } else if (isV2) {
-      setCostCredits(5); // 5 kie API cost (1K), ~4.67x markup
-    } else {
-      setCostCredits(3); // nano-banana: 3 kie API cost, ~4.67x markup
-    }
+    const scene = activeTab === 'image-to-image' ? 'image-to-image' : 'text-to-image';
+    setCostCredits(calculateImageCredits(model, scene));
   }, [model, activeTab]);
 
   const taskStatusLabel = useMemo(() => {
