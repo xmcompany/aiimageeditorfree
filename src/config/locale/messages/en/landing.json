@@ -94,6 +94,12 @@
               "description": "#1 Ranked open-source AI video model"
             },
             {
+              "title": "Compare All Models",
+              "url": "/compare",
+              "icon": "BarChart3",
+              "description": "Side-by-side AI video model comparison"
+            },
+            {
               "separator": true
             },
             {
@@ -107,15 +113,7 @@
               "url": "/models/nano-banana",
               "icon": "Image",
               "description": "Google Nano Banana image generation"
-            },
-            {
-              "title": "Compare All Models",
-              "url": "/compare",
-              "icon": "BarChart3",
-              "description": "Side-by-side AI video model comparison"
             }
-          ]
-        },
         {
           "title": "Pricing",
           "url": "/pricing",
@@ -551,6 +549,11 @@
               "target": "_self"
             },
             {
+              "title": "Compare All Models",
+              "url": "/compare",
+              "target": "_self"
+            },
+            {
               "separator": true
             },
             {
@@ -561,11 +564,6 @@
             {
               "title": "Nano Banana",
               "url": "/models/nano-banana",
-              "target": "_self"
-            },
-            {
-              "title": "Compare All Models",
-              "url": "/compare",
               "target": "_self"
             }
           ]

@@ -120,7 +120,7 @@ export function Header({ header }: { header: HeaderType }) {
                     <ul className="mt-1 space-y-2">
                       {item.children?.map((subItem: NavItem, index: number) => (
                         subItem.separator ? (
-                          <li key={index} aria-hidden className="my-1 border-t border-border/50" />
+                          <li key={index} aria-hidden className="my-2 border-t-2 border-border/40" />
                         ) : (
                         <ListItem
                           key={index}
