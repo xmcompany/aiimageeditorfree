@@ -58,6 +58,8 @@ export async function generateMetadata({
   const rawMetaSlug = typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
   const dynamicPageSlug = MODEL_SLUGS_META.includes(rawMetaSlug)
     ? `models.${rawMetaSlug}`
+    : rawMetaSlug.startsWith('models.')
+    ? rawMetaSlug
     : rawMetaSlug;
 
   const messageKey = `pages.${dynamicPageSlug}`;
@@ -129,9 +131,11 @@ export default async function DynamicPage({
   // dynamic page slug
   const MODEL_SLUGS = ['seedance','veo','hailuo','happyhorse','kling','runway','nano-banana','gpt-image-2'];
   const rawDynamicSlug = typeof slug === 'string' ? slug : (slug as string[]).join('.') || '';
-  // Support /seedance → pages.models.seedance (model pages without /models/ prefix)
+  // Support /seedance → pages.models.seedance and /models/nano-banana → pages.models.nano-banana
   const dynamicPageSlug = MODEL_SLUGS.includes(rawDynamicSlug)
     ? `models.${rawDynamicSlug}`
+    : rawDynamicSlug.startsWith('models.')
+    ? rawDynamicSlug
     : rawDynamicSlug;
 
   const messageKey = `pages.${dynamicPageSlug}`;
