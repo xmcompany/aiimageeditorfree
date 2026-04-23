@@ -1,5 +1,5 @@
-import { ChatGenerator } from '@/shared/blocks/chat/generator';
+import { redirect } from 'next/navigation';
 
 export default function ChatPage() {
-  return <ChatGenerator />;
+  redirect('/');
 }

@@ -36,6 +36,8 @@ export const user = table(
     utmSource: text('utm_source').notNull().default(''),
     ip: text('ip').notNull().default(''),
     locale: text('locale').notNull().default(''),
+    banned: boolean('banned').default(false).notNull(),
+    bannedReason: text('banned_reason'),
   },
   (table) => [
     // Search users by name in admin dashboard

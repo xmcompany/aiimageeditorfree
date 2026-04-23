@@ -51,6 +51,11 @@ export async function POST(request: Request) {
       return respErr(t('messages.no_auth'));
     }
 
+    // check if user is banned
+    if ((user as any).banned) {
+      return respErr(t('messages.user_banned'));
+    }
+
     // todo: get cost credits from settings
     let costCredits = 4;
 

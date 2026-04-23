@@ -118,6 +118,12 @@ export default async function AdminUsersPage({
             icon: 'Users',
             url: `/admin/users/${item.id}/edit-roles`,
           },
+          {
+            name: 'ban',
+            title: (item as any).banned ? t('list.buttons.unban') : t('list.buttons.ban'),
+            icon: 'Ban',
+            url: `/admin/users/${item.id}/ban`,
+          },
         ],
       },
     ],

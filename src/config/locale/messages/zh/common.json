@@ -86,6 +86,7 @@
     "not_found": "未找到",
     "failed": "操作失败",
     "success": "操作成功",
-    "content_violation": "内容违规，无法生成"
+    "content_violation": "内容违规，无法生成",
+    "user_banned": "您的账号已被封禁，请联系客服。"
   }
 }

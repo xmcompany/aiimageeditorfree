@@ -25,7 +25,9 @@
       "view": "查看用户",
       "delete": "删除用户",
       "edit_roles": "编辑角色",
-      "grant_credits": "授予积分"
+      "grant_credits": "授予积分",
+      "ban": "封禁用户",
+      "unban": "解封用户"
     },
     "search": {
       "email": {
@@ -86,6 +88,27 @@
       "valid_days_tip": "0 表示永久有效",
       "description": "积分授予描述",
       "description_placeholder": "管理员授予积分"
+    }
+  },
+  "ban": {
+    "title_ban": "封禁用户",
+    "title_unban": "解封用户",
+    "crumbs": {
+      "admin": "管理后台",
+      "users": "用户",
+      "ban": "封禁 / 解封"
+    },
+    "buttons": {
+      "ban": "封禁",
+      "unban": "解封"
+    },
+    "messages": {
+      "success_ban": "用户已封禁",
+      "success_unban": "用户已解封"
+    },
+    "fields": {
+      "banned_reason": "封禁原因",
+      "banned_reason_placeholder": "请描述封禁该用户的原因"
     }
   }
 }

@@ -8,11 +8,6 @@
         "icon": "RiTaskLine"
       },
       {
-        "title": "AI 对话",
-        "url": "/activity/chats",
-        "icon": "RiChat2Line"
-      },
-      {
         "title": "我的图片",
         "url": "/activity/images",
         "icon": "RiImageLine"

@@ -1,6 +1,16 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/shared/components/ui/alert-dialog';
 import { useParams } from 'next/navigation';
 import {
   CreditCard,
@@ -214,6 +224,8 @@ export function ImageGenerator({
   const [isLoadingProviders, setIsLoadingProviders] = useState(true);
   const hasLoadedCreditsRef = useRef(false);
   const [isPreviewImageLoaded, setIsPreviewImageLoaded] = useState(false);
+  const [showShortPromptDialog, setShowShortPromptDialog] = useState(false);
+  const pendingGenerateRef = useRef(false);
 
   useEffect(() => {
     setIsPreviewImageLoaded(false);
@@ -685,6 +697,12 @@ export function ImageGenerator({
       toast.error('Please enter a prompt before generating.');
       return;
     }
+
+    if (trimmedPrompt.length < 10 && !pendingGenerateRef.current) {
+      setShowShortPromptDialog(true);
+      return;
+    }
+    pendingGenerateRef.current = false;
 
     if (!provider || !model) {
       toast.error('Provider or model is not configured correctly.');
@@ -1193,5 +1211,22 @@ export function ImageGenerator({
         </div>
       </div>
     </section>
+
+    <AlertDialog open={showShortPromptDialog} onOpenChange={setShowShortPromptDialog}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Prompt is very short</AlertDialogTitle>
+          <AlertDialogDescription>
+            Your prompt is less than 10 characters. A short prompt may result in unexpected output. Do you want to continue?
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction onClick={() => { pendingGenerateRef.current = true; setShowShortPromptDialog(false); handleGenerate(); }}>
+            Continue
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }

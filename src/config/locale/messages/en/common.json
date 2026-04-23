@@ -86,6 +86,7 @@
     "not_found": "Not found",
     "failed": "Operation failed",
     "success": "Operation successful",
-    "content_violation": "Content violates our policies and cannot be generated"
+    "content_violation": "Content violates our policies and cannot be generated",
+    "user_banned": "Your account has been suspended. Please contact support."
   }
 }

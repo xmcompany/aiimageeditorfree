@@ -1,5 +1,5 @@
-import { ChatHistory } from '@/shared/blocks/chat/history';
+import { redirect } from 'next/navigation';
 
 export default function ChatHistoryPage() {
-  return <ChatHistory />;
+  redirect('/');
 }

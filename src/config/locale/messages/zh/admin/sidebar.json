@@ -134,11 +134,6 @@
           "title": "AI 生成任务",
           "url": "/admin/ai-tasks",
           "icon": "Brain"
-        },
-        {
-          "title": "AI 对话记录",
-          "url": "/admin/chats",
-          "icon": "MessageCircle"
         }
       ]
     }
