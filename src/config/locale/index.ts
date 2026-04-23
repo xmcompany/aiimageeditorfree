@@ -60,6 +60,8 @@ export const localeMessagesPaths = [
   'pages/models/hailuo',
   'pages/models/veo',
   'pages/models/happyhorse',
+  'pages/models/gpt-image-2',
+  'pages/models/nano-banana',
   'pages/compare',
   'admin/image-prompts',
   'admin/image-showcases',
