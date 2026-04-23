@@ -1213,22 +1213,22 @@ export function ImageGenerator({
       </div>
     </section>
 
-    <AlertDialog open={showShortPromptDialog} onOpenChange={setShowShortPromptDialog}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Prompt is very short</AlertDialogTitle>
-          <AlertDialogDescription>
+    <Dialog open={showShortPromptDialog} onOpenChange={setShowShortPromptDialog}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Prompt is very short</DialogTitle>
+          <DialogDescription>
             Your prompt is less than 10 characters. A short prompt may result in unexpected output. Do you want to continue?
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => { pendingGenerateRef.current = true; setShowShortPromptDialog(false); handleGenerate(); }}>
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setShowShortPromptDialog(false)}>Cancel</Button>
+          <Button onClick={() => { pendingGenerateRef.current = true; setShowShortPromptDialog(false); handleGenerate(); }}>
             Continue
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
     </>
   );
 }
