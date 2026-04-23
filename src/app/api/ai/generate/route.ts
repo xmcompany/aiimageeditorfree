@@ -61,8 +61,9 @@ export async function POST(request: Request) {
     let costCredits = 4;
 
     if (mediaType === AIMediaType.IMAGE) {
-      // Image pricing from model-config
-      costCredits = calculateImageCredits(model, scene);
+      // Image pricing from model-config, based on resolution
+      const resolution = options?.resolution || '1K';
+      costCredits = calculateImageCredits(model, resolution);
     } else if (mediaType === AIMediaType.VIDEO) {
       // generate video
       if (scene === 'text-to-video') {

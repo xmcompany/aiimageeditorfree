@@ -331,8 +331,8 @@ export function ImageGenerator({
     const modelOption = MODEL_OPTIONS.find((o) => o.value === model);
     if (!modelOption) { setCostCredits(5); return; }
 
-    const scene = activeTab === 'image-to-image' ? 'image-to-image' : 'text-to-image';
-    setCostCredits(calculateImageCredits(model, scene));
+    // v2 schema models use resolution '1K' by default
+    setCostCredits(calculateImageCredits(model, '1K'));
   }, [model, activeTab]);
 
   const taskStatusLabel = useMemo(() => {

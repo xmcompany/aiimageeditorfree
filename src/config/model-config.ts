@@ -745,8 +745,9 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
     scenes: ['text-to-image', 'image-to-image'],
     optionSchema: 'v2',
     calculateCredits: (params: Record<string, any>) => {
-      const scene = params.scene || 'text-to-image';
-      return scene === 'image-to-image' ? 12 : 8;
+      const resolution = params.resolution || '1K';
+      const pricing: Record<string, number> = { '1K': 5, '2K': 8, '4K': 12 };
+      return pricing[resolution] || 5;
     },
     schema: {
       type: 'object',
@@ -769,8 +770,9 @@ export const MODEL_CONFIGS: Record<string, ModelConfig> = {
     scenes: ['text-to-image', 'image-to-image'],
     optionSchema: 'v2',
     calculateCredits: (params: Record<string, any>) => {
-      const scene = params.scene || 'text-to-image';
-      return scene === 'image-to-image' ? 8 : 5;
+      const resolution = params.resolution || '1K';
+      const pricing: Record<string, number> = { '1K': 8, '2K': 8, '4K': 14 };
+      return pricing[resolution] || 8;
     },
     schema: {
       type: 'object',
@@ -856,12 +858,12 @@ export function getImageModelFrontendOptions(): Array<{
 }
 
 // Helper function to calculate image model credits
-export function calculateImageCredits(model: string, scene?: string): number {
+export function calculateImageCredits(model: string, resolution?: string): number {
   const config = MODEL_CONFIGS[model];
   if (!config || config.mediaType !== 'image' || !config.calculateCredits) {
     return 5; // fallback
   }
-  return config.calculateCredits({ scene: scene || 'text-to-image' });
+  return config.calculateCredits({ resolution: resolution || '1K' });
 }
 
 // Helper function to get default parameters for a model from schema
